@@ -1,3 +1,8 @@
+// 1. Ensure karein ki sabse pehli line yehi ho
+"use client"; 
+
+// 2. React ke saath useRef ko explicitly import karein
+import { useEffect, useRef, useState } from "react";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import { Download } from "lucide-react";
 
