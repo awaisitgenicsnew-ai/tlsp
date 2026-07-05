@@ -1,3 +1,9 @@
+// 1. Agar "use client" missing hai to sabse pehle ye lagayein
+"use client"; 
+
+// 2. React ke saath useRef ko import karein (jo abhi missing hai)
+import { useEffect, useRef, useState } from "react";
+
 const STATS = [
   { value: "6–8%", label: "Projected gross yield", sub: "Business Bay average" },
   { value: "Q4 2027", label: "Handover", sub: "DLD-registered timeline" },
