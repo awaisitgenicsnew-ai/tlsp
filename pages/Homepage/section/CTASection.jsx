@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 
 export default function CTASection() {

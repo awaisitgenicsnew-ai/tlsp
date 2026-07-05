@@ -1,4 +1,7 @@
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+
+"use client";
+
+import { useEffect, useRef, useState } from "react";import ImagePlaceholder from "@/components/ImagePlaceholder";
 
 const MATERIALS = [
   {
