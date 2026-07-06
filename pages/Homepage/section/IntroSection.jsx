@@ -46,8 +46,7 @@ export default function IntroSection() {
         </h2>
 
         <p className="text-center font-sans text-sm leading-relaxed text-[var(--ink)]/80 max-w-3xl mx-auto mb-16">
-          For over 28 years, The Total Office has been at the forefront of crafting dynamic and effective workplace and commercial solutions. Our longevity is not just a number, it represents decades of accumulated knowledge, refined expertise and a deep understanding of the evolving needs of a modern business.
-        </p>
+      Good design is not an event - it is patience. At PLT, every material is chosen for its longevity, not its spectacle. We draw on a European tradition of considered making: the belief that a home should age into something better than it was on the day it was handed over. That conviction, carried into Dubai's most connected districts, is what defines a PLT address. </p>
 
       
       </div>
