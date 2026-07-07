@@ -40,7 +40,7 @@ export default function ContactSection() {
       
       console.log('Submitting payload:', payload);
       
-      const response = await fetch('http://localhost:8000/api/leads', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/leads`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

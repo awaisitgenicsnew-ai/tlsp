@@ -1,10 +1,43 @@
 "use client";
 
 const INTRO_STATS = [
-  { value: "15+", label: "YEARS OF CRAFT" },
-  { value: "100%", label: "DLD ESCROW-BACKED" },
-  { value: "Business Bay", label: "FLAGSHIP LOCATION" },
-  { value: "European", label: "DESIGN HERITAGE" },
+  { 
+    value: "15+", 
+    label: "YEARS OF CRAFT",
+    icon: (
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    )
+  },
+  { 
+    value: "100%", 
+    label: "DLD ESCROW-BACKED",
+    icon: (
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    )
+  },
+  { 
+    value: "Business Bay", 
+    label: "FLAGSHIP LOCATION",
+    icon: (
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    )
+  },
+  { 
+    value: "European", 
+    label: "DESIGN HERITAGE",
+    icon: (
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+      </svg>
+    )
+  },
 ];
 
 export default function IntroSection() {
@@ -32,6 +65,9 @@ export default function IntroSection() {
           <div className="grid grid-cols-2 md:grid-cols-4 md:divide-x divide-[var(--ink)]/20">
             {INTRO_STATS.map((stat, index) => (
               <div key={index} className="text-center px-4 sm:px-6 md:px-8">
+                <div className="w-8 h-8 mx-auto mb-3 text-[var(--tan)]">
+                  {stat.icon}
+                </div>
                 <p className="font-display text-2xl md:text-3xl lg:text-4xl mb-2 text-[var(--ink)]">
                   {stat.value}
                 </p>

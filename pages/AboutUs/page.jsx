@@ -54,9 +54,23 @@ const BLACK_SCHEME = {
   buttonHoverText: '#ffffff',
 };
 
+const BLACK_BG_SCHEME = {
+  bg: '#000000',
+  border: 'rgba(255,255,255,0.1)',
+  text: '#ffffff',
+  subText: 'rgba(255,255,255,0.8)',
+  link: 'rgba(255,255,255,0.9)',
+  linkHover: '#ffffff',
+  buttonBorder: '#ffffff',
+  buttonText: '#ffffff',
+  buttonHoverBg: '#ffffff',
+  buttonHoverText: '#000000',
+};
+
 export default function AboutUs() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [isNearLastSection, setIsNearLastSection] = useState(false);
   const wrapperRef = useRef(null);
   const trackRef = useRef(null);
 
@@ -96,6 +110,7 @@ export default function AboutUs() {
               Math.round(self.progress * (SECTIONS.length - 1))
             );
             setActiveIndex(idx);
+            setIsNearLastSection(self.progress > 0.85);
           },
         },
       });
@@ -124,7 +139,10 @@ export default function AboutUs() {
         trigger: document.body,
         start: 'top top',
         end: 'bottom bottom',
-        onUpdate: (self) => setProgress(self.progress),
+        onUpdate: (self) => {
+          setProgress(self.progress);
+          setIsNearLastSection(self.progress > 0.85);
+        },
       });
 
       return () => {
@@ -138,7 +156,9 @@ export default function AboutUs() {
 
   const isDarkSection = SECTIONS[activeIndex]?.theme === 'dark';
 
-  const navbarColors = isDarkSection
+  const navbarColors = isNearLastSection
+    ? { top: BLACK_BG_SCHEME, scrolled: BLACK_BG_SCHEME }
+    : isDarkSection
     ? { top: WHITE_SCHEME, scrolled: WHITE_SCHEME }
     : { top: BLACK_SCHEME, scrolled: BLACK_SCHEME };
 

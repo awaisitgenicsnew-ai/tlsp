@@ -31,7 +31,7 @@ export default function AdminContacts() {
     try {
       const token = getCookie('token');
       console.log('Fetching contacts with token:', token);
-      const response = await fetch('http://localhost:8000/api/admin/leads', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/leads`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -58,7 +58,7 @@ export default function AdminContacts() {
   const updateStatus = async (id, status) => {
     try {
       const token = getCookie('token');
-      const response = await fetch(`http://localhost:8000/api/admin/leads/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/leads/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ export default function AdminContacts() {
 
     try {
       const token = getCookie('token');
-      const response = await fetch(`http://localhost:8000/api/admin/leads/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/leads/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
