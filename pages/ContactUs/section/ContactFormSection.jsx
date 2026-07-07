@@ -180,7 +180,7 @@ export default function ContactFormSection() {
 
             <button
               type="submit"
-              className="submit-button"
+              className="submit-button mt-2"
               disabled={loading}
             >
               {loading ? 'Sending...' : 'Send Message'}
