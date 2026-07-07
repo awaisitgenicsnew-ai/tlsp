@@ -20,9 +20,9 @@ export default function AdminSidebar({ activePage = 'dashboard' }) {
   ];
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('admin');
-    router.push('/admin/login');
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'admin=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    window.location.href = '/admin/login';
   };
 
   const handleNavigation = (path) => {

@@ -10,8 +10,15 @@ export default function AdminContacts() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  };
+
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = getCookie('token');
     if (!token) {
       router.push('/admin/login');
       return;
@@ -22,20 +29,26 @@ export default function AdminContacts() {
 
   const fetchContacts = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/admin/contacts', {
+      const token = getCookie('token');
+      console.log('Fetching contacts with token:', token);
+      const response = await fetch('http://localhost:8000/api/admin/leads', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
       });
 
+      console.log('Response status:', response.status);
+      const data = await response.json();
+      console.log('Response data:', data);
+
       if (response.ok) {
-        const data = await response.json();
-        setContacts(data);
+        setContacts(data.data?.leads || []);
       } else {
-        setError('Failed to fetch contacts');
+        console.error('Fetch failed:', data);
+        setError(data.message || 'Failed to fetch contacts');
       }
     } catch (err) {
+      console.error('Fetch error:', err);
       setError('Failed to connect to server');
     } finally {
       setLoading(false);
@@ -44,8 +57,8 @@ export default function AdminContacts() {
 
   const updateStatus = async (id, status) => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/admin/contacts/${id}/status`, {
+      const token = getCookie('token');
+      const response = await fetch(`http://localhost:8000/api/admin/leads/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -68,8 +81,8 @@ export default function AdminContacts() {
     if (!confirm('Are you sure you want to delete this contact?')) return;
 
     try {
-      const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/admin/contacts/${id}`, {
+      const token = getCookie('token');
+      const response = await fetch(`http://localhost:8000/api/admin/leads/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -88,11 +101,13 @@ export default function AdminContacts() {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'pending':
-        return '#f59e0b';
-      case 'read':
+      case 'new':
         return '#3b82f6';
-      case 'responded':
+      case 'contacted':
+        return '#f59e0b';
+      case 'qualified':
+        return '#8b5cf6';
+      case 'closed':
         return '#10b981';
       default:
         return '#6b7280';
@@ -150,9 +165,10 @@ export default function AdminContacts() {
                             className="status-select"
                             style={{ color: getStatusColor(contact.status) }}
                           >
-                            <option value="pending">Pending</option>
-                            <option value="read">Read</option>
-                            <option value="responded">Responded</option>
+                            <option value="new">New</option>
+                            <option value="contacted">Contacted</option>
+                            <option value="qualified">Qualified</option>
+                            <option value="closed">Closed</option>
                           </select>
                         </td>
                         <td>{new Date(contact.created_at).toLocaleDateString()}</td>

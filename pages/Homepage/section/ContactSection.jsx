@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ContactSection() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -26,33 +28,50 @@ export default function ContactSection() {
     setSubmitMessage('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const payload = {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        developmentOfInterest: formData.development,
+        interest: formData.interest,
+        subject: `${formData.development} - ${formData.interest}`,
+        message: 'New enquiry from website - please contact me regarding my interest in the property development.'
+      };
+      
+      console.log('Submitting payload:', payload);
+      
+      const response = await fetch('http://localhost:8000/api/leads', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          subject: `${formData.development} - ${formData.interest}`,
-          message: 'New enquiry from website'
-        }),
+        body: JSON.stringify(payload),
       });
 
+      const data = await response.json();
+      console.log('API Response:', data);
+      console.log('Validation errors:', data.errors);
+
       if (response.ok) {
-        setSubmitMessage('Thank you! Your enquiry has been submitted successfully.');
-        setFormData({
-          name: '',
-          phone: '',
-          email: '',
-          development: '',
-          interest: ''
+        // Redirect to thank you page with form data
+        const params = new URLSearchParams({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || '',
+          development: formData.development || '',
+          interest: formData.interest || ''
         });
+        router.push(`/thank-you?${params.toString()}`);
       } else {
-        setSubmitMessage('Something went wrong. Please try again.');
+        if (data.errors && data.errors.length > 0) {
+          const errorMessages = data.errors.map(err => `${err.field}: ${err.message}`).join(', ');
+          setSubmitMessage(`Validation error: ${errorMessages}`);
+        } else {
+          setSubmitMessage(data.message || 'Something went wrong. Please try again.');
+        }
       }
     } catch (error) {
+      console.error('Submit error:', error);
       setSubmitMessage('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -140,6 +159,13 @@ export default function ContactSection() {
             name="development"
             value={formData.development}
             onChange={handleChange}
+            options={[
+              { value: 'plt-tower', label: 'PLT Tower' },
+              { value: 'plt-residences', label: 'PLT Residences' },
+              { value: 'plt-villas', label: 'PLT Villas' },
+              { value: 'plt-commercial', label: 'PLT Commercial' },
+              { value: 'other', label: 'Other' }
+            ]}
           />
           <Select
             label="I am interested in"
@@ -148,6 +174,13 @@ export default function ContactSection() {
             name="interest"
             value={formData.interest}
             onChange={handleChange}
+            options={[
+              { value: 'buying', label: 'Buying Property' },
+              { value: 'renting', label: 'Renting Property' },
+              { value: 'investment', label: 'Investment Opportunity' },
+              { value: 'information', label: 'General Information' },
+              { value: 'partnership', label: 'Partnership Inquiry' }
+            ]}
           />
 
           {submitMessage && (
@@ -187,7 +220,7 @@ function Field({ label, placeholder, className = "", name, value, onChange }) {
   );
 }
 
-function Select({ label, placeholder, className = "", name, value, onChange }) {
+function Select({ label, placeholder, className = "", name, value, onChange, options = [] }) {
   return (
     <label className={`block ${className}`}>
       <span className="block text-[10px] tracking-widest uppercase text-white/40 mb-2">
@@ -199,9 +232,14 @@ function Select({ label, placeholder, className = "", name, value, onChange }) {
         onChange={onChange}
         className="w-full bg-transparent border-b border-white/20 pb-2 text-sm text-white/50 focus:outline-none focus:border-[#B08D57] transition-colors appearance-none"
       >
-        <option value="" disabled>
+        <option value="" disabled className="text-gray-400">
           {placeholder}
         </option>
+        {options.map((option) => (
+          <option key={option.value} value={option.value} className="text-black">
+            {option.label}
+          </option>
+        ))}
       </select>
     </label>
   );

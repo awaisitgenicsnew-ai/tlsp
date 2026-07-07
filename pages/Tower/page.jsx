@@ -11,12 +11,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Sections
 import HeroSlider from './section/HeroSlider';
-import IntroSection from './section/IntroSection';
-import { BrandPillarsSlider } from './section/ResidencesSectionNew';
-import Developments from './section/DevelopmentsSection';
-import Philosophy from './section/PhilosophySection';
-import ExperienceSection from './section/ExperienceSection';
+import VisionSection from './section/VisionSection';
+import GallerySection from './section/GallerySection';
+import LocationSection from './section/LocationSection';
+import AccessibilitySection from './section/AccessibilitySection';
+import LandmarksSection from './section/LandmarksSection';
 import ContactSection from './section/ContactSection';
+import MapSection from './section/MapSection';
 
 // ============================================================
 // SECTIONS CONFIG
@@ -26,12 +27,13 @@ import ContactSection from './section/ContactSection';
 // ============================================================
 const SECTIONS = [
   { id: 'hero', Component: HeroSlider, theme: 'dark', animate: false },
-  { id: 'intro', Component: IntroSection, theme: 'light', animate: true },
-  { id: 'brand-pillars', Component: BrandPillarsSlider, theme: 'dark', animate: false },
-  { id: 'developments', Component: Developments, theme: 'light', animate: true },
-  { id: 'philosophy', Component: Philosophy, theme: 'light', animate: true },
-  { id: 'experience', Component: ExperienceSection, theme: 'light', animate: true },
+  { id: 'vision', Component: VisionSection, theme: 'dark', animate: true },
+  { id: 'gallery', Component: GallerySection, theme: 'dark', animate: true },
+  { id: 'location', Component: LocationSection, theme: 'dark', animate: true },
+  { id: 'accessibility', Component: AccessibilitySection, theme: 'dark', animate: true },
+  { id: 'landmarks', Component: LandmarksSection, theme: 'dark', animate: true },
   { id: 'contact', Component: ContactSection, theme: 'dark', animate: true },
+  { id: 'map', Component: MapSection, theme: 'dark', animate: true },
 ];
 
 // Navbar color schemes
@@ -75,12 +77,12 @@ const BLACK_BG_SCHEME = {
 };
 
 /**
- * Homepage — GSAP ScrollTrigger horizontal scroll.
+ * Tower Page — GSAP ScrollTrigger horizontal scroll.
  * Desktop: sections horizontally scroll with pinning (vertical scroll drives horizontal movement).
  * Mobile (<768px): normal vertical stacking.
  * Navbar theme automatically switches based on active section.
  */
-export default function Homepage() {
+export default function TowerPage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isNearLastSection, setIsNearLastSection] = useState(false);
@@ -109,14 +111,11 @@ export default function Homepage() {
           scrub: 1,
           invalidateOnRefresh: true,
           anticipatePin: 1,
-          // Snap: jis section ki taraf aadhe se zyada scroll hoga, wahi properly snap ho jayega
           snap: {
             snapTo: 1 / (SECTIONS.length - 1),
             duration: { min: 0.2, max: 0.6 },
             ease: 'power1.inOut',
             delay: 2,
-            // directional: false = scroll direction ignore karo,
-            // jis section ka hissa screen par zyada hai wahi snap hoga
             directional: false,
           },
           onUpdate: (self) => {
@@ -126,7 +125,6 @@ export default function Homepage() {
               Math.round(self.progress * (SECTIONS.length - 1))
             );
             setActiveIndex(idx);
-            // Detect when approaching last section (contact section)
             setIsNearLastSection(self.progress > 0.85);
           },
         },
@@ -158,7 +156,6 @@ export default function Homepage() {
         end: 'bottom bottom',
         onUpdate: (self) => {
           setProgress(self.progress);
-          // Detect when approaching last section (contact section)
           setIsNearLastSection(self.progress > 0.85);
         },
       });
@@ -198,7 +195,7 @@ export default function Homepage() {
         <main
           ref={trackRef}
           role="main"
-          aria-label="Homepage sections"
+          aria-label="Tower sections"
           className="flex flex-col md:flex-row md:h-screen md:w-max will-change-transform"
         >
           {SECTIONS.map(({ id, Component, theme }) => (

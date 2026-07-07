@@ -1,12 +1,17 @@
 "use client";
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { leadApi } from '../../../lib/api';
 
 export default function ContactFormSection() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
+    developmentOfInterest: '',
+    interest: '',
     subject: '',
     message: ''
   });
@@ -28,30 +33,26 @@ export default function ContactFormSection() {
     setSuccess(false);
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+      console.log('Submitting form data:', formData);
+      const response = await leadApi.createLead(formData);
+      console.log('API response:', response);
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setSuccess(true);
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          subject: '',
-          message: ''
+      if (response.success) {
+        // Redirect to thank you page with form data
+        const params = new URLSearchParams({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || '',
+          development: formData.developmentOfInterest || '',
+          interest: formData.interest || ''
         });
+        router.push(`/thank-you?${params.toString()}`);
       } else {
-        setError(data.message || 'Failed to submit form');
+        setError(response.message || 'Failed to submit form');
       }
     } catch (err) {
-      setError('Failed to connect to server');
+      console.error('Form submission error:', err);
+      setError(err.message || 'Failed to connect to server');
     } finally {
       setLoading(false);
     }
