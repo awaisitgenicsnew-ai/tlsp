@@ -7,9 +7,9 @@ import Link from "next/link";
 const LINKS = [
   { label: "Developments", href: "#developments" },
   { label: "About", href: "/about-us" },
-  { label: "Communities", href: "#communities" },
+  { label: "PLT Tower", href: "#communities" },
   { label: "Investment", href: "#investment" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact-us" },
 ];
 
 export default function Navbar() {

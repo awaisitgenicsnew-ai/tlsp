@@ -61,7 +61,7 @@ export default function BrandDNA() {
         {dnaCards.map((card) => (
           <div
             key={card.title}
-            className="group relative h-[400px]  overflow-hidden bg-[#1a1610]"
+            className="group relative h-[480px]  overflow-hidden bg-[#1a1610]"
           >
             {card.image ? (
               <>
@@ -69,7 +69,7 @@ export default function BrandDNA() {
                   src={card.image}
                   alt={card.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, 39vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   priority={false}
                 />

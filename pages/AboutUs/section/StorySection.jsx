@@ -30,14 +30,14 @@ export default function StorySection() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left: Image */}
         <div className="relative">
-          <div className="aspect-[4/5] bg-[#1a1a1a] rounded-lg overflow-hidden">
+          <div className="aspect-[4/5] bg-[#1a1a1a] h-[500px] rounded-lg overflow-hidden">
             <img 
               src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800"
               alt="PLT Properties Story"
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="absolute -bottom-6 -right-6 w-32 h-32 border border-[var(--tan)] rounded-lg" />
+          
         </div>
 
         {/* Right: Content */}
