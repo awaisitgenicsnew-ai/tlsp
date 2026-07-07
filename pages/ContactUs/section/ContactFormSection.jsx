@@ -246,6 +246,7 @@ export default function ContactFormSection() {
           text-transform: uppercase;
           letter-spacing: 0.1em;
           font-family: var(--font-sans);
+          margin-top: 0.5rem;
         }
 
         .submit-button:hover:not(:disabled) {
