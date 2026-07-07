@@ -12,87 +12,104 @@ const LINKS = [
   { label: "Contact", href: "/contact-us" },
 ];
 
-export default function Navbar() {
+
+const DEFAULT_COLORS = {
+  top: {
+    bg: "transparent",
+    border: "transparent",
+    text: "#ffffff",
+    subText: "rgba(255,255,255,0.8)",
+    link: "rgba(255,255,255,0.9)",
+    linkHover: "#ffffff",
+    buttonBorder: "#ffffff",
+    buttonText: "#ffffff",
+    buttonHoverBg: "#ffffff",
+    buttonHoverText: "#000000",
+  },
+  scrolled: {
+    bg: "transparent",
+    border: "rgba(0,0,0,0.1)",
+    text: "#000000",
+    subText: "rgba(0,0,0,0.6)",
+    link: "rgba(0,0,0,0.8)",
+    linkHover: "#000000",
+    buttonBorder: "#000000",
+    buttonText: "#000000",
+    buttonHoverBg: "#000000",
+    buttonHoverText: "#ffffff",
+  },
+  mobile: {
+    bg: "#000000",
+    border: "rgba(255,255,255,0.1)",
+    text: "#ffffff",
+    link: "rgba(255,255,255,0.9)",
+    linkHover: "#ffffff",
+    buttonBg: "#ffffff",
+    buttonText: "#000000",
+  },
+};
+
+export default function Navbar({ colors = {} }) {
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeTheme, setActiveTheme] = useState("default");
+
+  // Merge user colors with defaults
+  const theme = {
+    top: { ...DEFAULT_COLORS.top, ...(colors.top || {}) },
+    scrolled: { ...DEFAULT_COLORS.scrolled, ...(colors.scrolled || {}) },
+    mobile: { ...DEFAULT_COLORS.mobile, ...(colors.mobile || {}) },
+  };
+
+  // Active state ke hisaab se colors select karo
+  const c = isScrolled ? theme.scrolled : theme.top;
+  const m = theme.mobile;
 
   // Scroll handler
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Theme change listener
-  useEffect(() => {
-    const handleThemeChange = (e) => {
-      setActiveTheme(e.detail);
-    };
-
-    window.addEventListener("changeNavbarTheme", handleThemeChange);
-    return () => window.removeEventListener("changeNavbarTheme", handleThemeChange);
-  }, []);
-
-  const isForceWhite = activeTheme === "white";
-  const isForceLight = activeTheme === "light";
-  const isLightGrayBg = activeTheme === "light-gray";
-
-  // --- CLEAN STYLING LOGIC FOR SMOOTH SCROLL UP/DOWN ---
-  const headerStyles = isLightGrayBg
-    ? "bg-black border-b border-white/10 lg:bg-transparent lg:border-b lg:border-black/10"
-    : isScrolled
-      ? isForceWhite
-        ? "bg-black border-b border-white/10 lg:bg-transparent lg:border-b lg:border-white/10"
-        : "bg-black border-b border-white/10 lg:bg-transparent lg:border-b lg:border-black/10"
-      : "bg-black border-b border-white/10 lg:bg-transparent lg:border-transparent";
-
-  // Light gray par completely text black rahega, up/down karne pe change nahi hoga
-  const desktopTextColor = isLightGrayBg
-    ? "lg:text-black"
-    : isForceWhite
-      ? "lg:text-white"
-      : isForceLight
-        ? "lg:text-black"
-        : isScrolled ? "lg:text-black" : "lg:text-white";
-
-  const desktopSubTextColor = isLightGrayBg
-    ? "lg:text-black/60"
-    : isForceWhite
-      ? "lg:text-white/80"
-      : isForceLight
-        ? "lg:text-black/60"
-        : isScrolled ? "lg:text-black/60" : "lg:text-white/80";
-
-  const desktopNavLinkColor = isLightGrayBg
-    ? "lg:text-black/80 lg:hover:text-black lg:font-light"
-    : isForceWhite
-      ? "lg:text-white/90 lg:hover:text-white"
-      : isForceLight
-        ? "lg:text-black/80 lg:hover:text-black lg:font-light"
-        : isScrolled
-          ? "lg:text-black/80 lg:hover:text-black lg:font-light"
-          : "lg:text-white/90 lg:hover:text-white";
+  // CSS variables — inhi se saare colors control hote hain
+  const cssVars = {
+    "--nav-bg": c.bg,
+    "--nav-border": c.border,
+    "--nav-text": c.text,
+    "--nav-subtext": c.subText,
+    "--nav-link": c.link,
+    "--nav-link-hover": c.linkHover,
+    "--nav-btn-border": c.buttonBorder,
+    "--nav-btn-text": c.buttonText,
+    "--nav-btn-hover-bg": c.buttonHoverBg,
+    "--nav-btn-hover-text": c.buttonHoverText,
+    "--nav-mobile-bg": m.bg,
+    "--nav-mobile-border": m.border,
+    "--nav-mobile-text": m.text,
+    "--nav-mobile-link": m.link,
+    "--nav-mobile-link-hover": m.linkHover,
+    "--nav-mobile-btn-bg": m.buttonBg,
+    "--nav-mobile-btn-text": m.buttonText,
+    "--nav-mobile-subtext": m.subText || "rgba(255,255,255,0.8)",
+  };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerStyles}`}>
-      
+    <header
+      style={cssVars}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[var(--nav-mobile-bg)] text-[color:var(--nav-mobile-text)] md:bg-[var(--nav-bg)] md:text-[color:var(--nav-text)] border-b border-[color:var(--nav-mobile-border)] md:border-[color:var(--nav-border)]"
+    >
       {/* Main Navbar Bar */}
       <div className="relative flex items-center justify-between px-6 sm:px-10 py-5">
 
         {/* Brand Logo */}
         <Link href="/" className="leading-tight flex-shrink-0 z-10">
-          <span className={`block font-sans text-base sm:text-lg tracking-[0.15em] font-bold text-white transition-colors duration-300 ${desktopTextColor}`}>
+          <span className="block font-sans text-base sm:text-lg tracking-[0.15em] font-bold transition-colors duration-300 text-[color:var(--nav-mobile-text)] md:text-[color:var(--nav-text)]">
             PLT
           </span>
-          <span className={`block font-sans text-[9px] sm:text-[10px] tracking-[0.25em] font-light -mt-0.5 text-white/80 transition-colors duration-300 ${desktopSubTextColor}`}>
+          <span className="block font-sans text-[9px] sm:text-[10px] tracking-[0.25em] font-light -mt-0.5 transition-colors duration-300 text-[color:var(--nav-mobile-subtext)] md:text-[color:var(--nav-subtext)]">
             PROPERTIES
           </span>
         </Link>
@@ -104,7 +121,7 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`font-sans font-light text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 whitespace-nowrap ${desktopNavLinkColor}`}
+                className="font-sans font-light text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)]"
               >
                 {link.label}
               </Link>
@@ -112,7 +129,7 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className={`font-sans font-light text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 whitespace-nowrap ${desktopNavLinkColor}`}
+                className="font-sans font-light text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)]"
               >
                 {link.label}
               </a>
@@ -124,15 +141,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4 flex-shrink-0 z-10">
           <a
             href="#enquire"
-            className={`hidden lg:inline-flex items-center px-6 py-2.5 font-sans text-[11px] font-light tracking-[0.2em] uppercase transition-all duration-300 ${
-              isLightGrayBg || isForceLight
-                ? "border border-black text-black hover:bg-black hover:text-white"
-                : isForceWhite
-                  ? "border border-white text-white hover:bg-white hover:text-black"
-                  : isScrolled
-                    ? "border border-black text-black hover:bg-black hover:text-white" 
-                    : "border border-white text-white hover:bg-white hover:text-black"
-            }`}
+            className="hidden lg:inline-flex items-center px-6 py-2.5 font-sans text-[11px] font-light tracking-[0.2em] uppercase transition-all duration-300 border border-[color:var(--nav-btn-border)] text-[color:var(--nav-btn-text)] hover:bg-[var(--nav-btn-hover-bg)] hover:text-[color:var(--nav-btn-hover-text)]"
           >
             Register Interest
           </a>
@@ -140,7 +149,7 @@ export default function Navbar() {
           <button
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
-            className="lg:hidden p-2 text-white hover:text-white/80 transition-colors duration-300"
+            className="lg:hidden p-2 transition-colors duration-300 text-[color:var(--nav-mobile-text)] md:text-[color:var(--nav-text)] hover:opacity-80"
           >
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -150,7 +159,7 @@ export default function Navbar() {
 
       {/* --- MOBILE DROPDOWN NAVIGATION --- */}
       {open && (
-        <div className="lg:hidden px-6 pb-8 pt-2 bg-black border-t border-white/5 animate-fadeIn">
+        <div className="lg:hidden px-6 pb-8 pt-2 animate-fadeIn bg-[var(--nav-mobile-bg)] border-t border-[color:var(--nav-mobile-border)]">
           <nav className="flex flex-col gap-5">
             {LINKS.map((link) => (
               link.href.startsWith('/') ? (
@@ -158,7 +167,7 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="font-sans text-sm font-light tracking-[0.15em] uppercase text-white/90 hover:text-white transition-colors py-1"
+                  className="font-sans text-sm font-light tracking-[0.15em] uppercase transition-colors py-1 text-[color:var(--nav-mobile-link)] hover:text-[color:var(--nav-mobile-link-hover)]"
                 >
                   {link.label}
                 </Link>
@@ -167,7 +176,7 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="font-sans text-sm font-light tracking-[0.15em] uppercase text-white/90 hover:text-white transition-colors py-1"
+                  className="font-sans text-sm font-light tracking-[0.15em] uppercase transition-colors py-1 text-[color:var(--nav-mobile-link)] hover:text-[color:var(--nav-mobile-link-hover)]"
                 >
                   {link.label}
                 </a>
@@ -177,7 +186,7 @@ export default function Navbar() {
             <a
               href="#enquire"
               onClick={() => setOpen(false)}
-              className="inline-flex items-center justify-center px-6 py-3 border font-sans text-xs font-light tracking-[0.2em] uppercase mt-4 bg-white text-black hover:bg-transparent hover:text-white hover:border-white transition-all duration-300"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent font-sans text-xs font-light tracking-[0.2em] uppercase mt-4 transition-all duration-300 bg-[var(--nav-mobile-btn-bg)] text-[color:var(--nav-mobile-btn-text)] hover:opacity-90"
             >
               Register Interest
             </a>

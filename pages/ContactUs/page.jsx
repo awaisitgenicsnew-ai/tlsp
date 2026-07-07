@@ -1,170 +1,172 @@
 "use client";
 
-import { useHorizontalScroll } from '@/hooks/useHorizontalScroll';
-import NavigationControls from '@/components/NavigationControls';
-import ProgressBar from '@/components/ProgressBar';
+import { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import '@/styles/HorizontalScroll.css';
 
-// Import Contact Us sections
+// Contact Us sections
 import HeroSection from './section/HeroSection';
 import ContactInfoSection from './section/ContactInfoSection';
 import ContactFormSection from './section/ContactFormSection';
 
-/**
- * Contact Us page with horizontal scroll implementation
- * Following the same pattern as Homepage and AboutUs
- */
-export default function ContactUs() {
-  const {
-    containerRef,
-    scrollPinTrackRef,
-    scrollState,
-    navigationState,
-    scrollLeft,
-    scrollRight,
-    scrollToSection,
-    isDesktop,
-    progress,
-    canNavigate,
-  } = useHorizontalScroll({
-    easeFactor: 0.08,
-    breakpoint: 768,
-    enableWheelControl: true,
-    enableNavigation: true,
-  });
+gsap.registerPlugin(ScrollTrigger);
 
-  const sections = [
-    { component: HeroSection, name: 'hero' },
-    { component: ContactFormSection, name: 'contact-form' },
-    { component: ContactInfoSection, name: 'contact-info' },
-  ];
+const SECTIONS = [
+  { id: 'hero', Component: HeroSection, theme: 'dark' },
+  { id: 'contact-form', Component: ContactFormSection, theme: 'light' },
+  { id: 'contact-info', Component: ContactInfoSection, theme: 'dark' },
+];
+
+const WHITE_SCHEME = {
+  bg: 'transparent',
+  border: 'rgba(255,255,255,0.1)',
+  text: '#ffffff',
+  subText: 'rgba(255,255,255,0.8)',
+  link: 'rgba(255,255,255,0.9)',
+  linkHover: '#ffffff',
+  buttonBorder: '#ffffff',
+  buttonText: '#ffffff',
+  buttonHoverBg: '#ffffff',
+  buttonHoverText: '#000000',
+};
+
+const BLACK_SCHEME = {
+  bg: 'transparent',
+  border: 'rgba(0,0,0,0.1)',
+  text: '#000000',
+  subText: 'rgba(0,0,0,0.6)',
+  link: 'rgba(0,0,0,0.8)',
+  linkHover: '#000000',
+  buttonBorder: '#000000',
+  buttonText: '#000000',
+  buttonHoverBg: '#000000',
+  buttonHoverText: '#ffffff',
+};
+
+export default function ContactUs() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const wrapperRef = useRef(null);
+  const trackRef = useRef(null);
+
+  useEffect(() => {
+    const mm = gsap.matchMedia();
+
+    // Desktop horizontal scroll
+    mm.add('(min-width: 768px)', () => {
+      const track = trackRef.current;
+      const wrapper = wrapperRef.current;
+      if (!track || !wrapper) return;
+
+      const getScrollAmount = () => track.scrollWidth - window.innerWidth;
+
+      const tween = gsap.to(track, {
+        x: () => -getScrollAmount(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: wrapper,
+          start: 'top top',
+          end: () => `+=${getScrollAmount()}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+          snap: {
+            snapTo: 1 / (SECTIONS.length - 1),
+            duration: { min: 0.2, max: 0.6 },
+            ease: 'power1.inOut',
+            delay: 2,
+            directional: false,
+          },
+          onUpdate: (self) => {
+            setProgress(self.progress);
+            const idx = Math.min(
+              SECTIONS.length - 1,
+              Math.round(self.progress * (SECTIONS.length - 1))
+            );
+            setActiveIndex(idx);
+          },
+        },
+      });
+
+      return () => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      };
+    });
+
+    // Mobile vertical fallback
+    mm.add('(max-width: 767px)', () => {
+      const panels = gsap.utils.toArray('.h-panel');
+      const triggers = panels.map((panel, i) =>
+        ScrollTrigger.create({
+          trigger: panel,
+          start: 'top 50%',
+          end: 'bottom 50%',
+          onToggle: (self) => {
+            if (self.isActive) setActiveIndex(i);
+          },
+        })
+      );
+
+      const pageTrigger = ScrollTrigger.create({
+        trigger: document.body,
+        start: 'top top',
+        end: 'bottom bottom',
+        onUpdate: (self) => setProgress(self.progress),
+      });
+
+      return () => {
+        triggers.forEach((t) => t.kill());
+        pageTrigger.kill();
+      };
+    });
+
+    return () => mm.revert();
+  }, []);
+
+  const isDarkSection = SECTIONS[activeIndex]?.theme === 'dark';
+
+  const navbarColors = isDarkSection
+    ? { top: WHITE_SCHEME, scrolled: WHITE_SCHEME }
+    : { top: BLACK_SCHEME, scrolled: BLACK_SCHEME };
 
   return (
-    <div className="contactus-layout">
-      {/* Header - Fixed Position */}
-      <header className="contactus-header">
-        <Navbar />
-      </header>
+    <div className="relative w-full">
+      <Navbar colors={navbarColors} />
 
-      {/* Horizontal Scroll Container */}
-      <div className="contactus-scroll-wrapper" ref={scrollPinTrackRef}>
-        <main 
-          ref={containerRef}
-          className="timeline-container"
-          role="main"
-          aria-label="Contact Us sections"
-        >
-          <section className="timeline-section" data-section-name="hero">
-            <HeroSection />
-          </section>
-          <section className="timeline-section" data-section-name="contact-form">
-            <ContactFormSection />
-          </section>
-          <section className="timeline-section" data-section-name="contact-info">
-            <ContactInfoSection />
-          </section>
-        </main>
-
-        {/* Navigation Controls */}
-        {canNavigate && (
-          <NavigationControls
-            onNavigateLeft={scrollLeft}
-            onNavigateRight={scrollRight}
-            canGoLeft={navigationState.canGoLeft}
-            canGoRight={navigationState.canGoRight}
-          />
-        )}
-
-        {/* Progress Bar */}
-        <ProgressBar progress={progress} />
+      {/* Progress Bar */}
+      <div className="fixed bottom-0 left-0 right-0 h-[3px] z-[1100] bg-transparent">
+        <div
+          className="h-full bg-[var(--gold)] transition-[width] duration-100 ease-linear"
+          style={{ width: `${progress * 100}%` }}
+        />
       </div>
 
-      {/* Footer */}
-      <footer className="contactus-footer">
-        <Footer />
-      </footer>
+      {/* Horizontal scroll wrapper */}
+      <div ref={wrapperRef} className="relative overflow-hidden">
+        <main
+          ref={trackRef}
+          role="main"
+          aria-label="Contact Us sections"
+          className="flex flex-col md:flex-row md:h-screen md:w-max will-change-transform"
+        >
+          {SECTIONS.map(({ id, Component, theme }) => (
+            <section
+              key={id}
+              id={`section-${id}`}
+              data-theme={theme}
+              className="h-panel relative w-full md:w-screen md:h-screen flex-shrink-0 md:overflow-y-auto md:overflow-x-hidden md:flex md:flex-col md:[&>*]:flex-1 md:[&>*]:min-h-0"
+            >
+              <Component />
+            </section>
+          ))}
+        </main>
+      </div>
 
-      <style jsx global>{`
-        .contactus-layout {
-          position: relative;
-          width: 100%;
-          min-height: 100vh;
-        }
-
-        .contactus-header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 1000;
-          background: transparent;
-        }
-
-        .contactus-scroll-wrapper {
-          position: relative;
-          width: 100%;
-          overflow: visible;
-        }
-
-        .timeline-container {
-          display: flex;
-          height: 100vh;
-          width: max-content;
-          align-items: stretch;
-          position: sticky;
-          top: 0;
-          overflow: hidden;
-          will-change: transform;
-        }
-
-        .timeline-section {
-          width: 100vw;
-          height: 100vh;
-          flex-shrink: 0;
-          position: relative;
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .timeline-section > * {
-          flex: 1;
-          min-height: 0;
-        }
-
-        .contactus-footer {
-          position: relative;
-          width: 100%;
-          z-index: 10;
-        }
-
-        /* Mobile responsive adjustments */
-        @media (max-width: 768px) {
-          .timeline-container {
-            flex-direction: column;
-            height: auto !important;
-            width: 100%;
-            position: relative;
-            top: 0;
-            align-items: stretch;
-          }
-
-          .timeline-section {
-            width: 100%;
-            height: auto;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-          }
-
-          .timeline-section > * {
-            flex: 1;
-            min-height: 0;
-          }
-        }
-      `}</style>
+      <Footer />
     </div>
   );
 }

@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { useEffect, useRef } from "react";
 
 export default function ContactFormSection() {
-  const sectionRef = useRef(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,23 +13,6 @@ export default function ContactFormSection() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          window.dispatchEvent(new CustomEvent("changeNavbarTheme", { detail: "light" }));
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -78,8 +59,7 @@ export default function ContactFormSection() {
 
   return (
     <section
-      ref={sectionRef}
-      className="w-full bg-[#d9d9d9] text-[var(--ink)] flex items-center justify-center px-4 md:px-8 lg:px-16 py-28"
+      className="w-full bg-[#d9d9d9] text-[var(--ink)] flex items-center justify-center px-4 md:px-8 lg:px-16 py-10 lg:py-24"
     >
       <div className="max-w-2xl mx-auto w-full">
         <div className="text-center mb-6">

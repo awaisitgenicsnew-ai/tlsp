@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import "swiper/css";
@@ -23,29 +22,9 @@ const SLIDES = [
 ];
 
 export default function HeroSlider() {
-  const heroRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          window.dispatchEvent(new CustomEvent("changeNavbarTheme", { detail: "white" }));
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section 
       id="home" 
-      ref={heroRef}
       className="relative h-screen w-full overflow-hidden bg-[#0b0b0c]"
     >
       <Swiper
@@ -96,36 +75,6 @@ export default function HeroSlider() {
         </span>
       </div>
 
-      <style jsx global>{`
-        .swiper-slide-active .slide-bg {
-          animation: zoom 5.5s ease-in-out forwards;
-        }
-        @keyframes zoom {
-          0% { transform: scale(1); }
-          100% { transform: scale(1.08); }
-        }
-        
-        /* Force Swiper overrides using multi-class specificity */
-        .custom-hero-pagination .custom-bullet {
-          width: 8px !important;
-          height: 4px !important;
-          border-radius: 0px !important; /* Strict sharp square corners */
-          background: rgba(255, 255, 255, 0.5) !important;
-          opacity: 1 !important;
-          display: inline-block;
-          cursor: pointer;
-          transition: all 0.4s ease-in-out !important;
-          margin: 0 !important;
-        }
-        
-        /* Active Red Flat Bar Shape */
-        .custom-hero-pagination .custom-bullet-active {
-          background: #ef4444 !important; /* Pure Red */
-          width: 24px !important;
-          height: 4px !important;
-          border-radius: 0px !important;
-        }
-      `}</style>
     </section>
   );
 }

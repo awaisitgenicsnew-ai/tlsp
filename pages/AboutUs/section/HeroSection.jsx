@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import "swiper/css";
@@ -26,30 +25,8 @@ const SLIDES = [
 ];
 
 export default function HeroSection() {
-  const heroRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          window.dispatchEvent(new CustomEvent("changeNavbarTheme", { detail: "white" }));
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section 
-      ref={heroRef}
-      className="relative h-screen w-full overflow-hidden bg-[#0b0b0c]"
-    >
+    <section className="relative h-screen w-full overflow-hidden bg-[#0b0b0c] ">
       <Swiper
         modules={[Autoplay, Pagination, EffectFade]}
         effect="fade"
@@ -95,43 +72,6 @@ export default function HeroSection() {
         </span>
       </div>
 
-      <style jsx global>{`
-        .swiper-slide-active .slide-bg {
-          animation: zoom 5.5s ease-in-out forwards;
-        }
-        @keyframes zoom {
-          0% { transform: scale(1); }
-          100% { transform: scale(1.08); }
-        }
-        
-        /* Reset Swiper horizontal position defaults */
-        .swiper-horizontal > .custom-hero-pagination.swiper-pagination-bullets {
-          bottom: 3rem !important;
-          left: 0 !important;
-          width: 100% !important;
-        }
-
-        /* Default Sharp Square/Rectangle Shape */
-        .custom-hero-pagination .custom-bullet {
-          width: 8px !important;
-          height: 4px !important;
-          border-radius: 0px !important; /* Sharp corners */
-          background: rgba(255, 255, 255, 0.5) !important;
-          opacity: 1 !important;
-          display: inline-block;
-          cursor: pointer;
-          transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
-          margin: 0 2px !important;
-        }
-        
-        /* Active State: Red Long Square Bar */
-        .custom-hero-pagination .custom-bullet-active {
-          background: #ef4444 !important; /* Pure Red */
-          width: 24px !important;
-          height: 4px !important;
-          border-radius: 0px !important; /* Keeps edges sharp */
-        }
-      `}</style>
     </section>
   );
 }

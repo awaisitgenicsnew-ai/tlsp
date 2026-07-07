@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 const featured = {
@@ -61,27 +60,8 @@ function BadgeTag({ label }) {
 }
 
 export default function Developments() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          window.dispatchEvent(new CustomEvent("changeNavbarTheme", { detail: "light" }));
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section id="developments" ref={sectionRef} className="w-full bg-[#d9d9d9] md:py-25 px-4 md:px-10 flex flex-col justify-between">
+    <section id="developments" className="w-full bg-[#d9d9d9] py-10 lg:py-24 px-4 md:px-10 flex flex-col justify-between">
       
       {/* Featured development */}
       <div className="grid grid-cols-1 lg:grid-cols-2 border border-[#d8d3c7] items-stretch min-h-[330px] overflow-hidden">

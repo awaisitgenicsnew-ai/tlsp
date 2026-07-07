@@ -1,33 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 export default function Philosophy() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          window.dispatchEvent(new CustomEvent("changeNavbarTheme", { detail: "light" }));
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
       id="philosophy"
-      ref={sectionRef}
-      className="w-full bg-[#d9d9d9] py-25 px-6 md:px-12 lg:px-20 flex flex-col justify-between"
+      className="w-full bg-[#d9d9d9] py-10 lg:py-24 px-6 md:px-12 lg:px-20 flex flex-col justify-between"
     >
       {/* Hero */}
       <div className="max-w-2xl mx-auto text-center mb-16 md:mb-12">

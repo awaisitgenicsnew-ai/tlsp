@@ -1,225 +1,202 @@
 "use client";
 
-import { lazy, Suspense } from 'react';
-import { useHorizontalScroll } from '@/hooks/useHorizontalScroll';
-import NavigationControls from '@/components/NavigationControls';
-import ProgressBar from '@/components/ProgressBar';
+import { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '@/components/Navbar';
 import FloatingActionBar from '@/components/FloatingActionBar';
 import Footer from '@/components/Footer';
-import '@/styles/HorizontalScroll.css';
 
-// Import sections directly (debugging mode)
+gsap.registerPlugin(ScrollTrigger);
+
+// Sections
 import HeroSlider from './section/HeroSlider';
 import IntroSection from './section/IntroSection';
-import ResidencesSectionNew from './section/ResidencesSectionNew';
+import { BrandPillarsSlider } from './section/ResidencesSectionNew';
 import Developments from './section/DevelopmentsSection';
 import Philosophy from './section/PhilosophySection';
 import ExperienceSection from './section/ExperienceSection';
 import ContactSection from './section/ContactSection';
 
-// Loading fallback for lazy loaded components
-const SectionLoader = () => (
-  <div className="section-loader">
-    <div className="loader-spinner" />
-  </div>
-);
+// ============================================================
+// SECTIONS CONFIG
+// theme: 'dark'  = section bg dark hai  -> navbar text WHITE
+// theme: 'light' = section bg light hai -> navbar text BLACK
+// animate: false = section apni khud ki animation handle karta hai
+// ============================================================
+const SECTIONS = [
+  { id: 'hero', Component: HeroSlider, theme: 'dark', animate: false },
+  { id: 'intro', Component: IntroSection, theme: 'light', animate: true },
+  { id: 'brand-pillars', Component: BrandPillarsSlider, theme: 'dark', animate: false },
+  { id: 'developments', Component: Developments, theme: 'light', animate: true },
+  { id: 'philosophy', Component: Philosophy, theme: 'light', animate: true },
+  { id: 'experience', Component: ExperienceSection, theme: 'light', animate: true },
+  { id: 'contact', Component: ContactSection, theme: 'dark', animate: true },
+];
+
+// Navbar color schemes
+const WHITE_SCHEME = {
+  bg: 'transparent',
+  border: 'rgba(255,255,255,0.1)',
+  text: '#ffffff',
+  subText: 'rgba(255,255,255,0.8)',
+  link: 'rgba(255,255,255,0.9)',
+  linkHover: '#ffffff',
+  buttonBorder: '#ffffff',
+  buttonText: '#ffffff',
+  buttonHoverBg: '#ffffff',
+  buttonHoverText: '#000000',
+};
+
+const BLACK_SCHEME = {
+  bg: 'transparent',
+  border: 'rgba(0,0,0,0.1)',
+  text: '#000000',
+  subText: 'rgba(0,0,0,0.6)',
+  link: 'rgba(0,0,0,0.8)',
+  linkHover: '#000000',
+  buttonBorder: '#000000',
+  buttonText: '#000000',
+  buttonHoverBg: '#000000',
+  buttonHoverText: '#ffffff',
+};
 
 /**
- * Homepage component with professional horizontal scroll implementation
- * Features lazy loading, custom hooks, and optimized performance
+ * Homepage — GSAP ScrollTrigger horizontal scroll.
+ * Desktop: sections horizontally scroll with pinning (vertical scroll drives horizontal movement).
+ * Mobile (<768px): normal vertical stacking.
+ * Navbar theme automatically switches based on active section.
  */
 export default function Homepage() {
-  const {
-    containerRef,
-    scrollPinTrackRef,
-    scrollState,
-    navigationState,
-    scrollLeft,
-    scrollRight,
-    scrollToSection,
-    isDesktop,
-    progress,
-    canNavigate,
-  } = useHorizontalScroll({
-    easeFactor: 0.08,
-    breakpoint: 768,
-    enableWheelControl: true,
-    enableNavigation: true,
-  });
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const wrapperRef = useRef(null);
+  const trackRef = useRef(null);
 
-  // Sections configuration for easy management
-  const sections = [
-    { component: HeroSlider, name: 'hero' },
-    { component: IntroSection, name: 'intro' },
-    { component: ResidencesSectionNew, name: 'residences-new' },
-    { component: Developments, name: 'developments' },
-    { component: Philosophy, name: 'philosophy' },
-    { component: ExperienceSection, name: 'experience' },
-    { component: ContactSection, name: 'contact' },
-  ];
+  useEffect(() => {
+    const mm = gsap.matchMedia();
+
+    // ============ DESKTOP: HORIZONTAL SCROLL ============
+    mm.add('(min-width: 768px)', () => {
+      const track = trackRef.current;
+      const wrapper = wrapperRef.current;
+      if (!track || !wrapper) return;
+
+      const getScrollAmount = () => track.scrollWidth - window.innerWidth;
+
+      const tween = gsap.to(track, {
+        x: () => -getScrollAmount(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: wrapper,
+          start: 'top top',
+          end: () => `+=${getScrollAmount()}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+          // Snap: jis section ki taraf aadhe se zyada scroll hoga, wahi properly snap ho jayega
+          snap: {
+            snapTo: 1 / (SECTIONS.length - 1),
+            duration: { min: 0.2, max: 0.6 },
+            ease: 'power1.inOut',
+            delay: 2,
+            // directional: false = scroll direction ignore karo,
+            // jis section ka hissa screen par zyada hai wahi snap hoga
+            directional: false,
+          },
+          onUpdate: (self) => {
+            setProgress(self.progress);
+            const idx = Math.min(
+              SECTIONS.length - 1,
+              Math.round(self.progress * (SECTIONS.length - 1))
+            );
+            setActiveIndex(idx);
+          },
+        },
+      });
+
+      return () => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      };
+    });
+
+    // ============ MOBILE: VERTICAL SCROLL ============
+    mm.add('(max-width: 767px)', () => {
+      const panels = gsap.utils.toArray('.h-panel');
+      const triggers = panels.map((panel, i) =>
+        ScrollTrigger.create({
+          trigger: panel,
+          start: 'top 50%',
+          end: 'bottom 50%',
+          onToggle: (self) => {
+            if (self.isActive) setActiveIndex(i);
+          },
+        })
+      );
+
+      const pageTrigger = ScrollTrigger.create({
+        trigger: document.body,
+        start: 'top top',
+        end: 'bottom bottom',
+        onUpdate: (self) => setProgress(self.progress),
+      });
+
+      return () => {
+        triggers.forEach((t) => t.kill());
+        pageTrigger.kill();
+      };
+    });
+
+    return () => mm.revert();
+  }, []);
+
+  const isDarkSection = SECTIONS[activeIndex]?.theme === 'dark';
+
+  const navbarColors = isDarkSection
+    ? { top: WHITE_SCHEME, scrolled: WHITE_SCHEME }
+    : { top: BLACK_SCHEME, scrolled: BLACK_SCHEME };
 
   return (
-    <div className="homepage-layout">
-      {/* Header - Fixed Position */}
-      <header className="homepage-header">
-        <Navbar />
-      </header>
+    <div className="relative w-full">
+      {/* Fixed Navbar — theme active section ke hisaab se auto-switch hota hai */}
+      <Navbar colors={navbarColors} />
 
-      {/* Horizontal Scroll Container */}
-      <div className="home-scroll-wrapper" ref={scrollPinTrackRef}>
-        <main 
-          ref={containerRef}
-          className="timeline-container"
+      {/* Scroll Progress Bar */}
+      <div className="fixed bottom-0 left-0 right-0 h-[3px] z-[1100] bg-transparent">
+        <div
+          className="h-full bg-[var(--gold)] transition-[width] duration-100 ease-linear"
+          style={{ width: `${progress * 100}%` }}
+        />
+      </div>
+
+      {/* Horizontal Scroll Wrapper (GSAP pins this) */}
+      <div ref={wrapperRef} className="relative overflow-hidden">
+        <main
+          ref={trackRef}
           role="main"
           aria-label="Homepage sections"
+          className="flex flex-col md:flex-row md:h-screen md:w-max will-change-transform"
         >
-          <section className="timeline-section" data-section-name="hero">
-            <HeroSlider />
-          </section>
-          <section className="timeline-section" data-section-name="intro">
-            <IntroSection />
-          </section>
-          <section className="timeline-section" data-section-name="residences-new">
-            <ResidencesSectionNew />
-          </section>
-          <section className="timeline-section" data-section-name="developments">
-            <Developments />
-          </section>
-          <section className="timeline-section" data-section-name="philosophy">
-            <Philosophy />
-          </section>
-          <section className="timeline-section" data-section-name="experience">
-            <ExperienceSection />
-          </section>
-          <section className="timeline-section" data-section-name="contact">
-            <ContactSection />
-          </section>
-                  </main>
-
-        {/* Navigation Controls */}
-        {canNavigate && (
-          <NavigationControls
-            onNavigateLeft={scrollLeft}
-            onNavigateRight={scrollRight}
-            canGoLeft={navigationState.canGoLeft}
-            canGoRight={navigationState.canGoRight}
-          />
-        )}
-
-        {/* Progress Bar */}
-        <ProgressBar progress={progress} />
+          {SECTIONS.map(({ id, Component, theme }) => (
+            <section
+              key={id}
+              id={`section-${id}`}
+              data-theme={theme}
+              className="h-panel relative w-full md:w-screen md:h-screen flex-shrink-0 md:overflow-y-auto md:overflow-x-hidden md:flex md:flex-col md:[&>*]:flex-1 md:[&>*]:min-h-0"
+            >
+              <Component />
+            </section>
+          ))}
+        </main>
       </div>
 
       {/* Floating Action Bar */}
       <FloatingActionBar />
 
       {/* Footer */}
-      <footer className="homepage-footer">
-        <Footer />
-      </footer>
-
-      <style jsx global>{`
-        .homepage-layout {
-          position: relative;
-          width: 100%;
-          min-height: 100vh;
-        }
-
-        .homepage-header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 1000;
-          background: transparent;
-        }
-
-        .home-scroll-wrapper {
-          position: relative;
-          width: 100%;
-          overflow: visible;
-        }
-
-        .timeline-container {
-          display: flex;
-          height: 100vh;
-          width: max-content;
-          align-items: stretch;
-          position: sticky;
-          top: 0;
-          overflow: hidden;
-          will-change: transform;
-        }
-
-        .timeline-section {
-          width: 100vw;
-          height: 100vh;
-          flex-shrink: 0;
-          position: relative;
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .timeline-section > * {
-          flex: 1;
-          min-height: 0;
-        }
-
-        .homepage-footer {
-          position: relative;
-          width: 100%;
-          z-index: 10;
-        }
-
-        .section-loader {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 100vh;
-          width: 100vw;
-        }
-
-        .loader-spinner {
-          width: 40px;
-          height: 40px;
-          border: 3px solid rgba(255, 255, 255, 0.3);
-          border-top: 3px solid #8A3C22;
-          border-radius: 50%;
-          animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-
-        /* Mobile responsive adjustments */
-        @media (max-width: 768px) {
-          .timeline-container {
-            flex-direction: column;
-            height: auto !important;
-            width: 100%;
-            position: relative;
-            top: 0;
-            align-items: stretch;
-          }
-
-          .timeline-section {
-            width: 100%;
-            height: auto ;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-          }
-
-          .timeline-section > * {
-            flex: 1;
-            min-height: 0;
-          }
-        }
-      `}</style>
+      <Footer />
     </div>
   );
 }

@@ -1,31 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-
 export default function ContactInfoSection() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          window.dispatchEvent(new CustomEvent("changeNavbarTheme", { detail: "light" }));
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
-      className="w-full bg-[#d9d9d9] text-[var(--ink)] h-screen flex items-center justify-center px-6 md:px-12 lg:px-20"
+      className="w-full bg-[#241D18] text-white min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-20 py-10 lg:py-24"
     >
       <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-16">
@@ -35,7 +13,7 @@ export default function ContactInfoSection() {
           <h2 className="font-display text-4xl leading-tight mb-4">
             Get in Touch
           </h2>
-          <p className="font-sans text-sm text-[var(--ink)]/80 max-w-2xl mx-auto">
+          <p className="font-sans text-sm text-white/80 max-w-2xl mx-auto">
             Have questions about PLT Tower? We'd love to hear from you.
           </p>
         </div>
@@ -50,7 +28,7 @@ export default function ContactInfoSection() {
               </svg>
             </div>
             <h3 className="font-display text-xl mb-2">Our Office</h3>
-            <p className="font-sans text-sm text-[var(--ink)]/70">
+            <p className="font-sans text-sm text-white/70">
               Business Bay, Dubai<br />
               United Arab Emirates
             </p>
@@ -64,7 +42,7 @@ export default function ContactInfoSection() {
               </svg>
             </div>
             <h3 className="font-display text-xl mb-2">Call Us</h3>
-            <p className="font-sans text-sm text-[var(--ink)]/70">
+            <p className="font-sans text-sm text-white">
               +971 4 XXX XXXX<br />
               Sat-Thu: 9AM - 6PM
             </p>
@@ -78,7 +56,7 @@ export default function ContactInfoSection() {
               </svg>
             </div>
             <h3 className="font-display text-xl mb-2">Email Us</h3>
-            <p className="font-sans text-sm text-[var(--ink)]/70">
+            <p className="font-sans text-sm text-white/70">
               info@pltproperties.com<br />
               enquiries@pltproperties.com
             </p>

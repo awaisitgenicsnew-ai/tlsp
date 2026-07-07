@@ -1,27 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-
 export default function AchievementsSection() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          window.dispatchEvent(new CustomEvent("changeNavbarTheme", { detail: "light" }));
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   const achievements = [
     {
       number: "15+",
@@ -57,7 +36,7 @@ export default function AchievementsSection() {
 
   return (
     <section 
-      className="w-full bg-[#d9d9d9] text-[var(--ink)] h-screen flex items-center justify-center px-6 md:px-12 lg:px-20"
+      className="w-full bg-[#d9d9d9] text-[var(--ink)] min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-20 py-10 lg:py-24"
     >
       <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12">
