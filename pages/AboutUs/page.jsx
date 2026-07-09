@@ -192,15 +192,15 @@ export default function AboutUs() {
         <main
           ref={trackRef}
           role="main"
-          aria-label="Homepage sections"
-          className="flex flex-col md:flex-row  md:w-max will-change-transform"
+          aria-label="About Us sections"
+          className="flex flex-col md:flex-row md:h-screen md:w-max will-change-transform"
         >
           {SECTIONS.map(({ id, Component, theme }) => (
             <section
               key={id}
               id={`section-${id}`}
               data-theme={theme}
-              className="h-panel relative w-full md:w-screen  flex-shrink-0 md:overflow-y-auto md:overflow-x-hidden md:flex md:flex-col md:[&>*]:flex-1  "
+              className="h-panel relative w-full md:w-screen md:h-screen flex-shrink-0 md:overflow-y-auto md:overflow-x-hidden md:flex md:flex-col md:[&>*]:flex-1 md:[&>*]:min-h-0"
             >
               <Component />
             </section>
