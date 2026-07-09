@@ -90,6 +90,8 @@ export default function Blogs() {
       
       if (formData.image instanceof File) {
         data.append('image', formData.image);
+      } else if (formData.image && typeof formData.image === 'string') {
+        data.append('image', formData.image);
       }
 
       if (editingBlog) {
@@ -114,7 +116,7 @@ export default function Blogs() {
       slug: blog.slug,
       title: blog.title,
       shortDescription: blog.shortDescription || '',
-      image: null,
+      image: blog.image || null,
       imageAlt: blog.imageAlt || '',
       metaKeywords: blog.metaKeywords || '',
       mainContent: blog.mainContent,

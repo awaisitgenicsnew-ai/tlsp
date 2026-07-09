@@ -58,6 +58,8 @@ export default function Authors() {
       
       if (formData.image instanceof File) {
         data.append('image', formData.image);
+      } else if (formData.image && typeof formData.image === 'string') {
+        data.append('image', formData.image);
       }
 
       if (editingAuthor) {
@@ -76,7 +78,7 @@ export default function Authors() {
 
   const handleEdit = (author) => {
     setEditingAuthor(author);
-    setFormData({ name: author.name, bio: author.bio || '', image: null });
+    setFormData({ name: author.name, bio: author.bio || '', image: author.image || null });
     setShowModal(true);
   };
 
