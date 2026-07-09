@@ -135,7 +135,7 @@ export default function Authors() {
                       <td>{author.bio ? author.bio.substring(0, 100) + '...' : '-'}</td>
                       <td>
                         {author.image ? (
-                          <img src={author.image} alt={author.name} className="author-thumbnail" />
+                          <img src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}${author.image}`} alt={author.name} className="author-thumbnail" />
                         ) : '-'}
                       </td>
                       <td>
