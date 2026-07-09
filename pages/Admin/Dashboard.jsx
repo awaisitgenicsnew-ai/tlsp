@@ -67,88 +67,89 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="admin-layout">
+    <div className="flex min-h-screen bg-white">
       <AdminSidebar activePage="dashboard" />
       
-      <main className="admin-main">
-        <div className="admin-content">
-          <div className="dashboard-header">
-            <h1 className="dashboard-title">Dashboard</h1>
-            {admin && <p className="welcome-text">Welcome, {admin.name}</p>}
+      <main className="flex-1 p-10 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-10 p-8 bg-gradient-to-r from-[#1a1a2e] to-[#16213e] rounded-2xl shadow-2xl relative overflow-hidden">
+            <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-radial-gradient from-[rgba(212,165,116,0.1)] to-transparent pointer-events-none"></div>
+            <h1 className="font-display text-4xl font-bold text-white mb-2 relative z-10">Dashboard</h1>
+            {admin && <p className="font-sans text-lg text-white/70 relative z-10">Welcome, {admin.name}</p>}
           </div>
 
           {loading ? (
-            <div className="loading-state">Loading statistics...</div>
+            <div className="text-center py-10 font-sans text-gray-600">Loading statistics...</div>
           ) : (
-            <div className="stats-grid">
-              <div className="stat-card">
-                <div className="stat-icon">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-10">
+              <div className="bg-white p-6 rounded-xl shadow-md flex gap-5">
+                <div className="w-14 h-14 bg-[var(--tan)] text-white flex items-center justify-center rounded-xl">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
-                <div className="stat-content">
-                  <p className="stat-label">Total Leads</p>
-                  <p className="stat-value">{stats.total}</p>
+                <div className="flex-1">
+                  <p className="font-sans text-sm text-gray-600 mb-1">Total Leads</p>
+                  <p className="font-display text-3xl font-bold text-[var(--ink)]">{stats.total}</p>
                 </div>
               </div>
 
-              <div className="stat-card">
-                <div className="stat-icon new">
+              <div className="bg-white p-6 rounded-xl shadow-md flex gap-5">
+                <div className="w-14 h-14 bg-blue-500 text-white flex items-center justify-center rounded-xl">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <div className="stat-content">
-                  <p className="stat-label">New</p>
-                  <p className="stat-value">{stats.new}</p>
+                <div className="flex-1">
+                  <p className="font-sans text-sm text-gray-600 mb-1">New</p>
+                  <p className="font-display text-3xl font-bold text-[var(--ink)]">{stats.new}</p>
                 </div>
               </div>
 
-              <div className="stat-card">
-                <div className="stat-icon contacted">
+              <div className="bg-white p-6 rounded-xl shadow-md flex gap-5">
+                <div className="w-14 h-14 bg-amber-500 text-white flex items-center justify-center rounded-xl">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
-                <div className="stat-content">
-                  <p className="stat-label">Contacted</p>
-                  <p className="stat-value">{stats.contacted}</p>
+                <div className="flex-1">
+                  <p className="font-sans text-sm text-gray-600 mb-1">Contacted</p>
+                  <p className="font-display text-3xl font-bold text-[var(--ink)]">{stats.contacted}</p>
                 </div>
               </div>
 
-              <div className="stat-card">
-                <div className="stat-icon qualified">
+              <div className="bg-white p-6 rounded-xl shadow-md flex gap-5">
+                <div className="w-14 h-14 bg-purple-500 text-white flex items-center justify-center rounded-xl">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <div className="stat-content">
-                  <p className="stat-label">Qualified</p>
-                  <p className="stat-value">{stats.qualified}</p>
+                <div className="flex-1">
+                  <p className="font-sans text-sm text-gray-600 mb-1">Qualified</p>
+                  <p className="font-display text-3xl font-bold text-[var(--ink)]">{stats.qualified}</p>
                 </div>
               </div>
 
-              <div className="stat-card">
-                <div className="stat-icon closed">
+              <div className="bg-white p-6 rounded-xl shadow-md flex gap-5">
+                <div className="w-14 h-14 bg-emerald-500 text-white flex items-center justify-center rounded-xl">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <div className="stat-content">
-                  <p className="stat-label">Closed</p>
-                  <p className="stat-value">{stats.closed}</p>
+                <div className="flex-1">
+                  <p className="font-sans text-sm text-gray-600 mb-1">Closed</p>
+                  <p className="font-display text-3xl font-bold text-[var(--ink)]">{stats.closed}</p>
                 </div>
               </div>
             </div>
           )}
 
-          <div className="recent-activity">
-            <h2 className="section-title">Quick Actions</h2>
-            <div className="action-buttons">
+          <div className="bg-white p-6 rounded-xl shadow-md">
+            <h2 className="font-display text-2xl font-bold text-[var(--ink)] mb-5">Quick Actions</h2>
+            <div className="flex gap-3">
               <button 
-                onClick={() => router.push('/admin/leads')}
-                className="action-button"
+                onClick={() => router.push('/admin/contacts')}
+                className="bg-[var(--tan)] text-white px-6 py-3 border-none rounded-lg text-sm font-semibold cursor-pointer transition-all duration-300 font-sans hover:bg-[#7a341e]"
               >
                 View All Leads
               </button>
@@ -156,164 +157,6 @@ export default function AdminDashboard() {
           </div>
         </div>
       </main>
-
-      <style jsx global>{`
-        .admin-layout {
-          display: flex;
-          min-height: 100vh;
-          background: #ffffff;
-        }
-
-        .admin-main {
-          flex: 1;
-          margin-left: 280px;
-          padding: 40px;
-        }
-
-        .admin-content {
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-
-        .dashboard-header {
-          margin-bottom: 40px;
-        }
-
-        .dashboard-title {
-          font-family: var(--font-display);
-          font-size: 2.5rem;
-          font-weight: 700;
-          color: var(--ink);
-          margin-bottom: 8px;
-        }
-
-        .welcome-text {
-          font-family: var(--font-sans);
-          font-size: 1rem;
-          color: rgba(0, 0, 0, 0.6);
-        }
-
-        .stats-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 24px;
-          margin-bottom: 40px;
-        }
-
-        .stat-card {
-          background: white;
-          padding: 24px;
-          border-radius: 0;
-          display: flex;
-          gap: 20px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .stat-icon {
-          width: 56px;
-          height: 56px;
-          background: var(--tan);
-          color: white;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 0;
-        }
-
-        .stat-icon.new {
-          background: #3b82f6;
-        }
-
-        .stat-icon.contacted {
-          background: #f59e0b;
-        }
-
-        .stat-icon.qualified {
-          background: #8b5cf6;
-        }
-
-        .stat-icon.closed {
-          background: #10b981;
-        }
-
-        .loading-state {
-          text-align: center;
-          padding: 40px;
-          font-family: var(--font-sans);
-          color: rgba(0, 0, 0, 0.6);
-        }
-
-        .stat-content {
-          flex: 1;
-        }
-
-        .stat-label {
-          font-family: var(--font-sans);
-          font-size: 0.875rem;
-          color: rgba(0, 0, 0, 0.6);
-          margin-bottom: 4px;
-        }
-
-        .stat-value {
-          font-family: var(--font-display);
-          font-size: 2rem;
-          font-weight: 700;
-          color: var(--ink);
-        }
-
-        .recent-activity {
-          background: white;
-          padding: 24px;
-          border-radius: 0;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .section-title {
-          font-family: var(--font-display);
-          font-size: 1.5rem;
-          font-weight: 700;
-          color: var(--ink);
-          margin-bottom: 20px;
-        }
-
-        .action-buttons {
-          display: flex;
-          gap: 12px;
-        }
-
-        .action-button {
-          background: var(--tan);
-          color: white;
-          padding: 12px 24px;
-          border: none;
-          border-radius: 0;
-          font-size: 0.875rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-family: var(--font-sans);
-        }
-
-        .action-button:hover {
-          background: #7a341e;
-        }
-
-        @media (max-width: 768px) {
-          .admin-main {
-            margin-left: 0;
-            padding: 20px;
-            padding-top: 80px;
-          }
-
-          .dashboard-title {
-            font-size: 2rem;
-          }
-
-          .stats-grid {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
     </div>
   );
 }

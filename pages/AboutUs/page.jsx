@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SectionNavigation from '@/components/SectionNavigation';
 
 // About Us sections
 import HeroSection from './section/HeroSection';
@@ -73,6 +74,30 @@ export default function AboutUs() {
   const [isNearLastSection, setIsNearLastSection] = useState(false);
   const wrapperRef = useRef(null);
   const trackRef = useRef(null);
+
+  const handlePrevious = () => {
+    if (activeIndex > 0) {
+      const newIndex = activeIndex - 1;
+      setActiveIndex(newIndex);
+      scrollToSection(newIndex);
+    }
+  };
+
+  const handleNext = () => {
+    if (activeIndex < SECTIONS.length - 1) {
+      const newIndex = activeIndex + 1;
+      setActiveIndex(newIndex);
+      scrollToSection(newIndex);
+    }
+  };
+
+  const scrollToSection = (index) => {
+    const sectionId = `section-${SECTIONS[index].id}`;
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const mm = gsap.matchMedia();
@@ -194,6 +219,14 @@ export default function AboutUs() {
           ))}
         </main>
       </div>
+
+      {/* Section Navigation */}
+      <SectionNavigation
+        currentIndex={activeIndex}
+        totalSections={SECTIONS.length}
+        onPrevious={handlePrevious}
+        onNext={handleNext}
+      />
 
       <Footer />
     </div>

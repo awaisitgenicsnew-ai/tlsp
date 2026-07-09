@@ -8,7 +8,7 @@ export default function StorySection() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left: Image */}
         <div className="relative">
-          <div className="aspect-[4/5] bg-[#1a1a1a] h-[500px] rounded-lg overflow-hidden">
+          <div className=" bg-[#1a1a1a] h-[450px] rounded-lg overflow-hidden">
             <img 
               src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800"
               alt="PLT Properties Story"

@@ -56,11 +56,11 @@ export default function AchievementsSection() {
           {achievements.map((achievement, index) => (
             <div 
               key={index}
-              className="text-center p-6 bg-white rounded-lg border border-[var(--ink)]/10 hover:border-[var(--tan)]/50 transition-colors"
+              className="text-center p-6 bg-[#1a1a1a] rounded-lg border border-[var(--tan)]/30 hover:border-[var(--tan)] transition-colors"
             >
               <p className="font-display text-5xl text-[var(--tan)] mb-2">{achievement.number}</p>
-              <h3 className="font-display text-xl mb-2">{achievement.label}</h3>
-              <p className="font-sans text-sm text-[var(--ink)]/70">{achievement.description}</p>
+              <h3 className="font-display text-xl mb-2 text-white">{achievement.label}</h3>
+              <p className="font-sans text-sm text-white/70">{achievement.description}</p>
             </div>
           ))}
         </div>

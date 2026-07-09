@@ -46,9 +46,9 @@ export default function TeamSection() {
           {team.map((member, index) => (
             <div 
               key={index}
-              className="group"
+              className="group bg-[#1a1a1a] rounded-lg border border-[var(--tan)]/30 hover:border-[var(--tan)] transition-colors overflow-hidden"
             >
-              <div className="relative aspect-[3/4] mb-4 overflow-hidden rounded-lg">
+              <div className="relative aspect-[3/4] mb-4 overflow-hidden">
                 <img 
                   src={member.image}
                   alt={member.name}

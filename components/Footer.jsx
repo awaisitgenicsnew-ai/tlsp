@@ -100,7 +100,7 @@ export default function Footer() {
                 <li key={n.label}>
                   <a
                     href={n.href}
-                    className="font-sans text-sm text-[var(--rust)] hover:text-white transition-colors"
+                    className="font-sans text-sm font-medium text-[var(--rust)] hover:text-white transition-colors"
                   >
                     {n.label}
                   </a>
@@ -117,13 +117,13 @@ export default function Footer() {
             <p className="font-sans text-[11px] text-white/40 mb-1">
               Dubai Sales Office
             </p>
-            <p className="font-sans text-sm mb-4">+971 4 400 0000</p>
+            <p className="font-sans text-sm font-medium mb-4">+971 4 400 0000</p>
             <p className="font-sans text-[11px] text-white/40 mb-1">
               International
             </p>
-            <p className="font-sans text-sm mb-4">+43 1 200 0000</p>
+            <p className="font-sans text-sm font-medium mb-4">+43 1 200 0000</p>
             <p className="font-sans text-[11px] text-white/40 mb-1">Email</p>
-            <p className="font-sans text-sm">hello@pltproperties.com</p>
+            <p className="font-sans text-sm font-medium">hello@pltproperties.com</p>
           </div>
 
           {/* Updates */}

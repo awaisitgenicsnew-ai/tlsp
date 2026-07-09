@@ -49,23 +49,23 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-wrapper">
-        <div className="login-box">
-          <div className="login-header">
-            <h1 className="login-title">Admin Login</h1>
-            <p className="login-subtitle">PLT Properties</p>
+    <div className="min-h-screen bg-[var(--dark)] flex items-center justify-center p-5">
+      <div className="w-full max-w-md">
+        <div className="bg-white p-10 rounded-2xl shadow-2xl">
+          <div className="text-center mb-8">
+            <h1 className="font-display text-3xl font-bold text-[var(--ink)] mb-2">Admin Login</h1>
+            <p className="font-sans text-sm text-[var(--tan)] uppercase tracking-widest">PLT Properties</p>
           </div>
 
           {error && (
-            <div className="error-message">
+            <div className="bg-red-500 text-white p-3 mb-5 text-center font-sans text-sm rounded-lg">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="login-form">
-            <div className="form-group">
-              <label htmlFor="email" className="form-label">Email</label>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="email" className="font-sans font-semibold text-sm text-[var(--ink)]">Email</label>
               <input
                 type="email"
                 id="email"
@@ -74,12 +74,12 @@ export default function AdminLogin() {
                 onChange={handleChange}
                 required
                 placeholder="Enter email"
-                className="form-input"
+                className="p-3 border border-gray-200 rounded-lg text-base font-sans transition-all duration-300 bg-white text-[var(--ink)] focus:outline-none focus:border-[var(--tan)] focus:ring-4 focus:ring-[rgba(138,60,34,0.1)]"
               />
             </div>
 
-            <div className="form-group">
-              <label htmlFor="password" className="form-label">Password</label>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="password" className="font-sans font-semibold text-sm text-[var(--ink)]">Password</label>
               <input
                 type="password"
                 id="password"
@@ -88,13 +88,13 @@ export default function AdminLogin() {
                 onChange={handleChange}
                 required
                 placeholder="Enter password"
-                className="form-input"
+                className="p-3 border border-gray-200 rounded-lg text-base font-sans transition-all duration-300 bg-white text-[var(--ink)] focus:outline-none focus:border-[var(--tan)] focus:ring-4 focus:ring-[rgba(138,60,34,0.1)]"
               />
             </div>
 
             <button
               type="submit"
-              className="submit-button"
+              className="bg-[var(--tan)] text-white p-4 border-none rounded-lg text-sm font-semibold cursor-pointer transition-all duration-300 uppercase tracking-widest font-sans hover:bg-[#7a341e] disabled:opacity-60 disabled:cursor-not-allowed"
               disabled={loading}
             >
               {loading ? 'Logging in...' : 'Login'}
@@ -102,119 +102,6 @@ export default function AdminLogin() {
           </form>
         </div>
       </div>
-
-      <style jsx global>{`
-        .login-container {
-          min-height: 100vh;
-          background: var(--dark);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 20px;
-        }
-
-        .login-wrapper {
-          width: 100%;
-          max-width: 400px;
-        }
-
-        .login-box {
-          background: white;
-          padding: 40px;
-          border-radius: 0;
-        }
-
-        .login-header {
-          text-align: center;
-          margin-bottom: 30px;
-        }
-
-        .login-title {
-          font-family: var(--font-display);
-          font-size: 2rem;
-          font-weight: 700;
-          color: var(--ink);
-          margin-bottom: 8px;
-        }
-
-        .login-subtitle {
-          font-family: var(--font-sans);
-          font-size: 0.875rem;
-          color: var(--tan);
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-        }
-
-        .error-message {
-          background: #ef4444;
-          color: white;
-          padding: 12px;
-          margin-bottom: 20px;
-          text-align: center;
-          font-family: var(--font-sans);
-          font-size: 0.875rem;
-        }
-
-        .login-form {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .form-group {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-        }
-
-        .form-label {
-          font-family: var(--font-sans);
-          font-weight: 600;
-          font-size: 0.875rem;
-          color: var(--ink);
-        }
-
-        .form-input {
-          padding: 12px;
-          border: 1px solid #e5e7eb;
-          border-radius: 0;
-          font-size: 1rem;
-          font-family: var(--font-sans);
-          transition: all 0.3s ease;
-          background: white;
-          color: var(--ink);
-        }
-
-        .form-input:focus {
-          outline: none;
-          border-color: var(--tan);
-          box-shadow: 0 0 0 3px rgba(138, 60, 34, 0.1);
-        }
-
-        .submit-button {
-          background: var(--tan);
-          color: white;
-          padding: 14px;
-          border: none;
-          border-radius: 0;
-          font-size: 0.875rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          font-family: var(--font-sans);
-        }
-
-        .submit-button:hover:not(:disabled) {
-          background: #7a341e;
-        }
-
-        .submit-button:disabled {
-          opacity: 0.6;
-          cursor: not-allowed;
-        }
-      `}</style>
     </div>
   );
 }

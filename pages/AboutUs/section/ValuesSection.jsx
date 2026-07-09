@@ -46,7 +46,7 @@ export default function ValuesSection() {
           {values.map((value, index) => (
             <div 
               key={index}
-              className="group bg-white p-6 rounded-lg border border-[var(--ink)]/10 hover:border-[var(--tan)] transition-all duration-300"
+              className="group bg-[#1a1a1a] p-6 rounded-lg border border-[var(--tan)]/30 hover:border-[var(--tan)] transition-all duration-300"
             >
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 bg-[var(--tan)]/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--tan)] transition-colors">
@@ -55,8 +55,8 @@ export default function ValuesSection() {
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-display text-xl mb-2">{value.title}</h3>
-                  <p className="font-sans text-sm leading-relaxed text-[var(--ink)]/70">{value.description}</p>
+                  <h3 className="font-display text-xl mb-2 text-white">{value.title}</h3>
+                  <p className="font-sans text-sm leading-relaxed text-white/70">{value.description}</p>
                 </div>
               </div>
             </div>

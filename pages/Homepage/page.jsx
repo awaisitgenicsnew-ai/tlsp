@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '@/components/Navbar';
 import FloatingActionBar from '@/components/FloatingActionBar';
 import Footer from '@/components/Footer';
+import SectionNavigation from '@/components/SectionNavigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -86,6 +87,30 @@ export default function Homepage() {
   const [isNearLastSection, setIsNearLastSection] = useState(false);
   const wrapperRef = useRef(null);
   const trackRef = useRef(null);
+
+  const handlePrevious = () => {
+    if (activeIndex > 0) {
+      const newIndex = activeIndex - 1;
+      setActiveIndex(newIndex);
+      scrollToSection(newIndex);
+    }
+  };
+
+  const handleNext = () => {
+    if (activeIndex < SECTIONS.length - 1) {
+      const newIndex = activeIndex + 1;
+      setActiveIndex(newIndex);
+      scrollToSection(newIndex);
+    }
+  };
+
+  const scrollToSection = (index) => {
+    const sectionId = `section-${SECTIONS[index].id}`;
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const mm = gsap.matchMedia();
@@ -216,6 +241,14 @@ export default function Homepage() {
 
       {/* Floating Action Bar */}
       <FloatingActionBar />
+
+      {/* Section Navigation */}
+      <SectionNavigation
+        currentIndex={activeIndex}
+        totalSections={SECTIONS.length}
+        onPrevious={handlePrevious}
+        onNext={handleNext}
+      />
 
       {/* Footer */}
       <Footer />

@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '@/components/Navbar';
 import FloatingActionBar from '@/components/FloatingActionBar';
 import Footer from '@/components/Footer';
+import SectionNavigation from '@/components/SectionNavigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,6 +77,19 @@ const BLACK_BG_SCHEME = {
   buttonHoverText: '#000000',
 };
 
+const TRANSPARENT_WHITE_SCHEME = {
+  bg: 'transparent',
+  border: 'rgba(255,255,255,0.1)',
+  text: '#ffffff',
+  subText: 'rgba(255,255,255,0.8)',
+  link: 'rgba(255,255,255,0.9)',
+  linkHover: '#ffffff',
+  buttonBorder: '#ffffff',
+  buttonText: '#ffffff',
+  buttonHoverBg: '#ffffff',
+  buttonHoverText: '#000000',
+};
+
 /**
  * Tower Page — GSAP ScrollTrigger horizontal scroll.
  * Desktop: sections horizontally scroll with pinning (vertical scroll drives horizontal movement).
@@ -88,6 +102,30 @@ export default function TowerPage() {
   const [isNearLastSection, setIsNearLastSection] = useState(false);
   const wrapperRef = useRef(null);
   const trackRef = useRef(null);
+
+  const handlePrevious = () => {
+    if (activeIndex > 0) {
+      const newIndex = activeIndex - 1;
+      setActiveIndex(newIndex);
+      scrollToSection(newIndex);
+    }
+  };
+
+  const handleNext = () => {
+    if (activeIndex < SECTIONS.length - 1) {
+      const newIndex = activeIndex + 1;
+      setActiveIndex(newIndex);
+      scrollToSection(newIndex);
+    }
+  };
+
+  const scrollToSection = (index) => {
+    const sectionId = `section-${SECTIONS[index].id}`;
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const mm = gsap.matchMedia();
@@ -170,8 +208,11 @@ export default function TowerPage() {
   }, []);
 
   const isDarkSection = SECTIONS[activeIndex]?.theme === 'dark';
+  const isContactSection = SECTIONS[activeIndex]?.id === 'contact';
 
-  const navbarColors = isNearLastSection
+  const navbarColors = isContactSection
+    ? { top: TRANSPARENT_WHITE_SCHEME, scrolled: TRANSPARENT_WHITE_SCHEME }
+    : isNearLastSection
     ? { top: BLACK_BG_SCHEME, scrolled: BLACK_BG_SCHEME }
     : isDarkSection
     ? { top: WHITE_SCHEME, scrolled: WHITE_SCHEME }
@@ -210,6 +251,14 @@ export default function TowerPage() {
           ))}
         </main>
       </div>
+
+      {/* Section Navigation */}
+      <SectionNavigation
+        currentIndex={activeIndex}
+        totalSections={SECTIONS.length}
+        onPrevious={handlePrevious}
+        onNext={handleNext}
+      />
 
       {/* Floating Action Bar */}
       <FloatingActionBar />

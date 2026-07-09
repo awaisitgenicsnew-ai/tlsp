@@ -3,8 +3,8 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-// Contact Us sections
-import ContactFormSection from './section/ContactFormSection';
+// Register Interest sections
+import RegisterFormSection from './section/RegisterFormSection';
 
 const WHITE_SCHEME = {
   bg: 'transparent',
@@ -32,13 +32,13 @@ const SCROLLED_SCHEME = {
   buttonHoverText: '#000000',
 };
 
-export default function ContactUs() {
+export default function RegisterInterest() {
   return (
     <div className="relative w-full">
       <Navbar colors={{ top: WHITE_SCHEME, scrolled: SCROLLED_SCHEME }} />
 
       <main className="w-full">
-        <ContactFormSection />
+        <RegisterFormSection />
       </main>
 
       <Footer />
