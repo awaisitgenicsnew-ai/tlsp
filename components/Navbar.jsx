@@ -9,7 +9,6 @@ const LINKS = [
   { label: "About", href: "/about-us" },
   { label: "PLT Tower", href: "/plt-tower" },
   { label: "Investment", href: "#investment" },
-  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact-us" },
   { label: "Register Interest", href: "/register-interest" },
 ];

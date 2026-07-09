@@ -107,8 +107,8 @@ export function BrandPillarsSlider() {
 
   return (
     <div className="relative w-full overflow-hidden" style={{ height: 'clamp(500px, 85vh, 900px)' }}>
-      <div className="absolute top-10 left-8 md:top-12 md:left-12 lg:top-[100px] lg:left-16 z-30">
-        <div className="  text-red-500 font-bold text-lg font-serif">BRAND PILLARS</div>
+      <div className="absolute top-10 left-8 md:top-12 md:left-12 lg:top-[132px] lg:left-[33px] z-30">
+        <div className=" text-center font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 text-white">BRAND PILLARS</div>
       </div>
 
       <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 lg:bottom-16 lg:right-16 z-30">
