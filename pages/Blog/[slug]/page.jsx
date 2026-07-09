@@ -12,7 +12,7 @@ export default function BlogDetail() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const params = useParams();
-  const { slug } = params;
+  const { slug } = params || {};
 
   useEffect(() => {
     if (slug) {
