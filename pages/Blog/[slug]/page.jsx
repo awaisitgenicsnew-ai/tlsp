@@ -120,7 +120,7 @@ export default function BlogDetail() {
           <article className="blog-article">
             {blog.image && (
               <div className="blog-hero-image">
-                <img src={blog.image} alt={blog.imageAlt || blog.title} />
+                <img src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}${blog.image}`} alt={blog.imageAlt || blog.title} />
               </div>
             )}
 
