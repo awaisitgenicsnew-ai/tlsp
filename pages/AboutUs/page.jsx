@@ -20,7 +20,7 @@ gsap.registerPlugin(ScrollTrigger);
 // theme: 'dark' = navbar text WHITE, 'light' = navbar text BLACK
 const SECTIONS = [
   { id: 'hero', Component: HeroSection, theme: 'dark' },
-  { id: 'story', Component: StorySection, theme: 'light' },
+  { id: 'story', Component: StorySection, theme: 'dark' },
   { id: 'mission', Component: MissionSection, theme: 'light' },
   { id: 'values', Component: ValuesSection, theme: 'light' },
   { id: 'team', Component: TeamSection, theme: 'light' },
@@ -168,8 +168,11 @@ export default function AboutUs() {
   }, []);
 
   const isDarkSection = SECTIONS[activeIndex]?.theme === 'dark';
+  const isStorySection = SECTIONS[activeIndex]?.id === 'story';
 
   const navbarColors = isNearLastSection
+    ? { top: BLACK_BG_SCHEME, scrolled: BLACK_BG_SCHEME }
+    : isStorySection
     ? { top: BLACK_BG_SCHEME, scrolled: BLACK_BG_SCHEME }
     : isDarkSection
     ? { top: WHITE_SCHEME, scrolled: WHITE_SCHEME }

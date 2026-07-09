@@ -61,20 +61,19 @@ function BadgeTag({ label }) {
 
 export default function Developments() {
   return (
-    <section id="developments" className="w-full bg-[#d9d9d9] py-10 lg:py-24 px-4 md:px-10 flex flex-col justify-center align-center">
+    <section id="developments" className="w-full bg-[#d9d9d9] py-10 lg:py-24 px-4 md:px-10 flex flex-col justify-center align-center pt-10 gap-10">
       
       {/* Featured development */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 border border-[#d8d3c7] items-stretch min-h-[330px] overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch min-h-[310px] overflow-hidden">
         
         {/* Image Container - Height set to 250px */}
-        <div className="relative w-full overflow-hidden">
+        <div className="relative w-[599px] h-[260px] mt-auto mb-auto  overflow-hidden">
           <Image
             src={featured.image}
             alt={featured.title}
             fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
-            priority
+           
+            className="object-cover w-[599px] h-[200px]"
           />
         </div>
 
@@ -86,18 +85,18 @@ export default function Developments() {
             ))}
           </div>
 
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl  mb-8 text-[#2a2620]">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-3xl leading-tight max-w-4xl  mb-2 text-[#2a2620]">
             {featured.title}
           </h2>
           <p className="mt-1.5 text-[9px] tracking-[0.15em] uppercase text-[#8a8578]">
             {featured.location}
           </p>
 
-          <p className="mt-3  font-[400] text-[14px] tracking-[0.5px] leading-relaxed text-[#5c584f] max-w-md break-words ">
+          <p className="mt-2  font-[400] text-[12px] tracking-[0.5px] leading-relaxed text-[#5c584f] max-w-md break-words ">
             {featured.description}
           </p>
 
-          <div className="mt-5 pt-4 border-t border-[#d8d3c7] grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-md min-w-0">
+          <div className="mt-2 pt-4 border-t border-[#d8d3c7] grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-md min-w-0">
             {featured.stats.map((stat) => (
               <div key={stat.label} className="min-w-0">
                 <p className="text-[9px] tracking-widest uppercase text-[#a8a397] mb-0.5 truncate">

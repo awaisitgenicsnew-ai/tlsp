@@ -6,7 +6,7 @@ export default function ExperienceSection() {
   return (
     <section id="experience" className="w-full bg-[#d9d9d9] py-10 lg:py-24 px-6 md:px-10 flex flex-col justify-center align-center">
       {/* Feature block: text left, image right */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-5xl mx-auto mb-8 mt-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto mb-8 mt-24">
         <div>
           <div className="flex items-center justify-start mb-2">
             <span className="hidden sm:block  h-px bg-[var(--tan)] w-10 mr-6"></span>

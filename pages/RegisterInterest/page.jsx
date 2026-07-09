@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -33,6 +34,10 @@ const SCROLLED_SCHEME = {
 };
 
 export default function RegisterInterest() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="relative w-full">
       <Navbar colors={{ top: WHITE_SCHEME, scrolled: SCROLLED_SCHEME }} />
