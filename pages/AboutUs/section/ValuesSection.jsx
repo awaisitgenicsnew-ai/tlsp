@@ -34,10 +34,14 @@ export default function ValuesSection() {
     >
       <div className="max-w-6xl mx-auto w-full">
         <div className="mb-12">
-          <p className="font-sans text-xs tracking-[0.25em] text-[var(--tan)] mb-4">
-            — Our Values
-          </p>
-          <h2 className="font-display text-4xl leading-tight">
+          <div className="flex items-center justify-center mb-6">
+            <span className="h-px bg-[var(--tan)] w-16 mr-6 hidden sm:block"></span>
+            <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--tan)] whitespace-nowrap uppercase">
+              Our Values
+            </p>
+            <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl  mb-8 text-[#2a2620] text-center mx-auto">
             The Principles That Guide Us
           </h2>
         </div>
@@ -46,17 +50,17 @@ export default function ValuesSection() {
           {values.map((value, index) => (
             <div 
               key={index}
-              className="group bg-[#1a1a1a] p-6 rounded-lg border border-[var(--tan)]/30 hover:border-[var(--tan)] transition-all duration-300"
+              className="group bg-[#1a1a1a] p-6  hover:border-[var(--tan)] transition-all duration-300"
             >
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-[var(--tan)]/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--tan)] transition-colors">
+                <div className="w-10 h-10 bg-[var(--tan)]/20 flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--tan)] transition-colors">
                   <span className="text-[var(--tan)] group-hover:text-white font-display text-lg">
                     {index + 1}
                   </span>
                 </div>
                 <div>
                   <h3 className="font-display text-xl mb-2 text-white">{value.title}</h3>
-                  <p className="font-sans text-sm leading-relaxed text-white/70">{value.description}</p>
+                  <p className="font-sans text-sm leading-relaxed text-white/70 paragraph">{value.description}</p>
                 </div>
               </div>
             </div>

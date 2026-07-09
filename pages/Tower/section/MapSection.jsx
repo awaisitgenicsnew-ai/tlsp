@@ -3,9 +3,9 @@
 export default function MapSection() {
   return (
     <section className="relative w-full h-screen flex flex-col">
-      <div className="absolute top-[40%] left-[90px] z-10 text-white text-left">
+      <div className="absolute top-[20%] left-[80px] z-10 text-black text-left  p-4 bg-[#1a1a1a]/20 backdrop-blur-md ">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif tracking-wider">
-          PROJECT<br />LOCATION
+          PROJECT LOCATION
         </h2>
       </div>
       <div className="w-full h-full">

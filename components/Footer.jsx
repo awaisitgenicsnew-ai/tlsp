@@ -31,24 +31,19 @@ function Youtube(props) {
   );
 }
 
-const NAVIGATE = [
-  { label: "The building", href: "#building" },
-  { label: "Lifestyle & amenities", href: "#lifestyle" },
-  { label: "Location", href: "#location" },
-  { label: "Investment", href: "#investment" },
-  { label: "Residences", href: "#residences" },
-  { label: "Developer story", href: "#developer" },
+const DEVELOPMENTS = [
+  { label: "PLT Tower", href: "#" },
+  { label: "PLT Residences", href: "#" },
+  { label: "Canal House", href: "#" },
+  { label: "The Quarter", href: "#" },
 ];
 
-const TOPICS = [
-  "Apartments for sale in Business Bay",
-  "Luxury flats Dubai",
-  "Off-plan property Dubai 2027",
-  "European developer Dubai",
-  "Canal view apartments Business Bay",
-  "New residential towers Dubai",
-  "Investment property Business Bay",
-  "PLT Properties Dubai",
+const COMPANY = [
+  { label: "About PLT", href: "#" },
+  { label: "Communities", href: "#" },
+  { label: "Investment", href: "#" },
+  { label: "Press", href: "#" },
+  { label: "Careers", href: "#" },
 ];
 
 export default function Footer() {
@@ -74,124 +69,83 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="bg-[var(--dark)] text-white pt-16 pb-6 px-6 sm:px-10">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
-          <div>
-            <p className="font-sans text-sm tracking-[0.2em] font-medium mb-1">
-              PLT TOWER
-            </p>
-            <p className="font-sans text-[10px] tracking-[0.15em] text-white/40 mb-6">
-              BY PLT PROPERTIES
-            </p>
-            <p className="font-sans text-xs leading-relaxed text-white/45">
-              A European developer&apos;s first address in Dubai. Business Bay, 2027.
-            </p>
-          </div>
-
-          {/* Navigate */}
-          <div>
-            <p className="font-sans text-[11px] tracking-[0.2em] text-[var(--tan)] mb-5 uppercase">
-              Navigate
-            </p>
-            <ul className="space-y-3">
-              {NAVIGATE.map((n) => (
-                <li key={n.label}>
-                  <a
-                    href={n.href}
-                    className="font-sans text-sm font-medium text-[var(--rust)] hover:text-white transition-colors"
-                  >
-                    {n.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <p className="font-sans text-[11px] tracking-[0.2em] text-[var(--tan)] mb-5 uppercase">
-              Contact
-            </p>
-            <p className="font-sans text-[11px] text-white/40 mb-1">
-              Dubai Sales Office
-            </p>
-            <p className="font-sans text-sm font-medium mb-4">+971 4 400 0000</p>
-            <p className="font-sans text-[11px] text-white/40 mb-1">
-              International
-            </p>
-            <p className="font-sans text-sm font-medium mb-4">+43 1 200 0000</p>
-            <p className="font-sans text-[11px] text-white/40 mb-1">Email</p>
-            <p className="font-sans text-sm font-medium">hello@pltproperties.com</p>
-          </div>
-
-          {/* Updates */}
-          <div>
-            <p className="font-sans text-[11px] tracking-[0.2em] text-[var(--tan)] mb-5 uppercase">
-              Updates
-            </p>
-            <p className="font-sans text-xs leading-relaxed text-white/45 mb-4">
-              Construction progress, launch events, and priority invitations.
-            </p>
-            <form
-              className="flex items-center border-b border-white/25 pb-2"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 bg-transparent font-sans text-sm placeholder:text-white/35 outline-none"
-              />
-              <button type="submit" aria-label="Subscribe" className="text-white/70 hover:text-white">
-                →
-              </button>
-            </form>
-            <div className="flex items-center gap-4 mt-6">
-              <a href="#" aria-label="Instagram" className="text-white/50 hover:text-white">
-                <Instagram size={16} />
-              </a>
-              <a href="#" aria-label="LinkedIn" className="text-white/50 hover:text-white">
-                <Linkedin size={16} />
-              </a>
-              <a href="#" aria-label="YouTube" className="text-white/50 hover:text-white">
-                <Youtube size={16} />
-              </a>
-            </div>
+    <footer ref={footerRef} className="bg-[#1a1310] text-white px-6 md:px-16 py-16">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+        {/* Logo & About */}
+        <div>
+          <p className="text-2xl font-logo font-bold tracking-wide">P L T</p>
+          <p className="text-[10px]  font-logo tracking-[0.25em] text-[#c9a876] mt-1">PROPERTIES</p>
+          <p className="text-sm text-gray-400 mt-5 leading-relaxed max-w-xs">
+            European craftsmanship. Considered addresses. Built for longevity in Dubai's most connected districts.
+          </p>
+          <div className="flex gap-3 mt-6">
+            <a href="#" className="w-9 h-9 flex items-center justify-center border border-gray-600 p-2 rounded-md hover:border-[#c9a876] transition">
+              <Instagram size={16} className="text-gray-300" />
+            </a>
+            <a href="#" className="w-9 h-9 flex items-center justify-center border border-gray-600 p-2 rounded-md hover:border-[#c9a876] transition">
+              <Linkedin size={16} className="text-gray-300" />
+            </a>
+            <a href="#" className="w-9 h-9 flex items-center justify-center border border-gray-600 p-2 rounded-md hover:border-[#c9a876] transition">
+              <Youtube size={16} className="text-gray-300" />
+            </a>
           </div>
         </div>
 
-        {/* Search topics */}
-        <div className="border-t border-white/10 pt-8 mb-8">
-          <p className="font-sans text-[11px] tracking-[0.2em] text-[var(--tan)] mb-4 uppercase">
-            Search topics
-          </p>
-          <div className="flex flex-wrap gap-x-6 gap-y-2">
-            {TOPICS.map((t) => (
-              <span key={t} className="font-sans text-xs text-white/40">
-                {t}
-              </span>
+        {/* Developments */}
+        <div>
+          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-semibold mb-5 font-display">DEVELOPMENTS</p>
+          <ul className="space-y-4 text-sm text-gray-300">
+            {DEVELOPMENTS.map((item) => (
+              <li key={item.label}>
+                <a href={item.href} className="hover:text-[#c9a876] transition">
+                  {item.label}
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-sans text-[11px] text-white/35">
-            © 2026 PLT Properties. RERA registration pending. All prices are
-            indicative and subject to change. DLD approval in progress.
-          </p>
-          <div className="flex items-center gap-5">
-            <a href="#" className="font-sans text-[11px] text-white/40 hover:text-white">
-              Privacy policy
-            </a>
-            <a href="#" className="font-sans text-[11px] text-white/40 hover:text-white">
-              Terms
-            </a>
-            <a href="#" className="font-sans text-[11px] text-white/40 hover:text-white">
-              Cookie settings
-            </a>
-          </div>
+        {/* Company */}
+        <div>
+          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-semibold mb-5 font-display">COMPANY</p>
+          <ul className="space-y-4 text-sm text-gray-300">
+            {COMPANY.map((item) => (
+              <li key={item.label}>
+                <a href={item.href} className="hover:text-[#c9a876] transition">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-semibold mb-5 font-display">CONTACT</p>
+
+          <p className="text-[10px] tracking-[0.15em] text-gray-500 mb-1">SALES GALLERY</p>
+          <p className="text-sm text-gray-200 mb-5">Business Bay, Dubai</p>
+
+          <p className="text-[10px] tracking-[0.15em] text-gray-500 mb-1">PHONE</p>
+          <p className="text-sm text-gray-200 mb-5">+971 4 XXX XXXX</p>
+
+          <p className="text-[10px] tracking-[0.15em] text-gray-500 mb-1">WHATSAPP</p>
+          <p className="text-sm text-gray-200 mb-7">+971 50 XXX XXXX</p>
+
+          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-semibold mb-3">NEWSLETTER</p>
+          <form className="flex">
+            <input
+              type="email"
+              placeholder="Your email"
+              className="bg-[#2a211c] text-sm text-gray-200 placeholder-gray-500 px-4 py-2.5 w-full border border-gray-700 focus:outline-none focus:border-[#c9a876]"
+            />
+            <button
+              type="submit"
+              className="bg-[#c9a876] text-[#1a1310] text-xs font-semibold tracking-wide px-5 whitespace-nowrap hover:bg-[#d9b98a] transition"
+            >
+              SUBSCRIBE
+            </button>
+          </form>
         </div>
       </div>
     </footer>

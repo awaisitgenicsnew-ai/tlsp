@@ -40,20 +40,20 @@ export default function AdminSidebar({ activePage = 'dashboard' }) {
     <>
       {/* Mobile menu button */}
       <button
-        className="mobile-menu-button"
+        className="hidden md:flex fixed top-5 left-5 z-[1001] items-center justify-center bg-gradient-to-r from-[#d4a574] to-[#c9956c] text-white border-none p-3.5 rounded-xl cursor-pointer shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
         onClick={() => setIsMobileOpen(!isMobileOpen)}
       >
         {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
       {/* Sidebar */}
-      <aside className={`admin-sidebar ${isMobileOpen ? 'mobile-open' : ''}`}>
-        <div className="sidebar-header">
-          <h2 className="sidebar-title">Admin Panel</h2>
-          <p className="sidebar-subtitle">PLT Properties</p>
+      <aside className={`fixed left-0 top-0 w-[300px] h-screen bg-gradient-to-b from-[#1a1a2e] to-[#16213e] text-white flex flex-col z-[1000] transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-xl ${isMobileOpen ? 'md:translate-x-0 translate-x-0' : 'md:translate-x-0 -translate-x-full'}`}>
+        <div className="p-8 px-7 border-b border-white/8 bg-gradient-to-br from-[rgba(212,165,116,0.15)] to-[rgba(201,149,108,0.1)]">
+          <h2 className="font-display text-[1.75rem] font-bold mb-1.5 bg-gradient-to-r from-[#d4a574] to-[#e8c4a0] bg-clip-text text-transparent">Admin Panel</h2>
+          <p className="font-sans text-xs text-white/50 uppercase tracking-[0.15em] font-medium">PLT Properties</p>
         </div>
 
-        <nav className="sidebar-nav">
+        <nav className="flex-1 p-7 px-5 flex flex-col gap-1.5">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = activePage === item.id;
@@ -61,7 +61,7 @@ export default function AdminSidebar({ activePage = 'dashboard' }) {
               <button
                 key={item.id}
                 onClick={() => handleNavigation(item.path)}
-                className={`nav-item ${isActive ? 'active' : ''}`}
+                className={`flex items-center gap-3.5 px-4.5 py-3.5 bg-transparent border-none cursor-pointer rounded-xl transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] font-sans text-base font-medium text-left relative overflow-hidden ${isActive ? 'bg-gradient-to-br from-[rgba(212,165,116,0.2)] to-[rgba(201,149,108,0.15)] text-[#e8c4a0] font-semibold' : 'text-white/65 hover:bg-white/8 hover:text-white hover:translate-x-1'}`}
               >
                 <Icon size={20} />
                 <span>{item.label}</span>
@@ -70,8 +70,8 @@ export default function AdminSidebar({ activePage = 'dashboard' }) {
           })}
         </nav>
 
-        <div className="sidebar-footer">
-          <button onClick={handleLogout} className="logout-button">
+        <div className="p-6 px-5 border-t border-white/8 bg-black/20">
+          <button onClick={handleLogout} className="flex items-center gap-3.5 px-4.5 py-3.5 bg-transparent border border-red-500/30 text-red-500/80 cursor-pointer rounded-xl transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] font-sans text-base font-medium w-full hover:bg-red-500/15 hover:border-red-500 hover:text-red-500 hover:-translate-y-0.5 hover:shadow-lg">
             <LogOut size={20} />
             <span>Logout</span>
           </button>
@@ -81,189 +81,10 @@ export default function AdminSidebar({ activePage = 'dashboard' }) {
       {/* Mobile overlay */}
       {isMobileOpen && (
         <div 
-          className="sidebar-overlay"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[999] md:hidden"
           onClick={() => setIsMobileOpen(false)}
         />
       )}
-
-      <style jsx global>{`
-        .mobile-menu-button {
-          display: none;
-          position: fixed;
-          top: 20px;
-          left: 20px;
-          z-index: 1001;
-          background: linear-gradient(135deg, #d4a574 0%, #c9956c 100%);
-          color: white;
-          border: none;
-          padding: 14px;
-          border-radius: 12px;
-          cursor: pointer;
-          box-shadow: 0 4px 12px rgba(212, 165, 116, 0.4);
-          transition: all 0.3s ease;
-        }
-
-        .mobile-menu-button:hover {
-          transform: scale(1.05);
-          box-shadow: 0 6px 16px rgba(212, 165, 116, 0.5);
-        }
-
-        .admin-sidebar {
-          position: fixed;
-          left: 0;
-          top: 0;
-          width: 300px;
-          height: 100vh;
-          background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-          color: white;
-          display: flex;
-          flex-direction: column;
-          z-index: 1000;
-          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
-        }
-
-        .sidebar-header {
-          padding: 32px 28px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-          background: linear-gradient(135deg, rgba(212, 165, 116, 0.15) 0%, rgba(201, 149, 108, 0.1) 100%);
-        }
-
-        .sidebar-title {
-          font-family: var(--font-display);
-          font-size: 1.75rem;
-          font-weight: 700;
-          margin-bottom: 6px;
-          background: linear-gradient(135deg, #d4a574 0%, #e8c4a0 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        .sidebar-subtitle {
-          font-family: var(--font-sans);
-          font-size: 0.8rem;
-          color: rgba(255, 255, 255, 0.5);
-          text-transform: uppercase;
-          letter-spacing: 0.15em;
-          font-weight: 500;
-        }
-
-        .sidebar-nav {
-          flex: 1;
-          padding: 28px 20px;
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-
-        .nav-item {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          padding: 14px 18px;
-          background: transparent;
-          border: none;
-          color: rgba(255, 255, 255, 0.65);
-          cursor: pointer;
-          border-radius: 12px;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          font-family: var(--font-sans);
-          font-size: 0.95rem;
-          font-weight: 500;
-          text-align: left;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .nav-item::before {
-          content: '';
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 4px;
-          height: 100%;
-          background: linear-gradient(180deg, #d4a574 0%, #c9956c 100%);
-          transform: scaleY(0);
-          transition: transform 0.3s ease;
-          border-radius: 0 4px 4px 0;
-        }
-
-        .nav-item:hover {
-          background: rgba(255, 255, 255, 0.08);
-          color: white;
-          transform: translateX(4px);
-        }
-
-        .nav-item:hover::before {
-          transform: scaleY(1);
-        }
-
-        .nav-item.active {
-          background: linear-gradient(135deg, rgba(212, 165, 116, 0.2) 0%, rgba(201, 149, 108, 0.15) 100%);
-          color: #e8c4a0;
-          font-weight: 600;
-        }
-
-        .nav-item.active::before {
-          transform: scaleY(1);
-        }
-
-        .sidebar-footer {
-          padding: 24px 20px;
-          border-top: 1px solid rgba(255, 255, 255, 0.08);
-          background: rgba(0, 0, 0, 0.2);
-        }
-
-        .logout-button {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          padding: 14px 18px;
-          background: transparent;
-          border: 1px solid rgba(239, 68, 68, 0.3);
-          color: rgba(239, 68, 68, 0.8);
-          cursor: pointer;
-          border-radius: 12px;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          font-family: var(--font-sans);
-          font-size: 0.95rem;
-          font-weight: 500;
-          width: 100%;
-        }
-
-        .logout-button:hover {
-          background: rgba(239, 68, 68, 0.15);
-          border-color: #ef4444;
-          color: #ef4444;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
-        }
-
-        .sidebar-overlay {
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.6);
-          backdrop-filter: blur(4px);
-          z-index: 999;
-        }
-
-        @media (max-width: 768px) {
-          .mobile-menu-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-
-          .admin-sidebar {
-            transform: translateX(-100%);
-          }
-
-          .admin-sidebar.mobile-open {
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </>
   );
 }

@@ -7,13 +7,17 @@ export default function ContactSection() {
     >
       <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12">
-          <p className="font-sans text-xs tracking-[0.25em] text-[var(--tan)] mb-4">
-            — Get In Touch
-          </p>
-          <h2 className="font-display text-4xl leading-tight mb-4">
+          <div className="flex items-center justify-center mb-6">
+            <span className="h-px bg-[var(--tan)] w-16 mr-6 hidden sm:block"></span>
+            <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--tan)] whitespace-nowrap uppercase">
+              Get In Touch
+            </p>
+            <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 ">
             Let's Build Something Great Together
           </h2>
-          <p className="font-sans text-sm text-white/80 max-w-2xl mx-auto">
+          <p className="font-sans text-s text-white/80 max-w-2xl mx-auto">
             Have questions about our projects or want to learn more about PLT Properties? 
             We'd love to hear from you.
           </p>

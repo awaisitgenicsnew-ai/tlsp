@@ -170,20 +170,20 @@ export default function Blogs() {
   };
 
   return (
-    <div className="admin-layout">
+    <div className="flex min-h-screen bg-white">
       <AdminSidebar activePage="blogs" />
       
-      <main className="admin-main">
-        <div className="admin-content">
-          <div className="page-header">
-            <h1 className="page-title">Blogs</h1>
+      <main className="flex-1 ml-[300px] p-10 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex justify-between items-center mb-10 p-8 bg-gradient-to-br from-[#1a1a2e] to-[#16213e] rounded-2xl shadow-lg relative overflow-hidden">
+            <h1 className="font-display text-4xl font-bold text-white relative z-10">Blogs</h1>
             <button 
               onClick={() => {
                 setEditingBlog(null);
                 resetFormData();
                 setShowModal(true);
               }}
-              className="add-button"
+              className="flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-[#d4a574] to-[#c9956c] text-white border-none rounded-xl font-sans text-sm font-semibold cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg relative z-10"
             >
               <Plus size={20} />
               Add Blog
@@ -191,42 +191,42 @@ export default function Blogs() {
           </div>
 
           {loading ? (
-            <div className="loading-state">Loading blogs...</div>
+            <div className="text-center py-10 font-sans text-base text-black/60">Loading blogs...</div>
           ) : (
-            <div className="data-table">
-              <table>
+            <div className="bg-white shadow-sm">
+              <table className="w-full border-collapse">
                 <thead>
                   <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Status</th>
-                    <th>Categories</th>
-                    <th>Actions</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Title</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Author</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Status</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Categories</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {blogs.map((blog) => (
                     <tr key={blog.id}>
-                      <td>{blog.title}</td>
-                      <td>{blog.author?.name || '-'}</td>
-                      <td>
-                        <span className={`status-badge ${blog.status}`}>
+                      <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{blog.title}</td>
+                      <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{blog.author?.name || '-'}</td>
+                      <td className="px-4 py-4 border-b border-gray-200">
+                        <span className={`px-3 py-1 rounded-none text-xs font-semibold uppercase ${blog.status === 'draft' ? 'bg-gray-100 text-gray-600' : blog.status === 'published' ? 'bg-green-100 text-green-600' : 'bg-yellow-100 text-yellow-600'}`}>
                           {blog.status}
                         </span>
                       </td>
-                      <td>
+                      <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">
                         {blog.categories?.map(c => c.name).join(', ') || '-'}
                       </td>
-                      <td>
+                      <td className="px-4 py-4 border-b border-gray-200">
                         <button 
                           onClick={() => handleEdit(blog)}
-                          className="action-button edit"
+                          className="p-2 bg-transparent border-none cursor-pointer transition-all duration-300 mr-2 text-blue-500 hover:bg-blue-50"
                         >
                           <Edit size={16} />
                         </button>
                         <button 
                           onClick={() => handleDelete(blog.id)}
-                          className="action-button delete"
+                          className="p-2 bg-transparent border-none cursor-pointer transition-all duration-300 text-red-500 hover:bg-red-50"
                         >
                           <Trash2 size={16} />
                         </button>
@@ -239,10 +239,10 @@ export default function Blogs() {
           )}
 
           {showModal && (
-            <div className="modal-overlay">
-              <div className="modal modal-large">
-                <div className="modal-header">
-                  <h2>
+            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 overflow-y-auto p-5">
+              <div className="bg-white w-full max-w-4xl rounded-none shadow-xl max-h-[90vh] overflow-y-auto">
+                <div className="flex justify-between items-center p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
+                  <h2 className="font-display text-2xl font-bold text-[#2a2620]">
                     {editingBlog ? 'Edit Blog' : 'Add Blog'}
                   </h2>
                   <button 
@@ -252,44 +252,47 @@ export default function Blogs() {
                       resetFormData();
                       setError('');
                     }}
-                    className="close-button"
+                    className="bg-transparent border-none text-3xl cursor-pointer text-black/60 leading-none"
                   >
                     ×
                   </button>
                 </div>
-                <form onSubmit={handleSubmit} className="modal-form">
-                  {error && <div className="error-message">{error}</div>}
+                <form onSubmit={handleSubmit} className="p-6">
+                  {error && <div className="bg-red-50 text-red-500 px-3 py-3 rounded-none mb-5 font-sans text-sm">{error}</div>}
                   
-                  <div className="form-row">
-                    <div className="form-group half">
-                      <label>Title *</label>
+                  <div className="grid grid-cols-2 gap-5">
+                    <div className="mb-0">
+                      <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Title *</label>
                       <input
                         type="text"
                         value={formData.title}
                         onChange={handleTitleChange}
                         required
                         placeholder="Blog title"
+                        className="w-full px-3 py-3 border border-gray-300 rounded-none font-sans text-base box-border text-black focus:outline-none focus:border-[#c9a876] focus:shadow-[0_0_0_3px_rgba(210,180,140,0.1)]"
                       />
                     </div>
 
-                    <div className="form-group half">
-                      <label>Slug *</label>
+                    <div className="mb-0">
+                      <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Slug *</label>
                       <input
                         type="text"
                         value={formData.slug}
                         onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
                         required
                         placeholder="blog-slug"
+                        className="w-full px-3 py-3 border border-gray-300 rounded-none font-sans text-base box-border text-black focus:outline-none focus:border-[#c9a876] focus:shadow-[0_0_0_3px_rgba(210,180,140,0.1)]"
                       />
                     </div>
                   </div>
 
-                  <div className="form-row">
-                    <div className="form-group half">
-                      <label>Author</label>
+                  <div className="grid grid-cols-2 gap-5">
+                    <div className="mb-5">
+                      <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Author</label>
                       <select
                         value={formData.authorId}
                         onChange={(e) => setFormData({ ...formData, authorId: e.target.value })}
+                        className="w-full px-3 py-3 border border-gray-300 rounded-none font-sans text-base box-border text-black focus:outline-none focus:border-[#c9a876] focus:shadow-[0_0_0_3px_rgba(210,180,140,0.1)]"
                       >
                         <option value="">Select author</option>
                         {authors.map((author) => (
@@ -300,11 +303,12 @@ export default function Blogs() {
                       </select>
                     </div>
 
-                    <div className="form-group half">
-                      <label>Status</label>
+                    <div className="mb-5">
+                      <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Status</label>
                       <select
                         value={formData.status}
                         onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+                        className="w-full px-3 py-3 border border-gray-300 rounded-none font-sans text-base box-border text-black focus:outline-none focus:border-[#c9a876] focus:shadow-[0_0_0_3px_rgba(210,180,140,0.1)]"
                       >
                         <option value="draft">Draft</option>
                         <option value="published">Published</option>
@@ -313,15 +317,16 @@ export default function Blogs() {
                     </div>
                   </div>
 
-                  <div className="form-group">
-                    <label>Categories</label>
-                    <div className="checkbox-group">
+                  <div className="mb-5">
+                    <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Categories</label>
+                    <div className="flex flex-wrap gap-4">
                       {categories.map((category) => (
-                        <label key={category.id} className="checkbox-label">
+                        <label key={category.id} className="flex items-center gap-2 font-sans text-base text-[#2a2620] cursor-pointer">
                           <input
                             type="checkbox"
                             checked={formData.categoryIds.includes(category.id)}
                             onChange={() => handleCategoryToggle(category.id)}
+                            className="w-auto"
                           />
                           {category.name}
                         </label>
@@ -329,67 +334,83 @@ export default function Blogs() {
                     </div>
                   </div>
 
-                  <div className="form-group">
-                    <label>Short Description</label>
+                  <div className="mb-5">
+                    <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Short Description</label>
                     <textarea
                       value={formData.shortDescription}
                       onChange={(e) => setFormData({ ...formData, shortDescription: e.target.value })}
                       rows={3}
                       placeholder="Brief description for preview"
+                      className="w-full px-3 py-3 border border-gray-300 rounded-none font-sans text-base box-border text-black focus:outline-none focus:border-[#c9a876] focus:shadow-[0_0_0_3px_rgba(210,180,140,0.1)] resize-y"
                     />
                   </div>
 
-                  <div className="form-group">
-                    <label>Image</label>
+                  <div className="mb-5">
+                    <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Image</label>
+                    {editingBlog && formData.image && typeof formData.image === 'string' && (
+                      <div className="mb-3 p-3 bg-gray-50 border border-gray-200 rounded-none">
+                        <img 
+                          src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}${formData.image}`} 
+                          alt="Current image" 
+                          className="w-24 h-24 object-cover rounded-none mb-2"
+                        />
+                        <p className="font-sans text-xs text-black/60 m-0">Current image</p>
+                      </div>
+                    )}
                     <input
                       type="file"
                       accept="image/*"
                       onChange={(e) => setFormData({ ...formData, image: e.target.files[0] })}
+                      className="w-full"
                     />
                   </div>
 
-                  <div className="form-group">
-                    <label>Image Alt Text</label>
+                  <div className="mb-5">
+                    <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Image Alt Text</label>
                     <input
                       type="text"
                       value={formData.imageAlt}
                       onChange={(e) => setFormData({ ...formData, imageAlt: e.target.value })}
                       placeholder="Image description for accessibility"
+                      className="w-full px-3 py-3 border border-gray-300 rounded-none font-sans text-base box-border text-black focus:outline-none focus:border-[#c9a876] focus:shadow-[0_0_0_3px_rgba(210,180,140,0.1)]"
                     />
                   </div>
 
-                  <div className="form-group">
-                    <label>Meta Title</label>
+                  <div className="mb-5">
+                    <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Meta Title</label>
                     <input
                       type="text"
                       value={formData.metaTitle}
                       onChange={(e) => setFormData({ ...formData, metaTitle: e.target.value })}
                       placeholder="SEO title"
+                      className="w-full px-3 py-3 border border-gray-300 rounded-none font-sans text-base box-border text-black focus:outline-none focus:border-[#c9a876] focus:shadow-[0_0_0_3px_rgba(210,180,140,0.1)]"
                     />
                   </div>
 
-                  <div className="form-group">
-                    <label>Meta Description</label>
+                  <div className="mb-5">
+                    <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Meta Description</label>
                     <textarea
                       value={formData.metaDescription}
                       onChange={(e) => setFormData({ ...formData, metaDescription: e.target.value })}
                       rows={2}
                       placeholder="SEO description"
+                      className="w-full px-3 py-3 border border-gray-300 rounded-none font-sans text-base box-border text-black focus:outline-none focus:border-[#c9a876] focus:shadow-[0_0_0_3px_rgba(210,180,140,0.1)] resize-y"
                     />
                   </div>
 
-                  <div className="form-group">
-                    <label>Meta Keywords</label>
+                  <div className="mb-5">
+                    <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Meta Keywords</label>
                     <input
                       type="text"
                       value={formData.metaKeywords}
                       onChange={(e) => setFormData({ ...formData, metaKeywords: e.target.value })}
                       placeholder="keyword1, keyword2, keyword3"
+                      className="w-full px-3 py-3 border border-gray-300 rounded-none font-sans text-base box-border text-black focus:outline-none focus:border-[#c9a876] focus:shadow-[0_0_0_3px_rgba(210,180,140,0.1)]"
                     />
                   </div>
 
-                  <div className="form-group">
-                    <label>Main Content *</label>
+                  <div className="mb-5">
+                    <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Main Content *</label>
                     <Editor
                       apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
                       value={formData.mainContent}
@@ -411,11 +432,11 @@ export default function Blogs() {
                     />
                   </div>
 
-                  <div className="modal-actions">
-                    <button type="button" onClick={() => setShowModal(false)} className="cancel-button">
+                  <div className="flex gap-3 justify-end mt-6 sticky bottom-0 bg-white pt-5 border-t border-gray-200">
+                    <button type="button" onClick={() => setShowModal(false)} className="px-6 py-3 bg-white border border-gray-300 text-[#2a2620] font-sans text-sm font-semibold cursor-pointer rounded-none transition-all duration-300 hover:bg-gray-50">
                       Cancel
                     </button>
-                    <button type="submit" className="submit-button">
+                    <button type="submit" className="px-6 py-3 bg-[#c9a876] text-white border-none font-sans text-sm font-semibold cursor-pointer rounded-none transition-all duration-300 hover:bg-[#7a341e]">
                       {editingBlog ? 'Update' : 'Create'}
                     </button>
                   </div>
@@ -425,388 +446,6 @@ export default function Blogs() {
           )}
         </div>
       </main>
-
-      <style jsx global>{`
-        .admin-layout {
-          display: flex;
-          min-height: 100vh;
-          background: #ffffff;
-        }
-
-        .admin-main {
-          flex: 1;
-          margin-left: 300px;
-          padding: 40px;
-          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        }
-
-        .admin-content {
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-
-        .page-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 40px;
-          padding: 32px;
-          background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-          border-radius: 16px;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-          position: relative;
-          overflow: hidden;
-        }
-
-        .page-header::before {
-          content: '';
-          position: absolute;
-          top: -50%;
-          right: -50%;
-          width: 100%;
-          height: 100%;
-          background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
-          pointer-events: none;
-        }
-
-        .page-title {
-          font-family: var(--font-display);
-          font-size: 2.5rem;
-          font-weight: 700;
-          color: white;
-          position: relative;
-          z-index: 1;
-        }
-
-        .add-button {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          background: linear-gradient(135deg, #d4a574 0%, #c9956c 100%);
-          color: white;
-          padding: 14px 28px;
-          border: none;
-          border-radius: 12px;
-          font-size: 0.9rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-family: var(--font-sans);
-          box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
-          position: relative;
-          z-index: 1;
-        }
-
-        .add-button:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(212, 165, 116, 0.4);
-        }
-
-        .loading-state {
-          text-align: center;
-          padding: 40px;
-          font-family: var(--font-sans);
-          color: rgba(0, 0, 0, 0.6);
-        }
-
-        .data-table {
-          background: white;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .data-table table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-
-        .data-table th {
-          background: #f8f9fa;
-          padding: 16px;
-          text-align: left;
-          font-family: var(--font-sans);
-          font-weight: 600;
-          font-size: 0.875rem;
-          color: var(--ink);
-          border-bottom: 2px solid var(--tan);
-        }
-
-        .data-table td {
-          padding: 16px;
-          border-bottom: 1px solid #e5e7eb;
-          font-family: var(--font-sans);
-          font-size: 0.9375rem;
-          color: var(--ink);
-        }
-
-        .data-table tr:last-child td {
-          border-bottom: none;
-        }
-
-        .status-badge {
-          padding: 4px 12px;
-          border-radius: 0;
-          font-size: 0.75rem;
-          font-weight: 600;
-          text-transform: uppercase;
-        }
-
-        .status-badge.draft {
-          background: #f3f4f6;
-          color: #6b7280;
-        }
-
-        .status-badge.published {
-          background: #d1fae5;
-          color: #059669;
-        }
-
-        .status-badge.archived {
-          background: #fef3c7;
-          color: #d97706;
-        }
-
-        .action-button {
-          padding: 8px;
-          background: transparent;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          margin-right: 8px;
-        }
-
-        .action-button.edit {
-          color: #3b82f6;
-        }
-
-        .action-button.edit:hover {
-          background: #eff6ff;
-        }
-
-        .action-button.delete {
-          color: #ef4444;
-        }
-
-        .action-button.delete:hover {
-          background: #fef2f2;
-        }
-
-        .modal-overlay {
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.5);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 1000;
-          overflow-y: auto;
-          padding: 20px;
-        }
-
-        .modal {
-          background: white;
-          width: 100%;
-          max-width: 500px;
-          border-radius: 0;
-          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-          max-height: 90vh;
-          overflow-y: auto;
-        }
-
-        .modal-large {
-          max-width: 900px;
-        }
-
-        .modal-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 24px;
-          border-bottom: 1px solid #e5e7eb;
-          position: sticky;
-          top: 0;
-          background: white;
-          z-index: 10;
-        }
-
-        .modal-header h2 {
-          font-family: var(--font-display);
-          font-size: 1.5rem;
-          font-weight: 700;
-          color: var(--ink);
-        }
-
-        .close-button {
-          background: transparent;
-          border: none;
-          font-size: 2rem;
-          cursor: pointer;
-          color: rgba(0, 0, 0, 0.6);
-          line-height: 1;
-        }
-
-        .modal-form {
-          padding: 24px;
-        }
-
-        .form-row {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 20px;
-        }
-
-        .form-group {
-          margin-bottom: 20px;
-        }
-
-        .form-group.half {
-          margin-bottom: 0;
-        }
-
-        .form-group label {
-          display: block;
-          font-family: var(--font-sans);
-          font-size: 0.875rem;
-          font-weight: 600;
-          color: var(--ink);
-          margin-bottom: 8px;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-          width: 100%;
-          padding: 12px;
-          border: 1px solid #d1d5db;
-          border-radius: 0;
-          font-family: var(--font-sans);
-          font-size: 0.9375rem;
-          box-sizing: border-box;
-          color: #000000;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-          outline: none;
-          border-color: var(--tan);
-          box-shadow: 0 0 0 3px rgba(210, 180, 140, 0.1);
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-          color: #000000;
-        }
-
-        .form-group textarea {
-          resize: vertical;
-        }
-
-        .checkbox-group {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 16px;
-        }
-
-        .checkbox-label {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          font-family: var(--font-sans);
-          font-size: 0.9375rem;
-          color: var(--ink);
-          cursor: pointer;
-        }
-
-        .checkbox-label input {
-          width: auto;
-        }
-
-        .error-message {
-          background: #fef2f2;
-          color: #ef4444;
-          padding: 12px;
-          border-radius: 0;
-          margin-bottom: 20px;
-          font-family: var(--font-sans);
-          font-size: 0.875rem;
-        }
-
-        .modal-actions {
-          display: flex;
-          gap: 12px;
-          justify-content: flex-end;
-          margin-top: 24px;
-          position: sticky;
-          bottom: 0;
-          background: white;
-          padding-top: 20px;
-          border-top: 1px solid #e5e7eb;
-        }
-
-        .cancel-button {
-          padding: 12px 24px;
-          background: white;
-          border: 1px solid #d1d5db;
-          color: var(--ink);
-          font-family: var(--font-sans);
-          font-size: 0.875rem;
-          font-weight: 600;
-          cursor: pointer;
-          border-radius: 0;
-          transition: all 0.3s ease;
-        }
-
-        .cancel-button:hover {
-          background: #f9fafb;
-        }
-
-        .submit-button {
-          padding: 12px 24px;
-          background: var(--tan);
-          color: white;
-          border: none;
-          font-family: var(--font-sans);
-          font-size: 0.875rem;
-          font-weight: 600;
-          cursor: pointer;
-          border-radius: 0;
-          transition: all 0.3s ease;
-        }
-
-        .submit-button:hover {
-          background: #7a341e;
-        }
-
-        @media (max-width: 768px) {
-          .admin-main {
-            margin-left: 0;
-            padding: 20px;
-            padding-top: 80px;
-          }
-
-          .page-header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 16px;
-          }
-
-          .page-title {
-            font-size: 2rem;
-          }
-
-          .data-table {
-            overflow-x: auto;
-          }
-
-          .form-row {
-            grid-template-columns: 1fr;
-          }
-
-          .modal {
-            max-width: 100%;
-          }
-        }
-      `}</style>
     </div>
   );
 }

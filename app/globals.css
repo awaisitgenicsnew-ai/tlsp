@@ -4,12 +4,10 @@
   /* ============ TYPOGRAPHY TOKENS ============ */
   --font-display: Georgia, "Times New Roman", "Iowan Old Style", serif;
   --font-serif-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  --font-sans: -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
-  --font-sans-alt: var(--font-jost), "Jost", -apple-system, "Segoe UI", sans-serif;
-
+  --font-sans: var(--font-pangram);
+  --font-sans-alt: "Jost", -apple-system, "Segoe UI", sans-serif;
   /* ============ BRAND COLOR TOKENS ============ */
-  --tan: #c9a876;
+  --tan: #c5811b;
   --rust: #b5502e;
   --cream: #f4efe6;
   --ink: #2a2620;
@@ -42,12 +40,27 @@ body {
   font-family: var(--font-sans);
 }
 
+
+
+.paragraph {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
 .font-display {
   font-family: var(--font-display);
 }
 
-/* ============ SHARED TYPOGRAPHY UTILITIES ============ */
+.font-logo {
+  font-family: var(--font-pangram);
+}
 
+/* ============ SHARED TYPOGRAPHY UTILITIES ============ */
+h1,h2,h3,h4,h5,h6{
+      font-family: var(--font-display);
+}
 /* Small uppercase label (e.g. "BRAND PILLARS", "WHO WE ARE") */
 .eyebrow {
   font-family: var(--font-sans-alt);

@@ -30,13 +30,17 @@ export default function TeamSection() {
     >
       <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12">
-          <p className="font-sans text-xs tracking-[0.25em] text-[var(--tan)] mb-4">
-            — Leadership Team
-          </p>
-          <h2 className="font-display text-4xl leading-tight mb-4">
+          <div className="flex items-center justify-center mb-6">
+            <span className="h-px bg-[var(--tan)] w-16 mr-6 hidden sm:block"></span>
+            <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--tan)] whitespace-nowrap uppercase">
+              Leadership Team
+            </p>
+            <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 text-[#2a2620]">
             Meet Our Visionaries
           </h2>
-          <p className="font-sans text-sm text-[var(--ink)]/80 max-w-2xl mx-auto">
+          <p className="font-sans text-sm text-[var(--ink)]/80 max-w-2xl mx-auto paragraph">
             A team of experienced professionals dedicated to shaping Dubai's skyline 
             with excellence and innovation.
           </p>
@@ -46,7 +50,7 @@ export default function TeamSection() {
           {team.map((member, index) => (
             <div 
               key={index}
-              className="group bg-[#1a1a1a] rounded-lg border border-[var(--tan)]/30 hover:border-[var(--tan)] transition-colors overflow-hidden"
+              className="group bg-[#1a1a1a]  hover:border-[var(--tan)] transition-colors overflow-hidden"
             >
               <div className="relative aspect-[3/4] mb-4 overflow-hidden">
                 <img 

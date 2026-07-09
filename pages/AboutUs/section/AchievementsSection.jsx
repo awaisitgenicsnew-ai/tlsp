@@ -23,7 +23,7 @@ export default function AchievementsSection() {
       description: "Recognition for innovation and quality"
     },
     {
-      number: "AED 5B+",
+      number: "5B+",
       label: "Project Value",
       description: "Total value of developments delivered"
     },
@@ -40,13 +40,17 @@ export default function AchievementsSection() {
     >
       <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12">
-          <p className="font-sans text-xs tracking-[0.25em] text-[var(--tan)] mb-4">
-            — Our Achievements
-          </p>
-          <h2 className="font-display text-4xl leading-tight mb-4">
+          <div className="flex items-center justify-center mb-6">
+            <span className="h-px bg-[var(--tan)] w-16 mr-6 hidden sm:block"></span>
+            <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--tan)] whitespace-nowrap uppercase">
+              Our Achievements
+            </p>
+            <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 text-[#2a2620]">
             Numbers That Speak
           </h2>
-          <p className="font-sans text-sm text-[var(--ink)]/80 max-w-2xl mx-auto">
+          <p className="font-sans text-sm text-[var(--ink)]/80 max-w-2xl mx-auto paragraph">
             Our track record of success is a testament to our commitment to excellence 
             and customer satisfaction.
           </p>
@@ -56,11 +60,11 @@ export default function AchievementsSection() {
           {achievements.map((achievement, index) => (
             <div 
               key={index}
-              className="text-center p-6 bg-[#1a1a1a] rounded-lg border border-[var(--tan)]/30 hover:border-[var(--tan)] transition-colors"
+              className="text-center p-6 bg-[#1a1a1a]  hover:border-[var(--tan)] transition-colors"
             >
               <p className="font-display text-5xl text-[var(--tan)] mb-2">{achievement.number}</p>
               <h3 className="font-display text-xl mb-2 text-white">{achievement.label}</h3>
-              <p className="font-sans text-sm text-white/70">{achievement.description}</p>
+              <p className="font-sans text-sm text-white/70 paragraph">{achievement.description}</p>
             </div>
           ))}
         </div>

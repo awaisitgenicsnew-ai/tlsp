@@ -1,22 +1,19 @@
 "use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { leadApi } from '../../../lib/api';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function RegisterFormSection() {
+export default function ContactSection() {
   const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     phone: '',
-    developmentOfInterest: '',
-    interest: '',
-    message: ''
+    email: '',
+    development: '',
+    interest: ''
   });
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const handleChange = (e) => {
     setFormData({
@@ -27,124 +24,225 @@ export default function RegisterFormSection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
-    setSuccess(false);
+    setIsSubmitting(true);
+    setSubmitMessage('');
 
     try {
-      console.log('Submitting form data:', formData);
-      const response = await leadApi.createLead(formData);
-      console.log('API response:', response);
+      const payload = {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        developmentOfInterest: formData.development,
+        interest: formData.interest,
+        subject: `${formData.development} - ${formData.interest}`,
+        message: 'New enquiry from website - please contact me regarding my interest in the property development.'
+      };
+      
+      console.log('Submitting payload:', payload);
+      
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/leads`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
 
-      if (response.success) {
+      const data = await response.json();
+      console.log('API Response:', data);
+      console.log('Validation errors:', data.errors);
+
+      if (response.ok) {
         // Redirect to thank you page with form data
         const params = new URLSearchParams({
           name: formData.name,
           email: formData.email,
           phone: formData.phone || '',
-          development: formData.developmentOfInterest || '',
+          development: formData.development || '',
           interest: formData.interest || ''
         });
         router.push(`/thank-you?${params.toString()}`);
       } else {
-        setError(response.message || 'Failed to submit form');
+        if (data.errors && data.errors.length > 0) {
+          const errorMessages = data.errors.map(err => `${err.field}: ${err.message}`).join(', ');
+          setSubmitMessage(`Validation error: ${errorMessages}`);
+        } else {
+          setSubmitMessage(data.message || 'Something went wrong. Please try again.');
+        }
       }
-    } catch (err) {
-      console.error('Form submission error:', err);
-      setError(err.message || 'Failed to connect to server');
+    } catch (error) {
+      console.error('Submit error:', error);
+      setSubmitMessage('Something went wrong. Please try again.');
     } finally {
-      setLoading(false);
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <section
-      className="w-full bg-black text-white flex items-center justify-center px-4 md:px-8 lg:px-16 py-10 lg:py-24"
+    <section 
+      id="contact" 
+      className="w-full bg-[#241D18] py-10 lg:py-24 px-6 md:px-12 lg:px-20 min-h-screen flex flex-col justify-center"
     >
-      <div className="max-w-2xl mx-auto w-full">
-        {/* Form */}
-        <div className="bg-[#1a1a1a] p-8 md:p-10 rounded-xl shadow-2xl border border-[var(--tan)]/30 mt-4">
-          <h3 className="font-display text-2xl md:text-3xl text-white mb-6 text-center">Register Interest</h3>
-          {success && (
-            <div className="mb-6 bg-green-500 text-white p-4 text-center text-sm">
-              Thank you! Your message has been sent successfully.
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[156px] max-w-8xl mx-auto">
+        {/* Left: intro + sales info */}
+        <div className="px-10 py-8"> 
+          
+          <h2 className="font-serif text-4xl md:text-4xl text-white leading-normal mb-5">
+            Begin a conversation with our team
+          </h2>
+          <p className="text-sm leading-[28px] text-white/50 max-w-lg mb-10 paragraph">
+            Our sales team is available in person at the PLT Tower Sales
+            Gallery, Business Bay, seven days a week — or reach us by phone
+            and WhatsApp.
+          </p>
+
+          <div className="space-y-6">
+            <div>
+              <p className="text-[10px] tracking-widest uppercase text-white/40 mb-1">
+                Sales Gallery
+              </p>
+              <p className="text-sm text-white/80">
+                Business Bay, Dubai · Open daily 10am–8pm
+              </p>
             </div>
-          )}
-
-          {error && (
-            <div className="mb-6 bg-red-500 text-white p-4 text-center text-sm">
-              {error}
+            <div>
+              <p className="text-[10px] tracking-widest uppercase text-white/40 mb-1">
+                Phone
+              </p>
+              <p className="text-sm text-white/80">+971 4 XXX XXXX</p>
             </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div className="flex flex-col gap-2">
-                <label htmlFor="name" className="font-sans font-medium text-sm tracking-wide text-white mb-2">Name *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="Your name"
-                  className="p-3 border border-white/20 text-base transition-all bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[var(--tan)] focus:ring-2 focus:ring-[var(--tan)]/20"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="font-sans font-medium text-sm tracking-wide text-white mb-2">Email *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="your@email.com"
-                  className="p-3 border border-white/20 text-base transition-all bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[var(--tan)] focus:ring-2 focus:ring-[var(--tan)]/20"
-                />
-              </div>
+            <div>
+              <p className="text-[10px] tracking-widest uppercase text-white/40 mb-1">
+                WhatsApp
+              </p>
+              <p className="text-sm text-white/80">+971 50 XXX XXXX</p>
             </div>
-
-            <div className="flex flex-col gap-2">
-              <label htmlFor="phone" className="font-sans font-medium text-sm tracking-wide text-white mb-2">Phone</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="+971 XX XXX XXXX"
-                className="p-3 border border-white/20 text-base transition-all bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[var(--tan)] focus:ring-2 focus:ring-[var(--tan)]/20"
-              />
+            <div>
+              <p className="text-[10px] tracking-widest uppercase text-white/40 mb-1">
+                Email
+              </p>
+              <p className="text-sm text-white/80">enquiries@pltproperties.com</p>
             </div>
-
-            <div className="flex flex-col gap-2">
-              <label htmlFor="message" className="font-sans font-medium text-sm tracking-wide text-white mb-2">Message *</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={4}
-                placeholder="Tell us more about your inquiry..."
-                className="p-3 border border-white/20 text-base transition-all bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-[var(--tan)] focus:ring-2 focus:ring-[var(--tan)]/20 resize-y"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-[var(--tan)] text-white py-3.5 px-5 font-semibold text-sm uppercase tracking-widest transition-all hover:bg-[#7a341e] disabled:opacity-60 disabled:cursor-not-allowed"
-              disabled={loading}
-            >
-              {loading ? 'Sending...' : 'Send Message'}
-            </button>
-          </form>
+          </div>
         </div>
+        <div className="mt-8 lg:mt-0 bg-black px-10 py-8">
+          <h2 className="font-serif text-3xl md:text-4xl text-white leading-normal mb-8">
+         Register Interest
+        </h2>
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 content-start">
+        
+          <Field 
+            label="Full Name" 
+            placeholder="Your name" 
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+          <Field 
+            label="Mobile" 
+            placeholder="+971 XX XXX XXXX" 
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+          />
+          <Field
+            label="Email Address"
+            placeholder="you@email.com"
+            className="sm:col-span-2"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <Select
+            label="Development of Interest"
+            placeholder="Select development"
+            className="sm:col-span-2"
+            name="development"
+            value={formData.development}
+            onChange={handleChange}
+            options={[
+              { value: 'plt-tower', label: 'PLT Tower' },
+              { value: 'plt-residences', label: 'PLT Residences' },
+              { value: 'plt-villas', label: 'PLT Villas' },
+              { value: 'plt-commercial', label: 'PLT Commercial' },
+              { value: 'other', label: 'Other' }
+            ]}
+          />
+          <Select
+            label="I am interested in"
+            placeholder="Select interest"
+            className="sm:col-span-2"
+            name="interest"
+            value={formData.interest}
+            onChange={handleChange}
+            options={[
+              { value: 'buying', label: 'Buying Property' },
+              { value: 'renting', label: 'Renting Property' },
+              { value: 'investment', label: 'Investment Opportunity' },
+              { value: 'information', label: 'General Information' },
+              { value: 'partnership', label: 'Partnership Inquiry' }
+            ]}
+          />
+
+          {submitMessage && (
+            <div className={`sm:col-span-2 text-sm ${submitMessage.includes('success') ? 'text-green-400' : 'text-red-400'}`}>
+              {submitMessage}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="sm:col-span-2 mt-4 justify-self-start border border-white/70 text-white text-xs tracking-widest uppercase px-6 py-3 hover:bg-white hover:text-[#241D18] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit Enquiry'}
+          </button>
+        </form>
+       </div>
       </div>
     </section>
+  );
+}
+
+function Field({ label, placeholder, className = "", name, value, onChange }) {
+  return (
+    <label className={`block ${className}`}>
+      <span className="block text-[14px] tracking-widest uppercase text-white/40 mb-2">
+        {label}
+      </span>
+      <input
+        type="text"
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="w-full bg-transparent border-b border-white/20 pb-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#B08D57] transition-colors"
+      />
+    </label>
+  );
+}
+
+function Select({ label, placeholder, className = "", name, value, onChange, options = [] }) {
+  return (
+    <label className={`block ${className}`}>
+      <span className="block text-[10px] tracking-widest uppercase text-white/40 mb-2">
+        {label}
+      </span>
+      <select
+        name={name}
+        value={value}
+        onChange={onChange}
+        className="w-full bg-transparent border-b border-white/20 pb-2 text-sm text-white/50 focus:outline-none focus:border-[#B08D57] transition-colors appearance-none"
+      >
+        <option value="" disabled className="text-gray-400">
+          {placeholder}
+        </option>
+        {options.map((option) => (
+          <option key={option.value} value={option.value} className="text-black">
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }

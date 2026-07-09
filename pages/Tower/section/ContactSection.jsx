@@ -77,9 +77,9 @@ export default function ContactSection() {
         <h2 className="text-4xl md:text-4xl lg:text-5xl text-white font-display tracking-wider mb-8">
           GET IN TOUCH
         </h2>
-        <div className="bg-[#1a1a1a]/90 backdrop-blur-md p-6 md:p-8 rounded-lg border border-(--tan)/30 mt-5">
+        <div className="bg-[#1a1a1a]/20 backdrop-blur-md p-6 md:p-8 border border-(--tan)/30 mt-5">
           {submitMessage && (
-            <div className="mb-4 p-3 bg-white/20 text-white text-sm rounded">
+            <div className="mb-4 p-3 bg-white/20 text-white text-sm">
               {submitMessage}
             </div>
           )}

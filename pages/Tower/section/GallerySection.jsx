@@ -44,14 +44,18 @@ export default function GallerySection() {
       <div className="absolute inset-0 bg-black/40" />
       
       <div className="relative z-10 max-w-4xl mx-auto w-full text-center">
-        <p className="font-sans text-xs tracking-[0.25em] text-[var(--tan)] mb-4">
-          — GALLERY
-        </p>
+        <div className="flex items-center justify-center mb-6">
+          <span className="h-px bg-[var(--tan)] w-16 mr-6 hidden sm:block"></span>
+          <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--tan)] whitespace-nowrap uppercase">
+            Gallery
+          </p>
+          <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
+        </div>
         <h2 className="text-4xl md:text-5xl lg:text-6xl text-white font-display tracking-wider mb-8">
           VISUAL JOURNEY
         </h2>
-        <div className="bg-[#1a1a1a]/90 backdrop-blur-md p-6 md:p-8 rounded-lg border border-[var(--tan)]/30">
-          <p className="text-white text-base leading-relaxed mb-6 font-light">
+        <div className="bg-[#1a1a1a]/20 backdrop-blur-md p-6 md:p-8 ">
+          <p className="text-white text-base leading-relaxed mb-6 font-light paragraph">
             A glimpse into what's coming. Welcome to PLT Tower where design, light, and intention come together.
           </p>
           <button

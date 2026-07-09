@@ -44,106 +44,72 @@ export default function BlogDetail() {
 
   if (loading) {
     return (
-      <div className="blog-page">
+      <div className="min-h-screen bg-white">
         <Navbar top={WHITE_SCHEME} scrolled={WHITE_SCHEME} />
-        <div className="loading-state">Loading blog...</div>
+        <div className="text-center py-25 font-sans text-lg text-black/60">Loading blog...</div>
         <Footer />
-        <style jsx global>{`
-          .blog-page { min-height: 100vh; background: #ffffff; }
-          .loading-state { 
-            text-align: center; 
-            padding: 100px 20px; 
-            font-family: var(--font-sans); 
-            font-size: 1.125rem; 
-            color: rgba(0, 0, 0, 0.6); 
-          }
-        `}</style>
       </div>
     );
   }
 
   if (!blog) {
     return (
-      <div className="blog-page">
+      <div className="min-h-screen bg-white">
         <Navbar top={WHITE_SCHEME} scrolled={WHITE_SCHEME} />
-        <div className="blog-container">
-          <button onClick={() => router.push('/blog')} className="back-button">
+        <div className="max-w-6xl mx-auto px-5 py-25 md:px-20">
+          <button onClick={() => router.push('/blog')} className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#d4a574] to-[#c9956c] text-white border-none rounded-lg font-sans text-sm font-semibold cursor-pointer transition-all duration-300 hover:-translate-y-0.5">
             <ArrowLeft size={20} />
             Back to Blogs
           </button>
-          <div className="error-state">Blog not found.</div>
+          <div className="text-center py-25 font-sans text-lg text-black/60">Blog not found.</div>
         </div>
         <Footer />
-        <style jsx global>{`
-          .blog-page { min-height: 100vh; background: #ffffff; }
-          .blog-container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
-          .back-button {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #d4a574 0%, #c9956c 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-bottom: 32px;
-            transition: all 0.3s ease;
-          }
-          .back-button:hover { transform: translateY(-2px); }
-          .error-state {
-            text-align: center;
-            padding: 60px 20px;
-            font-family: var(--font-sans);
-            font-size: 1.125rem;
-            color: rgba(0, 0, 0, 0.6);
-          }
-        `}</style>
       </div>
     );
   }
 
   return (
-    <div className="blog-page">
+    <div className="min-h-screen bg-white">
       <Navbar top={WHITE_SCHEME} scrolled={WHITE_SCHEME} />
       
-      <main className="blog-main">
-        <div className="blog-container">
-          <button onClick={() => router.push('/blog')} className="back-button">
+      <main className="pt-20 min-h-[calc(100vh-80px)]">
+        <div className="max-w-4xl mx-auto px-5 py-16 md:px-20">
+          <button onClick={() => router.push('/blog')} className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#d4a574] to-[#c9956c] text-white border-none rounded-lg font-sans text-sm font-semibold cursor-pointer mb-10 transition-all duration-300 hover:-translate-y-0.5">
             <ArrowLeft size={20} />
             Back to Blogs
           </button>
 
-          <article className="blog-article">
+          <article className="bg-white rounded-2xl overflow-hidden">
             {blog.image && (
-              <div className="blog-hero-image">
-                <img src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}${blog.image}`} alt={blog.imageAlt || blog.title} />
+              <div className="w-full h-96 overflow-hidden rounded-2xl mb-10">
+                <img 
+                  src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}${blog.image}`} 
+                  alt={blog.imageAlt || blog.title} 
+                  className="w-full h-full object-cover"
+                />
               </div>
             )}
 
-            <div className="blog-article-content">
-              <div className="blog-meta">
-                <span className="blog-date">
+            <div className="p-0">
+              <div className="flex gap-5 mb-6 flex-wrap">
+                <span className="flex items-center gap-2 font-sans text-base text-black/50">
                   <Calendar size={16} />
                   {formatDate(blog.createdAt)}
                 </span>
                 {blog.author && (
-                  <span className="blog-author">
+                  <span className="flex items-center gap-2 font-sans text-base text-black/50">
                     <User size={16} />
                     {blog.author.name}
                   </span>
                 )}
               </div>
 
-              <h1 className="blog-title">{blog.title}</h1>
+              <h1 className="font-display text-5xl font-bold text-[#2a2620] mb-6 leading-tight">{blog.title}</h1>
 
               {blog.categories && blog.categories.length > 0 && (
-                <div className="blog-categories">
+                <div className="flex gap-2.5 flex-wrap mb-8">
                   {blog.categories.map((category) => (
-                    <span key={category.id} className="category-tag">
+                    <span key={category.id} className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-[rgba(212,165,116,0.1)] to-[rgba(201,149,108,0.1)] text-[#c9956c] rounded-full font-sans text-sm font-medium">
                       <Tag size={14} />
                       {category.name}
                     </span>
@@ -152,11 +118,11 @@ export default function BlogDetail() {
               )}
 
               {blog.shortDescription && (
-                <p className="blog-excerpt">{blog.shortDescription}</p>
+                <p className="font-sans text-xl text-black/70 leading-relaxed mb-10 italic">{blog.shortDescription}</p>
               )}
 
               <div 
-                className="blog-body"
+                className="font-sans text-lg leading-relaxed text-black/80 prose prose-headings:font-display prose-headings:text-2xl prose-headings:font-bold prose-headings:text-[#2a2620] prose-headings:mt-10 prose-headings:mb-5 prose-h3:text-2xl prose-h3:font-semibold prose-h3:mt-8 prose-h3:mb-4 prose-p:mb-5 prose-ul:my-5 prose-ul:pl-6 prose-li:mb-3 prose-img:max-w-full prose-img:h-auto prose-img:rounded-xl prose-img:my-8 prose-blockquote:border-l-4 prose-blockquote:border-[#d4a574] prose-blockquote:px-6 prose-blockquote:py-5 prose-blockquote:my-8 prose-blockquote:bg-[rgba(212,165,116,0.05)] prose-blockquote:italic prose-a:text-[#c9956c] prose-a:underline hover:prose-a:text-[#d4a574]"
                 dangerouslySetInnerHTML={{ __html: blog.mainContent }}
               />
             </div>
@@ -165,208 +131,6 @@ export default function BlogDetail() {
       </main>
 
       <Footer />
-
-      <style jsx global>{`
-        .blog-page {
-          min-height: 100vh;
-          background: #ffffff;
-        }
-
-        .blog-main {
-          padding-top: 80px;
-          min-height: calc(100vh - 80px);
-        }
-
-        .blog-container {
-          max-width: 900px;
-          margin: 0 auto;
-          padding: 60px 20px;
-        }
-
-        .back-button {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          padding: 12px 24px;
-          background: linear-gradient(135deg, #d4a574 0%, #c9956c 100%);
-          color: white;
-          border: none;
-          border-radius: 8px;
-          font-family: var(--font-sans);
-          font-size: 0.9rem;
-          font-weight: 600;
-          cursor: pointer;
-          margin-bottom: 40px;
-          transition: all 0.3s ease;
-        }
-
-        .back-button:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
-        }
-
-        .blog-article {
-          background: white;
-          border-radius: 16px;
-          overflow: hidden;
-        }
-
-        .blog-hero-image {
-          width: 100%;
-          height: 400px;
-          overflow: hidden;
-          border-radius: 16px;
-          margin-bottom: 40px;
-        }
-
-        .blog-hero-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .blog-article-content {
-          padding: 0;
-        }
-
-        .blog-meta {
-          display: flex;
-          gap: 20px;
-          margin-bottom: 24px;
-          flex-wrap: wrap;
-        }
-
-        .blog-date,
-        .blog-author {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          font-family: var(--font-sans);
-          font-size: 0.95rem;
-          color: rgba(0, 0, 0, 0.5);
-        }
-
-        .blog-title {
-          font-family: var(--font-display);
-          font-size: 2.5rem;
-          font-weight: 700;
-          color: var(--ink);
-          margin-bottom: 24px;
-          line-height: 1.2;
-        }
-
-        .blog-categories {
-          display: flex;
-          gap: 10px;
-          flex-wrap: wrap;
-          margin-bottom: 32px;
-        }
-
-        .category-tag {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 8px 16px;
-          background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(201, 149, 108, 0.1) 100%);
-          color: #c9956c;
-          border-radius: 20px;
-          font-family: var(--font-sans);
-          font-size: 0.875rem;
-          font-weight: 500;
-        }
-
-        .blog-excerpt {
-          font-family: var(--font-sans);
-          font-size: 1.25rem;
-          color: rgba(0, 0, 0, 0.7);
-          line-height: 1.7;
-          margin-bottom: 40px;
-          font-style: italic;
-        }
-
-        .blog-body {
-          font-family: var(--font-sans);
-          font-size: 1.125rem;
-          line-height: 1.8;
-          color: rgba(0, 0, 0, 0.8);
-        }
-
-        .blog-body h2 {
-          font-family: var(--font-display);
-          font-size: 1.75rem;
-          font-weight: 700;
-          color: var(--ink);
-          margin: 40px 0 20px;
-        }
-
-        .blog-body h3 {
-          font-family: var(--font-display);
-          font-size: 1.5rem;
-          font-weight: 600;
-          color: var(--ink);
-          margin: 32px 0 16px;
-        }
-
-        .blog-body p {
-          margin-bottom: 20px;
-        }
-
-        .blog-body ul,
-        .blog-body ol {
-          margin: 20px 0;
-          padding-left: 24px;
-        }
-
-        .blog-body li {
-          margin-bottom: 12px;
-        }
-
-        .blog-body img {
-          max-width: 100%;
-          height: auto;
-          border-radius: 12px;
-          margin: 32px 0;
-        }
-
-        .blog-body blockquote {
-          border-left: 4px solid #d4a574;
-          padding: 20px 24px;
-          margin: 32px 0;
-          background: rgba(212, 165, 116, 0.05);
-          font-style: italic;
-        }
-
-        .blog-body a {
-          color: #c9956c;
-          text-decoration: underline;
-        }
-
-        .blog-body a:hover {
-          color: #d4a574;
-        }
-
-        @media (max-width: 768px) {
-          .blog-title {
-            font-size: 2rem;
-          }
-
-          .blog-excerpt {
-            font-size: 1.125rem;
-          }
-
-          .blog-body {
-            font-size: 1rem;
-          }
-
-          .blog-hero-image {
-            height: 250px;
-          }
-
-          .blog-container {
-            padding: 40px 20px;
-          }
-        }
-      `}</style>
     </div>
   );
 }

@@ -20,22 +20,26 @@ export default function StorySection() {
 
         {/* Right: Content */}
         <div>
-          <p className="font-sans text-xs tracking-[0.25em] text-[var(--tan)] mb-4">
-            — Our Story
-          </p>
-          <h2 className="font-display text-4xl leading-tight mb-6">
+          <div className="flex items-center mb-2">
+            <span className="h-px bg-[var(--tan)] w-16 mr-6 hidden sm:block"></span>
+            <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--tan)] whitespace-nowrap uppercase">
+              Our Story
+            </p>
+            <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 text-[#2a2620]">
             A Legacy of Excellence
           </h2>
           <div className="space-y-4 font-sans text-sm leading-relaxed text-[var(--ink)]/80">
-            <p>
+            <p className="paragraph">
               Founded with a vision to transform Dubai's real estate landscape, 
               PLT Properties has been at the forefront of luxury development for over a decade.
             </p>
-            <p>
+            <p className="paragraph">
               Our journey began with a simple belief: that exceptional living spaces 
               should be accessible to those who appreciate the finer things in life.
             </p>
-            <p>
+            <p className="paragraph">
               Today, we stand as a testament to unwavering commitment to quality, 
               innovation, and customer satisfaction. Every project we undertake 
               is a reflection of our dedication to creating spaces that inspire.

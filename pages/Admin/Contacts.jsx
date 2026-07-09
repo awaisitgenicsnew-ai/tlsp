@@ -116,54 +116,54 @@ export default function AdminContacts() {
   };
 
   return (
-    <div className="admin-layout">
+    <div className="flex min-h-screen bg-gray-100">
       <AdminSidebar activePage="contacts" />
       
-      <main className="admin-main">
-        <div className="admin-content">
-          <div className="page-header">
-            <h1 className="page-title">Contacts</h1>
+      <main className="flex-1 ml-[280px] p-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <h1 className="font-display text-4xl font-bold text-[#2a2620]">Contacts</h1>
           </div>
 
           {error && (
-            <div className="error-message">
+            <div className="bg-red-500 text-white px-3 py-3 mb-5 font-sans text-sm">
               {error}
             </div>
           )}
 
           {loading ? (
-            <div className="loading">Loading...</div>
+            <div className="text-center py-10 font-sans text-base text-black/60">Loading...</div>
           ) : (
-            <div className="contacts-table-wrapper">
-              <table className="contacts-table">
+            <div className="bg-white shadow-sm overflow-x-auto">
+              <table className="w-full border-collapse">
                 <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Subject</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                    <th>Actions</th>
+                  <tr className="bg-[#17130f] text-white">
+                    <th className="px-4 py-4 text-left font-sans text-sm font-semibold uppercase tracking-wider">Name</th>
+                    <th className="px-4 py-4 text-left font-sans text-sm font-semibold uppercase tracking-wider">Email</th>
+                    <th className="px-4 py-4 text-left font-sans text-sm font-semibold uppercase tracking-wider">Phone</th>
+                    <th className="px-4 py-4 text-left font-sans text-sm font-semibold uppercase tracking-wider">Subject</th>
+                    <th className="px-4 py-4 text-left font-sans text-sm font-semibold uppercase tracking-wider">Status</th>
+                    <th className="px-4 py-4 text-left font-sans text-sm font-semibold uppercase tracking-wider">Date</th>
+                    <th className="px-4 py-4 text-left font-sans text-sm font-semibold uppercase tracking-wider">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {contacts.length === 0 ? (
                     <tr>
-                      <td colSpan="7" className="no-data">No contacts found</td>
+                      <td colSpan="7" className="text-center py-10 font-sans text-base text-black/60">No contacts found</td>
                     </tr>
                   ) : (
                     contacts.map((contact) => (
-                      <tr key={contact.id}>
-                        <td>{contact.name}</td>
-                        <td>{contact.email}</td>
-                        <td>{contact.phone || '-'}</td>
-                        <td>{contact.subject}</td>
-                        <td>
+                      <tr key={contact.id} className="hover:bg-gray-50">
+                        <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{contact.name}</td>
+                        <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{contact.email}</td>
+                        <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{contact.phone || '-'}</td>
+                        <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{contact.subject}</td>
+                        <td className="px-4 py-4 border-b border-gray-200">
                           <select
                             value={contact.status}
                             onChange={(e) => updateStatus(contact.id, e.target.value)}
-                            className="status-select"
+                            className="px-3 py-2 border border-gray-300 rounded-none font-sans text-sm cursor-pointer bg-white"
                             style={{ color: getStatusColor(contact.status) }}
                           >
                             <option value="new">New</option>
@@ -172,11 +172,11 @@ export default function AdminContacts() {
                             <option value="closed">Closed</option>
                           </select>
                         </td>
-                        <td>{new Date(contact.created_at).toLocaleDateString()}</td>
-                        <td>
+                        <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{new Date(contact.created_at).toLocaleDateString()}</td>
+                        <td className="px-4 py-4 border-b border-gray-200">
                           <button
                             onClick={() => deleteContact(contact.id)}
-                            className="delete-button"
+                            className="px-4 py-2 bg-red-500 text-white border-none rounded-none font-sans text-sm cursor-pointer transition-all duration-300 hover:bg-red-600"
                           >
                             Delete
                           </button>
@@ -190,144 +190,6 @@ export default function AdminContacts() {
           )}
         </div>
       </main>
-
-      <style jsx global>{`
-        .admin-layout {
-          display: flex;
-          min-height: 100vh;
-          background: #f5f5f5;
-        }
-
-        .admin-main {
-          flex: 1;
-          margin-left: 280px;
-          padding: 40px;
-        }
-
-        .admin-content {
-          max-width: 1400px;
-          margin: 0 auto;
-        }
-
-        .page-header {
-          margin-bottom: 30px;
-        }
-
-        .page-title {
-          font-family: var(--font-display);
-          font-size: 2.5rem;
-          font-weight: 700;
-          color: var(--ink);
-        }
-
-        .error-message {
-          background: #ef4444;
-          color: white;
-          padding: 12px;
-          margin-bottom: 20px;
-          font-family: var(--font-sans);
-          font-size: 0.875rem;
-        }
-
-        .loading {
-          text-align: center;
-          padding: 40px;
-          font-family: var(--font-sans);
-          color: rgba(0, 0, 0, 0.6);
-        }
-
-        .contacts-table-wrapper {
-          background: white;
-          border-radius: 0;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-          overflow-x: auto;
-        }
-
-        .contacts-table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-
-        .contacts-table thead {
-          background: var(--dark);
-          color: white;
-        }
-
-        .contacts-table th {
-          padding: 16px;
-          text-align: left;
-          font-family: var(--font-sans);
-          font-weight: 600;
-          font-size: 0.875rem;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-        }
-
-        .contacts-table td {
-          padding: 16px;
-          border-bottom: 1px solid #e5e7eb;
-          font-family: var(--font-sans);
-          font-size: 0.9375rem;
-          color: var(--ink);
-        }
-
-        .contacts-table tbody tr:hover {
-          background: #f9fafb;
-        }
-
-        .no-data {
-          text-align: center;
-          padding: 40px;
-          color: rgba(0, 0, 0, 0.6);
-        }
-
-        .status-select {
-          padding: 8px 12px;
-          border: 1px solid #e5e7eb;
-          border-radius: 0;
-          font-family: var(--font-sans);
-          font-size: 0.875rem;
-          cursor: pointer;
-          background: white;
-        }
-
-        .delete-button {
-          background: #ef4444;
-          color: white;
-          padding: 8px 16px;
-          border: none;
-          border-radius: 0;
-          font-size: 0.875rem;
-          cursor: pointer;
-          font-family: var(--font-sans);
-          transition: all 0.3s ease;
-        }
-
-        .delete-button:hover {
-          background: #dc2626;
-        }
-
-        @media (max-width: 768px) {
-          .admin-main {
-            margin-left: 0;
-            padding: 20px;
-            padding-top: 80px;
-          }
-
-          .page-title {
-            font-size: 2rem;
-          }
-
-          .contacts-table {
-            font-size: 0.875rem;
-          }
-
-          .contacts-table th,
-          .contacts-table td {
-            padding: 12px 8px;
-          }
-        }
-      `}</style>
     </div>
   );
 }

@@ -91,20 +91,20 @@ export default function Categories() {
   };
 
   return (
-    <div className="admin-layout">
+    <div className="flex min-h-screen bg-white">
       <AdminSidebar activePage="categories" />
       
-      <main className="admin-main">
-        <div className="admin-content">
-          <div className="page-header">
-            <h1 className="page-title">Categories</h1>
+      <main className="flex-1 ml-[300px] p-10 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex justify-between items-center mb-10 p-8 bg-gradient-to-br from-[#1a1a2e] to-[#16213e] rounded-2xl shadow-lg relative overflow-hidden">
+            <h1 className="font-display text-4xl font-bold text-white relative z-10">Categories</h1>
             <button 
               onClick={() => {
                 setEditingCategory(null);
                 setFormData({ name: '', slug: '' });
                 setShowModal(true);
               }}
-              className="add-button"
+              className="flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-[#d4a574] to-[#c9956c] text-white border-none rounded-xl font-sans text-sm font-semibold cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg relative z-10"
             >
               <Plus size={20} />
               Add Category
@@ -112,32 +112,32 @@ export default function Categories() {
           </div>
 
           {loading ? (
-            <div className="loading-state">Loading categories...</div>
+            <div className="text-center py-10 font-sans text-base text-black/60">Loading categories...</div>
           ) : (
-            <div className="data-table">
-              <table>
+            <div className="bg-white shadow-sm">
+              <table className="w-full border-collapse">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Slug</th>
-                    <th>Actions</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Name</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Slug</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {categories.map((category) => (
                     <tr key={category.id}>
-                      <td>{category.name}</td>
-                      <td>{category.slug}</td>
-                      <td>
+                      <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{category.name}</td>
+                      <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{category.slug}</td>
+                      <td className="px-4 py-4 border-b border-gray-200">
                         <button 
                           onClick={() => handleEdit(category)}
-                          className="action-button edit"
+                          className="p-2 bg-transparent border-none cursor-pointer transition-all duration-300 mr-2 text-blue-500 hover:bg-blue-50"
                         >
                           <Edit size={16} />
                         </button>
                         <button 
                           onClick={() => handleDelete(category.id)}
-                          className="action-button delete"
+                          className="p-2 bg-transparent border-none cursor-pointer transition-all duration-300 text-red-500 hover:bg-red-50"
                         >
                           <Trash2 size={16} />
                         </button>
@@ -150,10 +150,10 @@ export default function Categories() {
           )}
 
           {showModal && (
-            <div className="modal-overlay">
-              <div className="modal">
-                <div className="modal-header">
-                  <h2>
+            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+              <div className="bg-white w-full max-w-md rounded-none shadow-xl">
+                <div className="flex justify-between items-center p-6 border-b border-gray-200">
+                  <h2 className="font-display text-2xl font-bold text-[#2a2620]">
                     {editingCategory ? 'Edit Category' : 'Add Category'}
                   </h2>
                   <button 
@@ -163,41 +163,43 @@ export default function Categories() {
                       setFormData({ name: '', slug: '' });
                       setError('');
                     }}
-                    className="close-button"
+                    className="bg-transparent border-none text-3xl cursor-pointer text-black/60 leading-none"
                   >
                     ×
                   </button>
                 </div>
-                <form onSubmit={handleSubmit} className="modal-form">
-                  {error && <div className="error-message">{error}</div>}
+                <form onSubmit={handleSubmit} className="p-6">
+                  {error && <div className="bg-red-50 text-red-500 px-3 py-3 rounded-none mb-5 font-sans text-sm">{error}</div>}
                   
-                  <div className="form-group">
-                    <label>Name</label>
+                  <div className="mb-5">
+                    <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Name</label>
                     <input
                       type="text"
                       value={formData.name}
                       onChange={handleNameChange}
                       required
                       placeholder="Category name"
+                      className="w-full px-3 py-3 border border-gray-300 rounded-none font-sans text-base box-border text-black focus:outline-none focus:border-[#c9a876] focus:shadow-[0_0_0_3px_rgba(210,180,140,0.1)]"
                     />
                   </div>
 
-                  <div className="form-group">
-                    <label>Slug</label>
+                  <div className="mb-5">
+                    <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Slug</label>
                     <input
                       type="text"
                       value={formData.slug}
                       onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
                       required
                       placeholder="category-slug"
+                      className="w-full px-3 py-3 border border-gray-300 rounded-none font-sans text-base box-border text-black focus:outline-none focus:border-[#c9a876] focus:shadow-[0_0_0_3px_rgba(210,180,140,0.1)]"
                     />
                   </div>
 
-                  <div className="modal-actions">
-                    <button type="button" onClick={() => setShowModal(false)} className="cancel-button">
+                  <div className="flex gap-3 justify-end mt-6">
+                    <button type="button" onClick={() => setShowModal(false)} className="px-6 py-3 bg-white border border-gray-300 text-[#2a2620] font-sans text-sm font-semibold cursor-pointer rounded-none transition-all duration-300 hover:bg-gray-50">
                       Cancel
                     </button>
-                    <button type="submit" className="submit-button">
+                    <button type="submit" className="px-6 py-3 bg-[#c9a876] text-white border-none font-sans text-sm font-semibold cursor-pointer rounded-none transition-all duration-300 hover:bg-[#7a341e]">
                       {editingCategory ? 'Update' : 'Create'}
                     </button>
                   </div>
@@ -207,301 +209,6 @@ export default function Categories() {
           )}
         </div>
       </main>
-
-      <style jsx global>{`
-        .admin-layout {
-          display: flex;
-          min-height: 100vh;
-          background: #ffffff;
-        }
-
-        .admin-main {
-          flex: 1;
-          margin-left: 300px;
-          padding: 40px;
-          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        }
-
-        .admin-content {
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-
-        .page-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 40px;
-          padding: 32px;
-          background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-          border-radius: 16px;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-          position: relative;
-          overflow: hidden;
-        }
-
-        .page-header::before {
-          content: '';
-          position: absolute;
-          top: -50%;
-          right: -50%;
-          width: 100%;
-          height: 100%;
-          background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
-          pointer-events: none;
-        }
-
-        .page-title {
-          font-family: var(--font-display);
-          font-size: 2.5rem;
-          font-weight: 700;
-          color: white;
-          position: relative;
-          z-index: 1;
-        }
-
-        .add-button {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          background: linear-gradient(135deg, #d4a574 0%, #c9956c 100%);
-          color: white;
-          padding: 14px 28px;
-          border: none;
-          border-radius: 12px;
-          font-size: 0.9rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-family: var(--font-sans);
-          box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
-          position: relative;
-          z-index: 1;
-        }
-
-        .add-button:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(212, 165, 116, 0.4);
-        }
-
-        .loading-state {
-          text-align: center;
-          padding: 40px;
-          font-family: var(--font-sans);
-          color: rgba(0, 0, 0, 0.6);
-        }
-
-        .data-table {
-          background: white;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .data-table table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-
-        .data-table th {
-          background: #f8f9fa;
-          padding: 16px;
-          text-align: left;
-          font-family: var(--font-sans);
-          font-weight: 600;
-          font-size: 0.875rem;
-          color: var(--ink);
-          border-bottom: 2px solid var(--tan);
-        }
-
-        .data-table td {
-          padding: 16px;
-          border-bottom: 1px solid #e5e7eb;
-          font-family: var(--font-sans);
-          font-size: 0.9375rem;
-          color: var(--ink);
-        }
-
-        .data-table tr:last-child td {
-          border-bottom: none;
-        }
-
-        .action-button {
-          padding: 8px;
-          background: transparent;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          margin-right: 8px;
-        }
-
-        .action-button.edit {
-          color: #3b82f6;
-        }
-
-        .action-button.edit:hover {
-          background: #eff6ff;
-        }
-
-        .action-button.delete {
-          color: #ef4444;
-        }
-
-        .action-button.delete:hover {
-          background: #fef2f2;
-        }
-
-        .modal-overlay {
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.5);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 1000;
-        }
-
-        .modal {
-          background: white;
-          width: 100%;
-          max-width: 500px;
-          border-radius: 0;
-          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        .modal-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 24px;
-          border-bottom: 1px solid #e5e7eb;
-        }
-
-        .modal-header h2 {
-          font-family: var(--font-display);
-          font-size: 1.5rem;
-          font-weight: 700;
-          color: var(--ink);
-        }
-
-        .close-button {
-          background: transparent;
-          border: none;
-          font-size: 2rem;
-          cursor: pointer;
-          color: rgba(0, 0, 0, 0.6);
-          line-height: 1;
-        }
-
-        .modal-form {
-          padding: 24px;
-        }
-
-        .form-group {
-          margin-bottom: 20px;
-        }
-
-        .form-group label {
-          display: block;
-          font-family: var(--font-sans);
-          font-size: 0.875rem;
-          font-weight: 600;
-          color: var(--ink);
-          margin-bottom: 8px;
-        }
-
-        .form-group input {
-          width: 100%;
-          padding: 12px;
-          border: 1px solid #d1d5db;
-          border-radius: 0;
-          font-family: var(--font-sans);
-          font-size: 0.9375rem;
-          box-sizing: border-box;
-          color: #000000;
-        }
-
-        .form-group input:focus {
-          outline: none;
-          border-color: var(--tan);
-          box-shadow: 0 0 0 3px rgba(210, 180, 140, 0.1);
-        }
-
-        .form-group input::placeholder {
-          color: #000000;
-        }
-
-        .error-message {
-          background: #fef2f2;
-          color: #ef4444;
-          padding: 12px;
-          border-radius: 0;
-          margin-bottom: 20px;
-          font-family: var(--font-sans);
-          font-size: 0.875rem;
-        }
-
-        .modal-actions {
-          display: flex;
-          gap: 12px;
-          justify-content: flex-end;
-          margin-top: 24px;
-        }
-
-        .cancel-button {
-          padding: 12px 24px;
-          background: white;
-          border: 1px solid #d1d5db;
-          color: var(--ink);
-          font-family: var(--font-sans);
-          font-size: 0.875rem;
-          font-weight: 600;
-          cursor: pointer;
-          border-radius: 0;
-          transition: all 0.3s ease;
-        }
-
-        .cancel-button:hover {
-          background: #f9fafb;
-        }
-
-        .submit-button {
-          padding: 12px 24px;
-          background: var(--tan);
-          color: white;
-          border: none;
-          font-family: var(--font-sans);
-          font-size: 0.875rem;
-          font-weight: 600;
-          cursor: pointer;
-          border-radius: 0;
-          transition: all 0.3s ease;
-        }
-
-        .submit-button:hover {
-          background: #7a341e;
-        }
-
-        @media (max-width: 768px) {
-          .admin-main {
-            margin-left: 0;
-            padding: 20px;
-            padding-top: 80px;
-          }
-
-          .page-header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 16px;
-          }
-
-          .page-title {
-            font-size: 2rem;
-          }
-
-          .data-table {
-            overflow-x: auto;
-          }
-        }
-      `}</style>
     </div>
   );
 }

@@ -6,7 +6,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '@/components/Navbar';
 import FloatingActionBar from '@/components/FloatingActionBar';
 import Footer from '@/components/Footer';
-import SectionNavigation from '@/components/SectionNavigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -88,31 +87,20 @@ export default function Homepage() {
   const wrapperRef = useRef(null);
   const trackRef = useRef(null);
 
-  const handlePrevious = () => {
-    if (activeIndex > 0) {
-      const newIndex = activeIndex - 1;
-      setActiveIndex(newIndex);
-      scrollToSection(newIndex);
-    }
-  };
-
-  const handleNext = () => {
-    if (activeIndex < SECTIONS.length - 1) {
-      const newIndex = activeIndex + 1;
-      setActiveIndex(newIndex);
-      scrollToSection(newIndex);
-    }
-  };
-
-  const scrollToSection = (index) => {
-    const sectionId = `section-${SECTIONS[index].id}`;
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   useEffect(() => {
+    // Kill all existing ScrollTriggers to prevent cached scroll positions
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    
+    // Reset scroll position and track position on page load
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      if (trackRef.current) {
+        gsap.set(trackRef.current, { x: 0 });
+      }
+      ScrollTrigger.refresh();
+    }, 100);
+    
     const mm = gsap.matchMedia();
 
     // ============ DESKTOP: HORIZONTAL SCROLL ============
@@ -137,9 +125,9 @@ export default function Homepage() {
           // Snap: jis section ki taraf aadhe se zyada scroll hoga, wahi properly snap ho jayega
           snap: {
             snapTo: 1 / (SECTIONS.length - 1),
-            duration: { min: 0.2, max: 0.6 },
-            ease: 'power1.inOut',
-            delay: 2,
+            duration: { min: 0.3, max: 0.5 },
+            ease: 'power2.inOut',
+            delay: 0,
             // directional: false = scroll direction ignore karo,
             // jis section ka hissa screen par zyada hai wahi snap hoga
             directional: false,
@@ -242,13 +230,6 @@ export default function Homepage() {
       {/* Floating Action Bar */}
       <FloatingActionBar />
 
-      {/* Section Navigation */}
-      <SectionNavigation
-        currentIndex={activeIndex}
-        totalSections={SECTIONS.length}
-        onPrevious={handlePrevious}
-        onNext={handleNext}
-      />
 
       {/* Footer */}
       <Footer />

@@ -61,7 +61,7 @@ function BadgeTag({ label }) {
 
 export default function Developments() {
   return (
-    <section id="developments" className="w-full bg-[#d9d9d9] py-10 lg:py-24 px-4 md:px-10 flex flex-col justify-between">
+    <section id="developments" className="w-full bg-[#d9d9d9] py-10 lg:py-24 px-4 md:px-10 flex flex-col justify-center align-center">
       
       {/* Featured development */}
       <div className="grid grid-cols-1 lg:grid-cols-2 border border-[#d8d3c7] items-stretch min-h-[330px] overflow-hidden">
@@ -86,14 +86,14 @@ export default function Developments() {
             ))}
           </div>
 
-          <h2 className="font-serif text-2xl md:text-3xl text-[#2b2823] leading-tight break-words">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl  mb-8 text-[#2a2620]">
             {featured.title}
           </h2>
           <p className="mt-1.5 text-[9px] tracking-[0.15em] uppercase text-[#8a8578]">
             {featured.location}
           </p>
 
-          <p className="mt-3 text-[12px] leading-relaxed text-[#5c584f] max-w-md break-words">
+          <p className="mt-3  font-[400] text-[16px] tracking-[0.5px] leading-relaxed text-[#5c584f] max-w-md break-words ">
             {featured.description}
           </p>
 
@@ -103,7 +103,7 @@ export default function Developments() {
                 <p className="text-[9px] tracking-widest uppercase text-[#a8a397] mb-0.5 truncate">
                   {stat.label}
                 </p>
-                <p className="text-[11px] text-[#2b2823] font-medium truncate">
+                <p className="text-[14px] text-[#2b2823] font-medium truncate">
                   {stat.value}
                 </p>
               </div>

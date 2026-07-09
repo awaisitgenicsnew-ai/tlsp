@@ -5,7 +5,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import SectionNavigation from '@/components/SectionNavigation';
 
 // About Us sections
 import HeroSection from './section/HeroSection';
@@ -75,31 +74,20 @@ export default function AboutUs() {
   const wrapperRef = useRef(null);
   const trackRef = useRef(null);
 
-  const handlePrevious = () => {
-    if (activeIndex > 0) {
-      const newIndex = activeIndex - 1;
-      setActiveIndex(newIndex);
-      scrollToSection(newIndex);
-    }
-  };
-
-  const handleNext = () => {
-    if (activeIndex < SECTIONS.length - 1) {
-      const newIndex = activeIndex + 1;
-      setActiveIndex(newIndex);
-      scrollToSection(newIndex);
-    }
-  };
-
-  const scrollToSection = (index) => {
-    const sectionId = `section-${SECTIONS[index].id}`;
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   useEffect(() => {
+    // Kill all existing ScrollTriggers to prevent cached scroll positions
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    
+    // Reset scroll position and track position on page load
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      if (trackRef.current) {
+        gsap.set(trackRef.current, { x: 0 });
+      }
+      ScrollTrigger.refresh();
+    }, 100);
+    
     const mm = gsap.matchMedia();
 
     // Desktop horizontal scroll
@@ -123,9 +111,9 @@ export default function AboutUs() {
           anticipatePin: 1,
           snap: {
             snapTo: 1 / (SECTIONS.length - 1),
-            duration: { min: 0.2, max: 0.6 },
-            ease: 'power1.inOut',
-            delay: 2,
+            duration: { min: 0.3, max: 0.5 },
+            ease: 'power2.inOut',
+            delay: 0,
             directional: false,
           },
           onUpdate: (self) => {
@@ -220,13 +208,6 @@ export default function AboutUs() {
         </main>
       </div>
 
-      {/* Section Navigation */}
-      <SectionNavigation
-        currentIndex={activeIndex}
-        totalSections={SECTIONS.length}
-        onPrevious={handlePrevious}
-        onNext={handleNext}
-      />
 
       <Footer />
     </div>

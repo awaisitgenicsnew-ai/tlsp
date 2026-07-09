@@ -5,12 +5,12 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 const LINKS = [
-  { label: "Developments", href: "#developments" },
-  { label: "About", href: "/about-us" },
-  { label: "PLT Tower", href: "/plt-tower" },
-  { label: "Investment", href: "#investment" },
-  { label: "Contact", href: "/contact-us" },
-  { label: "Register Interest", href: "/register-interest" },
+  { label: "DEVELOPMENTS", href: "/" },
+  { label: "ABOUT", href: "/about-us" },
+  { label: "PLT TOWER", href: "/plt-tower" },
+  { label: "INVESTMENT", href: "/" },
+  { label: "CONTACT", href: "/contact-us" },
+  { label: "REGISTER INTEREST", href: "/register-interest" },
 ];
 
 
@@ -107,10 +107,10 @@ export default function Navbar({ colors = {} }) {
 
         {/* Brand Logo */}
         <Link href="/" className="leading-tight flex-shrink-0 z-10">
-          <span className="block font-sans text-lg sm:text-xl tracking-[0.15em] font-bold transition-colors duration-300 text-[color:var(--nav-mobile-text)] md:text-[color:var(--nav-text)]">
+          <span className="block font-logo text-lg sm:text-xl tracking-[0.15em] font-bold transition-colors duration-300 text-[color:var(--nav-mobile-text)] md:text-[color:var(--nav-text)]">
             PLT
           </span>
-          <span className="block font-sans text-xs sm:text-sm tracking-[0.25em] font-medium -mt-0.5 transition-colors duration-300 text-[color:var(--nav-mobile-subtext)] md:text-[color:var(--nav-subtext)]">
+          <span className="block font-logo text-xs sm:text-sm tracking-[0.25em] font-light -mt-0.5 transition-colors duration-300 text-[color:var(--nav-mobile-subtext)] md:text-[color:var(--nav-subtext)]">
             PROPERTIES
           </span>
         </Link>
@@ -122,7 +122,7 @@ export default function Navbar({ colors = {} }) {
               <Link
                 key={link.label}
                 href={link.href}
-                className="font-sans font-medium text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)]"
+                className="font-sans font-[400] text-[16px] tracking-[2px] uppercase transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)]"
               >
                 {link.label}
               </Link>
@@ -130,7 +130,7 @@ export default function Navbar({ colors = {} }) {
               <a
                 key={link.label}
                 href={link.href}
-                className="font-sans font-medium text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)]"
+                className="font-sans font-normal text-[16px] tracking-[2px] transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)]"
               >
                 {link.label}
               </a>
@@ -142,7 +142,7 @@ export default function Navbar({ colors = {} }) {
         <div className="flex items-center gap-4 flex-shrink-0 z-10">
           <a
             href="/register-interest"
-            className="hidden lg:inline-flex items-center px-6 py-2.5 font-sans text-[11px] font-medium tracking-[0.2em] uppercase transition-all duration-300 border border-[color:var(--nav-btn-border)] text-[color:var(--nav-btn-text)] hover:bg-[var(--nav-btn-hover-bg)] hover:text-[color:var(--nav-btn-hover-text)]"
+            className="hidden lg:inline-flex items-center px-6 py-2.5 font-sans  font-[400] text-[16px] tracking-[2px] uppercase transition-all duration-300 border border-[color:var(--nav-btn-border)] text-[color:var(--nav-btn-text)] hover:bg-[var(--nav-btn-hover-bg)] hover:text-[color:var(--nav-btn-hover-text)]"
           >
             Register Interest
           </a>
@@ -168,7 +168,7 @@ export default function Navbar({ colors = {} }) {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="font-sans text-sm font-medium tracking-[0.15em] uppercase transition-colors py-1 text-[color:var(--nav-mobile-link)] hover:text-[color:var(--nav-mobile-link-hover)]"
+                  className="font-sans text-[16px] font-normal tracking-[2px] transition-colors py-1 text-[color:var(--nav-mobile-link)] hover:text-[color:var(--nav-mobile-link-hover)]"
                 >
                   {link.label}
                 </Link>
@@ -177,7 +177,7 @@ export default function Navbar({ colors = {} }) {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="font-sans text-sm font-medium tracking-[0.15em] uppercase transition-colors py-1 text-[color:var(--nav-mobile-link)] hover:text-[color:var(--nav-mobile-link-hover)]"
+                  className="font-sans text-[16px] font-normal tracking-[2px] transition-colors py-1 text-[color:var(--nav-mobile-link)] hover:text-[color:var(--nav-mobile-link-hover)]"
                 >
                   {link.label}
                 </a>
@@ -187,7 +187,7 @@ export default function Navbar({ colors = {} }) {
             <a
               href="/register-interest"
               onClick={() => setOpen(false)}
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent font-sans text-xs font-medium tracking-[0.2em] uppercase mt-4 transition-all duration-300 bg-[var(--nav-mobile-btn-bg)] text-[color:var(--nav-mobile-btn-text)] hover:opacity-90"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent font-sans font-[400] text-[16px] tracking-[2px] uppercase mt-4 transition-all duration-300 bg-[var(--nav-mobile-btn-bg)] text-[color:var(--nav-mobile-btn-text)] hover:opacity-90"
             >
               Register Interest
             </a>

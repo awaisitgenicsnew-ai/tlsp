@@ -32,7 +32,8 @@ export default function HeroSection() {
         effect="fade"
         fadeEffect={{ crossFade: true }}
         speed={1000}
-        autoplay={{ delay: 5500, disableOnInteraction: false }}
+        initialSlide={0}
+        autoplay={{ delay: 1000, disableOnInteraction: false }}
         loop
         pagination={{
           el: ".custom-hero-pagination",

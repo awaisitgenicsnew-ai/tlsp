@@ -108,7 +108,7 @@ export function BrandPillarsSlider() {
   return (
     <div className="relative w-full overflow-hidden" style={{ height: 'clamp(500px, 85vh, 900px)' }}>
       <div className="absolute top-10 left-8 md:top-12 md:left-12 lg:top-[132px] lg:left-[33px] z-30">
-        <div className=" text-center font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 text-white">BRAND PILLARS</div>
+        <h2 className=" text-center font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 text-white">Brand Pillars</h2>
       </div>
 
       <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 lg:bottom-16 lg:right-16 z-30">
@@ -179,7 +179,7 @@ export function BrandPillarsSlider() {
         {pillars.map((_, idx) => (
           <div
             key={idx}
-            className="w-1 h-1 rounded-full transition-all duration-300"
+            className="w-1 h-1 transition-all duration-300"
             style={{
               backgroundColor: currentIndex === idx ? 'var(--gold)' : 'rgba(255, 255, 255, 0.3)',
               width: currentIndex === idx ? '16px' : '4px',
@@ -218,10 +218,10 @@ export default function BrandDNA() {
           Brand DNA
         </h2>
         <div className="mt-3 flex gap-1.5">
-          <span className="h-[3px] w-6 bg-[#2b2823]/30 rounded-full" />
-          <span className="h-[3px] w-6 bg-[#2b2823]/30 rounded-full" />
-          <span className="h-[3px] w-6 bg-[#2b2823]/20 rounded-full" />
-          <span className="h-[3px] w-6 bg-[#2b2823]/10 rounded-full" />
+          <span className="h-[3px] w-6 bg-[#2b2823]/30" />
+          <span className="h-[3px] w-6 bg-[#2b2823]/30" />
+          <span className="h-[3px] w-6 bg-[#2b2823]/20" />
+          <span className="h-[3px] w-6 bg-[#2b2823]/10" />
         </div>
       </div>
 

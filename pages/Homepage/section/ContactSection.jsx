@@ -83,16 +83,14 @@ export default function ContactSection() {
       id="contact" 
       className="w-full bg-[#241D18] py-10 lg:py-24 px-6 md:px-12 lg:px-20 min-h-screen flex flex-col justify-center"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[156px] max-w-8xl mx-auto">
         {/* Left: intro + sales info */}
-        <div>
-          <p className="text-xs tracking-[0.2em] uppercase text-[#B08D57] mb-4">
-            — Register Interest
-          </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-white leading-snug mb-5">
+        <div className="px-10 py-8"> 
+          
+          <h2 className="font-serif text-4xl md:text-4xl text-white leading-normal mb-5">
             Begin a conversation with our team
           </h2>
-          <p className="text-sm leading-relaxed text-white/50 max-w-sm mb-10">
+          <p className="text-sm leading-[28px] text-white/50 max-w-lg mb-10 paragraph">
             Our sales team is available in person at the PLT Tower Sales
             Gallery, Business Bay, seven days a week — or reach us by phone
             and WhatsApp.
@@ -127,9 +125,12 @@ export default function ContactSection() {
             </div>
           </div>
         </div>
-
-        {/* Right: form */}
+        <div className="mt-8 lg:mt-0 bg-black px-10 py-8">
+          <h2 className="font-serif text-3xl md:text-4xl text-white leading-normal mb-8">
+         Register Interest
+        </h2>
         <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 content-start">
+        
           <Field 
             label="Full Name" 
             placeholder="Your name" 
@@ -197,6 +198,7 @@ export default function ContactSection() {
             {isSubmitting ? 'Submitting...' : 'Submit Enquiry'}
           </button>
         </form>
+       </div>
       </div>
     </section>
   );
@@ -205,7 +207,7 @@ export default function ContactSection() {
 function Field({ label, placeholder, className = "", name, value, onChange }) {
   return (
     <label className={`block ${className}`}>
-      <span className="block text-[10px] tracking-widest uppercase text-white/40 mb-2">
+      <span className="block text-[14px] tracking-widest uppercase text-white/40 mb-2">
         {label}
       </span>
       <input

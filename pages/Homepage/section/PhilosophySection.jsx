@@ -6,18 +6,21 @@ export default function Philosophy() {
   return (
     <section
       id="philosophy"
-      className="w-full bg-[#d9d9d9] py-10 lg:py-24 px-6 md:px-12 lg:px-20 flex flex-col justify-between"
+      className="w-full bg-[#d9d9d9] py-10 lg:py-24 px-6 md:px-12 lg:px-20 flex flex-col justify-center gap-5"
     >
       {/* Hero */}
-      <div className="max-w-2xl mx-auto text-center mb-16 md:mb-12">
-        <p className="text-xs tracking-[0.25em] uppercase text-[#a8916f] mb-1">
-          The PLT Philosophy
-        </p>
-        <div className="w-8 h-px bg-[#a8916f] mx-auto mb-2" />
-        <h2 className="font-serif text-4xl md:text-4xl leading-tight font-[300] text-[#523a27]">
+      <div className="max-w-2xl mx-auto text-center mb-16 md:mb-12 mt-5">
+        <div className="flex items-center justify-center mb-6">
+          <span className="h-px bg-[var(--tan)] w-16 mr-6 hidden sm:block"></span>
+          <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--tan)] whitespace-nowrap uppercase">
+            The PLT Philosophy
+          </p>
+          <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
+        </div>
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 text-[#2a2620]">
           More Than Places to Live
         </h2>
-        <p className="mt-4 text-sm leading-relaxed text-[#7a7468]  mx-auto">
+        <p className="mt-4 text-sm leading-relaxed text-[#7a7468] font-[400] text-[16px] tracking-[0.5px] mx-auto paragraph">
           Creating timeless residences where Italian heritage, exceptional
           architecture, wellness, and hospitality come together to shape
           extraordinary lifestyles.
@@ -27,7 +30,7 @@ export default function Philosophy() {
       {/* Feature block 1 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-5xl mx-auto w-full">
         <div className="relative flex items-stretch w-full">
-          <span className="hidden md:block [writing-mode:vertical-rl] text-[10px] tracking-[0.2em] uppercase text-[#a8916f] mr-4 self-end pb-4">
+          <span className="hidden md:block [writing-mode:vertical-rl] text-[10px] tracking-[0.2em] uppercase text-[#c5811b] mr-4 self-end pb-4">
             Artisanal
           </span>
 
@@ -48,17 +51,15 @@ export default function Philosophy() {
         </div>
 
         <div>
-          <p className="text-xs tracking-[0.2em] uppercase text-[#a8916f] mb-3">
-            — On Coming Home
-          </p>
-          <h3 className="font-serif text-3xl md:text-4xl font-[300] text-[#523a27] leading-snug mb-6">
+        
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 text-[#2a2620]">
             Designed to Enrich <br /> Everyday Living
-          </h3>
-          <p className="text-sm leading-relaxed text-[#6b6558] mb-4">
+          </h2>
+          <p className="text-sm leading-relaxed text-[#6b6558] mb-4 paragraph">
             Every PLT residence begins with a simple belief: exceptional
             living starts with exceptional design.
           </p>
-          <p className="text-sm leading-relaxed text-[#6b6558]">
+          <p className="text-sm leading-relaxed text-[#6b6558] paragraph">
             Inspired by Italian craftsmanship, every detail is thoughtfully
             considered to create homes that feel timeless, welcoming, and
             beautifully balanced. From elegant architecture to refined

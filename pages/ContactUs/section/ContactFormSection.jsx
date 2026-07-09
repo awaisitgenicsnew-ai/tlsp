@@ -66,10 +66,14 @@ export default function ContactFormSection() {
           {/* Left Column - Heading, Paragraph, Contact Info */}
           <div className="space-y-8 flex flex-col justify-center">
             <div>
-              <p className="font-sans text-xs tracking-[0.25em] text-[var(--tan)] mb-3">
-                — Contact Us
-              </p>
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight mb-4">
+              <div className="flex items-center  mb-6">
+                <span className="h-px bg-[var(--tan)] w-16 mr-6 hidden sm:block"></span>
+                <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--tan)] whitespace-nowrap uppercase">
+                  Contact Us
+                </p>
+                <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
+              </div>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 ">
                 Get in Touch
               </h2>
               <p className="text-white/70 text-base leading-relaxed">
@@ -119,8 +123,8 @@ export default function ContactFormSection() {
           </div>
 
           {/* Right Column - Prominent Form */}
-          <div className="bg-[#1a1a1a] p-8 md:p-10 rounded-xl shadow-2xl border border-[var(--tan)]/30">
-            <h3 className="font-display text-2xl md:text-3xl text-white mb-6 text-center">Contact Us</h3>
+          <div className="bg-[#1a1a1a] p-8 md:p-10">
+            <h3 className="font-display text-2xl md:text-3xl text-white mb-6 text-center">Fill in Your Information</h3>
             {success && (
               <div className="mb-6 bg-green-500 text-white p-4 text-center text-sm">
                 Thank you! Your message has been sent successfully.
