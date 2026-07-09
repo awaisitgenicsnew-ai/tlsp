@@ -17,10 +17,10 @@ export default function Philosophy() {
           </p>
           <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
         </div>
-        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 text-[#2a2620]">
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-2 text-[#2a2620]">
           More Than Places to Live
         </h2>
-        <p className="mt-4 text-sm leading-relaxed text-[#7a7468] font-[400] text-[16px] tracking-[0.5px] mx-auto paragraph">
+        <p className="mt-4 text-sm leading-relaxed text-[#7a7468] font-[400] text-[14px] tracking-[0.5px] mx-auto paragraph">
           Creating timeless residences where Italian heritage, exceptional
           architecture, wellness, and hospitality come together to shape
           extraordinary lifestyles.
@@ -52,7 +52,7 @@ export default function Philosophy() {
 
         <div>
         
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 text-[#2a2620]">
+          <h2 className="font-display text-3xl sm:text-3xl md:text-4xl leading-tight max-w-4xl mx-auto mb-2 text-[#2a2620]">
             Designed to Enrich <br /> Everyday Living
           </h2>
           <p className="text-sm leading-relaxed text-[#6b6558] mb-4 paragraph">

@@ -74,27 +74,27 @@ export default function Footer() {
         {/* Logo & About */}
         <div>
           <p className="text-2xl font-logo font-bold tracking-wide">P L T</p>
-          <p className="text-[10px]  font-logo tracking-[0.25em] text-[#c9a876] mt-1">PROPERTIES</p>
-          <p className="text-sm text-gray-400 mt-5 leading-relaxed max-w-xs">
+          <p className="block font-logo text-xs sm:text-sm tracking-[0.25em] font-light -mt-0.5 transition-colors duration-300 text-[#c9a876] ">PROPERTIES</p>
+          <p className="text-sm text-[#5f584e] mt-5 leading-relaxed max-w-xs">
             European craftsmanship. Considered addresses. Built for longevity in Dubai's most connected districts.
           </p>
           <div className="flex gap-3 mt-6">
-            <a href="#" className="w-9 h-9 flex items-center justify-center border border-gray-600 p-2 rounded-md hover:border-[#c9a876] transition">
-              <Instagram size={16} className="text-gray-300" />
+            <a href="#" className="w-9 h-9 flex items-center justify-center border border-gray-600 p-2  hover:border-[#c9a876] transition">
+              <Instagram size={16} className="text-[#87827c]" />
             </a>
-            <a href="#" className="w-9 h-9 flex items-center justify-center border border-gray-600 p-2 rounded-md hover:border-[#c9a876] transition">
-              <Linkedin size={16} className="text-gray-300" />
+            <a href="#" className="w-9 h-9 flex items-center justify-center border border-gray-600 p-2  hover:border-[#c9a876] transition">
+              <Linkedin size={16} className="text-[#87827c]" />
             </a>
-            <a href="#" className="w-9 h-9 flex items-center justify-center border border-gray-600 p-2 rounded-md hover:border-[#c9a876] transition">
-              <Youtube size={16} className="text-gray-300" />
+            <a href="#" className="w-9 h-9 flex items-center justify-center border border-gray-600 p-2  hover:border-[#c9a876] transition">
+              <Youtube size={16} className="text-[#87827c]" />
             </a>
           </div>
         </div>
 
         {/* Developments */}
         <div>
-          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-semibold mb-5 font-display">DEVELOPMENTS</p>
-          <ul className="space-y-4 text-sm text-gray-300">
+          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-medium font-sans mb-5 ">DEVELOPMENTS</p>
+          <ul className="space-y-4 text-sm text-[#87827c]">
             {DEVELOPMENTS.map((item) => (
               <li key={item.label}>
                 <a href={item.href} className="hover:text-[#c9a876] transition">
@@ -107,8 +107,8 @@ export default function Footer() {
 
         {/* Company */}
         <div>
-          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-semibold mb-5 font-display">COMPANY</p>
-          <ul className="space-y-4 text-sm text-gray-300">
+          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-medium font-sans mb-5 ">COMPANY</p>
+          <ul className="space-y-4 text-sm text-[#87827c]">
             {COMPANY.map((item) => (
               <li key={item.label}>
                 <a href={item.href} className="hover:text-[#c9a876] transition">
@@ -121,7 +121,7 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-semibold mb-5 font-display">CONTACT</p>
+          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-medium font-sans mb-5 ">CONTACT</p>
 
           <p className="text-[10px] tracking-[0.15em] text-gray-500 mb-1">SALES GALLERY</p>
           <p className="text-sm text-gray-200 mb-5">Business Bay, Dubai</p>

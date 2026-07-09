@@ -93,7 +93,7 @@ export default function Developments() {
             {featured.location}
           </p>
 
-          <p className="mt-3  font-[400] text-[16px] tracking-[0.5px] leading-relaxed text-[#5c584f] max-w-md break-words ">
+          <p className="mt-3  font-[400] text-[14px] tracking-[0.5px] leading-relaxed text-[#5c584f] max-w-md break-words ">
             {featured.description}
           </p>
 
