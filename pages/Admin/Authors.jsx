@@ -16,24 +16,25 @@ export default function Authors() {
   const [error, setError] = useState('');
 
   const getCookie = (name) => {
+    if (typeof document === 'undefined') return null;
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
     return null;
   };
 
-  const token = getCookie('token');
-
   useEffect(() => {
+    const token = getCookie('token');
     if (!token) {
       router.push('/admin/login');
       return;
     }
     fetchAuthors();
-  }, [token, router]);
+  }, [router]);
 
   const fetchAuthors = async () => {
     try {
+      const token = getCookie('token');
       const response = await authorApi.getAll(token);
       if (response.success) {
         setAuthors(response.data);
@@ -50,6 +51,7 @@ export default function Authors() {
     setError('');
 
     try {
+      const token = getCookie('token');
       const data = new FormData();
       data.append('name', formData.name);
       data.append('bio', formData.bio);
@@ -82,6 +84,7 @@ export default function Authors() {
     if (!confirm('Are you sure you want to delete this author?')) return;
 
     try {
+      const token = getCookie('token');
       await authorApi.delete(id, token);
       fetchAuthors();
     } catch (err) {

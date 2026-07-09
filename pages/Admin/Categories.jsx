@@ -16,24 +16,25 @@ export default function Categories() {
   const [error, setError] = useState('');
 
   const getCookie = (name) => {
+    if (typeof document === 'undefined') return null;
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
     return null;
   };
 
-  const token = getCookie('token');
-
   useEffect(() => {
+    const token = getCookie('token');
     if (!token) {
       router.push('/admin/login');
       return;
     }
     fetchCategories();
-  }, [token, router]);
+  }, [router]);
 
   const fetchCategories = async () => {
     try {
+      const token = getCookie('token');
       const response = await categoryApi.getAll(token);
       if (response.success) {
         setCategories(response.data);
@@ -50,6 +51,7 @@ export default function Categories() {
     setError('');
 
     try {
+      const token = getCookie('token');
       if (editingCategory) {
         await categoryApi.update(editingCategory.id, formData, token);
       } else {
@@ -74,6 +76,7 @@ export default function Categories() {
     if (!confirm('Are you sure you want to delete this category?')) return;
 
     try {
+      const token = getCookie('token');
       await categoryApi.delete(id, token);
       fetchCategories();
     } catch (err) {

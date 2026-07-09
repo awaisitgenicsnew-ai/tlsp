@@ -34,24 +34,25 @@ export default function Blogs() {
   const [error, setError] = useState('');
 
   const getCookie = (name) => {
+    if (typeof document === 'undefined') return null;
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
     return null;
   };
 
-  const token = getCookie('token');
-
   useEffect(() => {
+    const token = getCookie('token');
     if (!token) {
       router.push('/admin/login');
       return;
     }
     fetchData();
-  }, [token, router]);
+  }, [router]);
 
   const fetchData = async () => {
     try {
+      const token = getCookie('token');
       const [blogsRes, authorsRes, categoriesRes] = await Promise.all([
         blogApi.getAll({}, token),
         authorApi.getAll(token),
@@ -73,6 +74,7 @@ export default function Blogs() {
     setError('');
 
     try {
+      const token = getCookie('token');
       const data = new FormData();
       data.append('metaTitle', formData.metaTitle);
       data.append('metaDescription', formData.metaDescription);
@@ -127,6 +129,7 @@ export default function Blogs() {
     if (!confirm('Are you sure you want to delete this blog?')) return;
 
     try {
+      const token = getCookie('token');
       await blogApi.delete(id, token);
       fetchData();
     } catch (err) {
