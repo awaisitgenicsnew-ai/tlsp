@@ -79,15 +79,15 @@ export default function ContactSection() {
   };
 
   return (
-    <section 
+   <section 
       id="contact" 
       className="w-full bg-[#241D18] py-10 lg:py-24 px-6 md:px-12 lg:px-20 min-h-screen flex flex-col justify-center"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[156px] max-w-8xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-[156px] max-w-8xl mx-auto">
         {/* Left: intro + sales info */}
-        <div className="px-10 py-8"> 
+        <div className="px-2 lg:px-10 py-8"> 
           
-          <h2 className="font-serif text-4xl md:text-4xl text-white leading-normal mb-5">
+          <h2 className="font-serif text-3xl md:text-4xl text-white leading-normal mb-5">
             Begin a conversation with our team
           </h2>
           <p className="text-sm leading-[28px] text-white/50 max-w-lg mb-10 paragraph">
