@@ -348,9 +348,16 @@ export default function Blogs() {
                   <div className="mb-5">
                     <label className="block font-sans text-sm font-semibold text-[#2a2620] mb-2">Image</label>
                     {editingBlog && formData.image && typeof formData.image === 'string' && (
-                      <div className="mb-3 p-3 bg-gray-50 border border-gray-200 rounded-none">
+                      <div className="mb-3 p-3 bg-gray-50 border border-gray-200 rounded-none relative">
+                        <button
+                          type="button"
+                          onClick={() => setFormData({ ...formData, image: '' })}
+                          className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs cursor-pointer hover:bg-red-600"
+                        >
+                          ×
+                        </button>
                         <img 
-                          src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}${formData.image}`} 
+                          src={`https://backend-production-1c502.up.railway.app/api${formData.image}`} 
                           alt="Current image" 
                           className="w-24 h-24 object-cover rounded-none mb-2"
                         />
