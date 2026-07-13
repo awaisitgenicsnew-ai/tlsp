@@ -5,12 +5,10 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 const LINKS = [
-  { label: "DEVELOPMENTS", href: "/" },
-  { label: "ABOUT", href: "/about-us" },
+  { label: "HOME", href: "/" },
   { label: "PLT TOWER", href: "/plt-tower" },
-  { label: "INVESTMENT", href: "/" },
+  { label: "ABOUT", href: "/about-us" },
   { label: "CONTACT", href: "/contact-us" },
-  { label: "REGISTER INTEREST", href: "/register-interest" },
 ];
 
 

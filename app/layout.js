@@ -171,6 +171,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${montserrat.variable} ${playfair.variable} ${poppins.variable} ${cormorant.variable} ${avenirNext.variable} ${pangram.variable} h-full antialiased`}
     >
       <head>
