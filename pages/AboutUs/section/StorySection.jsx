@@ -12,7 +12,7 @@ export default function StorySection() {
         <div className="relative max-w-lg">
           <p className="text-[#c8935a] text-xs font-semibold tracking-[0.2em] mb-6">WHO WE ARE</p>
 
-          <h2 className="font-serif text-4xl md:text-5xl leading-tight text-[#f2ede4] mb-8">
+          <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl leading-tight text-[#f2ede4] mb-8">
             European craftsmanship,
             <span className="italic text-[#c8935a] font-medium">carried</span>
             into the heart of Dubai
