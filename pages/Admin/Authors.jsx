@@ -217,7 +217,7 @@ export default function Authors() {
                       type="file"
                       accept="image/*"
                       onChange={(e) => setFormData({ ...formData, image: e.target.files[0] })}
-                      className="w-full"
+                      className="w-full border border-black rounded-none p-2 font-sans text-sm text-[#2a2620] cursor-pointer file:mr-4 file:px-5 file:py-2.5 file:bg-[#2a2620] file:text-white file:border file:border-black file:rounded-none file:font-sans file:text-sm file:font-semibold file:cursor-pointer hover:file:bg-[#c9a876] file:transition-colors"
                     />
                   </div>
 

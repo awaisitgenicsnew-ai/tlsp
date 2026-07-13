@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Users, LogOut, Menu, X, FileText, User, Phone } from "lucide-react";
+import { Users, LogOut, Menu, X, FileText, User, Phone, Building2 } from "lucide-react";
 
 export default function AdminLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -47,6 +47,7 @@ export default function AdminLayout({ children }) {
   const menuItems = [
     { name: 'Dashboard', href: '/admin/dashboard', icon: Users },
     { name: 'Leads', href: '/admin/contacts', icon: Phone },
+    { name: 'Projects', href: '/admin/projects', icon: Building2 },
     { name: 'Blogs', href: '/admin/blogs', icon: FileText },
     { name: 'Authors', href: '/admin/authors', icon: User },
     { name: 'Categories', href: '/admin/categories', icon: Users },
