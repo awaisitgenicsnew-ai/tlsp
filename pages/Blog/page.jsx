@@ -89,7 +89,7 @@ export default function BlogList() {
                       <div className="overflow-hidden rounded-xl mb-4">
                         {blog.image && (
                           <img
-                            src={`https://backend-production-1c502.up.railway.app${blog.image}`}
+                            src={`https://backend-production-1c502.up.railway.app/api${blog.image}`}
                             alt={blog.imageAlt || blog.title}
                             className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
                           />
@@ -126,7 +126,7 @@ export default function BlogList() {
                         {blog.image && (
                           <div className="w-full md:w-48 h-40 md:h-auto overflow-hidden rounded-xl flex-shrink-0">
                             <img
-                              src={`https://backend-production-1c502.up.railway.app${blog.image}`}
+                              src={`https://backend-production-1c502.up.railway.app/api${blog.image}`}
                               alt={blog.imageAlt || blog.title}
                               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                             />
