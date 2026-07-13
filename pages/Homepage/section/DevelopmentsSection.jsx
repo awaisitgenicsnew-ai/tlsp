@@ -2,146 +2,69 @@
 
 import Image from "next/image";
 
-const featured = {
-  tags: [
-    { label: "Flagship", variant: "outline" },
-    { label: "Now Selling", variant: "solid" },
-  ],
-  title: "PLT Tower",
-  location: "Business Bay, Dubai",
-  description:
-    "Fifty-one storeys of considered living in Dubai's most dynamic address. Each residence designed with European restraint — natural stone, warm metals, and proportions built to last.",
-  stats: [
-    { label: "Type", value: "Studio–3 Bed" },
-    { label: "Handover", value: "Q4 2027" },
-    { label: "Payment", value: "60 / 40" },
-  ],
-  image: "/images/plt-tower.jpg",
-  cta: "View Development",
-};
-
-const developments = [
-  {
-    title: "PLT Residences",
-    location: "Downtown Dubai",
-    tag: "Coming Soon",
-    image: "/images/plt-residences.jpg",
-  },
-  {
-    title: "Canal House",
-    location: "Dubai Canal",
-    tag: "In Planning",
-    image: "/images/canal-house.jpg",
-  },
-  {
-    title: "The Quarter",
-    location: "Al Quoz Arts District",
-    tag: "In Planning",
-    image: "/images/the-quarter.jpg",
-  },
-];
-
-function Tag({ label, variant = "solid" }) {
-  const base =
-    "inline-block px-2.5 py-1 text-[10px] tracking-widest uppercase font-medium whitespace-nowrap";
-  const styles =
-    variant === "outline"
-      ? "border border-[#B08D57] text-[#B08D57] bg-transparent"
-      : "bg-[#2b2823] text-white";
-  return <span className={`${base} ${styles}`}>{label}</span>;
-}
-
-function BadgeTag({ label }) {
+export default function DevelopmentsSection() {
   return (
-    <span className="absolute top-4 left-4 bg-[#1f2937]/90 text-white text-[10px] tracking-widest uppercase px-2.5 py-1">
-      {label}
-    </span>
-  );
-}
-
-export default function Developments() {
-  return (
-    <section id="developments" className="w-full bg-[#d9d9d9] py-10 lg:py-24 px-4 md:px-10 flex flex-col justify-center align-center">
-      
-      {/* Featured development */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 border border-[#d8d3c7] items-stretch min-h-[330px] overflow-hidden">
-        
-        {/* Image Container - Height set to 250px */}
-        <div className="relative w-full overflow-hidden">
-          <Image
-            src={featured.image}
-            alt={featured.title}
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
-            priority
-          />
-        </div>
-
-        {/* Details Container */}
-        <div className="flex flex-col justify-center px-6 py-8 sm:px-10 md:px-12  bg-[#d9d9d9] min-w-0">
-          <div className="flex flex-wrap gap-2 mb-2">
-            {featured.tags.map((tag) => (
-              <Tag key={tag.label} label={tag.label} variant={tag.variant} />
-            ))}
+    <section className="w-full bg-[#d9d9d9] min-h-screen flex items-center justify-center px-6 md:px-20 py-24">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        {/* Left: Content */}
+        <div>
+          <div className="flex gap-2 mb-7">
+            <span className="text-[11px] font-semibold tracking-[0.14em] uppercase px-3.5 py-1.5 bg-[#211D17] text-[#F7F4EC] rounded-sm">
+              High Demand
+            </span>
           </div>
 
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl  mb-8 text-[#2a2620]">
-            {featured.title}
-          </h2>
-          <p className="mt-1.5 text-[9px] tracking-[0.15em] uppercase text-[#8a8578]">
-            {featured.location}
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#211D17] mb-4.5">
+            PLT Tower
+          </h1>
+
+          <p className="text-[12px] font-semibold tracking-[0.18em] uppercase text-[#7C5A2C] mb-6 flex items-center gap-2.5">
+            <span className="w-[22px] h-px bg-[#7C5A2C]"></span>
+            Business Bay, Dubai
           </p>
 
-          <p className="mt-3  font-[400] text-[14px] tracking-[0.5px] leading-relaxed text-[#5c584f] max-w-md break-words ">
-            {featured.description}
+          <p className="text-[14px] leading-[1.7] text-[#4A443A] max-w-[760px] mb-1">
+            Fifty-one storeys of considered living in Dubai's most dynamic address. Each residence designed with European restraint — natural stone, warm metals, and proportions built to last.
           </p>
 
-          <div className="mt-5 pt-4 border-t border-[#d8d3c7] grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-md min-w-0">
-            {featured.stats.map((stat) => (
-              <div key={stat.label} className="min-w-0">
-                <p className="text-[9px] tracking-widest uppercase text-[#a8a397] mb-0.5 truncate">
-                  {stat.label}
-                </p>
-                <p className="text-[14px] text-[#2b2823] font-medium truncate">
-                  {stat.value}
-                </p>
-              </div>
-            ))}
+          <div className="flex border-t border-[rgba(33,29,23,0.18)] pt-6.5 mb-9">
+            <div className="pr-10 mr-10 border-r border-[rgba(33,29,23,0.10)]">
+              <p className="text-[10.5px] tracking-[0.14em] uppercase text-[#8A8172] font-semibold mb-2">Type</p>
+              <p className="font-serif text-[22px] text-[#211D17]">Studio–3 Bed</p>
+            </div>
+            <div className="pr-10 mr-10 border-r border-[rgba(33,29,23,0.10)]">
+              <p className="text-[10.5px] tracking-[0.14em] uppercase text-[#8A8172] font-semibold mb-2">Handover</p>
+              <p className="font-serif text-[22px] text-[#211D17]">Q4 2027</p>
+            </div>
+            <div>
+              <p className="text-[10.5px] tracking-[0.14em] uppercase text-[#8A8172] font-semibold mb-2">Payment</p>
+              <p className="font-serif text-[22px] text-[#211D17]">60 / 40</p>
+            </div>
           </div>
 
-          <button className="mt-5 self-start border border-[#2b2823] text-[#2b2823] text-[9px] tracking-widest uppercase px-4 py-2 hover:bg-[#2b2823] hover:text-white transition-colors">
-            {featured.cta}
-          </button>
+          <div className="flex items-center gap-7">
+            <button className="text-[12.5px] font-semibold tracking-[0.1em] uppercase px-7.5 py-4 bg-[#211D17] text-[#F7F4EC] border-none cursor-pointer hover:bg-[#7C5A2C] transition-colors">
+              View development
+            </button>
+            <button className="text-[12.5px] font-semibold tracking-[0.1em] uppercase px-7.5 py-4 bg-transparent text-[#211D17] border border-[rgba(33,29,23,0.18)] flex items-center gap-2.5 cursor-pointer hover:border-[#7C5A2C] hover:text-[#7C5A2C] transition-colors">
+              Register interest
+              <span>&rarr;</span>
+            </button>
+          </div>
         </div>
-      </div>
 
-      {/* Development grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-        {developments.map((dev) => (
-          <div key={dev.title} className="group flex flex-col">
-            {/* Grid Image Container - Height set to 155px */}
-            <div className="relative h-[155px] overflow-hidden border border-[#d8d3c7]">
-              <Image
-                src={dev.image}
-                alt={dev.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-              <BadgeTag label={dev.tag} />
-            </div>
-
-            <div className="mt-3">
-              <h3 className="font-serif text-sm md:text-base text-neutral-800 transition-colors duration-300 group-hover:text-neutral-600 truncate">
-                {dev.title}
-              </h3>
-              <p className="mt-1 text-[9px] tracking-widest uppercase text-neutral-500">
-                {dev.location}
-              </p>
-            </div>
+        {/* Right: Elevation/Visual */}
+        <div className="relative flex justify-center items-center h-full">
+          <div className="relative w-full max-w-[560px] h-90 overflow-hidden rounded-lg">
+            <Image
+              src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80"
+              alt="PLT Tower"
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );

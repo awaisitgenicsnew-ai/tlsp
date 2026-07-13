@@ -13,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 import HeroSlider from './section/HeroSlider';
 import IntroSection from './section/IntroSection';
 import { BrandPillarsSlider } from './section/ResidencesSectionNew';
+import DevelopmentsGridSection from './section/DevelopmentsGridSection';
 import Developments from './section/DevelopmentsSection';
 import Philosophy from './section/PhilosophySection';
 import ExperienceSection from './section/ExperienceSection';
@@ -29,7 +30,8 @@ const SECTIONS = [
   { id: 'intro', Component: IntroSection, theme: 'light', animate: true },
   { id: 'brand-pillars', Component: BrandPillarsSlider, theme: 'dark', animate: false },
   { id: 'developments', Component: Developments, theme: 'light', animate: true },
-  { id: 'philosophy', Component: Philosophy, theme: 'light', animate: true },
+   { id: 'developments-grid', Component: DevelopmentsGridSection, theme: 'light', animate: true },
+ { id: 'philosophy', Component: Philosophy, theme: 'light', animate: true },
   { id: 'experience', Component: ExperienceSection, theme: 'light', animate: true },
   { id: 'contact', Component: ContactSection, theme: 'dark', animate: true },
 ];

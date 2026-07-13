@@ -2,59 +2,81 @@
 
 export default function StorySection() {
   return (
-    <section
-      className="w-full bg-[#d9d9d9] text-[var(--ink)] min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-20 py-10 lg:py-24"
-    >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Left: Image */}
-        <div className="relative">
-          <div className=" bg-[#1a1a1a] h-[450px] rounded-lg overflow-hidden">
-            <img 
-              src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800"
-              alt="PLT Properties Story"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          
-        </div>
+    <section className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 min-h-screen">
+      {/* LEFT: dark panel */}
+      <div className="relative bg-[#181410] overflow-hidden px-8 py-16 md:px-16 md:py-24 flex flex-col justify-center">
+        {/* decorative faint circles */}
+        <div className="pointer-events-none absolute -top-24 right-0 w-96 h-96 rounded-full border border-white/5"></div>
+        <div className="pointer-events-none absolute bottom-0 left-1/3 w-72 h-72 rounded-full border border-white/5"></div>
 
-        {/* Right: Content */}
-        <div>
-          <div className="flex items-center mb-2">
-            <span className="h-px bg-[var(--tan)] w-16 mr-6 hidden sm:block"></span>
-            <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--tan)] whitespace-nowrap uppercase">
-              Our Story
-            </p>
-            <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 text-[#2a2620]">
-            A Legacy of Excellence
+        <div className="relative max-w-lg">
+          <p className="text-[#c8935a] text-xs font-semibold tracking-[0.2em] mb-6">WHO WE ARE</p>
+
+          <h2 className="font-serif text-4xl md:text-5xl leading-tight text-[#f2ede4] mb-8">
+            European craftsmanship,
+            <span className="italic text-[#c8935a] font-medium">carried</span>
+            into the heart of Dubai
           </h2>
-          <div className="space-y-4 font-sans text-sm leading-relaxed text-[var(--ink)]/80">
-            <p className="paragraph">
-              Founded with a vision to transform Dubai's real estate landscape, 
-              PLT Properties has been at the forefront of luxury development for over a decade.
-            </p>
-            <p className="paragraph">
-              Our journey began with a simple belief: that exceptional living spaces 
-              should be accessible to those who appreciate the finer things in life.
-            </p>
-            <p className="paragraph">
-              Today, we stand as a testament to unwavering commitment to quality, 
-              innovation, and customer satisfaction. Every project we undertake 
-              is a reflection of our dedication to creating spaces that inspire.
-            </p>
+
+          <p className="text-[#9c9790] text-base leading-relaxed mb-10 max-w-md">
+            Good design is not an event — it is patience. At PLT, every material is chosen for its longevity, not its spectacle. We draw on a European tradition of considered making: the belief that a home should age into something better than it was on the day it was handed over.
+          </p>
+
+          <a href="#" className="inline-flex items-center gap-2 text-[#c8935a] text-sm font-semibold tracking-wide hover:gap-3 transition-all">
+            Our Story
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      {/* RIGHT: stats grid */}
+      <div className="bg-[#efeae1] px-8 py-16 md:px-16 md:py-24 flex items-center">
+        <div className="w-full grid grid-cols-2 border border-[#dcd5c8]">
+          {/* 15+ Years */}
+          <div className="p-8 md:p-10 border-b border-r border-[#dcd5c8]">
+            <div className="w-11 h-11 rounded-full border border-[#c8935a] flex items-center justify-center mb-6 text-[#c8935a]">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <p className="font-serif text-3xl text-[#1c1a17] mb-2">15+</p>
+            <p className="text-[11px] tracking-[0.15em] font-semibold text-[#84796a]">YEARS OF CRAFT</p>
           </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-8">
-            <div>
-              <p className="font-display text-4xl text-[var(--tan)] mb-2">15+</p>
-              <p className="font-sans text-sm text-[var(--ink)]/60">Years of Excellence</p>
+          {/* 100% escrow */}
+          <div className="p-8 md:p-10 border-b border-[#dcd5c8]">
+            <div className="w-11 h-11 rounded-full border border-[#c8935a] flex items-center justify-center mb-6 text-[#c8935a]">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </div>
-            <div>
-              <p className="font-display text-4xl text-[var(--tan)] mb-2">50+</p>
-              <p className="font-sans text-sm text-[var(--ink)]/60">Projects Delivered</p>
+            <p className="font-serif text-3xl text-[#1c1a17] mb-2">100%</p>
+            <p className="text-[11px] tracking-[0.15em] font-semibold text-[#84796a]">DLD ESCROW-BACKED</p>
+          </div>
+
+          {/* Business Bay */}
+          <div className="p-8 md:p-10 border-r border-[#dcd5c8]">
+            <div className="w-11 h-11 rounded-full border border-[#c8935a] flex items-center justify-center mb-6 text-[#c8935a]">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
             </div>
+            <p className="font-serif text-2xl md:text-3xl text-[#1c1a17] mb-2">Business Bay</p>
+            <p className="text-[11px] tracking-[0.15em] font-semibold text-[#84796a]">FLAGSHIP LOCATION</p>
+          </div>
+
+          {/* European heritage */}
+          <div className="p-8 md:p-10">
+            <div className="w-11 h-11 rounded-full border border-[#c8935a] flex items-center justify-center mb-6 text-[#c8935a]">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M4 21V7l8-4 8 4v14M9 21v-6h6v6" />
+              </svg>
+            </div>
+            <p className="font-serif text-2xl md:text-3xl text-[#1c1a17] mb-2">European</p>
+            <p className="text-[11px] tracking-[0.15em] font-semibold text-[#84796a]">DESIGN HERITAGE</p>
           </div>
         </div>
       </div>

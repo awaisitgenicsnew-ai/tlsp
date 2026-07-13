@@ -35,7 +35,7 @@ export default function Philosophy() {
           </span>
 
         
-          <div className="relative aspect-[4/3] md:max-h-[350px] w-full overflow-hidden border border-[#d8d3c7]">
+          <div className="relative aspect-[4/3] md:max-h-[300px] w-full overflow-hidden border border-[#d8d3c7]">
             <Image
               src="/images/philosophy-artisanal.jpg"
               alt="Italian craftsmanship materials"
