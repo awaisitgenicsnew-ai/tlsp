@@ -5,11 +5,12 @@ import { useRouter, useParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { blogApi } from '../../../lib/api';
-import { Calendar, User, Tag, ArrowLeft } from 'lucide-react';
+import { Calendar, User, Tag, ArrowLeft, Linkedin, Twitter, Mail, ChevronUp } from 'lucide-react';
 
 export default function BlogDetail() {
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const router = useRouter();
   const params = useParams();
   const { slug } = params || {};
@@ -19,6 +20,17 @@ export default function BlogDetail() {
       fetchBlog();
     }
   }, [slug]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(Math.min(100, Math.max(0, progress)));
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const fetchBlog = async () => {
     try {
@@ -31,6 +43,13 @@ export default function BlogDetail() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const getReadTime = (content) => {
+    if (!content) return 0;
+    const text = content.replace(/<[^>]*>/g, '');
+    const wordsPerMinute = 200;
+    return Math.ceil(text.split(/\s+/).filter(word => word.length > 0).length / wordsPerMinute);
   };
 
   const formatDate = (dateString) => {
@@ -70,10 +89,32 @@ export default function BlogDetail() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar top={WHITE_SCHEME} scrolled={WHITE_SCHEME} />
+      <Navbar 
+        top={WHITE_SCHEME} 
+        scrolled={{
+          bg: "#000000",
+          border: "rgba(255,255,255,0.1)",
+          text: "#ffffff",
+          subText: "rgba(255,255,255,0.8)",
+          link: "rgba(255,255,255,0.9)",
+          linkHover: "#ffffff",
+          buttonBorder: "#ffffff",
+          buttonText: "#ffffff",
+          buttonHoverBg: "#ffffff",
+          buttonHoverText: "#000000",
+        }} 
+      />
+
+      {/* Reading Progress Bar */}
+      <div className="fixed top-0 left-0 right-0 h-1 z-[100] bg-transparent">
+        <div 
+          className="h-full bg-gradient-to-r from-[#d4a574] to-[#c9956c] transition-all duration-150"
+          style={{ width: `${scrollProgress}%` }}
+        ></div>
+      </div>
       
       {/* HERO BANNER */}
-      <header className="relative h-[420px] md:h-[480px] flex items-end overflow-hidden">
+      <header className="relative h-[460px] md:h-[520px] flex items-end overflow-hidden">
         {blog.image && (
           <img 
             src={`https://backend-production-1c502.up.railway.app/api${blog.image}`} 
@@ -81,15 +122,29 @@ export default function BlogDetail() {
             className="absolute inset-0 w-full h-full object-cover"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30"></div>
 
-        <div className="relative max-w-6xl mx-auto px-6 md:px-10 pb-12 w-full text-white">
+        <div className="relative max-w-6xl mx-auto px-6 md:px-10 pb-14 md:pb-16 w-full text-white">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="px-3 py-1 bg-[#d4a574] text-white text-xs font-semibold uppercase tracking-wider rounded-full">
+              {blog.categories?.[0]?.name || 'Article'}
+            </span>
+            <span className="text-sm text-white/80">{getReadTime(blog.mainContent)} min read</span>
+          </div>
           <p className="text-xs md:text-sm font-medium text-[#d9c9a3] tracking-wide mb-3">{formatDate(blog.createdAt)}</p>
-          <h1 className="font-display text-3xl md:text-5xl leading-tight max-w-2xl mb-4">
+          <h1 className="font-display text-3xl md:text-5xl lg:text-6xl leading-tight max-w-3xl mb-5 text-white drop-shadow-lg">
             {blog.title}
           </h1>
           {blog.author && (
-            <p className="text-sm md:text-base text-white/80">By {blog.author.name}</p>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#d4a574] to-[#c9956c] flex items-center justify-center text-white font-semibold">
+                {blog.author.name.charAt(0).toUpperCase()}
+              </div>
+              <div>
+                <p className="text-sm md:text-base font-medium text-white">{blog.author.name}</p>
+                <p className="text-xs text-white/70">Author</p>
+              </div>
+            </div>
           )}
         </div>
       </header>
@@ -134,15 +189,25 @@ export default function BlogDetail() {
           .prose-custom ul {
             margin-bottom: 1.25rem;
             padding-left: 1.5rem;
+            list-style-type: disc;
           }
           .prose-custom ol {
             margin-bottom: 1.25rem;
             padding-left: 1.5rem;
+            list-style-type: decimal;
           }
           .prose-custom li {
             font-size: 16px;
             margin-bottom: 0.5rem;
             line-height: 1.7;
+            list-style: inherit;
+          }
+          .prose-custom ul li::marker {
+            color: #c9956c;
+          }
+          .prose-custom ol li::marker {
+            color: #c9956c;
+            font-weight: 600;
           }
           .prose-custom table {
             width: 100%;
@@ -165,7 +230,7 @@ export default function BlogDetail() {
             background-color: #f9fafb;
           }
         `}</style>
-        <article className="prose-custom text-[#374151] text-[15px] md:text-base">
+        <article className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 mb-12">
           {blog.shortDescription && (
             <p className="mb-6 text-lg text-[#374151] leading-relaxed">{blog.shortDescription}</p>
           )}
@@ -188,18 +253,35 @@ export default function BlogDetail() {
         </article>
 
         {/* SHARE / BACK */}
-        <div className="mt-12 pt-8 border-t border-gray-200 flex items-center justify-between">
-          <button onClick={() => router.push('/blog')} className="inline-flex items-center gap-2 text-sm font-medium text-[#1c2b39] hover:text-[#9c7a3c] transition-colors">
-            <span aria-hidden="true">&larr;</span> Back to Blog
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 p-8 bg-gray-50 rounded-2xl border border-gray-100">
+          <button onClick={() => router.push('/blog')} className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-200 rounded-lg text-sm font-medium text-[#1c2b39] hover:text-[#9c7a3c] hover:border-[#9c7a3c] transition-colors">
+            <ArrowLeft size={16} /> Back to Blog
           </button>
-          <div className="flex items-center gap-3 text-sm text-gray-500">
-            <span>Share:</span>
-            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`} target="_blank" rel="noopener noreferrer" className="hover:text-[#9c7a3c] transition-colors">LinkedIn</a>
-            <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`} target="_blank" rel="noopener noreferrer" className="hover:text-[#9c7a3c] transition-colors">X</a>
-            <a href={`mailto:?subject=${encodeURIComponent(blog.title)}&body=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`} className="hover:text-[#9c7a3c] transition-colors">Email</a>
+          <div className="flex items-center gap-4">
+            <span className="text-sm font-medium text-gray-500">Share:</span>
+            <div className="flex items-center gap-2">
+              <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`} target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white border border-gray-200 rounded-lg text-[#0077b5] hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] transition-all">
+                <Linkedin size={18} />
+              </a>
+              <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`} target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white border border-gray-200 rounded-lg text-[#1da1f2] hover:bg-[#1da1f2] hover:text-white hover:border-[#1da1f2] transition-all">
+                <Twitter size={18} />
+              </a>
+              <a href={`mailto:?subject=${encodeURIComponent(blog.title)}&body=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`} className="p-2.5 bg-white border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-600 hover:text-white hover:border-gray-600 transition-all">
+                <Mail size={18} />
+              </a>
+            </div>
           </div>
         </div>
       </main>
+
+      {/* Back to Top Button */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="fixed bottom-6 right-6 p-3 bg-gradient-to-r from-[#d4a574] to-[#c9956c] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 z-40"
+        aria-label="Back to top"
+      >
+        <ChevronUp size={20} />
+      </button>
 
       <Footer />
     </div>
