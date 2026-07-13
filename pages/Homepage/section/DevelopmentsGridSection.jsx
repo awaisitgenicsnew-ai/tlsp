@@ -47,7 +47,7 @@ export default function DevelopmentsGridSection() {
   }, []);
 
   return (
-    <section id="developments-grid" className="w-full bg-[#d9d9d9] min-h-screen flex items-center justify-center px-6 md:px-20 py-24">
+    <section id="developments-grid" className="w-full bg-[#d9d9d9] min-h-screen flex items-center justify-center px-6 md:px-20 py-28 sm:pt-[168px]">
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -57,7 +57,7 @@ export default function DevelopmentsGridSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
           {developments.map((dev, index) => (
             <div key={dev.id || index} className="bg-[#F7F4EC] border border-[rgba(33,29,23,0.10)]">
               {/* Card Visual */}
