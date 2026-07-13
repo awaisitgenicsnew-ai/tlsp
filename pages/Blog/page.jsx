@@ -196,10 +196,10 @@ export default function BlogList() {
 }
 
 const WHITE_SCHEME = {
-  bg: 'white',
-  text: 'var(--ink)',
-  logo: 'var(--ink)',
-  navBg: 'white',
-  navText: 'var(--ink)',
-  border: 'rgba(0, 0, 0, 0.1)'
+  bg: 'transparent',
+  text: '#ffffff',
+  logo: '#ffffff',
+  navBg: 'transparent',
+  navText: '#ffffff',
+  border: 'transparent'
 };
