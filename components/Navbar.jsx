@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const LINKS = [
   { label: "HOME", href: "/" },
-  { label: "PLT TOWER", href: "/plt-tower" },
+  { label: "PLT TOWER", href: "https://plttower.com" },
   { label: "ABOUT", href: "/about-us" },
   { label: "CONTACT", href: "/contact-us" },
 ];
