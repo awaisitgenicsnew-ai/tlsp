@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { blogApi } from '../../../lib/api';
 import { Calendar, User, Tag, ArrowLeft, Mail, ChevronUp } from 'lucide-react';
+import clsx from 'clsx';
 
 export default function BlogDetail() {
   const [blog, setBlog] = useState(null);
