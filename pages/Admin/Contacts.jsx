@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import AdminSidebar from '@/components/AdminSidebar';
 
 export default function AdminContacts() {
   const router = useRouter();
@@ -116,10 +115,8 @@ export default function AdminContacts() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      <AdminSidebar activePage="contacts" />
-      
-      <main className="flex-1 ml-[280px] p-10">
+    <div className="bg-gray-50">
+      <main className="p-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
             <h1 className="font-display text-4xl font-bold text-[#2a2620]">Contacts</h1>
@@ -188,8 +185,8 @@ export default function AdminContacts() {
               </table>
             </div>
           )}
-        </div>
-      </main>
-    </div>
+      </div>
+    </main>
+  </div>
   );
 }

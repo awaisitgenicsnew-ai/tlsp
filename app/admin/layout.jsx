@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Users, LogOut, Menu, X, FileText } from "lucide-react";
+import Link from "next/link";
+import { Users, LogOut, Menu, X, FileText, User, Phone } from "lucide-react";
 
 export default function AdminLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -45,8 +46,10 @@ export default function AdminLayout({ children }) {
 
   const menuItems = [
     { name: 'Dashboard', href: '/admin/dashboard', icon: Users },
-    { name: 'Leads', href: '/admin/contacts', icon: Users },
+    { name: 'Leads', href: '/admin/contacts', icon: Phone },
     { name: 'Blogs', href: '/admin/blogs', icon: FileText },
+    { name: 'Authors', href: '/admin/authors', icon: User },
+    { name: 'Categories', href: '/admin/categories', icon: Users },
   ];
 
   if (!adminData) return null;
@@ -67,14 +70,14 @@ export default function AdminLayout({ children }) {
           {menuItems.map((item) => {
             const Icon = item.icon;
             return (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-200 hover:text-gray-800 transition-colors"
               >
                 <Icon size={20} />
                 {sidebarOpen && <span>{item.name}</span>}
-              </a>
+              </Link>
             );
           })}
         </nav>

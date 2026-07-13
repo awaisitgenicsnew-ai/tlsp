@@ -2,8 +2,20 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import AdminSidebar from '@/components/AdminSidebar';
 import { adminLeadApi } from '../../lib/api';
+import { 
+  Users, 
+  Clock, 
+  Phone, 
+  Award, 
+  CheckCircle2, 
+  TrendingUp, 
+  FileText, 
+  Mail,
+  LogOut,
+  ArrowRight,
+  CalendarDays
+} from 'lucide-react';
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -67,97 +79,139 @@ export default function AdminDashboard() {
     }
   };
 
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good morning';
+    if (hour < 18) return 'Good afternoon';
+    return 'Good evening';
+  };
+
+  const handleLogout = () => {
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'admin=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    window.location.href = '/admin/login';
+  };
+
+  const statCards = [
+    { label: 'Total Leads', value: stats.total, icon: Users, color: 'from-[#d4a574] to-[#c9956c]' },
+    { label: 'New', value: stats.new, icon: Clock, color: 'from-blue-500 to-blue-600' },
+    { label: 'Contacted', value: stats.contacted, icon: Phone, color: 'from-amber-500 to-amber-600' },
+    { label: 'Qualified', value: stats.qualified, icon: Award, color: 'from-purple-500 to-purple-600' },
+    { label: 'Closed', value: stats.closed, icon: CheckCircle2, color: 'from-emerald-500 to-emerald-600' },
+  ];
+
+  const quickActions = [
+    { label: 'Manage Contacts', path: '/admin/contacts', icon: Users, desc: 'View and update leads', color: 'bg-blue-500' },
+    { label: 'Manage Blogs', path: '/admin/blogs', icon: FileText, desc: 'Create and edit articles', color: 'bg-[#d4a574]' },
+    { label: 'Authors', path: '/admin/authors', icon: Mail, desc: 'Manage blog authors', color: 'bg-purple-500' },
+    { label: 'Categories', path: '/admin/categories', icon: Award, desc: 'Organize blog topics', color: 'bg-emerald-500' },
+  ];
+
   return (
-    <div className="flex min-h-screen bg-white">
-      <AdminSidebar activePage="dashboard" />
-      
-      <main className="flex-1 p-10 bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-10 p-8 bg-gradient-to-r from-[#1a1a2e] to-[#16213e] rounded-2xl shadow-2xl relative overflow-hidden">
-            <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-radial-gradient from-[rgba(212,165,116,0.1)] to-transparent pointer-events-none"></div>
-            <h1 className="font-display text-4xl font-bold text-white mb-2 relative z-10">Dashboard</h1>
-            {admin && <p className="font-sans text-lg text-white/70 relative z-10">Welcome, {admin.name}</p>}
-          </div>
-
+    <div className="bg-gray-50">
+      <div className="p-6">
           {loading ? (
-            <div className="text-center py-10 font-sans text-gray-600">Loading statistics...</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 mb-8">
+              {[...Array(5)].map((_, i) => (
+                <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-28 animate-pulse" />
+              ))}
+            </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-10">
-              <div className="bg-white p-6 rounded-xl shadow-md flex gap-5">
-                <div className="w-14 h-14 bg-[var(--tan)] text-white flex items-center justify-center rounded-xl">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
+            <>
+              {/* Stats Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 mb-8">
+                {statCards.map((stat) => {
+                  const Icon = stat.icon;
+                  return (
+                    <div key={stat.label} className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-shadow">
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} text-white flex items-center justify-center shadow-sm flex-shrink-0`}>
+                        <Icon size={22} />
+                      </div>
+                      <div>
+                        <p className="font-sans text-sm text-gray-500 mb-0.5">{stat.label}</p>
+                        <p className="font-display text-2xl font-bold text-[#1c2b39]">{stat.value}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Middle Section */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                {/* Welcome / Summary */}
+                <div className="lg:col-span-2 bg-gradient-to-br from-[#1a1a2e] to-[#16213e] rounded-2xl p-8 text-white relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#d4a574]/20 to-transparent rounded-full -translate-y-1/2 translate-x-1/3" />
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-2 mb-3">
+                      <TrendingUp size={20} className="text-[#d4a574]" />
+                      <span className="text-sm font-semibold text-[#d4a574] uppercase tracking-wider">Overview</span>
+                    </div>
+                    <h2 className="font-display text-3xl font-bold mb-3">Lead Performance</h2>
+                    <p className="text-white/70 mb-6 max-w-lg">
+                      You have {stats.total} total leads. {stats.new} new leads are waiting to be contacted, 
+                      and {stats.closed} have been successfully closed.
+                    </p>
+                    <button 
+                      onClick={() => router.push('/admin/contacts')}
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#d4a574] to-[#c9956c] text-white rounded-xl font-sans text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+                    >
+                      View All Leads <ArrowRight size={16} />
+                    </button>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <p className="font-sans text-sm text-gray-600 mb-1">Total Leads</p>
-                  <p className="font-display text-3xl font-bold text-[var(--ink)]">{stats.total}</p>
+
+                {/* Conversion Funnel */}
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                  <h3 className="font-display text-xl font-bold text-[#1c2b39] mb-5">Conversion Funnel</h3>
+                  <div className="space-y-4">
+                    {[
+                      { label: 'New', value: stats.new, total: stats.total, color: 'bg-blue-500' },
+                      { label: 'Contacted', value: stats.contacted, total: stats.total, color: 'bg-amber-500' },
+                      { label: 'Qualified', value: stats.qualified, total: stats.total, color: 'bg-purple-500' },
+                      { label: 'Closed', value: stats.closed, total: stats.total, color: 'bg-emerald-500' },
+                    ].map((item) => {
+                      const percent = item.total > 0 ? Math.round((item.value / item.total) * 100) : 0;
+                      return (
+                        <div key={item.label}>
+                          <div className="flex justify-between text-sm mb-1.5">
+                            <span className="text-gray-600">{item.label}</span>
+                            <span className="font-semibold text-[#1c2b39]">{item.value} ({percent}%)</span>
+                          </div>
+                          <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div className={`h-full ${item.color} rounded-full transition-all duration-500`} style={{ width: `${percent}%` }} />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-xl shadow-md flex gap-5">
-                <div className="w-14 h-14 bg-blue-500 text-white flex items-center justify-center rounded-xl">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <p className="font-sans text-sm text-gray-600 mb-1">New</p>
-                  <p className="font-display text-3xl font-bold text-[var(--ink)]">{stats.new}</p>
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl shadow-md flex gap-5">
-                <div className="w-14 h-14 bg-amber-500 text-white flex items-center justify-center rounded-xl">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <p className="font-sans text-sm text-gray-600 mb-1">Contacted</p>
-                  <p className="font-display text-3xl font-bold text-[var(--ink)]">{stats.contacted}</p>
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl shadow-md flex gap-5">
-                <div className="w-14 h-14 bg-purple-500 text-white flex items-center justify-center rounded-xl">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <p className="font-sans text-sm text-gray-600 mb-1">Qualified</p>
-                  <p className="font-display text-3xl font-bold text-[var(--ink)]">{stats.qualified}</p>
+              {/* Quick Actions */}
+              <div>
+                <h2 className="font-display text-xl font-bold text-[#1c2b39] mb-5">Quick Actions</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                  {quickActions.map((action) => {
+                    const Icon = action.icon;
+                    return (
+                      <button
+                        key={action.label}
+                        onClick={() => router.push(action.path)}
+                        className="group bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-left transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+                      >
+                        <div className={`w-12 h-12 ${action.color} text-white rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110`}>
+                          <Icon size={22} />
+                        </div>
+                        <h3 className="font-sans font-semibold text-[#1c2b39] mb-1">{action.label}</h3>
+                        <p className="font-sans text-sm text-gray-500">{action.desc}</p>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
-
-              <div className="bg-white p-6 rounded-xl shadow-md flex gap-5">
-                <div className="w-14 h-14 bg-emerald-500 text-white flex items-center justify-center rounded-xl">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <p className="font-sans text-sm text-gray-600 mb-1">Closed</p>
-                  <p className="font-display text-3xl font-bold text-[var(--ink)]">{stats.closed}</p>
-                </div>
-              </div>
-            </div>
+            </>
           )}
-
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <h2 className="font-display text-2xl font-bold text-[var(--ink)] mb-5">Quick Actions</h2>
-            <div className="flex gap-3">
-              <button 
-                onClick={() => router.push('/admin/contacts')}
-                className="bg-[var(--tan)] text-white px-6 py-3 border-none rounded-lg text-sm font-semibold cursor-pointer transition-all duration-300 font-sans hover:bg-[#7a341e]"
-              >
-                View All Leads
-              </button>
-            </div>
-          </div>
-        </div>
-      </main>
+      </div>
     </div>
   );
 }

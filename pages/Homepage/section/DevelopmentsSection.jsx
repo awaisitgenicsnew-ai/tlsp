@@ -1,8 +1,24 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function DevelopmentsSection() {
+  const router = useRouter();
+
+  const scrollToDevelopments = () => {
+    const panel = document.getElementById('section-developments-grid');
+    if (!panel) return;
+
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      // Desktop: horizontal scroll is driven by GSAP ScrollTrigger (pinned).
+      // Scroll the window vertically to the pin position matching this panel,
+      // so ScrollTrigger stays in sync and the navbar theme updates correctly.
+      window.scrollTo({ top: panel.offsetLeft, behavior: 'smooth' });
+    } else {
+      panel.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <section className="w-full bg-[#d9d9d9] min-h-screen flex items-center justify-center px-6 md:px-20 py-24">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -54,8 +70,8 @@ export default function DevelopmentsSection() {
         </div>
 
         {/* Right: Elevation/Visual */}
-        <div className="relative flex justify-center items-center h-full">
-          <div className="relative w-full max-w-[560px] h-90 overflow-hidden rounded-lg">
+        <div className="relative flex flex-col justify-center items-center h-full gap-6">
+          <div className="relative w-full  h-90 overflow-hidden rounded-lg">
             <Image
               src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80"
               alt="PLT Tower"
@@ -64,6 +80,12 @@ export default function DevelopmentsSection() {
               priority
             />
           </div>
+          <button
+            onClick={scrollToDevelopments}
+            className="text-[12.5px] ml-auto font-semibold tracking-[0.1em] uppercase px-7.5 py-4  text-[#000] underline underline-offset-4 border-none cursor-pointer hover:bg-[#7C5A2C] hover:text-[#ffffff] transition-colors"
+          >
+            Explore More Projects
+          </button>
         </div>
       </div>
     </section>

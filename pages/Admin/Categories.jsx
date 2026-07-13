@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import AdminSidebar from '@/components/AdminSidebar';
 import { categoryApi } from '../../lib/api';
 import { Plus, Edit, Trash2 } from 'lucide-react';
 
@@ -91,10 +90,8 @@ export default function Categories() {
   };
 
   return (
-    <div className="flex min-h-screen bg-white">
-      <AdminSidebar activePage="categories" />
-      
-      <main className="flex-1 ml-[300px] p-10 bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="bg-gray-50">
+      <main className="p-6">
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center mb-10 p-8 bg-gradient-to-br from-[#1a1a2e] to-[#16213e] rounded-2xl shadow-lg relative overflow-hidden">
             <h1 className="font-display text-4xl font-bold text-white relative z-10">Categories</h1>
@@ -207,8 +204,8 @@ export default function Categories() {
               </div>
             </div>
           )}
-        </div>
-      </main>
-    </div>
+      </div>
+    </main>
+  </div>
   );
 }

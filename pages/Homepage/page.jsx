@@ -141,8 +141,8 @@ export default function Homepage() {
               Math.round(self.progress * (SECTIONS.length - 1))
             );
             setActiveIndex(idx);
-            // Detect when approaching last section (contact section)
-            setIsNearLastSection(self.progress > 0.85);
+            // Detect when the last section (contact) is active
+            setIsNearLastSection(idx === SECTIONS.length - 1);
           },
         },
       });
@@ -162,7 +162,10 @@ export default function Homepage() {
           start: 'top 50%',
           end: 'bottom 50%',
           onToggle: (self) => {
-            if (self.isActive) setActiveIndex(i);
+            if (self.isActive) {
+              setActiveIndex(i);
+              setIsNearLastSection(i === SECTIONS.length - 1);
+            }
           },
         })
       );
@@ -173,8 +176,6 @@ export default function Homepage() {
         end: 'bottom bottom',
         onUpdate: (self) => {
           setProgress(self.progress);
-          // Detect when approaching last section (contact section)
-          setIsNearLastSection(self.progress > 0.85);
         },
       });
 
