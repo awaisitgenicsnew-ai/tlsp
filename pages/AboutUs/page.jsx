@@ -54,6 +54,19 @@ const BLACK_SCHEME = {
   buttonHoverText: '#ffffff',
 };
 
+const STORY_BG_SCHEME = {
+  bg: '#181410',
+  border: 'rgba(255,255,255,0.1)',
+  text: '#ffffff',
+  subText: 'rgba(255,255,255,0.8)',
+  link: 'rgba(255,255,255,0.9)',
+  linkHover: '#ffffff',
+  buttonBorder: '#ffffff',
+  buttonText: '#ffffff',
+  buttonHoverBg: '#ffffff',
+  buttonHoverText: '#000000',
+};
+
 const BLACK_BG_SCHEME = {
   bg: '#000000',
   border: 'rgba(255,255,255,0.1)',

@@ -225,7 +225,7 @@ export default function BlogDetail() {
           }
         `}</style>
         <article className={clsx('bg-white', 'rounded-2xl',  'p-8', 'md:p-12', 'mb-12')}>
-     <nav className={clsx('max-w-6xl', 'mx-auto', 'px-6', 'md:px-10', 'py-5', 'text-sm', 'text-gray-500')} aria-label="Breadcrumb">
+     <nav className={clsx('max-w-6xl', 'mx-auto',  'py-5', 'text-sm', 'text-gray-500')} aria-label="Breadcrumb">
         <ol className={clsx('flex', 'items-center', 'flex-wrap', 'gap-2')}>
           <li><a href="/" className={clsx('hover:text-[#9c7a3c]', 'transition-colors')}>Home</a></li>
           <li aria-hidden="true">&rsaquo;</li>
