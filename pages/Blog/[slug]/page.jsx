@@ -90,18 +90,20 @@ export default function BlogDetail() {
   return (
     <div className="min-h-screen bg-white">
       <Navbar 
-        top={WHITE_SCHEME} 
-        scrolled={{
-          bg: "#000000",
-          border: "rgba(255,255,255,0.1)",
-          text: "#ffffff",
-          subText: "rgba(255,255,255,0.8)",
-          link: "rgba(255,255,255,0.9)",
-          linkHover: "#ffffff",
-          buttonBorder: "#ffffff",
-          buttonText: "#ffffff",
-          buttonHoverBg: "#ffffff",
-          buttonHoverText: "#000000",
+        colors={{
+          top: WHITE_SCHEME,
+          scrolled: {
+            bg: "#000000",
+            border: "rgba(255,255,255,0.1)",
+            text: "#ffffff",
+            subText: "rgba(255,255,255,0.8)",
+            link: "rgba(255,255,255,0.9)",
+            linkHover: "#ffffff",
+            buttonBorder: "#ffffff",
+            buttonText: "#ffffff",
+            buttonHoverBg: "#ffffff",
+            buttonHoverText: "#000000",
+          }
         }} 
       />
 
