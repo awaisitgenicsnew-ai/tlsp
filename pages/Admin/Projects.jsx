@@ -123,7 +123,7 @@ export default function Projects() {
       secondaryButtonLink: project.secondaryButtonLink || '',
       image: project.image || null,
       imageAlt: project.imageAlt || '',
-      publication_status: project.publication_status || 'draft',
+      publication_status: project.publication_status || 'published',
     });
     setShowModal(true);
   };
@@ -146,6 +146,22 @@ export default function Projects() {
       const newStatus = project.publication_status === 'published' ? 'draft' : 'published';
       const data = new FormData();
       data.append('publication_status', newStatus);
+      data.append('title', project.title);
+      data.append('location', project.location || '');
+      data.append('badge', project.badge || '');
+      data.append('status', project.status || 'In Planning');
+      data.append('description', project.description || '');
+      data.append('type', project.type || '');
+      data.append('handover', project.handover || '');
+      data.append('payment', project.payment || '');
+      data.append('primaryButtonText', project.primaryButtonText || '');
+      data.append('primaryButtonLink', project.primaryButtonLink || '');
+      data.append('secondaryButtonText', project.secondaryButtonText || '');
+      data.append('secondaryButtonLink', project.secondaryButtonLink || '');
+      data.append('imageAlt', project.imageAlt || '');
+      if (project.image) {
+        data.append('image', project.image);
+      }
       await projectApi.update(project.id, data, token);
       fetchProjects();
     } catch (err) {
