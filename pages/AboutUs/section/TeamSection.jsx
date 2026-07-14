@@ -1,5 +1,11 @@
 "use client";
 
+import { useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 export default function TeamSection() {
   const team = [
     {
@@ -16,6 +22,31 @@ export default function TeamSection() {
       name: "Michael Chen",
       role: "Chief Financial Officer",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=320"
+    },
+    {
+      name: "Emily Rodriguez",
+      role: "Chief Marketing Officer",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=320"
+    },
+    {
+      name: "David Thompson",
+      role: "Chief Technology Officer",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=320"
+    },
+    {
+      name: "Lisa Anderson",
+      role: "Director of Design",
+      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=320"
+    },
+    {
+      name: "James Wilson",
+      role: "Head of Sales",
+      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=320"
+    },
+    {
+      name: "Anna Martinez",
+      role: "Director of Operations",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=320"
     }
   ];
 
@@ -28,39 +59,62 @@ export default function TeamSection() {
             Meet Our Visionaries
           </h2>
           <div className="w-20 h-1 bg-[#c8935a] mx-auto" />
-            <p className="font-sans text-sm text-[var(--ink)]/80 max-w-2xl mx-auto mt-5">
-              A team of experienced professionals dedicated to shaping Dubai's skyline 
-              with excellence and innovation.
-            </p>
+         
         </div>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {team.map((member, index) => (
-            <div 
-              key={index}
-              className="group flex flex-col items-center gap-6 bg-white p-6 rounded-2xl hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-[#c8935a]/30"
-            >
-              {/* Image */}
-              <div className="relative w-64 h-56 overflow-hidden rounded-xl">
-                <img 
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
-                />
-              </div>
+        {/* Team Swiper */}
+        <div className="max-w-7xl mx-auto">
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            spaceBetween={30}
+            slidesPerView={1}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 3,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            className="team-swiper"
+          >
+            {team.map((member, index) => (
+              <SwiperSlide key={index}>
+                <div className="group flex flex-col items-center gap-6 bg-white p-6 rounded-2xl hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-[#c8935a]/30 h-full">
+                  {/* Image */}
+                  <div className="relative w-64 h-56 overflow-hidden rounded-xl">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
+                    />
+                  </div>
 
-              {/* Content */}
-              <div className="flex-1 text-center w-full">
-                <div className="mb-4">
-                  <span className="inline-block px-3 py-1 bg-[#c8935a]/10 text-[#c8935a] text-xs tracking-widest uppercase rounded-full mb-3">
-                    {member.role}
-                  </span>
-                  <h3 className="font-display text-2xl md:text-3xl text-[#1a1a1a] mb-2">{member.name}</h3>
+                  {/* Content */}
+                  <div className="flex-1 text-center w-full">
+                    <div className="mb-4">
+                      <span className="inline-block px-3 py-1 bg-[#c8935a]/10 text-[#c8935a] text-xs tracking-widest uppercase rounded-full mb-3">
+                        {member.role}
+                      </span>
+                      <h3 className="font-display text-2xl md:text-3xl text-[#1a1a1a] mb-2">{member.name}</h3>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>
