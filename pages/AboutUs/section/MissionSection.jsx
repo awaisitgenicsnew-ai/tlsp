@@ -1,65 +1,109 @@
 "use client";
 
 export default function MissionSection() {
+  const principles = [
+    {
+      stage: "STAGE 01 — MATERIAL",
+      icon: (
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 22 L24 8 L42 22" />
+          <path d="M12 20 V40 H36 V20" />
+          <path d="M20 40 V28 H28 V40" />
+        </svg>
+      ),
+      title: "Quality First",
+      description: "Every material, finish, and detail is chosen for what it will look like in ten years, not just on delivery day.",
+      tag: "No shortcuts. No substitutions."
+    },
+    {
+      stage: "STAGE 02 — METHOD",
+      icon: (
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M24 6 L24 18" />
+          <path d="M24 30 L24 42" />
+          <circle cx="24" cy="24" r="6" />
+          <path d="M8 24 L18 24" />
+          <path d="M30 24 L40 24" />
+        </svg>
+      ),
+      title: "Forward Design",
+      description: "We build with tomorrow's tools and standards in mind, so the spaces we deliver stay ahead of their time.",
+      tag: "Tested ideas, applied early."
+    },
+    {
+      stage: "STAGE 03 — RELATIONSHIP",
+      icon: (
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M8 18 Q8 10 16 10 Q22 10 24 16 Q26 10 32 10 Q40 10 40 18 Q40 28 24 38 Q8 28 8 18 Z" />
+        </svg>
+      ),
+      title: "Client Partnership",
+      description: "We listen before we draft. Every decision is made in conversation with the people who'll live in the space.",
+      tag: "Your vision, our craft."
+    }
+  ];
+
   return (
-    <section className="w-full bg-[#f5f2ed] min-h-screen relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-20 md:py-32">
-        {/* Header */}
-        <div className="text-center mb-16">
-          
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-[#1a1a1a] mb-8">
-            Creating Spaces That Inspire
-          </h2>
-          <div className="w-20 h-1 bg-[#c8935a] mx-auto mb-8" />
+    <section className="w-full bg-[#1c1b19] min-h-screen relative overflow-hidden">
+      {/* Radial gradient background */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(176,138,90,0.07),transparent_55%)] pointer-events-none" />
       
+      <div className="max-w-[1160px] mx-auto px-6 md:px-12 lg:px-24 py-24 md:py-32 relative">
+        {/* Header */}
+        <div className="text-center mb-7 max-w-[760px] mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="w-6 h-px bg-[#7a6042]" />
+            <p className="text-[11.5px] tracking-[0.22em] uppercase text-[#b08a5a] font-medium">
+              Our Principles
+            </p>
+            <span className="w-6 h-px bg-[#7a6042]" />
+          </div>
+          <h2 className="font-serif text-4xl leading-[1.12] tracking-[-0.01em] text-[#f3efe6] mb-5">
+            Spaces built on <em className="italic font-light text-[#b08a5a]">conviction</em>,<br />not compromise
+          </h2>
+          <p className="text-[15.5px] leading-[1.7] text-[#9a948a] max-w-[480px] mx-auto">
+            Three commitments guide every project we take on — from the first sketch to the final walkthrough.
+          </p>
         </div>
 
-        {/* Mission Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Mission Card 1 */}
-          <div className="group relative bg-white p-10 hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-[#c8935a]/20">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#c8935a] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="w-16 h-16 bg-[#c8935a]/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#c8935a] transition-colors duration-500">
-              <svg className="w-8 h-8 text-[#c8935a] group-hover:text-white transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-              </svg>
-            </div>
-            <h3 className="font-display text-2xl mb-4 text-[#1a1a1a]">Quality First</h3>
-            <p className="font-sans text-base leading-relaxed text-[#1a1a1a]/60">
-              We never compromise on quality. Every material, every finish, 
-              every detail is carefully selected to ensure excellence.
-            </p>
-          </div>
+        {/* Timeline */}
+        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-10">
+          {/* Horizontal rail line */}
+          <div className="hidden md:block absolute top-[11px] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(243,239,230,0.16)] to-transparent" />
 
-          {/* Mission Card 2 */}
-          <div className="group relative bg-white p-10 hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-[#c8935a]/20">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#c8935a] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="w-16 h-16 bg-[#c8935a]/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#c8935a] transition-colors duration-500">
-              <svg className="w-8 h-8 text-[#c8935a] group-hover:text-white transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <h3 className="font-display text-2xl mb-4 text-[#1a1a1a]">Innovation</h3>
-            <p className="font-sans text-base leading-relaxed text-[#1a1a1a]/60">
-              We embrace cutting-edge technology and innovative design to create 
-              living spaces that are ahead of their time.
-            </p>
-          </div>
+          {principles.map((principle, index) => (
+            <div key={index} className="relative pt-14 text-left">
+              {/* Node */}
+              <div className="absolute top-0 left-0 w-[23px] h-[23px] rounded-full bg-[#1c1b19] border-[1.5px] border-[#b08a5a] flex items-center justify-center">
+                <span className="w-[7px] h-[7px] rounded-full bg-[#b08a5a]" />
+              </div>
 
-          {/* Mission Card 3 */}
-          <div className="group relative bg-white p-10 hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-[#c8935a]/20">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#c8935a] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="w-16 h-16 bg-[#c8935a]/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#c8935a] transition-colors duration-500">
-              <svg className="w-8 h-8 text-[#c8935a] group-hover:text-white transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
+              {/* Stage label */}
+              <p className="text-[11px] tracking-[0.16em] text-[#7a6042] mb-[18px]">
+                {principle.stage}
+              </p>
+
+              {/* Icon */}
+              <div className="w-[38px] h-[38px] mb-[22px] text-[#b08a5a]">
+                {principle.icon}
+              </div>
+
+              {/* Title */}
+              <h3 className="font-serif text-[22px] font-medium tracking-[-0.01em] text-[#f3efe6] mb-3">
+                {principle.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-[14.5px] leading-[1.75] text-[#9a948a] mb-[18px] max-w-[290px]">
+                {principle.description}
+              </p>
+
+              {/* Tag */}
+              <div className="text-[12px] tracking-[0.03em] text-[#7a6042] pt-[14px] border-t border-[rgba(243,239,230,0.16)] max-w-[290px]">
+                {principle.tag}
+              </div>
             </div>
-            <h3 className="font-display text-2xl mb-4 text-[#1a1a1a]">Customer Focus</h3>
-            <p className="font-sans text-base leading-relaxed text-[#1a1a1a]/60">
-              Our customers are at the heart of everything we do. We listen, 
-              understand, and deliver beyond expectations.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </section>

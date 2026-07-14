@@ -17,12 +17,12 @@ import ContactSection from './section/ContactSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// theme: 'dark' = navbar text WHITE, 'light' = navbar text BLACK, 'dark-bg' = navbar with dark background
+// theme: 'dark' = navbar text WHITE, 'light' = navbar text BLACK, 'dark-bg' = navbar with dark background, 'mission-bg' = navbar with bronze background
 const SECTIONS = [
   { id: 'hero', Component: HeroSection, theme: 'dark' },
   { id: 'story', Component: StorySection, theme: 'dark-bg' },
-  { id: 'mission', Component: MissionSection, theme: 'light' },
-  { id: 'values', Component: ValuesSection, theme: 'light' },
+  { id: 'mission', Component: MissionSection, theme: 'mission-bg' },
+  { id: 'values', Component: ValuesSection, theme: 'mission-bg' },
   { id: 'team', Component: TeamSection, theme: 'light' },
   { id: 'achievements', Component: AchievementsSection, theme: 'dark-bg' },
   { id: 'contact', Component: ContactSection, theme: 'dark' },
@@ -65,6 +65,19 @@ const STORY_BG_SCHEME = {
   buttonText: '#ffffff',
   buttonHoverBg: '#ffffff',
   buttonHoverText: '#000000',
+};
+
+const MISSION_SCHEME = {
+  bg: '#181410',
+  border: 'rgba(255,255,255,0.15)',
+  text: '#ffffff',
+  subText: 'rgba(255,255,255,0.85)',
+  link: 'rgba(255,255,255,0.95)',
+  linkHover: '#ffffff',
+  buttonBorder: '#ffffff',
+  buttonText: '#ffffff',
+  buttonHoverBg: '#ffffff',
+  buttonHoverText: '#7a6042',
 };
 
 const BLACK_BG_SCHEME = {
@@ -182,9 +195,12 @@ export default function AboutUs() {
 
   const isDarkSection = SECTIONS[activeIndex]?.theme === 'dark';
   const isDarkBgSection = SECTIONS[activeIndex]?.theme === 'dark-bg';
+  const isMissionBgSection = SECTIONS[activeIndex]?.theme === 'mission-bg';
 
   const navbarColors = isNearLastSection
     ? { top: BLACK_BG_SCHEME, scrolled: BLACK_BG_SCHEME }
+    : isMissionBgSection
+    ? { top: MISSION_SCHEME, scrolled: MISSION_SCHEME }
     : isDarkBgSection
     ? { top: STORY_BG_SCHEME, scrolled: STORY_BG_SCHEME }
     : isDarkSection
