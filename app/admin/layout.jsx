@@ -25,13 +25,13 @@ export default function AdminLayout({ children }) {
     console.log('Layout - Admin:', admin);
     
     if (!token) {
-      router.push('/admin/login');
+      router.push('/login');
     } else {
       try {
         setAdminData(JSON.parse(admin));
       } catch (err) {
         console.error('Error parsing admin data in layout:', err);
-        router.push('/admin/login');
+        router.push('/login');
       }
     }
   }, [router]);
@@ -41,7 +41,7 @@ export default function AdminLayout({ children }) {
     document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     document.cookie = 'admin=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     console.log('Cookies cleared');
-    router.push('/admin/login');
+    router.push('/login');
   };
 
   const menuItems = [

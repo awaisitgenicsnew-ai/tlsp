@@ -63,17 +63,7 @@ export default function ContactSection() {
         </div>
 
         {/* CTA Button */}
-        <div className="text-center">
-          <a 
-            href="/contact-us"
-            className="inline-flex items-center gap-3 bg-[#c8935a] text-white px-10 py-4 text-sm tracking-widest uppercase hover:bg-[#b07d4a] transition-colors duration-300 group"
-          >
-            Send Us a Message
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
+      
       </div>
     </section>
   );
