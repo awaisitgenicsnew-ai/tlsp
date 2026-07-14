@@ -93,7 +93,7 @@ export default function Homepage() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await projectApi.getAll({ status: 'published' });
+        const response = await projectApi.getAll({ publication_status: 'published' });
         if (response?.data?.length > 0) {
           const publishedProjects = response.data;
           const highDemandProject = publishedProjects.find(p => p.badge === 'High Demand');
@@ -127,8 +127,6 @@ export default function Homepage() {
         }
       } catch (error) {
         console.error('Failed to fetch projects:', error);
-        // If API fails, just use base sections without development sections
-        setSections(BASE_SECTIONS);
       }
     };
     fetchProjects();

@@ -12,7 +12,7 @@ export default function DevelopmentsSection() {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await projectApi.getAll({ badge: "High Demand", status: "published" });
+        const response = await projectApi.getAll({ badge: "High Demand", publication_status: "published" });
         if (response?.data?.length > 0) {
           setProject(response.data[0]);
         }

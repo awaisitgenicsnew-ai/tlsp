@@ -19,7 +19,7 @@ const EMPTY_FORM = {
   secondaryButtonLink: '',
   image: null,
   imageAlt: '',
-  status: 'draft',
+  publication_status: 'draft',
 };
 
 const BADGES = ['High Demand', 'High Trending'];
@@ -87,7 +87,7 @@ export default function Projects() {
       data.append('secondaryButtonText', formData.secondaryButtonText);
       data.append('secondaryButtonLink', formData.secondaryButtonLink);
       data.append('imageAlt', formData.imageAlt);
-      data.append('status', formData.status);
+      data.append('publication_status', formData.publication_status);
 
       if (formData.image instanceof File) {
         data.append('image', formData.image);
@@ -123,7 +123,7 @@ export default function Projects() {
       secondaryButtonLink: project.secondaryButtonLink || '',
       image: project.image || null,
       imageAlt: project.imageAlt || '',
-      status: project.status || 'draft',
+      publication_status: project.publication_status || 'draft',
     });
     setShowModal(true);
   };
@@ -143,9 +143,9 @@ export default function Projects() {
   const handleToggleStatus = async (project) => {
     try {
       const token = getCookie('token');
-      const newStatus = project.status === 'published' ? 'draft' : 'published';
+      const newStatus = project.publication_status === 'published' ? 'draft' : 'published';
       const data = new FormData();
-      data.append('status', newStatus);
+      data.append('publication_status', newStatus);
       await projectApi.update(project.id, data, token);
       fetchProjects();
     } catch (err) {
@@ -214,12 +214,12 @@ export default function Projects() {
                           <button
                             onClick={() => handleToggleStatus(project)}
                             className={`px-3 py-1 text-xs font-semibold rounded cursor-pointer transition-colors ${
-                              project.status === 'published'
+                              project.publication_status === 'published'
                                 ? 'bg-green-100 text-green-700 hover:bg-green-200'
                                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                             }`}
                           >
-                            {project.status === 'published' ? 'Published' : 'Draft'}
+                            {project.publication_status === 'published' ? 'Published' : 'Draft'}
                           </button>
                         </td>
                         <td className="px-4 py-4 border-b border-gray-200">
@@ -429,10 +429,10 @@ export default function Projects() {
                   </div>
 
                   <div className="mb-5">
-                    <label className={labelClass}>Status</label>
+                    <label className={labelClass}>Publication Status</label>
                     <select
-                      value={formData.status}
-                      onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+                      value={formData.publication_status}
+                      onChange={(e) => setFormData({ ...formData, publication_status: e.target.value })}
                       className={inputClass}
                     >
                       <option value="draft">Draft</option>
