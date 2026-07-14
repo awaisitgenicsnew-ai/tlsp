@@ -31,7 +31,7 @@ export default function DevelopmentsGridSection() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await projectApi.getAll();
+        const response = await projectApi.getAll({ status: "published" });
         if (response?.data?.length > 0) {
           // High Demand badge wala featured section me dikhta hai, baki yahan
           const rest = response.data.filter((p) => p.badge !== "High Demand");

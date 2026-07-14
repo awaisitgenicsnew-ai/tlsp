@@ -12,11 +12,7 @@ export default function MissionSection() {
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-[#1a1a1a] mb-8">
             Creating Spaces That Inspire
           </h2>
-          <div className="w-20 h-1 bg-[#c8935a] mx-auto mb-8" />
-          <p className="font-sans text-base md:text-lg text-[#1a1a1a]/70 leading-relaxed max-w-3xl mx-auto">
-            Our mission is to develop exceptional properties that exceed expectations 
-            and set new standards in luxury living across the UAE.
-          </p>
+       
         </div>
 
         {/* Mission Cards */}

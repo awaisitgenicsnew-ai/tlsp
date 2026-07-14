@@ -19,6 +19,7 @@ const EMPTY_FORM = {
   secondaryButtonLink: '',
   image: null,
   imageAlt: '',
+  status: 'draft',
 };
 
 const BADGES = ['High Demand', 'High Trending'];
@@ -86,6 +87,7 @@ export default function Projects() {
       data.append('secondaryButtonText', formData.secondaryButtonText);
       data.append('secondaryButtonLink', formData.secondaryButtonLink);
       data.append('imageAlt', formData.imageAlt);
+      data.append('status', formData.status);
 
       if (formData.image instanceof File) {
         data.append('image', formData.image);
@@ -121,6 +123,7 @@ export default function Projects() {
       secondaryButtonLink: project.secondaryButtonLink || '',
       image: project.image || null,
       imageAlt: project.imageAlt || '',
+      status: project.status || 'draft',
     });
     setShowModal(true);
   };
@@ -134,6 +137,19 @@ export default function Projects() {
       fetchProjects();
     } catch (err) {
       setError(err.message || 'Failed to delete project');
+    }
+  };
+
+  const handleToggleStatus = async (project) => {
+    try {
+      const token = getCookie('token');
+      const newStatus = project.status === 'published' ? 'draft' : 'published';
+      const data = new FormData();
+      data.append('status', newStatus);
+      await projectApi.update(project.id, data, token);
+      fetchProjects();
+    } catch (err) {
+      setError(err.message || 'Failed to update project status');
     }
   };
 
@@ -176,6 +192,7 @@ export default function Projects() {
                     <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Title</th>
                     <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Location</th>
                     <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Tag</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Status</th>
                     <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Image</th>
                     <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Actions</th>
                   </tr>
@@ -183,7 +200,7 @@ export default function Projects() {
                 <tbody>
                   {projects.length === 0 ? (
                     <tr>
-                      <td colSpan={5} className="px-4 py-8 text-center font-sans text-base text-black/60">
+                      <td colSpan={6} className="px-4 py-8 text-center font-sans text-base text-black/60">
                         No projects yet. Click "Add Project" to create one.
                       </td>
                     </tr>
@@ -193,6 +210,18 @@ export default function Projects() {
                         <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{project.title}</td>
                         <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{project.location || '-'}</td>
                         <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{project.badge || project.status || '-'}</td>
+                        <td className="px-4 py-4 border-b border-gray-200">
+                          <button
+                            onClick={() => handleToggleStatus(project)}
+                            className={`px-3 py-1 text-xs font-semibold rounded cursor-pointer transition-colors ${
+                              project.status === 'published'
+                                ? 'bg-green-100 text-green-700 hover:bg-green-200'
+                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            }`}
+                          >
+                            {project.status === 'published' ? 'Published' : 'Draft'}
+                          </button>
+                        </td>
                         <td className="px-4 py-4 border-b border-gray-200">
                           {project.image ? (
                             <img
@@ -397,6 +426,18 @@ export default function Projects() {
                       placeholder="e.g. PLT Tower elevation"
                       className={inputClass}
                     />
+                  </div>
+
+                  <div className="mb-5">
+                    <label className={labelClass}>Status</label>
+                    <select
+                      value={formData.status}
+                      onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+                      className={inputClass}
+                    >
+                      <option value="draft">Draft</option>
+                      <option value="published">Published</option>
+                    </select>
                   </div>
 
                   <div className="flex gap-3 justify-end mt-6">
