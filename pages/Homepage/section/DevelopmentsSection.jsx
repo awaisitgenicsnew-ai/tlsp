@@ -5,26 +5,9 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { projectApi, getImageUrl } from "@/lib/api";
 
-const FALLBACK_PROJECT = {
-  title: "PLT Tower",
-  location: "Business Bay, Dubai",
-  badge: "High Demand",
-  description:
-    "Fifty-one storeys of considered living in Dubai's most dynamic address. Each residence designed with European restraint — natural stone, warm metals, and proportions built to last.",
-  type: "Studio–3 Bed",
-  handover: "Q4 2027",
-  payment: "60 / 40",
-  primaryButtonText: "View development",
-  primaryButtonLink: "",
-  secondaryButtonText: "Register interest",
-  secondaryButtonLink: "/register-interest",
-  image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
-  imageAlt: "PLT Tower",
-};
-
 export default function DevelopmentsSection() {
   const router = useRouter();
-  const [project, setProject] = useState(FALLBACK_PROJECT);
+  const [project, setProject] = useState(null);
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -62,6 +45,10 @@ export default function DevelopmentsSection() {
       panel.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  if (!project) {
+    return null;
+  }
+
   return (
     <section className="w-full bg-[#d9d9d9] min-h-screen flex items-center justify-center px-6 md:px-20 py-24">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -134,7 +121,7 @@ export default function DevelopmentsSection() {
               />
             )}
           </div>
-      
+
         </div>
       </div>
     </section>

@@ -6,13 +6,12 @@ export default function MissionSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-20 md:py-32">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="font-sans text-xs md:text-sm tracking-[0.3em] text-[#c8935a] mb-6 uppercase">
-            Our Mission
-          </p>
+          
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-[#1a1a1a] mb-8">
             Creating Spaces That Inspire
           </h2>
-       
+          <div className="w-20 h-1 bg-[#c8935a] mx-auto mb-8" />
+      
         </div>
 
         {/* Mission Cards */}

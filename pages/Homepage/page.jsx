@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '@/components/Navbar';
 import FloatingActionBar from '@/components/FloatingActionBar';
 import Footer from '@/components/Footer';
+import { projectApi } from '@/lib/api';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,13 +26,11 @@ import ContactSection from './section/ContactSection';
 // theme: 'light' = section bg light hai -> navbar text BLACK
 // animate: false = section apni khud ki animation handle karta hai
 // ============================================================
-const SECTIONS = [
+const BASE_SECTIONS = [
   { id: 'hero', Component: HeroSlider, theme: 'dark', animate: false },
   { id: 'intro', Component: IntroSection, theme: 'light', animate: true },
   { id: 'brand-pillars', Component: BrandPillarsSlider, theme: 'dark', animate: false },
-  { id: 'developments', Component: Developments, theme: 'light', animate: true },
-   { id: 'developments-grid', Component: DevelopmentsGridSection, theme: 'light', animate: true },
- { id: 'philosophy', Component: Philosophy, theme: 'light', animate: true },
+  { id: 'philosophy', Component: Philosophy, theme: 'light', animate: true },
   { id: 'experience', Component: ExperienceSection, theme: 'light', animate: true },
   { id: 'contact', Component: ContactSection, theme: 'dark', animate: true },
 ];
@@ -86,9 +85,54 @@ export default function Homepage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isNearLastSection, setIsNearLastSection] = useState(false);
+  const [sections, setSections] = useState(BASE_SECTIONS);
   const wrapperRef = useRef(null);
   const trackRef = useRef(null);
 
+  // Fetch published projects and conditionally add development sections
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await projectApi.getAll({ status: 'published' });
+        if (response?.data?.length > 0) {
+          const publishedProjects = response.data;
+          const highDemandProject = publishedProjects.find(p => p.badge === 'High Demand');
+          const otherProjects = publishedProjects.filter(p => p.badge !== 'High Demand');
+
+          const dynamicSections = [...BASE_SECTIONS];
+          const insertIndex = 3; // After brand-pillars
+
+          // Add DevelopmentsSection if High Demand project exists
+          if (highDemandProject) {
+            dynamicSections.splice(insertIndex, 0, {
+              id: 'developments',
+              Component: Developments,
+              theme: 'light',
+              animate: true
+            });
+          }
+
+          // Add DevelopmentsGridSection if other projects exist
+          if (otherProjects.length > 0) {
+            const gridIndex = highDemandProject ? insertIndex + 1 : insertIndex;
+            dynamicSections.splice(gridIndex, 0, {
+              id: 'developments-grid',
+              Component: DevelopmentsGridSection,
+              theme: 'light',
+              animate: true
+            });
+          }
+
+          setSections(dynamicSections);
+        }
+      } catch (error) {
+        console.error('Failed to fetch projects:', error);
+        // If API fails, just use base sections without development sections
+        setSections(BASE_SECTIONS);
+      }
+    };
+    fetchProjects();
+  }, []);
 
   useEffect(() => {
     // Kill all existing ScrollTriggers to prevent cached scroll positions
@@ -126,7 +170,7 @@ export default function Homepage() {
           anticipatePin: 1,
           // Snap: jis section ki taraf aadhe se zyada scroll hoga, wahi properly snap ho jayega
           snap: {
-            snapTo: 1 / (SECTIONS.length - 1),
+            snapTo: 1 / (sections.length - 1),
             duration: { min: 0.3, max: 0.5 },
             ease: 'power2.inOut',
             delay: 0,
@@ -137,12 +181,12 @@ export default function Homepage() {
           onUpdate: (self) => {
             setProgress(self.progress);
             const idx = Math.min(
-              SECTIONS.length - 1,
-              Math.round(self.progress * (SECTIONS.length - 1))
+              sections.length - 1,
+              Math.round(self.progress * (sections.length - 1))
             );
             setActiveIndex(idx);
             // Detect when the last section (contact) is active
-            setIsNearLastSection(idx === SECTIONS.length - 1);
+            setIsNearLastSection(idx === sections.length - 1);
           },
         },
       });
@@ -164,7 +208,7 @@ export default function Homepage() {
           onToggle: (self) => {
             if (self.isActive) {
               setActiveIndex(i);
-              setIsNearLastSection(i === SECTIONS.length - 1);
+              setIsNearLastSection(i === sections.length - 1);
             }
           },
         })
@@ -186,9 +230,9 @@ export default function Homepage() {
     });
 
     return () => mm.revert();
-  }, []);
+  }, [sections]);
 
-  const isDarkSection = SECTIONS[activeIndex]?.theme === 'dark';
+  const isDarkSection = sections[activeIndex]?.theme === 'dark';
 
   const navbarColors = isNearLastSection
     ? { top: BLACK_BG_SCHEME, scrolled: BLACK_BG_SCHEME }
@@ -217,7 +261,7 @@ export default function Homepage() {
           aria-label="Homepage sections"
           className="flex flex-col md:flex-row md:h-screen md:w-max will-change-transform"
         >
-          {SECTIONS.map(({ id, Component, theme }) => (
+          {sections.map(({ id, Component, theme }) => (
             <section
               key={id}
               id={`section-${id}`}

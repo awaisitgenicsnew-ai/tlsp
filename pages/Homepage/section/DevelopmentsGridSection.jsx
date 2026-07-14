@@ -4,29 +4,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { projectApi, getImageUrl } from "@/lib/api";
 
-const FALLBACK_DEVELOPMENTS = [
-  {
-    title: "PLT Residences",
-    location: "Downtown Dubai",
-    status: "Coming Soon",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
-  },
-  {
-    title: "Canal House",
-    location: "Dubai Canal",
-    status: "In Planning",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
-  },
-  {
-    title: "The Quarter",
-    location: "Al Quoz Arts District",
-    status: "In Planning",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
-  },
-];
-
 export default function DevelopmentsGridSection() {
-  const [developments, setDevelopments] = useState(FALLBACK_DEVELOPMENTS);
+  const [developments, setDevelopments] = useState([]);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -45,6 +24,10 @@ export default function DevelopmentsGridSection() {
     };
     fetchProjects();
   }, []);
+
+  if (developments.length === 0) {
+    return null;
+  }
 
   return (
     <section id="developments-grid" className="w-full bg-[#d9d9d9] min-h-screen flex items-center justify-center px-6 md:px-20 py-28 sm:pt-[168px]">
