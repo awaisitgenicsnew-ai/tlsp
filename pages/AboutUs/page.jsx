@@ -17,14 +17,14 @@ import ContactSection from './section/ContactSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// theme: 'dark' = navbar text WHITE, 'light' = navbar text BLACK
+// theme: 'dark' = navbar text WHITE, 'light' = navbar text BLACK, 'dark-bg' = navbar with dark background
 const SECTIONS = [
   { id: 'hero', Component: HeroSection, theme: 'dark' },
-  { id: 'story', Component: StorySection, theme: 'dark' },
+  { id: 'story', Component: StorySection, theme: 'dark-bg' },
   { id: 'mission', Component: MissionSection, theme: 'light' },
   { id: 'values', Component: ValuesSection, theme: 'light' },
   { id: 'team', Component: TeamSection, theme: 'light' },
-  { id: 'achievements', Component: AchievementsSection, theme: 'light' },
+  { id: 'achievements', Component: AchievementsSection, theme: 'dark-bg' },
   { id: 'contact', Component: ContactSection, theme: 'dark' },
 ];
 
@@ -181,12 +181,12 @@ export default function AboutUs() {
   }, []);
 
   const isDarkSection = SECTIONS[activeIndex]?.theme === 'dark';
-  const isStorySection = SECTIONS[activeIndex]?.id === 'story';
+  const isDarkBgSection = SECTIONS[activeIndex]?.theme === 'dark-bg';
 
   const navbarColors = isNearLastSection
     ? { top: BLACK_BG_SCHEME, scrolled: BLACK_BG_SCHEME }
-    : isStorySection
-    ? { top: BLACK_BG_SCHEME, scrolled: BLACK_BG_SCHEME }
+    : isDarkBgSection
+    ? { top: STORY_BG_SCHEME, scrolled: STORY_BG_SCHEME }
     : isDarkSection
     ? { top: WHITE_SCHEME, scrolled: WHITE_SCHEME }
     : { top: BLACK_SCHEME, scrolled: BLACK_SCHEME };
@@ -209,7 +209,7 @@ export default function AboutUs() {
           ref={trackRef}
           role="main"
           aria-label="About Us sections"
-          className="flex flex-col md:flex-row md:h-screen md:w-max will-change-transform"
+          className="flex flex-col md:flex-row md:h-screen md:w-max will-change-transform md:justify-center"
         >
           {SECTIONS.map(({ id, Component, theme }) => (
             <section

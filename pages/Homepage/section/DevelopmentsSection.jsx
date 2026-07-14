@@ -134,12 +134,7 @@ export default function DevelopmentsSection() {
               />
             )}
           </div>
-          <button
-            onClick={scrollToDevelopments}
-            className="text-[12.5px] ml-auto font-semibold tracking-[0.1em] uppercase px-7.5 py-4  text-[#000] underline underline-offset-4 border-none cursor-pointer  hover:text-[#ffffff] transition-colors"
-          >
-            Explore More Projects
-          </button>
+      
         </div>
       </div>
     </section>

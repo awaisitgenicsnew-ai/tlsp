@@ -11,29 +11,32 @@ const SLIDES = [
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920",
     eyebrow: "ABOUT US · PLT PROPERTIES",
     heading: "Building Dubai's Future, Today",
+    subheading: "Where Vision Meets Excellence"
   },
   {
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1920",
     eyebrow: "ABOUT US · PLT PROPERTIES",
     heading: "European Standards, Arabian Hospitality",
+    subheading: "A Legacy of Luxury"
   },
   {
     image: "https://images.unsplash.com/photo-1577495508048-b635879837f1?w=1920",
     eyebrow: "ABOUT US · PLT PROPERTIES",
     heading: "Redefining Luxury Living in Dubai",
+    subheading: "Crafting Extraordinary Spaces"
   },
 ];
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-[#0b0b0c] ">
+    <section className="relative h-screen w-full overflow-hidden bg-[#0a0a0a]">
       <Swiper
         modules={[Autoplay, Pagination, EffectFade]}
         effect="fade"
         fadeEffect={{ crossFade: true }}
-        speed={1000}
+        speed={1200}
         initialSlide={0}
-        autoplay={{ delay: 1000, disableOnInteraction: false }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop
         pagination={{
           el: ".custom-hero-pagination",
@@ -47,32 +50,54 @@ export default function HeroSection() {
           <SwiperSlide key={i}>
             <div className="relative h-screen w-full">
               <div
-                className="absolute inset-0 bg-cover bg-center slide-bg"
+                className="absolute inset-0 bg-cover bg-center scale-105 slide-bg"
                 style={{ backgroundImage: `url(${slide.image})` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/70" />
-              <div className="absolute inset-0 bg-black/20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/40" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
 
-              <div className="relative z-10 h-full w-full flex flex-col items-center justify-center text-center px-6 text-white mx-auto">
-                <h1 className="italic font-light text-3xl sm:text-5xl md:text-6xl leading-[1.15] max-w-4xl mx-auto text-center mb-10">
-                  {slide.heading}
-                </h1>
+              <div className="relative z-10 h-full w-full flex items-center px-6 md:px-12 ">
+                <div className="max-w-4xl">
+                  <p className="font-sans text-xs md:text-sm tracking-[0.3em] text-[#c8935a] mb-6 uppercase">
+                    {slide.eyebrow}
+                  </p>
+                  <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] text-white mb-6">
+                    {slide.heading}
+                  </h1>
+                  <div className="w-24 h-1 bg-[#c8935a] mb-8" />
+                  <p className="font-sans text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">
+                    {slide.subheading}
+                  </p>
+                </div>
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
 
-      {/* --- FIXED: PERFECTLY CENTERED BOTTOM CONTAINER --- */}
-      <div className="custom-hero-pagination absolute bottom-15 left-0 right-0 mx-auto z-30 flex items-center justify-center gap-3 w-max h-auto !top-auto" />
+      <div className="custom-hero-pagination absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center gap-3" />
 
-      {/* Scroll indicator */}
-      <div className="hidden sm:flex absolute bottom-8 right-8 z-20 items-center gap-2">
-        <span className="font-sans text-[11px] tracking-[0.25em] text-white/70 [writing-mode:vertical-rl] rotate-180">
-          SCROLL
+      <div className="hidden md:flex absolute bottom-12 right-12 z-20 items-center gap-3">
+        <div className="w-12 h-px bg-white/30" />
+        <span className="font-sans text-xs tracking-[0.25em] text-white/60 uppercase">
+          Scroll to explore
         </span>
       </div>
 
+      <style jsx global>{`
+        .custom-bullet {
+          width: 12px;
+          height: 12px;
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          transition: all 0.3s ease;
+        }
+        .custom-bullet-active {
+          background: #c8935a;
+          width: 36px;
+          border-radius: 6px;
+        }
+      `}</style>
     </section>
   );
 }
