@@ -5,10 +5,9 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { projectApi, getImageUrl } from "@/lib/api";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, EffectFade, Navigation } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
-import "swiper/css/pagination";
 
 export default function DevelopmentsSection() {
   const router = useRouter();
@@ -175,7 +174,7 @@ export default function DevelopmentsSection() {
             <div className="relative border border-[rgba(237,230,216,0.16)] leading-none">
               {slides.length > 0 ? (
                 <Swiper
-                  modules={[Autoplay, Pagination, EffectFade, Navigation]}
+                  modules={[Autoplay, EffectFade, Navigation]}
                   effect="fade"
                   fadeEffect={{ crossFade: true }}
                   speed={1000}
@@ -184,12 +183,6 @@ export default function DevelopmentsSection() {
                   navigation={{
                     nextEl: '.custom-dev-next',
                     prevEl: '.custom-dev-prev',
-                  }}
-                  pagination={{
-                    el: ".custom-dev-pagination",
-                    clickable: true,
-                    bulletClass: "swiper-pagination-bullet custom-bullet",
-                    bulletActiveClass: "swiper-pagination-bullet-active custom-bullet-active",
                   }}
                   className="w-full h-[350px]"
                 >
@@ -228,9 +221,6 @@ export default function DevelopmentsSection() {
               <div className="absolute w-[22px] h-[22px] -bottom-px -left-px border-b-1.5 border-l-1.5 border-[#D9B27C]" />
             </div>
             {slides.length > 1 && (
-              <div className="custom-dev-pagination absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2" />
-            )}
-            {slides.length > 1 && (
               <>
                 <button className="custom-dev-prev absolute bottom-4 right-16 z-30 w-10 h-10 bg-[#1D1913] border border-[rgba(237,230,216,0.3)] text-[#EDE6D8] flex items-center justify-center cursor-pointer hover:bg-[#D9B27C] hover:border-[#D9B27C] transition-colors">
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -257,19 +247,6 @@ export default function DevelopmentsSection() {
         .reveal.in {
           opacity: 1;
           transform: translateY(0);
-        }
-
-        .custom-bullet {
-          width: 8px;
-          height: 8px;
-          background: rgba(237, 230, 216, 0.4);
-          opacity: 1;
-          transition: all 0.3s ease;
-        }
-        .custom-bullet-active {
-          background: #D9B27C;
-          width: 24px;
-          border-radius: 4px;
         }
 
         @media (max-width: 940px) {
