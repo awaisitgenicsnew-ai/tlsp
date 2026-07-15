@@ -18,6 +18,7 @@ const EMPTY_FORM = {
   secondaryButtonText: '',
   secondaryButtonLink: '',
   image: null,
+  images: [],
   imageAlt: '',
   publication_status: 'draft',
 };
@@ -95,6 +96,15 @@ export default function Projects() {
         data.append('image', formData.image);
       }
 
+      // Handle multiple images
+      if (formData.images && formData.images.length > 0) {
+        formData.images.forEach((img) => {
+          if (img instanceof File) {
+            data.append('images', img);
+          }
+        });
+      }
+
       if (editingProject) {
         await projectApi.update(editingProject.id, data, token);
       } else {
@@ -122,6 +132,7 @@ export default function Projects() {
       secondaryButtonText: project.secondaryButtonText || '',
       secondaryButtonLink: project.secondaryButtonLink || '',
       image: project.image || null,
+      images: project.images || [],
       imageAlt: project.imageAlt || '',
       publication_status: project.publication_status || 'published',
     });
@@ -414,7 +425,7 @@ export default function Projects() {
                   </div>
 
                   <div className="mb-5">
-                    <label className={labelClass}>Image</label>
+                    <label className={labelClass}>Primary Image</label>
                     {editingProject && formData.image && typeof formData.image === 'string' && (
                       <div className="mb-3 p-3 bg-gray-50 border border-gray-200 rounded-none">
                         <img
@@ -422,7 +433,7 @@ export default function Projects() {
                           alt="Current image"
                           className="w-24 h-24 object-cover rounded-none mb-2"
                         />
-                        <p className="font-sans text-xs text-black/60 m-0">Current image</p>
+                        <p className="font-sans text-xs text-black/60 m-0">Current primary image</p>
                       </div>
                     )}
                     <input
@@ -431,6 +442,44 @@ export default function Projects() {
                       onChange={(e) => setFormData({ ...formData, image: e.target.files[0] })}
                       className="w-full border border-black rounded-none p-2 font-sans text-sm text-[#2a2620] cursor-pointer file:mr-4 file:px-5 file:py-2.5 file:bg-[#2a2620] file:text-white file:border file:border-black file:rounded-none file:font-sans file:text-sm file:font-semibold file:cursor-pointer hover:file:bg-[#c9a876] file:transition-colors"
                     />
+                  </div>
+
+                  <div className="mb-5">
+                    <label className={labelClass}>Additional Images (for slider)</label>
+                    {editingProject && formData.images && formData.images.length > 0 && (
+                      <div className="mb-3 flex flex-wrap gap-2">
+                        {formData.images.map((img, idx) => (
+                          <div key={idx} className="relative p-2 bg-gray-50 border border-gray-200 rounded-none">
+                            <img
+                              src={typeof img === 'string' ? getImageUrl(img) : URL.createObjectURL(img)}
+                              alt={`Additional image ${idx + 1}`}
+                              className="w-16 h-16 object-cover rounded-none"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const newImages = formData.images.filter((_, i) => i !== idx);
+                                setFormData({ ...formData, images: newImages });
+                              }}
+                              className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white rounded-full text-xs cursor-pointer hover:bg-red-600"
+                            >
+                              ×
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={(e) => {
+                        const newImages = Array.from(e.target.files);
+                        setFormData({ ...formData, images: [...formData.images, ...newImages] });
+                      }}
+                      className="w-full border border-black rounded-none p-2 font-sans text-sm text-[#2a2620] cursor-pointer file:mr-4 file:px-5 file:py-2.5 file:bg-[#2a2620] file:text-white file:border file:border-black file:rounded-none file:font-sans file:text-sm file:font-semibold file:cursor-pointer hover:file:bg-[#c9a876] file:transition-colors"
+                    />
+                    <p className="font-sans text-xs text-black/60 mt-1">Select multiple images for the slider (max 3 recommended)</p>
                   </div>
 
                   <div className="mb-5">

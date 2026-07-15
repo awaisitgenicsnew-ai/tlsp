@@ -3,6 +3,11 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { projectApi, getImageUrl } from "@/lib/api";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 export default function DevelopmentsGridSection() {
   const [developments, setDevelopments] = useState([]);
@@ -40,41 +45,74 @@ export default function DevelopmentsGridSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="relative">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={24}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 1, spaceBetween: 24 },
+              768: { slidesPerView: 2, spaceBetween: 24 },
+              1024: { slidesPerView: 3, spaceBetween: 32 },
+            }}
+            navigation={{
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            }}
+            pagination={{
+              el: '.swiper-pagination',
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            className="pb-16"
+          >
           {developments.map((dev, index) => (
-            <div key={dev.id || index} className="bg-[#F7F4EC] border border-[rgba(33,29,23,0.10)]">
-              {/* Card Visual */}
-              <div className="relative h-48 md:h-56 overflow-hidden border-b border-[rgba(33,29,23,0.10)]">
-                {dev.image && (
-                  <Image
-                    src={getImageUrl(dev.image)}
-                    alt={dev.imageAlt || dev.title}
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                )}
-                {(dev.badge || dev.status) && (
-                  <span className="absolute top-4 left-4 text-[10px] font-semibold tracking-widest uppercase px-3 py-1.5 bg-[#211D17] text-[#F7F4EC] z-2">
-                    {dev.badge || dev.status}
-                  </span>
-                )}
-              </div>
+            <SwiperSlide key={dev.id || index}>
+              <div className="bg-[#F7F4EC] border border-[rgba(33,29,23,0.10)] h-full">
+                {/* Card Visual */}
+                <div className="relative h-48 md:h-56 overflow-hidden border-b border-[rgba(33,29,23,0.10)]">
+                  {dev.image && (
+                    <Image
+                      src={getImageUrl(dev.image)}
+                      alt={dev.imageAlt || dev.title}
+                      fill
+                      className="object-cover"
+                      unoptimized
+                    />
+                  )}
+                  {(dev.badge || dev.status) && (
+                    <span className="absolute top-4 left-4 text-[10px] font-semibold tracking-widest uppercase px-3 py-1.5 bg-[#211D17] text-[#F7F4EC] z-2">
+                      {dev.badge || dev.status}
+                    </span>
+                  )}
+                </div>
 
-              {/* Card Body */}
-              <div className="px-5 md:px-7 py-4 pb-4">
-                <h3 className="font-serif text-[clamp(18px,2.5vw,22px)] text-[#211D17] mb-1.5">{dev.title}</h3>
-                <p className="text-[11.5px] tracking-widest uppercase text-[#8A8172] mb-4.5">{dev.location}</p>
-                <a
-                  href={dev.primaryButtonLink || "#"}
-                  className="text-[12.5px] font-semibold tracking-widest text-[#7C5A2C] inline-flex items-center gap-1.5 hover:gap-2.5 transition-all"
-                >
-                  View details
-                  <span>&rarr;</span>
-                </a>
+                {/* Card Body */}
+                <div className="px-5 md:px-7 py-4 pb-4">
+                  <h3 className="font-serif text-[clamp(18px,2.5vw,22px)] text-[#211D17] mb-1.5">{dev.title}</h3>
+                  <p className="text-[11.5px] tracking-widest uppercase text-[#8A8172] mb-4.5">{dev.location}</p>
+                  <a
+                    href={dev.primaryButtonLink || "#"}
+                    className="text-[12.5px] font-semibold tracking-widest text-[#7C5A2C] inline-flex items-center gap-1.5 hover:gap-2.5 transition-all"
+                  >
+                    View details
+                    <span>&rarr;</span>
+                  </a>
+                </div>
               </div>
-            </div>
+            </SwiperSlide>
           ))}
+        </Swiper>
+
+        {/* Navigation Buttons */}
+        <div className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center cursor-pointer hover:bg-[#F7F4EC] transition-colors shadow-lg" />
+        <div className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center cursor-pointer hover:bg-[#F7F4EC] transition-colors shadow-lg" />
+
+        {/* Pagination */}
+        <div className="swiper-pagination absolute bottom-4 left-1/2 -translate-x-1/2" />
         </div>
       </div>
     </section>
