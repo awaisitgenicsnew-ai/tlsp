@@ -97,7 +97,7 @@ export default function ContactSection() {
       />
       <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 max-w-7xl mx-auto">
         {/* Left: intro + sales info */}
-        <div className="px-4 lg:px-10 py-8"> 
+        <div className="lg:px-10 md:py-8"> 
           
           <h2 className="font-serif text-[clamp(28px,4vw,36px)] text-white leading-normal mb-5">
             Begin a conversation with our team
