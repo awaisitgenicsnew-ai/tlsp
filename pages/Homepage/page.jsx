@@ -107,7 +107,7 @@ export default function Homepage() {
             dynamicSections.splice(insertIndex, 0, {
               id: 'developments',
               Component: Developments,
-              theme: 'light',
+              theme: 'dark',
               animate: true
             });
           }

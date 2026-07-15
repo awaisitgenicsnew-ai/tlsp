@@ -125,15 +125,15 @@ export default function DevelopmentsSection() {
 
           {/* Stats Strip */}
           <div className="flex flex-wrap border-t border-b border-[rgba(237,230,216,0.18)] mb-[clamp(30px,5vw,40px)]">
-            <div className="flex-1 min-w-[110px] py-5 pr-[clamp(12px,2vw,24px)] border-r border-[rgba(237,230,216,0.18)]">
+            <div className="flex-1 min-w-[110px] py-5 pl-[clamp(12px,2vw,24px)] pr-[clamp(12px,2vw,24px)] border-r border-[rgba(237,230,216,0.18)]">
               <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2.5 whitespace-nowrap">Type</div>
               <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#EDE6D8] whitespace-nowrap">{project.type}</div>
             </div>
-            <div className="flex-1 min-w-[110px] py-5 pr-[clamp(12px,2vw,24px)] border-r border-[rgba(237,230,216,0.18)]">
+            <div className="flex-1 min-w-[110px] py-5 pl-[clamp(12px,2vw,24px)] pr-[clamp(12px,2vw,24px)] border-r border-[rgba(237,230,216,0.18)]">
               <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2.5 whitespace-nowrap">Handover</div>
               <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#EDE6D8] whitespace-nowrap">{project.handover}</div>
             </div>
-            <div className="flex-1 min-w-[110px] py-5 pr-[clamp(12px,2vw,24px)] border-r-0">
+            <div className="flex-1 min-w-[110px] py-5 pl-[clamp(12px,2vw,24px)] pr-[clamp(12px,2vw,24px)] border-r-0">
               <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2.5 whitespace-nowrap">Payment</div>
               <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#EDE6D8] whitespace-nowrap">{project.payment}</div>
             </div>
@@ -174,9 +174,7 @@ export default function DevelopmentsSection() {
                 unoptimized
               />
             )}
-            <div className="absolute top-4 left-4 font-mono text-[9.5px] tracking-[0.16em] uppercase text-[#EDE6D8] bg-[rgba(20,17,14,0.6)] backdrop-blur-[6px] px-2.75 py-1.75 border border-[rgba(237,230,216,0.16)] whitespace-nowrap">
-              {project.location} · Dusk
-            </div>
+          
             <div className="absolute w-[22px] h-[22px] -top-px -right-px border-t-1.5 border-r-1.5 border-[#D9B27C]" />
             <div className="absolute w-[22px] h-[22px] -bottom-px -left-px border-b-1.5 border-l-1.5 border-[#D9B27C]" />
           </div>
