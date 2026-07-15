@@ -50,7 +50,7 @@ export default function IntroSection() {
 
           {/* Left Rail */}
           <div className="border-b md:border-b-0 md:border-r border-[rgba(36,32,25,0.14)] pb-8 md:pb-0 md:pt-8 flex flex-col justify-center">
-            <h2 className="font-serif text-[32px] md:text-[46px] lg:text-[52px] leading-[1.18] tracking-[-0.3px] font-medium text-[#242019] mb-8">
+            <h2 className="font-serif text-[32px] md:text-[42px]  leading-[1.18] tracking-[-0.3px] font-medium text-[#242019] mb-8">
               PLT Properties brings European craftsmanship to the heart of Dubai
             </h2>
             <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#5B5348] max-w-[560px]">
