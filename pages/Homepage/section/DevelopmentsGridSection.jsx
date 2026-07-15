@@ -30,21 +30,21 @@ export default function DevelopmentsGridSection() {
   }
 
   return (
-    <section id="developments-grid" className="w-full bg-[#1d1913] min-h-screen flex items-center justify-center px-6 md:px-20 py-28 sm:pt-[168px]">
+    <section id="developments-grid" className="w-full bg-[#1d1913] min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-20 py-16 md:py-28">
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-serif text-4xl md:text-5xl text-[#211D17] mb-4">Our Developments</h2>
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="font-serif text-[clamp(32px,4vw,40px)] text-[#211D17] mb-4">Our Developments</h2>
           <p className="text-[14px] leading-[1.7] text-[#4A443A] max-w-2xl mx-auto">
             Discover our portfolio of thoughtfully designed residences across Dubai's most sought-after locations, each crafted with European precision and contemporary elegance.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {developments.map((dev, index) => (
             <div key={dev.id || index} className="bg-[#F7F4EC] border border-[rgba(33,29,23,0.10)]">
               {/* Card Visual */}
-              <div className="relative h-48 overflow-hidden border-b border-[rgba(33,29,23,0.10)]">
+              <div className="relative h-48 md:h-56 overflow-hidden border-b border-[rgba(33,29,23,0.10)]">
                 {dev.image && (
                   <Image
                     src={getImageUrl(dev.image)}
@@ -62,8 +62,8 @@ export default function DevelopmentsGridSection() {
               </div>
 
               {/* Card Body */}
-              <div className="px-7 py-4 pb-4">
-                <h3 className="font-serif text-[22px] text-[#211D17] mb-1.5">{dev.title}</h3>
+              <div className="px-5 md:px-7 py-4 pb-4">
+                <h3 className="font-serif text-[clamp(18px,2.5vw,22px)] text-[#211D17] mb-1.5">{dev.title}</h3>
                 <p className="text-[11.5px] tracking-widest uppercase text-[#8A8172] mb-4.5">{dev.location}</p>
                 <a
                   href={dev.primaryButtonLink || "#"}

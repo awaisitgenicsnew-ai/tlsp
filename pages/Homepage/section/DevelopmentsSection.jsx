@@ -4,6 +4,11 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { projectApi, getImageUrl } from "@/lib/api";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/pagination";
 
 export default function DevelopmentsSection() {
   const router = useRouter();
@@ -80,6 +85,11 @@ export default function DevelopmentsSection() {
   if (!project) {
     return null;
   }
+
+  // Get images array or fall back to single image
+  const slides = project.images && project.images.length > 0 
+    ? project.images 
+    : project.image ? [project.image] : [];
 
   return (
     <section className="relative bg-[#1D1913] py-[clamp(56px,10vw,110px)] px-[clamp(20px,5vw,48px)] overflow-hidden">
@@ -162,21 +172,58 @@ export default function DevelopmentsSection() {
         {/* Media */}
         <div className="min-w-0 reveal" ref={addToRefs}>
           <div className="relative border border-[rgba(237,230,216,0.16)] leading-none">
-            {project.image && (
-              <Image
-                src={getImageUrl(project.image)}
-                alt={project.imageAlt || project.title}
-                width={1600}
-                height={560}
-                className="w-full h-[clamp(240px,42vw,560px)] object-cover block"
-                style={{ filter: 'saturate(1.03) contrast(1.02)' }}
-                priority
-                unoptimized
-              />
+            {slides.length > 0 ? (
+              <Swiper
+                modules={[Autoplay, Pagination, EffectFade]}
+                effect="fade"
+                fadeEffect={{ crossFade: true }}
+                speed={1000}
+                autoplay={{ delay: 4000, disableOnInteraction: false }}
+                loop={slides.length > 1}
+                pagination={{
+                  el: ".custom-dev-pagination",
+                  clickable: true,
+                  bulletClass: "swiper-pagination-bullet custom-bullet",
+                  bulletActiveClass: "swiper-pagination-bullet-active custom-bullet-active",
+                }}
+                className="w-full h-[clamp(240px,42vw,560px)]"
+              >
+                {slides.map((img, i) => (
+                  <SwiperSlide key={i}>
+                    <div className="relative w-full h-[clamp(240px,42vw,560px)]">
+                      <Image
+                        src={getImageUrl(img)}
+                        alt={`${project.imageAlt || project.title} - ${i + 1}`}
+                        fill
+                        className="object-cover"
+                        style={{ filter: 'saturate(1.03) contrast(1.02)' }}
+                        priority
+                        unoptimized
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            ) : (
+              project.image && (
+                <Image
+                  src={getImageUrl(project.image)}
+                  alt={project.imageAlt || project.title}
+                  width={1600}
+                  height={560}
+                  className="w-full h-[clamp(240px,42vw,560px)] object-cover block"
+                  style={{ filter: 'saturate(1.03) contrast(1.02)' }}
+                  priority
+                  unoptimized
+                />
+              )
             )}
           
             <div className="absolute w-[22px] h-[22px] -top-px -right-px border-t-1.5 border-r-1.5 border-[#D9B27C]" />
             <div className="absolute w-[22px] h-[22px] -bottom-px -left-px border-b-1.5 border-l-1.5 border-[#D9B27C]" />
+            {slides.length > 1 && (
+              <div className="custom-dev-pagination absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2" />
+            )}
           </div>
         </div>
       </div>
@@ -190,6 +237,19 @@ export default function DevelopmentsSection() {
         .reveal.in {
           opacity: 1;
           transform: translateY(0);
+        }
+
+        .custom-bullet {
+          width: 8px;
+          height: 8px;
+          background: rgba(237, 230, 216, 0.4);
+          opacity: 1;
+          transition: all 0.3s ease;
+        }
+        .custom-bullet-active {
+          background: #D9B27C;
+          width: 24px;
+          border-radius: 4px;
         }
 
         @media (max-width: 940px) {

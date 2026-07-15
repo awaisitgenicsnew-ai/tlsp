@@ -95,11 +95,11 @@ export default function ContactSection() {
           opacity: '0.05'
         }}
       />
-      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-[140px] max-w-8xl sm:pt-20 mx-auto">
+      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 max-w-7xl mx-auto">
         {/* Left: intro + sales info */}
-        <div className="px-2 lg:px-10 py-8"> 
+        <div className="px-4 lg:px-10 py-8"> 
           
-          <h2 className="font-serif text-3xl md:text-3.6xl text-white leading-normal mb-5">
+          <h2 className="font-serif text-[clamp(28px,4vw,36px)] text-white leading-normal mb-5">
             Begin a conversation with our team
           </h2>
           <p className="text-sm leading-[28px] text-white/50 max-w-lg mb-10 paragraph">
@@ -137,8 +137,8 @@ export default function ContactSection() {
             </div>
           </div>
         </div>
-        <div className="mt-8 lg:mt-0 bg-black px-10 py-8">
-          <h2 className="font-serif text-3xl md:text-4xl text-white leading-normal mb-8">
+        <div className="mt-8 lg:mt-0 bg-black px-6 md:px-10 py-8">
+          <h2 className="font-serif text-[clamp(28px,4vw,36px)] text-white leading-normal mb-8">
          Register Interest
         </h2>
         <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 content-start">

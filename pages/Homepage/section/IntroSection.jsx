@@ -46,16 +46,13 @@ export default function IntroSection() {
 
      
       {/* Hero Content */}
-      <div className="relative z-10 flex-1 flex items-center px-12 py-0">
+      <div className="relative z-10 flex-1 flex items-center px-6 md:px-12 py-0">
         <div className="max-w-[620px] py-4 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both]">
           {/* Eyebrow */}
-          <div className="font-mono text-[11.5px] tracking-[0.3em] uppercase text-[#D9B27C] flex items-center gap-3.5 mb-6.5">
-            <span className="w-6.5 h-px bg-[#B98D4F]" />
-            Business Bay, Dubai
-          </div>
+       
 
           {/* Headline */}
-          <h2 className="font-serif font-normal text-[52px] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[#EDE6D8]">
+          <h2 className="font-serif font-normal text-[clamp(36px,5vw,52px)] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[#EDE6D8]">
             PLT Properties brings <span className=" font-medium text-[#D9B27C]">European craftsmanship</span> to the heart of Dubai
           </h2>
 
@@ -67,17 +64,17 @@ export default function IntroSection() {
       </div>
 
       {/* Ledger / Credentials */}
-      <div className="relative z-10 px-12 pb-11">
-        <div className="grid grid-cols-4 bg-[rgba(237,230,216,0.06)] border border-[rgba(237,230,216,0.16)] backdrop-blur-[14px] animate-[riseIn_1.1s_cubic-bezier(0.2,0.8,0.2,1)_0.15s_both]">
+      <div className="relative z-10 px-6 md:px-12 pb-11">
+        <div className="grid grid-cols-2 md:grid-cols-4 bg-[rgba(237,230,216,0.06)] border border-[rgba(237,230,216,0.16)] backdrop-blur-[14px] animate-[riseIn_1.1s_cubic-bezier(0.2,0.8,0.2,1)_0.15s_both]">
           {credentials.map((cred, index) => (
             <div
               key={index}
-              className={`p-6.5 border-r border-[rgba(237,230,216,0.16)] flex gap-4 items-start transition-background duration-300 hover:bg-[rgba(237,230,216,0.045)] ${index === 3 ? 'border-r-0' : ''}`}
+              className={`p-4 md:p-6.5 border-r border-b md:border-b-0 border-[rgba(237,230,216,0.16)] flex gap-3 md:gap-4 items-start transition-background duration-300 hover:bg-[rgba(237,230,216,0.045)] ${(index % 2 === 1 || index === 3) ? 'border-r-0' : ''} ${index >= 2 ? 'border-b-0 md:border-b' : ''}`}
             >
-              <span className="font-serif italic text-[20px] text-[#B98D4F] leading-none pt-0.5">{cred.numeral}</span>
+              <span className="font-serif italic text-[16px] md:text-[20px] text-[#B98D4F] leading-none pt-0.5">{cred.numeral}</span>
               <div>
-                <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2">{cred.label}</div>
-                <div className="font-serif text-[23px] font-medium text-[#EDE6D8]">{cred.value}</div>
+                <div className="font-mono text-[9px] md:text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2">{cred.label}</div>
+                <div className="font-serif text-[18px] md:text-[23px] font-medium text-[#EDE6D8]">{cred.value}</div>
               </div>
             </div>
           ))}

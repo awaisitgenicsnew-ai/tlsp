@@ -32,18 +32,17 @@ function Youtube(props) {
 }
 
 const DEVELOPMENTS = [
-  { label: "PLT Tower", href: "#" },
-  { label: "PLT Residences", href: "#" },
-  { label: "Canal House", href: "#" },
-  { label: "The Quarter", href: "#" },
+  { label: "PLT Tower", href: "https://www.plttower.com/", external: true },
+
 ];
 
 const COMPANY = [
-  { label: "About PLT", href: "#" },
-  { label: "Communities", href: "#" },
-  { label: "Investment", href: "#" },
-  { label: "Press", href: "#" },
-  { label: "Careers", href: "#" },
+  { label: "Home", href: "/" },
+  { label: "PLT Tower", href: "https://www.plttower.com/", external: true },
+  { label: "Blog", href: "/blog" },
+  { label: "About", href: "/about-us" },
+  { label: "Contact", href: "/contact-us" },
+  { label: "Register Interest", href: "/register-interest" },
 ];
 
 export default function Footer() {
@@ -97,7 +96,12 @@ export default function Footer() {
           <ul className="space-y-4 text-sm text-[#87827c]">
             {DEVELOPMENTS.map((item) => (
               <li key={item.label}>
-                <a href={item.href} className="hover:text-[#c9a876] transition">
+                <a 
+                  href={item.href} 
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
+                  className="hover:text-[#c9a876] transition"
+                >
                   {item.label}
                 </a>
               </li>
