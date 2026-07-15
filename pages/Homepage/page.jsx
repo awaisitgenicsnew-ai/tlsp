@@ -31,7 +31,7 @@ const BASE_SECTIONS = [
   { id: 'intro', Component: IntroSection, theme: 'dark', animate: true },
   { id: 'brand-pillars', Component: BrandPillarsSlider, theme: 'dark', animate: false },
   { id: 'philosophy', Component: Philosophy, theme: 'dark', animate: true },
-  { id: 'experience', Component: ExperienceSection, theme: 'light', animate: true },
+  { id: 'experience', Component: ExperienceSection, theme: 'dark', animate: true },
   { id: 'contact', Component: ContactSection, theme: 'dark', animate: true },
 ];
 

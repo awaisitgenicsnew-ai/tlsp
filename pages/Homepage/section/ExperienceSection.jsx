@@ -4,25 +4,37 @@ import Image from "next/image";
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="w-full bg-[#d9d9d9] py-10 lg:py-24 px-6 md:px-10 flex flex-col justify-center align-center">
+    <section id="experience" className="relative bg-[#1D1913] py-[120px] px-12 md:px-12 lg:px-12 overflow-hidden">
+      {/* Grid Pattern Overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(237,230,216,0.18) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(237,230,216,0.18) 1px, transparent 1px)
+          `,
+          backgroundSize: '120px 120px',
+          opacity: '0.05'
+        }}
+      />
       {/* Feature block: text left, image right */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto mb-8 mt-24">
+      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto mb-8 mt-24">
         <div>
           <div className="flex items-center justify-start mb-2">
-            <span className="hidden sm:block  h-px bg-[var(--tan)] w-10 mr-6"></span>
-            <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--tan)] whitespace-nowrap uppercase">
+            <span className="hidden sm:block  h-px bg-[#B98D4F] w-10 mr-6"></span>
+            <p className="font-sans text-sm tracking-[0.25em] font-medium text-[#D9B27C] whitespace-nowrap uppercase">
               On How It Feels
             </p>
-            <span className="hidden sm:block h-px bg-[var(--tan)] w-10 ml-6"></span>
+            <span className="hidden sm:block h-px bg-[#B98D4F] w-10 ml-6"></span>
           </div>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#211D17] mb-4.5">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#EDE6D8] mb-4.5">
             Luxury Measured <br /> by Experience
           </h2>
-          <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#5B5348] ">
+          <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#C9BFAD] ">
             True luxury is defined not by what surrounds you, but by how a
             place makes you feel.
           </p>
-          <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#5B5348] ">
+          <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#C9BFAD] ">
             It is found in quiet mornings filled with natural light,
             meaningful connections to nature, thoughtfully crafted spaces,
             and the comfort of genuine hospitality. At PLT Properties, every
@@ -33,7 +45,7 @@ export default function ExperienceSection() {
         </div>
 
         <div className="relative flex items-stretch justify-end">
-          <div className="relative aspect-[16/10] w-full overflow-hidden">
+          <div className="relative aspect-[16/10] w-full overflow-hidden border border-[rgba(237,230,216,0.16)]">
             <Image
               src="/images/philosophy-stillness.jpg"
               alt="Quiet morning light interior"
@@ -42,29 +54,24 @@ export default function ExperienceSection() {
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            <p className="absolute bottom-3 left-4 right-4 text-[10px] tracking-widest uppercase text-white/80">
-              Photography, A Quiet Morning, Floor-to-ceiling Glass, Coffee,
-              Vinyl, Soft Fabric, Candid
-            </p>
+           
           </div>
-          <span className="hidden md:block [writing-mode:vertical-rl] text-[10px] tracking-[0.2em] uppercase text-[#c5811b] ml-4 self-end pb-4">
-            Stillness
-          </span>
+       
         </div>
       </div>
 
       {/* Quote */}
-      <div className="max-w-xl mx-auto text-center">
-        <div className="w-px h-10 bg-[#c5811b] mx-auto mb-4" />
-        <p className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#211D17] mb-4.5">
+      <div className="relative max-w-xl mx-auto text-center">
+        <div className="w-px h-10 bg-[#B98D4F] mx-auto mb-4" />
+        <p className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#EDE6D8] mb-4.5">
           Not simply a place to live. A life to belong to.
         </p>
         <div className="flex items-center justify-center mt-6">
-          <span className="h-px bg-[var(--tan)] w-16 mr-6 hidden sm:block"></span>
-          <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--tan)] whitespace-nowrap uppercase">
+          <span className="h-px bg-[#B98D4F] w-16 mr-6 hidden sm:block"></span>
+          <p className="font-sans text-sm tracking-[0.25em] font-medium text-[#D9B27C] whitespace-nowrap uppercase">
             PLT Properties
           </p>
-          <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
+          <span className="hidden sm:block h-px bg-[#B98D4F] w-16 ml-6"></span>
         </div>
       </div>
     </section>

@@ -50,16 +50,12 @@ export default function Philosophy() {
       />
 
       {/* Header */}
-      <div className="relative max-w-[760px] mx-auto mb-[92px] text-center reveal" ref={addToRefs}>
-        <div className="flex items-center justify-center gap-[18px] font-mono text-[11.5px] tracking-[0.3em] uppercase text-[#D9B27C] mb-7">
-          <span className="w-[44px] h-px bg-[#B98D4F]" />
-          The PLT Philosophy
-          <span className="w-[44px] h-px bg-[#B98D4F]" />
-        </div>
-        <h2 className="font-serif font-normal italic text-[46px] leading-[1.15] text-[#EDE6D8] m-0 mb-[26px]">
+      <div className="relative max-w-[760px] mx-auto mb-[62px] text-center reveal" ref={addToRefs}>
+    
+        <h2 className="font-serif font-normal italic text-[46px] leading-[1.15] text-[#FFFFFF] m-0 mb-[26px]">
           More than places to live
         </h2>
-        <p className="text-[16px] leading-[1.75] text-[#C9BFAD] font-light m-0">
+        <p className="text-[16px] leading-[1.75] text-[#FFFFFF] font-light m-0">
           Creating timeless residences where Italian heritage, exceptional architecture, wellness, and hospitality come together to shape extraordinary lifestyles.
         </p>
       </div>
@@ -73,7 +69,7 @@ export default function Philosophy() {
             <img
               src="https://images.unsplash.com/photo-1546412414-8035e1776c9a?q=80&w=1400&auto=format&fit=crop"
               alt="Landmark tower at golden hour, referencing PLT's architectural inspiration"
-              className="w-full h-[480px] object-cover block"
+              className="w-full h-[300px] object-cover block"
               style={{ filter: 'saturate(1.02) contrast(1.02)' }}
             />
       
@@ -82,7 +78,6 @@ export default function Philosophy() {
 
         {/* Copy */}
         <div className="reveal" ref={addToRefs}>
-          <div className="w-[56px] h-px bg-[#B98D4F] mb-6" />
           <h3 className="font-serif font-normal text-[36px] leading-[1.22] text-[#EDE6D8] m-0 mb-7">
             Designed to enrich everyday living
           </h3>
