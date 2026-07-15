@@ -1,73 +1,133 @@
 "use client";
 
-import Image from "next/image";
+import { useEffect, useRef } from 'react';
 
 export default function Philosophy() {
+  const revealRefs = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    revealRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const addToRefs = (el) => {
+    if (el && !revealRefs.current.includes(el)) {
+      revealRefs.current.push(el);
+    }
+  };
+
   return (
     <section
       id="philosophy"
-      className="w-full bg-[#d9d9d9] py-10 lg:py-24 px-6 md:px-12 lg:px-20 flex flex-col justify-center gap-5"
+      className="relative bg-[#1D1913] py-[120px] px-12 md:px-12 lg:px-12 overflow-hidden"
     >
-      {/* Hero */}
-      <div className="max-w-2xl mx-auto text-center mb-16 md:mb-12 mt-5">
-        <div className="flex items-center justify-center mb-6">
-          <span className="h-px bg-[var(--tan)] w-16 mr-6 hidden sm:block"></span>
-          <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--tan)] whitespace-nowrap uppercase">
-            The PLT Philosophy
-          </p>
-          <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
+      {/* Grid Pattern Overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(237,230,216,0.18) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(237,230,216,0.18) 1px, transparent 1px)
+          `,
+          backgroundSize: '120px 120px',
+          opacity: '0.05'
+        }}
+      />
+
+      {/* Header */}
+      <div className="relative max-w-[760px] mx-auto mb-[92px] text-center reveal" ref={addToRefs}>
+        <div className="flex items-center justify-center gap-[18px] font-mono text-[11.5px] tracking-[0.3em] uppercase text-[#D9B27C] mb-7">
+          <span className="w-[44px] h-px bg-[#B98D4F]" />
+          The PLT Philosophy
+          <span className="w-[44px] h-px bg-[#B98D4F]" />
         </div>
-        <h2 className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#211D17] mb-4.5">
-          More Than Places to Live
+        <h2 className="font-serif font-normal italic text-[46px] leading-[1.15] text-[#EDE6D8] m-0 mb-[26px]">
+          More than places to live
         </h2>
-        <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#5B5348] ">
-          Creating timeless residences where Italian heritage, exceptional
-          architecture, wellness, and hospitality come together to shape
-          extraordinary lifestyles.
+        <p className="text-[16px] leading-[1.75] text-[#C9BFAD] font-light m-0">
+          Creating timeless residences where Italian heritage, exceptional architecture, wellness, and hospitality come together to shape extraordinary lifestyles.
         </p>
       </div>
 
-      {/* Feature block 1 */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-5xl mx-auto w-full">
-        <div className="relative flex items-stretch w-full">
-          <span className="hidden md:block [writing-mode:vertical-rl] text-[10px] tracking-[0.2em] uppercase text-[#c5811b] mr-4 self-end pb-4">
-            Artisanal
-          </span>
-
-        
-          <div className="relative aspect-[4/3] md:max-h-[300px] w-full overflow-hidden border border-[#d8d3c7]">
-            <Image
-              src="/images/philosophy-artisanal.jpg"
-              alt="Italian craftsmanship materials"
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover transition-transform duration-700 ease-out hover:scale-103"
+      {/* Body */}
+      <div className="relative max-w-[1200px] mx-auto grid grid-cols-[0.85fr_1fr] gap-16 items-center">
+        {/* Media */}
+        <div className="relative pl-9 reveal" ref={addToRefs}>
+    
+          <div className="relative border border-[rgba(237,230,216,0.16)] leading-none">
+            <img
+              src="https://images.unsplash.com/photo-1546412414-8035e1776c9a?q=80&w=1400&auto=format&fit=crop"
+              alt="Landmark tower at golden hour, referencing PLT's architectural inspiration"
+              className="w-full h-[480px] object-cover block"
+              style={{ filter: 'saturate(1.02) contrast(1.02)' }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            <p className="absolute bottom-4 left-4 right-4 text-[10px] tracking-widest uppercase text-white/90">
-              Photography, Arpeggi Travertine, Bronze, Oak, Linen Textiles
-            </p>
+      
           </div>
         </div>
 
-        <div>
-        
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#211D17] mb-4.5">
-            Designed to Enrich <br /> Everyday Living
-          </h2>
-          <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#5B5348] ">
-            Every PLT residence begins with a simple belief: exceptional
-            living starts with exceptional design.
+        {/* Copy */}
+        <div className="reveal" ref={addToRefs}>
+          <div className="w-[56px] h-px bg-[#B98D4F] mb-6" />
+          <h3 className="font-serif font-normal text-[36px] leading-[1.22] text-[#EDE6D8] m-0 mb-7">
+            Designed to enrich everyday living
+          </h3>
+          <p className="text-[15.5px] leading-[1.85] text-[#C9BFAD] font-light m-0 mb-5">
+            Every PLT residence begins with a simple belief: exceptional living starts with exceptional design.
           </p>
-          <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#5B5348] ">
-            Inspired by Italian craftsmanship, every detail is thoughtfully
-            considered to create homes that feel timeless, welcoming, and
-            beautifully balanced. From elegant architecture to refined
-            interiors, our spaces are designed to elevate everyday life while
-            creating lasting value for generations.
+          <p className="text-[15.5px] leading-[1.85] text-[#C9BFAD] font-light m-0">
+            Inspired by Italian craftsmanship, every detail is thoughtfully considered to create homes that feel timeless, welcoming, and beautifully balanced. From elegant architecture to refined interiors, our spaces are designed to elevate everyday life while creating lasting value for generations.
           </p>
         </div>
       </div>
+
+      <style jsx>{`
+        .reveal {
+          opacity: 0;
+          transform: translateY(24px);
+          transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal.in {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        @media (max-width: 880px) {
+          section {
+            padding: 80px 24px 90px 24px;
+          }
+          .phil-head h2 {
+            font-size: 32px;
+          }
+          .phil-body {
+            grid-template-columns: 1fr;
+            gap: 44px;
+          }
+          .phil-media {
+            padding-left: 28px;
+          }
+          .phil-frame img {
+            height: 340px;
+          }
+          .phil-copy h3 {
+            font-size: 28px;
+          }
+        }
+      `}</style>
     </section>
   );
 }
