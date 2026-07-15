@@ -51,11 +51,11 @@ export default function TeamSection() {
   ];
 
   return (
-    <section className="w-full bg-[#f5f2ed] min-h-screen relative overflow-hidden">
+    <section className="w-full bg-[#181410] min-h-screen relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-20 md:py-32">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-[#1a1a1a] mb-8">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-[#f3efe6] mb-8">
             Meet Our Visionaries
           </h2>
           <div className="w-20 h-1 bg-[#c8935a] mx-auto" />
@@ -92,7 +92,7 @@ export default function TeamSection() {
           >
             {team.map((member, index) => (
               <SwiperSlide key={index}>
-                <div className="group flex flex-col items-center gap-6 bg-white p-6 rounded-2xl hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-[#c8935a]/30 h-full">
+                <div className="group flex flex-col items-center gap-6 bg-[#1c1b19] p-6 rounded-2xl hover:shadow-2xl transition-all duration-500 border border-[rgba(243,239,230,0.16)] hover:border-[#b08a5a]/50 h-full">
                   {/* Image */}
                   <div className="relative w-64 h-56 overflow-hidden rounded-xl">
                     <img
@@ -105,10 +105,10 @@ export default function TeamSection() {
                   {/* Content */}
                   <div className="flex-1 text-center w-full">
                     <div className="mb-4">
-                      <span className="inline-block px-3 py-1 bg-[#c8935a]/10 text-[#c8935a] text-xs tracking-widest uppercase rounded-full mb-3">
+                      <span className="inline-block px-3 py-1 bg-[#b08a5a]/15 text-[#b08a5a] text-xs tracking-widest uppercase rounded-full mb-3">
                         {member.role}
                       </span>
-                      <h3 className="font-display text-2xl md:text-3xl text-[#1a1a1a] mb-2">{member.name}</h3>
+                      <h3 className="font-display text-2xl md:text-3xl text-[#f3efe6] mb-2">{member.name}</h3>
                     </div>
                   </div>
                 </div>

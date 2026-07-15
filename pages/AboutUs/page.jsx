@@ -21,7 +21,7 @@ const SECTIONS = [
   { id: 'hero', Component: HeroSection, theme: 'dark' },
   { id: 'mission', Component: MissionSection, theme: 'mission-bg' },
   { id: 'values', Component: ValuesSection, theme: 'mission-bg' },
-  { id: 'team', Component: TeamSection, theme: 'light' },
+  { id: 'team', Component: TeamSection, theme: 'mission-bg' },
   { id: 'achievements', Component: AchievementsSection, theme: 'dark-bg' },
   { id: 'contact', Component: ContactSection, theme: 'dark' },
 ];

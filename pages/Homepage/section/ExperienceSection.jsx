@@ -27,7 +27,7 @@ export default function ExperienceSection() {
             </p>
             <span className="hidden sm:block h-px bg-[#B98D4F] w-10 ml-6"></span>
           </div>
-          <h2 className="font-serif text-[clamp(32px,5vw,44px)] leading-[0.98] tracking-[-0.01em] text-[#EDE6D8] mb-4.5">
+          <h2 className="font-serif text-[clamp(32px,5vw,44px)] leading-normal tracking-[-0.01em] text-[#EDE6D8] mb-4.5">
             Luxury Measured <br /> by Experience
           </h2>
           <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[#C9BFAD] font-light ">
