@@ -34,7 +34,7 @@ export default function Philosophy() {
   return (
     <section
       id="philosophy"
-      className="relative bg-[#1D1913] py-[120px] px-12 md:px-12 lg:px-12 overflow-hidden"
+      className="relative bg-[#1D1913] py-[120px] px-12 md:px-12 lg:px-12 overflow-hidden border-r border-[rgba(255,255,255,0.1)]"
     >
       {/* Grid Pattern Overlay */}
       <div
@@ -64,15 +64,15 @@ export default function Philosophy() {
       <div className="relative max-w-[1200px] mx-auto grid grid-cols-[0.85fr_1fr] gap-16 items-center">
         {/* Media */}
         <div className="relative pl-9 reveal" ref={addToRefs}>
-    
+
           <div className="relative border border-[rgba(237,230,216,0.16)] leading-none">
             <img
-              src="https://images.unsplash.com/photo-1546412414-8035e1776c9a?q=80&w=1400&auto=format&fit=crop"
+              src="/images/img.jpg"
               alt="Landmark tower at golden hour, referencing PLT's architectural inspiration"
               className="w-full h-[300px] object-cover block"
               style={{ filter: 'saturate(1.02) contrast(1.02)' }}
             />
-      
+
           </div>
         </div>
 

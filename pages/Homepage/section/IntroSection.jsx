@@ -85,30 +85,7 @@ export default function IntroSection() {
       </div>
 
       {/* Side Rail */}
-      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex flex-col border border-[rgba(237,230,216,0.16)] border-r-0">
-        <button className="w-13 h-13 bg-[rgba(20,17,14,0.55)] backdrop-blur-[10px] border-none border-b border-[rgba(237,230,216,0.16)] text-[#EDE6D8] flex items-center justify-center cursor-pointer transition-background duration-250 hover:bg-[#B98D4F] last:border-b-0">
-          <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-            <path d="M7 3h7l5 5v13H7z"/>
-            <path d="M14 3v5h5"/>
-          </svg>
-        </button>
-        <button className="w-13 h-13 bg-[rgba(20,17,14,0.55)] backdrop-blur-[10px] border-none border-b border-[rgba(237,230,216,0.16)] text-[#EDE6D8] flex items-center justify-center cursor-pointer transition-background duration-250 hover:bg-[#B98D4F] last:border-b-0">
-          <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2.2z"/>
-          </svg>
-        </button>
-        <button className="w-13 h-13 bg-[rgba(20,17,14,0.55)] backdrop-blur-[10px] border-none border-b border-[rgba(237,230,216,0.16)] text-[#EDE6D8] flex items-center justify-center cursor-pointer transition-background duration-250 hover:bg-[#B98D4F] last:border-b-0">
-          <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-            <path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-          </svg>
-        </button>
-        <button className="w-13 h-13 bg-[rgba(20,17,14,0.55)] backdrop-blur-[10px] border-none border-b border-[rgba(237,230,216,0.16)] text-[#EDE6D8] flex items-center justify-center cursor-pointer transition-background duration-250 hover:bg-[#B98D4F] last:border-b-0">
-          <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-            <rect x="2" y="5" width="20" height="14" rx="2"/>
-            <path d="M2 10h20"/>
-          </svg>
-        </button>
-      </div>
+    
 
       <style jsx>{`
         @keyframes riseIn {

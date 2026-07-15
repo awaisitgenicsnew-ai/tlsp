@@ -30,9 +30,9 @@ const BASE_SECTIONS = [
   { id: 'hero', Component: HeroSlider, theme: 'dark', animate: false },
   { id: 'intro', Component: IntroSection, theme: 'dark', animate: true },
   { id: 'brand-pillars', Component: BrandPillarsSlider, theme: 'dark', animate: false },
-  { id: 'philosophy', Component: Philosophy, theme: 'dark', animate: true },
-  { id: 'experience', Component: ExperienceSection, theme: 'dark', animate: true },
-  { id: 'contact', Component: ContactSection, theme: 'dark', animate: true },
+  { id: 'philosophy', Component: Philosophy, theme: 'light', animate: true },
+  { id: 'experience', Component: ExperienceSection, theme: 'light', animate: true },
+  { id: 'contact', Component: ContactSection, theme: 'light', animate: true },
 ];
 
 // Navbar color schemes
@@ -50,20 +50,20 @@ const WHITE_SCHEME = {
 };
 
 const BLACK_SCHEME = {
-  bg: 'transparent',
-  border: 'rgba(0,0,0,0.1)',
-  text: '#000000',
-  subText: 'rgba(0,0,0,0.6)',
-  link: 'rgba(0,0,0,0.8)',
-  linkHover: '#000000',
-  buttonBorder: '#000000',
-  buttonText: '#000000',
-  buttonHoverBg: '#000000',
-  buttonHoverText: '#ffffff',
+  bg: '#1d1913',
+  border: 'rgba(255,255,255,0.1)',
+  text: '#ffffff',
+  subText: 'rgba(255,255,255,0.8)',
+  link: 'rgba(255,255,255,0.9)',
+  linkHover: '#ffffff',
+  buttonBorder: '#ffffff',
+  buttonText: '#ffffff',
+  buttonHoverBg: '#ffffff',
+  buttonHoverText: '#000000',
 };
 
 const BLACK_BG_SCHEME = {
-  bg: '#000000',
+  bg: '#1d1913',
   border: 'rgba(255,255,255,0.1)',
   text: '#ffffff',
   subText: 'rgba(255,255,255,0.8)',

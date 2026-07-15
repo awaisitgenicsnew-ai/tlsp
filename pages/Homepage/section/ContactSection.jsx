@@ -79,11 +79,23 @@ export default function ContactSection() {
   };
 
   return (
-    <section 
-      id="contact" 
-      className="w-full bg-[#241D18] py-10 lg:py-24 px-6 md:px-12 lg:px-20 min-h-screen flex flex-col justify-center"
+    <section
+      id="contact"
+      className="relative w-full bg-[#1D1913] py-10 lg:py-24 px-6 md:px-12 lg:px-20 min-h-screen flex flex-col justify-center overflow-hidden border-r border-rgba(255,255,255,0.1)]"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-[140px] max-w-8xl sm:pt-20 mx-auto">
+      {/* Grid Pattern Overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(237,230,216,0.18) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(237,230,216,0.18) 1px, transparent 1px)
+          `,
+          backgroundSize: '120px 120px',
+          opacity: '0.05'
+        }}
+      />
+      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-[140px] max-w-8xl sm:pt-20 mx-auto">
         {/* Left: intro + sales info */}
         <div className="px-2 lg:px-10 py-8"> 
           

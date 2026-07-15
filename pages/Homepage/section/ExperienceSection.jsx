@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="relative bg-[#1D1913] py-[120px] px-12 md:px-12 lg:px-12 overflow-hidden">
+    <section id="experience" className="relative bg-[#1D1913] py-[120px] px-12 md:px-12 lg:px-12 overflow-hidden border-r border-[rgba(255,255,255,0.1)]">
       {/* Grid Pattern Overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -18,7 +18,7 @@ export default function ExperienceSection() {
         }}
       />
       {/* Feature block: text left, image right */}
-      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto mb-8 mt-24">
+      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto mb-8 mt-4 md:mt-8">
         <div>
           <div className="flex items-center justify-start mb-2">
             <span className="hidden sm:block  h-px bg-[#B98D4F] w-10 mr-6"></span>
@@ -47,16 +47,16 @@ export default function ExperienceSection() {
         <div className="relative flex items-stretch justify-end">
           <div className="relative aspect-[16/10] w-full overflow-hidden border border-[rgba(237,230,216,0.16)]">
             <Image
-              src="/images/philosophy-stillness.jpg"
+              src="/images/img2.jpg"
               alt="Quiet morning light interior"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-           
+
           </div>
-       
+
         </div>
       </div>
 
