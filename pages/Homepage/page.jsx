@@ -28,7 +28,7 @@ import ContactSection from './section/ContactSection';
 // ============================================================
 const BASE_SECTIONS = [
   { id: 'hero', Component: HeroSlider, theme: 'dark', animate: false },
-  { id: 'intro', Component: IntroSection, theme: 'light', animate: true },
+  { id: 'intro', Component: IntroSection, theme: 'dark', animate: true },
   { id: 'brand-pillars', Component: BrandPillarsSlider, theme: 'dark', animate: false },
   { id: 'philosophy', Component: Philosophy, theme: 'light', animate: true },
   { id: 'experience', Component: ExperienceSection, theme: 'light', animate: true },

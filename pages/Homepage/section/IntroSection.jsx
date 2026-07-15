@@ -3,102 +3,119 @@
 export default function IntroSection() {
   const credentials = [
     {
-      value: "15+",
-      label: "YEARS OF CRAFT",
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      )
+      numeral: "I",
+      label: "Years of Craft",
+      value: "15+"
     },
     {
-      value: "100%",
-      label: "DLD ESCROW-BACKED",
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      )
+      numeral: "II",
+      label: "DLD Escrow-Backed",
+      value: "100%"
     },
     {
-      value: "Business Bay",
-      label: "FLAGSHIP LOCATION",
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      )
+      numeral: "III",
+      label: "Flagship Location",
+      value: "Business Bay"
     },
     {
-      value: "European",
-      label: "DESIGN HERITAGE",
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-        </svg>
-      )
+      numeral: "IV",
+      label: "Design Heritage",
+      value: "European"
     }
   ];
 
   return (
-    <section id="building" className="w-full bg-[#F1ECE2] text-[#242019] flex justify-center items-center min-h-screen">
-      <div className="w-full  px-6 md:px-10 md:pr-20 py-16 md:py-28">
+    <section id="building" className="w-full min-h-screen relative overflow-hidden py-12 md:py-28 bg-[#14110E]">
+      {/* Background Image with Gradients */}
+      <div className="absolute inset-0 z-0">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(100deg, rgba(20,17,14,0.94) 8%, rgba(20,17,14,0.72) 34%, rgba(20,17,14,0.30) 62%, rgba(20,17,14,0.55) 100%),
+              linear-gradient(to top, rgba(20,17,14,0.85) 0%, rgba(20,17,14,0.05) 38%),
+              url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2400&auto=format&fit=crop')
+            `,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 62%'
+          }}
+        />
+        {/* Vignette */}
+        <div className="absolute inset-0 shadow-[inset_0_0_160px_rgba(0,0,0,0.55)]" />
+      </div>
 
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-
-          {/* Left Rail */}
-          <div className="border-b md:border-b-0 md:border-r border-[rgba(36,32,25,0.14)] pb-8 md:pb-0 md:pt-8 flex flex-col justify-center">
-            <h2 className="font-serif text-[32px] md:text-[42px]  leading-[1.18] tracking-[-0.3px] font-medium text-[#242019] mb-8">
-              PLT Properties brings European craftsmanship to the heart of Dubai
-            </h2>
-            <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#5B5348] max-w-[560px]">
-              Good design is not an event — it is patience. At PLT, every material is chosen for its longevity, not its spectacle. We draw on a European tradition of considered making: the belief that a home should age into something better than it was on the day it was handed over. That conviction, carried into Dubai's most connected districts, is what defines a PLT address.
-            </p>
+     
+      {/* Hero Content */}
+      <div className="relative z-10 flex-1 flex items-center px-12 py-0">
+        <div className="max-w-[620px] py-15 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both]">
+          {/* Eyebrow */}
+          <div className="font-mono text-[11.5px] tracking-[0.3em] uppercase text-[#D9B27C] flex items-center gap-3.5 mb-6.5">
+            <span className="w-6.5 h-px bg-[#B98D4F]" />
+            Business Bay, Dubai
           </div>
 
-          {/* Right Content */}
-          <div className="flex flex-col justify-center ">
-            {/* Spec Sheet */}
-            <div className="pt-4 md:pt-0">
-              <div className="flex justify-between items-center pb-4 border-b border-[#242019]/20 mb-8">
-                <span className="text-[11px] tracking-[0.3em] font-semibold text-[#8B8272]">
-                  CREDENTIALS
-                </span>
-                <span className="font-mono text-[11px] text-[#8B8272]">
-                  REF. PLT-WWA-01
-                </span>
-              </div>
+          {/* Headline */}
+          <h1 className="font-serif font-normal text-[52px] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[#EDE6D8]">
+            PLT Properties brings <em className="italic font-medium text-[#D9B27C]">European craftsmanship</em> to the heart of Dubai
+          </h1>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {credentials.map((cred, index) => (
-                  <div
-                    key={index}
-                    className="group flex items-start gap-4 p-6  bg-white/40 backdrop-blur-sm border border-[rgba(36,32,25,0.08] transition-all duration-500 hover:bg-white hover:shadow-xl hover:border-[#5E7B6B]/30 hover:-translate-y-1"
-                  >
-                    <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-br from-[#5E7B6B]/10 to-[#5E7B6B]/5 text-[#5E7B6B] group-hover:from-[#5E7B6B] group-hover:to-[#4a6355] group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-md">
-                      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                        {cred.icon.props.children}
-                      </svg>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="font-sans text-[11px] tracking-[0.2em] font-semibold text-[#c5811b] mb-2 group-hover:text-[#5E7B6B] transition-colors duration-300">
-                        {cred.label}
-                      </div>
-                      <div className="font-serif text-[22px] md:text-[26px] font-semibold text-[#242019] group-hover:text-[#5E7B6B] transition-colors duration-300">
-                        {cred.value}
-                      </div>
-                    </div>
-                  </div>
-                ))}
+          {/* Description */}
+          <p className="text-[16.5px] leading-[1.75] text-[#C9BFAD] font-light max-w-[520px] m-0 mb-9.5">
+            Good design is not an event — it is patience. At PLT, every material is chosen for its longevity, not its spectacle. We draw on a European tradition of considered making: the belief that a home should age into something better than the day it was handed over. That conviction, carried into Dubai's most connected districts, is what defines a PLT address.
+          </p>
+        </div>
+      </div>
+
+      {/* Ledger / Credentials */}
+      <div className="relative z-10 px-12 pb-11">
+        <div className="grid grid-cols-4 bg-[rgba(237,230,216,0.06)] border border-[rgba(237,230,216,0.16)] backdrop-blur-[14px] animate-[riseIn_1.1s_cubic-bezier(0.2,0.8,0.2,1)_0.15s_both]">
+          {credentials.map((cred, index) => (
+            <div
+              key={index}
+              className={`p-6.5 border-r border-[rgba(237,230,216,0.16)] flex gap-4 items-start transition-background duration-300 hover:bg-[rgba(237,230,216,0.045)] ${index === 3 ? 'border-r-0' : ''}`}
+            >
+              <span className="font-serif italic text-[20px] text-[#B98D4F] leading-none pt-0.5">{cred.numeral}</span>
+              <div>
+                <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2">{cred.label}</div>
+                <div className="font-serif text-[23px] font-medium text-[#EDE6D8]">{cred.value}</div>
               </div>
             </div>
-          </div>
-
+          ))}
         </div>
-
       </div>
+
+      {/* Side Rail */}
+      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex flex-col border border-[rgba(237,230,216,0.16)] border-r-0">
+        <button className="w-13 h-13 bg-[rgba(20,17,14,0.55)] backdrop-blur-[10px] border-none border-b border-[rgba(237,230,216,0.16)] text-[#EDE6D8] flex items-center justify-center cursor-pointer transition-background duration-250 hover:bg-[#B98D4F] last:border-b-0">
+          <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+            <path d="M7 3h7l5 5v13H7z"/>
+            <path d="M14 3v5h5"/>
+          </svg>
+        </button>
+        <button className="w-13 h-13 bg-[rgba(20,17,14,0.55)] backdrop-blur-[10px] border-none border-b border-[rgba(237,230,216,0.16)] text-[#EDE6D8] flex items-center justify-center cursor-pointer transition-background duration-250 hover:bg-[#B98D4F] last:border-b-0">
+          <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2.2z"/>
+          </svg>
+        </button>
+        <button className="w-13 h-13 bg-[rgba(20,17,14,0.55)] backdrop-blur-[10px] border-none border-b border-[rgba(237,230,216,0.16)] text-[#EDE6D8] flex items-center justify-center cursor-pointer transition-background duration-250 hover:bg-[#B98D4F] last:border-b-0">
+          <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+            <path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </button>
+        <button className="w-13 h-13 bg-[rgba(20,17,14,0.55)] backdrop-blur-[10px] border-none border-b border-[rgba(237,230,216,0.16)] text-[#EDE6D8] flex items-center justify-center cursor-pointer transition-background duration-250 hover:bg-[#B98D4F] last:border-b-0">
+          <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+            <rect x="2" y="5" width="20" height="14" rx="2"/>
+            <path d="M2 10h20"/>
+          </svg>
+        </button>
+      </div>
+
+      <style jsx>{`
+        @keyframes riseIn {
+          from { opacity: 0; transform: translateY(18px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   );
 }
