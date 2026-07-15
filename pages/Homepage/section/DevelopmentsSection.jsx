@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { projectApi, getImageUrl } from "@/lib/api";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+import { Autoplay, Pagination, EffectFade, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
@@ -171,58 +171,78 @@ export default function DevelopmentsSection() {
 
         {/* Media */}
         <div className="min-w-0 reveal" ref={addToRefs}>
-          <div className="relative border border-[rgba(237,230,216,0.16)] leading-none">
-            {slides.length > 0 ? (
-              <Swiper
-                modules={[Autoplay, Pagination, EffectFade]}
-                effect="fade"
-                fadeEffect={{ crossFade: true }}
-                speed={1000}
-                autoplay={{ delay: 4000, disableOnInteraction: false }}
-                loop={slides.length > 1}
-                pagination={{
-                  el: ".custom-dev-pagination",
-                  clickable: true,
-                  bulletClass: "swiper-pagination-bullet custom-bullet",
-                  bulletActiveClass: "swiper-pagination-bullet-active custom-bullet-active",
-                }}
-                className="w-full h-[clamp(240px,42vw,560px)]"
-              >
-                {slides.map((img, i) => (
-                  <SwiperSlide key={i}>
-                    <div className="relative w-full h-[clamp(240px,42vw,560px)]">
-                      <Image
-                        src={getImageUrl(img)}
-                        alt={`${project.imageAlt || project.title} - ${i + 1}`}
-                        fill
-                        className="object-cover"
-                        style={{ filter: 'saturate(1.03) contrast(1.02)' }}
-                        priority
-                        unoptimized
-                      />
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            ) : (
-              project.image && (
-                <Image
-                  src={getImageUrl(project.image)}
-                  alt={project.imageAlt || project.title}
-                  width={1600}
-                  height={560}
-                  className="w-full h-[clamp(240px,42vw,560px)] object-cover block"
-                  style={{ filter: 'saturate(1.03) contrast(1.02)' }}
-                  priority
-                  unoptimized
-                />
-              )
-            )}
-          
-            <div className="absolute w-[22px] h-[22px] -top-px -right-px border-t-1.5 border-r-1.5 border-[#D9B27C]" />
-            <div className="absolute w-[22px] h-[22px] -bottom-px -left-px border-b-1.5 border-l-1.5 border-[#D9B27C]" />
+          <div className="relative">
+            <div className="relative border border-[rgba(237,230,216,0.16)] leading-none">
+              {slides.length > 0 ? (
+                <Swiper
+                  modules={[Autoplay, Pagination, EffectFade, Navigation]}
+                  effect="fade"
+                  fadeEffect={{ crossFade: true }}
+                  speed={1000}
+                  autoplay={{ delay: 4000, disableOnInteraction: false }}
+                  loop={slides.length > 1}
+                  navigation={{
+                    nextEl: '.custom-dev-next',
+                    prevEl: '.custom-dev-prev',
+                  }}
+                  pagination={{
+                    el: ".custom-dev-pagination",
+                    clickable: true,
+                    bulletClass: "swiper-pagination-bullet custom-bullet",
+                    bulletActiveClass: "swiper-pagination-bullet-active custom-bullet-active",
+                  }}
+                  className="w-full h-[350px]"
+                >
+                  {slides.map((img, i) => (
+                    <SwiperSlide key={i}>
+                      <div className="relative w-full h-[350px]">
+                        <Image
+                          src={getImageUrl(img)}
+                          alt={`${project.imageAlt || project.title} - ${i + 1}`}
+                          fill
+                          className="object-cover"
+                          style={{ filter: 'saturate(1.03) contrast(1.02)' }}
+                          priority
+                          unoptimized
+                        />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              ) : (
+                project.image && (
+                  <Image
+                    src={getImageUrl(project.image)}
+                    alt={project.imageAlt || project.title}
+                    width={1600}
+                    height={560}
+                    className="w-full h-[350px] object-cover block"
+                    style={{ filter: 'saturate(1.03) contrast(1.02)' }}
+                    priority
+                    unoptimized
+                  />
+                )
+              )}
+            
+              <div className="absolute w-[22px] h-[22px] -top-px -right-px border-t-1.5 border-r-1.5 border-[#D9B27C]" />
+              <div className="absolute w-[22px] h-[22px] -bottom-px -left-px border-b-1.5 border-l-1.5 border-[#D9B27C]" />
+            </div>
             {slides.length > 1 && (
               <div className="custom-dev-pagination absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2" />
+            )}
+            {slides.length > 1 && (
+              <>
+                <button className="custom-dev-prev absolute bottom-4 right-16 z-30 w-10 h-10 bg-[#1D1913] border border-[rgba(237,230,216,0.3)] text-[#EDE6D8] flex items-center justify-center cursor-pointer hover:bg-[#D9B27C] hover:border-[#D9B27C] transition-colors">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
+                <button className="custom-dev-next absolute bottom-4 right-4 z-30 w-10 h-10 bg-[#1D1913] border border-[rgba(237,230,216,0.3)] text-[#EDE6D8] flex items-center justify-center cursor-pointer hover:bg-[#D9B27C] hover:border-[#D9B27C] transition-colors">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
+              </>
             )}
           </div>
         </div>
