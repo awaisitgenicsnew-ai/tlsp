@@ -42,32 +42,27 @@ export default function IntroSection() {
   ];
 
   return (
-    <section id="building" className="w-full bg-[#F1ECE2] text-[#242019]">
-      <div className=" mx-auto px-6 md:px-10 py-16 md:py-28">
-        
+    <section id="building" className="w-full bg-[#F1ECE2] text-[#242019] flex justify-center items-center min-h-screen">
+      <div className="w-full  px-6 md:px-10 md:pr-20 py-16 md:py-28">
+
         {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 ">
-          
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+
           {/* Left Rail */}
-          <div className="border-b md:border-b-0 md:border-r border-[rgba(36,32,25,0.14)] pb-8 md:pb-0  md:pt-20">
-         
-             <h2 className="font-serif text-[32px] md:text-[46px] leading-[1.18] tracking-[-0.3px] font-medium text-[#242019] mb-6">
-                PLT Properties brings European craftsmanship to the heart of Dubai
-              </h2>
-              <p className="text-[15px] md:text-[16px] leading-[1.85] text-[#5B5348] max-w-[560px]">
-                Good design is not an event — it is patience. At PLT, every material is chosen for its longevity, not its spectacle. We draw on a European tradition of considered making: the belief that a home should age into something better than it was on the day it was handed over. That conviction, carried into Dubai's most connected districts, is what defines a PLT address.
-              </p>
-          
+          <div className="border-b md:border-b-0 md:border-r border-[rgba(36,32,25,0.14)] pb-8 md:pb-0 md:pt-8 flex flex-col justify-center">
+            <h2 className="font-serif text-[32px] md:text-[46px] lg:text-[52px] leading-[1.18] tracking-[-0.3px] font-medium text-[#242019] mb-8">
+              PLT Properties brings European craftsmanship to the heart of Dubai
+            </h2>
+            <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#5B5348] max-w-[560px]">
+              Good design is not an event — it is patience. At PLT, every material is chosen for its longevity, not its spectacle. We draw on a European tradition of considered making: the belief that a home should age into something better than it was on the day it was handed over. That conviction, carried into Dubai's most connected districts, is what defines a PLT address.
+            </p>
           </div>
 
           {/* Right Content */}
-          <div className="flex flex-col justify-center pr-10 ">
-            {/* Main */}
-           
-
+          <div className="flex flex-col justify-center ">
             {/* Spec Sheet */}
-            <div className="pt-8">
-              <div className="flex justify-between items-center pb-4 border-b border-[#242019] mb-8">
+            <div className="pt-4 md:pt-0">
+              <div className="flex justify-between items-center pb-4 border-b border-[#242019]/20 mb-8">
                 <span className="text-[11px] tracking-[0.3em] font-semibold text-[#8B8272]">
                   CREDENTIALS
                 </span>
@@ -76,22 +71,22 @@ export default function IntroSection() {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {credentials.map((cred, index) => (
-                  <div 
+                  <div
                     key={index}
-                    className="group flex items-start gap-5 p-5 rounded-lg transition-all duration-300 hover:bg-white/50"
+                    className="group flex items-start gap-4 p-6  bg-white/40 backdrop-blur-sm border border-[rgba(36,32,25,0.08] transition-all duration-500 hover:bg-white hover:shadow-xl hover:border-[#5E7B6B]/30 hover:-translate-y-1"
                   >
-                    <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-[#5E7B6B]/10 text-[#5E7B6B] group-hover:bg-[#5E7B6B] group-hover:text-white transition-all duration-300">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-br from-[#5E7B6B]/10 to-[#5E7B6B]/5 text-[#5E7B6B] group-hover:from-[#5E7B6B] group-hover:to-[#4a6355] group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-md">
+                      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
                         {cred.icon.props.children}
                       </svg>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="font-serif text-[15px] md:text-[17px] font-bold text-[#242019] mb-1">
+                      <div className="font-sans text-[11px] tracking-[0.2em] font-semibold text-[#c5811b] mb-2 group-hover:text-[#5E7B6B] transition-colors duration-300">
                         {cred.label}
                       </div>
-                      <div className="font-serif text-[24px] md:text-[28px] font-semibold text-[#000000]">
+                      <div className="font-serif text-[22px] md:text-[26px] font-semibold text-[#242019] group-hover:text-[#5E7B6B] transition-colors duration-300">
                         {cred.value}
                       </div>
                     </div>
