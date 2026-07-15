@@ -50,19 +50,19 @@ export default function DevelopmentsSection() {
   }
 
   return (
-    <section className="w-full bg-[#d9d9d9] min-h-screen flex items-center justify-center px-6 md:px-20 py-24">
+    <section className="w-full bg-[#EDE6D8] min-h-screen flex items-center justify-center px-6 md:px-20 py-24">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left: Content */}
         <div>
           <div className="flex gap-2 mb-7">
             {project.badge && (
-              <span className="text-[11px] font-semibold tracking-[0.14em] uppercase px-3.5 py-1.5 bg-[#211D17] text-[#F7F4EC] rounded-sm">
+              <span className="text-[11px] font-semibold tracking-[0.14em] uppercase px-3.5 py-1.5 bg-[#ffffff] text-[#F7F4EC] rounded-sm">
                 {project.badge}
               </span>
             )}
           </div>
 
-          <h2  className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#211D17] mb-4.5">
+          <h2  className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#ffffff] mb-4.5">
             {project.title}
           </h2>
 
@@ -78,28 +78,28 @@ export default function DevelopmentsSection() {
           <div className="flex border-t border-[rgba(33,29,23,0.18)] pt-6.5 mb-9">
             <div className="pr-10 mr-10 border-r border-[rgba(33,29,23,0.10)]">
               <p className="text-[10.5px] tracking-[0.14em] uppercase text-[#8A8172] font-semibold mb-2">Type</p>
-              <p className="font-serif text-[22px] text-[#211D17]">{project.type}</p>
+              <p className="font-serif text-[22px] text-[#ffffff]">{project.type}</p>
             </div>
             <div className="pr-10 mr-10 border-r border-[rgba(33,29,23,0.10)]">
               <p className="text-[10.5px] tracking-[0.14em] uppercase text-[#8A8172] font-semibold mb-2">Handover</p>
-              <p className="font-serif text-[22px] text-[#211D17]">{project.handover}</p>
+              <p className="font-serif text-[22px] text-[#ffffff]">{project.handover}</p>
             </div>
             <div>
               <p className="text-[10.5px] tracking-[0.14em] uppercase text-[#8A8172] font-semibold mb-2">Payment</p>
-              <p className="font-serif text-[22px] text-[#211D17]">{project.payment}</p>
+              <p className="font-serif text-[22px] text-[#ffffff]">{project.payment}</p>
             </div>
           </div>
 
           <div className="flex items-center gap-7">
             <button
               onClick={() => handleButtonClick(project.primaryButtonLink)}
-              className="text-[12.5px] font-semibold tracking-[0.1em] uppercase px-7.5 py-4 bg-[#211D17] text-[#F7F4EC] border-none cursor-pointer hover:bg-[#7C5A2C] transition-colors"
+              className="text-[12.5px] font-semibold tracking-[0.1em] uppercase px-7.5 py-4 bg-[#ffffff] text-[#F7F4EC] border-none cursor-pointer hover:bg-[#7C5A2C] transition-colors"
             >
               {project.primaryButtonText || "View development"}
             </button>
             <button
               onClick={() => handleButtonClick(project.secondaryButtonLink)}
-              className="text-[12.5px] font-semibold tracking-[0.1em] uppercase px-7.5 py-4 bg-transparent text-[#211D17] border border-[rgba(33,29,23,0.18)] flex items-center gap-2.5 cursor-pointer hover:border-[#7C5A2C] hover:text-[#7C5A2C] transition-colors"
+              className="text-[12.5px] font-semibold tracking-[0.1em] uppercase px-7.5 py-4 bg-transparent text-[#ffffff] border border-[rgba(33,29,23,0.18)] flex items-center gap-2.5 cursor-pointer hover:border-[#7C5A2C] hover:text-[#7C5A2C] transition-colors"
             >
               {project.secondaryButtonText || "Register interest"}
               <span>&rarr;</span>
