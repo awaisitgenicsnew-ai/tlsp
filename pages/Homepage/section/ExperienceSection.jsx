@@ -15,14 +15,14 @@ export default function ExperienceSection() {
             </p>
             <span className="hidden sm:block h-px bg-[var(--tan)] w-10 ml-6"></span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 text-[#2a2620]">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#211D17] mb-4.5">
             Luxury Measured <br /> by Experience
           </h2>
-          <p className="text-sm leading-relaxed text-[#6b6558] mb-2 paragraph">
+          <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#5B5348] ">
             True luxury is defined not by what surrounds you, but by how a
             place makes you feel.
           </p>
-          <p className="text-sm leading-relaxed text-[#6b6558] paragraph">
+          <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#5B5348] ">
             It is found in quiet mornings filled with natural light,
             meaningful connections to nature, thoughtfully crafted spaces,
             and the comfort of genuine hospitality. At PLT Properties, every
@@ -56,7 +56,7 @@ export default function ExperienceSection() {
       {/* Quote */}
       <div className="max-w-xl mx-auto text-center">
         <div className="w-px h-10 bg-[#c5811b] mx-auto mb-4" />
-        <p className="font-serif italic text-2xl md:text-3xl text-[#2b2823] leading-snug">
+        <p className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#211D17] mb-4.5">
           Not simply a place to live. A life to belong to.
         </p>
         <div className="flex items-center justify-center mt-6">

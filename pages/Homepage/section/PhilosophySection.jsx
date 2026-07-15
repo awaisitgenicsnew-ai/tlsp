@@ -17,10 +17,10 @@ export default function Philosophy() {
           </p>
           <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
         </div>
-        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-2 text-[#2a2620]">
+        <h2 className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#211D17] mb-4.5">
           More Than Places to Live
         </h2>
-        <p className="mt-4 text-sm leading-relaxed text-[#7a7468] font-[400] text-[14px] tracking-[0.5px] mx-auto paragraph">
+        <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#5B5348] ">
           Creating timeless residences where Italian heritage, exceptional
           architecture, wellness, and hospitality come together to shape
           extraordinary lifestyles.
@@ -52,14 +52,14 @@ export default function Philosophy() {
 
         <div>
         
-          <h2 className="font-display text-3xl sm:text-3xl md:text-4xl leading-tight max-w-4xl mx-auto mb-2 text-[#2a2620]">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#211D17] mb-4.5">
             Designed to Enrich <br /> Everyday Living
           </h2>
-          <p className="text-sm leading-relaxed text-[#6b6558] mb-4 paragraph">
+          <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#5B5348] ">
             Every PLT residence begins with a simple belief: exceptional
             living starts with exceptional design.
           </p>
-          <p className="text-sm leading-relaxed text-[#6b6558] paragraph">
+          <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#5B5348] ">
             Inspired by Italian craftsmanship, every detail is thoughtfully
             considered to create homes that feel timeless, welcoming, and
             beautifully balanced. From elegant architecture to refined

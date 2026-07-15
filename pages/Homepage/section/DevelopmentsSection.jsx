@@ -62,9 +62,9 @@ export default function DevelopmentsSection() {
             )}
           </div>
 
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#211D17] mb-4.5">
+          <h2  className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#211D17] mb-4.5">
             {project.title}
-          </h1>
+          </h2>
 
           <p className="text-[12px] font-semibold tracking-[0.18em] uppercase text-[#7C5A2C] mb-6 flex items-center gap-2.5">
             <span className="w-[22px] h-px bg-[#7C5A2C]"></span>
