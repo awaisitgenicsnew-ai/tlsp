@@ -47,7 +47,7 @@ export default function IntroSection() {
      
       {/* Hero Content */}
       <div className="relative z-10 flex-1 flex items-center px-12 py-0">
-        <div className="max-w-[620px] py-15 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both]">
+        <div className="max-w-[620px] py-4 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both]">
           {/* Eyebrow */}
           <div className="font-mono text-[11.5px] tracking-[0.3em] uppercase text-[#D9B27C] flex items-center gap-3.5 mb-6.5">
             <span className="w-6.5 h-px bg-[#B98D4F]" />
@@ -55,9 +55,9 @@ export default function IntroSection() {
           </div>
 
           {/* Headline */}
-          <h1 className="font-serif font-normal text-[52px] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[#EDE6D8]">
-            PLT Properties brings <em className="italic font-medium text-[#D9B27C]">European craftsmanship</em> to the heart of Dubai
-          </h1>
+          <h2 className="font-serif font-normal text-[52px] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[#EDE6D8]">
+            PLT Properties brings <em className=" font-medium text-[#D9B27C]">European craftsmanship</em> to the heart of Dubai
+          </h2>
 
           {/* Description */}
           <p className="text-[16.5px] leading-[1.75] text-[#C9BFAD] font-light max-w-[520px] m-0 mb-9.5">
