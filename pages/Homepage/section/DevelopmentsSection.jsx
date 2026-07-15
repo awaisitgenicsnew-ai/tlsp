@@ -75,14 +75,14 @@ export default function DevelopmentsSection() {
   }
 
   return (
-    <section className="relative bg-[#1D1913] py-[clamp(56px,10vw,110px)] px-[clamp(20px,5vw,48px)] overflow-hidden">
+    <section className="relative bg-[#EDE6D8] py-[clamp(56px,10vw,110px)] px-[clamp(20px,5vw,48px)] overflow-hidden">
       {/* Grid Pattern Overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(237,230,216,0.18) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(237,230,216,0.18) 1px, transparent 1px)
+            linear-gradient(rgba(20,17,14,0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(20,17,14,0.08) 1px, transparent 1px)
           `,
           backgroundSize: '120px 120px',
           opacity: '0.05'
@@ -94,41 +94,41 @@ export default function DevelopmentsSection() {
         <div className="min-w-0 reveal" ref={addToRefs}>
           {/* Badge */}
           {project.badge && (
-            <span className="inline-flex items-center gap-2 font-mono text-[10.5px] tracking-[0.18em] uppercase text-[#D9B27C] border border-[#B98D4F] px-3.5 py-2 mb-[clamp(22px,4vw,32px)] whitespace-nowrap">
-              <span className="w-1.5 h-1.5 flex-shrink-0 bg-[#D9B27C] rounded-full" />
+            <span className="inline-flex items-center gap-2 font-mono text-[10.5px] tracking-[0.18em] uppercase text-[#B98D4F] border border-[#B98D4F] px-3.5 py-2 mb-[clamp(22px,4vw,32px)] whitespace-nowrap">
+              <span className="w-1.5 h-1.5 flex-shrink-0 bg-[#B98D4F] rounded-full" />
               {project.badge}
             </span>
           )}
 
           {/* Headline */}
-          <h1 className="font-serif font-medium text-[clamp(34px,5.5vw,56px)] tracking-[0.01em] leading-[1.05] text-[#EDE6D8] m-0 mb-5 uppercase word-break">
+          <h1 className="font-serif font-medium text-[clamp(34px,5.5vw,56px)] tracking-[0.01em] leading-[1.05] text-[#14110E] m-0 mb-5 uppercase word-break">
             {project.title}
           </h1>
 
           {/* Location */}
-          <div className="flex items-center gap-3.5 font-mono text-[11.5px] tracking-[0.18em] uppercase text-[#D9B27C] mb-6.5 flex-wrap">
+          <div className="flex items-center gap-3.5 font-mono text-[11.5px] tracking-[0.18em] uppercase text-[#B98D4F] mb-6.5 flex-wrap">
             <span className="w-[26px] h-px bg-[#B98D4F] flex-shrink-0" />
             {project.location}
           </div>
 
           {/* Description */}
-          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[#C9BFAD] font-light max-w-[480px] m-0 mb-[clamp(28px,5vw,36px)]">
+          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[#5B5348] font-light max-w-[480px] m-0 mb-[clamp(28px,5vw,36px)]">
             {project.description}
           </p>
 
           {/* Stats Strip */}
-          <div className="flex flex-wrap border-t border-b border-[rgba(237,230,216,0.18)] mb-[clamp(30px,5vw,40px)]">
-            <div className="flex-1 min-w-[110px] py-5 pr-[clamp(12px,2vw,24px)] border-r border-[rgba(237,230,216,0.18)]">
-              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2.5 whitespace-nowrap">Type</div>
-              <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#EDE6D8] whitespace-nowrap">{project.type}</div>
+          <div className="flex flex-wrap border-t border-b border-[rgba(20,17,14,0.12)] mb-[clamp(30px,5vw,40px)]">
+            <div className="flex-1 min-w-[110px] py-5 pr-[clamp(12px,2vw,24px)] border-r border-[rgba(20,17,14,0.12)]">
+              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#8B8172] mb-2.5 whitespace-nowrap">Type</div>
+              <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#14110E] whitespace-nowrap">{project.type}</div>
             </div>
-            <div className="flex-1 min-w-[110px] py-5 pr-[clamp(12px,2vw,24px)] border-r border-[rgba(237,230,216,0.18)]">
-              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2.5 whitespace-nowrap">Handover</div>
-              <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#EDE6D8] whitespace-nowrap">{project.handover}</div>
+            <div className="flex-1 min-w-[110px] py-5 pr-[clamp(12px,2vw,24px)] border-r border-[rgba(20,17,14,0.12)]">
+              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#8B8172] mb-2.5 whitespace-nowrap">Handover</div>
+              <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#14110E] whitespace-nowrap">{project.handover}</div>
             </div>
             <div className="flex-1 min-w-[110px] py-5 pr-[clamp(12px,2vw,24px)] border-r-0">
-              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2.5 whitespace-nowrap">Payment</div>
-              <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#EDE6D8] whitespace-nowrap">{project.payment}</div>
+              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#8B8172] mb-2.5 whitespace-nowrap">Payment</div>
+              <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#14110E] whitespace-nowrap">{project.payment}</div>
             </div>
           </div>
 
@@ -142,7 +142,7 @@ export default function DevelopmentsSection() {
             </button>
             <button
               onClick={() => handleButtonClick(project.secondaryButtonLink)}
-              className="flex-1 font-mono text-[12px] tracking-[0.14em] uppercase text-[#EDE6D8] bg-transparent px-5.5 py-4 border border-[rgba(237,230,216,0.18)] cursor-pointer transition-all duration-250 hover:border-[#C9BFAD] hover:bg-[rgba(237,230,216,0.04)] inline-flex items-center gap-2.5 whitespace-nowrap"
+              className="flex-1 font-mono text-[12px] tracking-[0.14em] uppercase text-[#14110E] bg-transparent px-5.5 py-4 border border-[rgba(20,17,14,0.18)] cursor-pointer transition-all duration-250 hover:border-[#8B8172] hover:bg-[rgba(20,17,14,0.04)] inline-flex items-center gap-2.5 whitespace-nowrap"
             >
               {project.secondaryButtonText || "Register"}
               <svg className="w-3.5 h-3.5 transition-transform duration-250 flex-shrink-0 hover:translate-x-0.75" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -154,7 +154,7 @@ export default function DevelopmentsSection() {
 
         {/* Media */}
         <div className="min-w-0 reveal" ref={addToRefs}>
-          <div className="relative border border-[rgba(237,230,216,0.16)] leading-none">
+          <div className="relative border border-[rgba(20,17,14,0.12)] leading-none">
             {project.image && (
               <Image
                 src={getImageUrl(project.image)}
@@ -167,11 +167,11 @@ export default function DevelopmentsSection() {
                 unoptimized
               />
             )}
-            <div className="absolute top-4 left-4 font-mono text-[9.5px] tracking-[0.16em] uppercase text-[#EDE6D8] bg-[rgba(20,17,14,0.6)] backdrop-blur-[6px] px-2.75 py-1.75 border border-[rgba(237,230,216,0.16)] whitespace-nowrap">
+            <div className="absolute top-4 left-4 font-mono text-[9.5px] tracking-[0.16em] uppercase text-[#EDE6D8] bg-[rgba(20,17,14,0.6)] backdrop-blur-[6px] px-2.75 py-1.75 border border-[rgba(20,17,14,0.12)] whitespace-nowrap">
               {project.location} · Dusk
             </div>
-            <div className="absolute w-[22px] h-[22px] -top-px -right-px border-t-1.5 border-r-1.5 border-[#D9B27C]" />
-            <div className="absolute w-[22px] h-[22px] -bottom-px -left-px border-b-1.5 border-l-1.5 border-[#D9B27C]" />
+            <div className="absolute w-[22px] h-[22px] -top-px -right-px border-t-1.5 border-r-1.5 border-[#B98D4F]" />
+            <div className="absolute w-[22px] h-[22px] -bottom-px -left-px border-b-1.5 border-l-1.5 border-[#B98D4F]" />
           </div>
         </div>
       </div>
