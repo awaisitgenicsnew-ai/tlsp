@@ -1,83 +1,109 @@
 "use client";
 
-const INTRO_STATS = [
-  { 
-    value: "15+", 
-    label: "YEARS OF CRAFT",
-    icon: (
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    )
-  },
-  { 
-    value: "100%", 
-    label: "DLD ESCROW-BACKED",
-    icon: (
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    )
-  },
-  { 
-    value: "Business Bay", 
-    label: "FLAGSHIP LOCATION",
-    icon: (
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    )
-  },
-  { 
-    value: "European", 
-    label: "DESIGN HERITAGE",
-    icon: (
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-      </svg>
-    )
-  },
-];
-
 export default function IntroSection() {
+  const credentials = [
+    {
+      value: "15+",
+      label: "YEARS OF CRAFT",
+      icon: (
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      )
+    },
+    {
+      value: "100%",
+      label: "DLD ESCROW-BACKED",
+      icon: (
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      )
+    },
+    {
+      value: "Business Bay",
+      label: "FLAGSHIP LOCATION",
+      icon: (
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      )
+    },
+    {
+      value: "European",
+      label: "DESIGN HERITAGE",
+      icon: (
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+        </svg>
+      )
+    }
+  ];
+
   return (
-    <section id="building" className="bg-[#d9d9d9] text-[var(--ink)] py-10 lg:py-24 px-6 sm:px-10 flex flex-col justify-center min-h-screen">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex items-center justify-center mb-6">
-          <span className="h-px bg-[var(--tan)] w-16 mr-6 hidden sm:block"></span>
-          <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--tan)] whitespace-nowrap uppercase">
-            WHO WE ARE
-          </p>
-          <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
-        </div>
+    <section id="building" className="w-full bg-[#F1ECE2] text-[#242019]">
+      <div className=" mx-auto px-6 md:px-10 py-16 md:py-28">
         
-        <h2 className="text-center font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8">
-          PLT Properties brings European craftsmanship to the heart of Dubai
-        </h2>
-
-        <p className="text-center font-sans text-sm leading-relaxed text-[var(--ink)]/80 max-w-3.5xl mx-auto mb-16 paragraph">
-      Good design is not an event - it is patience. At PLT, every material is chosen for its longevity, not its spectacle. We draw on a European tradition of considered making: the belief that a home should age into something better than it was on the day it was handed over. That conviction, carried into Dubai's most connected districts, is what defines a PLT address. </p>
-
-      
-      </div>
-        <div className="border-y border-[var(--ink)]/20 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 md:divide-x divide-[var(--ink)]/20">
-            {INTRO_STATS.map((stat, index) => (
-              <div key={index} className="text-center px-4 sm:px-6 md:px-8">
-                <div className="w-8 h-8 mx-auto mb-3 text-[var(--tan)]">
-                  {stat.icon}
-                </div>
-                <p className="font-display text-2xl md:text-3xl lg:text-4xl mb-2 text-[var(--ink)]">
-                  {stat.value}
-                </p>
-                <p className="font-sans text-xs tracking-[0.1em] text-[var(--ink)]/60 uppercase leading-tight">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+        {/* Main Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 ">
+          
+          {/* Left Rail */}
+          <div className="border-b md:border-b-0 md:border-r border-[rgba(36,32,25,0.14)] pb-8 md:pb-0  md:pt-20">
+         
+             <h2 className="font-serif text-[32px] md:text-[46px] leading-[1.18] tracking-[-0.3px] font-medium text-[#242019] mb-6">
+                PLT Properties brings European craftsmanship to the heart of Dubai
+              </h2>
+              <p className="text-[15px] md:text-[16px] leading-[1.85] text-[#5B5348] max-w-[560px]">
+                Good design is not an event — it is patience. At PLT, every material is chosen for its longevity, not its spectacle. We draw on a European tradition of considered making: the belief that a home should age into something better than it was on the day it was handed over. That conviction, carried into Dubai's most connected districts, is what defines a PLT address.
+              </p>
+          
           </div>
+
+          {/* Right Content */}
+          <div className="flex flex-col justify-center pr-10 ">
+            {/* Main */}
+           
+
+            {/* Spec Sheet */}
+            <div className="pt-8">
+              <div className="flex justify-between items-center pb-4 border-b border-[#242019] mb-8">
+                <span className="text-[11px] tracking-[0.3em] font-semibold text-[#8B8272]">
+                  CREDENTIALS
+                </span>
+                <span className="font-mono text-[11px] text-[#8B8272]">
+                  REF. PLT-WWA-01
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {credentials.map((cred, index) => (
+                  <div 
+                    key={index}
+                    className="group flex items-start gap-5 p-5 rounded-lg transition-all duration-300 hover:bg-white/50"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-[#5E7B6B]/10 text-[#5E7B6B] group-hover:bg-[#5E7B6B] group-hover:text-white transition-all duration-300">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        {cred.icon.props.children}
+                      </svg>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-serif text-[15px] md:text-[17px] font-bold text-[#242019] mb-1">
+                        {cred.label}
+                      </div>
+                      <div className="font-serif text-[24px] md:text-[28px] font-semibold text-[#000000]">
+                        {cred.value}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
         </div>
+
+      </div>
     </section>
   );
 }

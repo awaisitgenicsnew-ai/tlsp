@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const LINKS = [
   { label: "HOME", href: "/" },
-  { label: "PLT TOWER", href: "https://plttower.com" },
+  { label: "PLT TOWER", href: "https://plttower.com", external: true },
   { label: "ABOUT", href: "/about-us" },
   { label: "CONTACT", href: "/contact-us" },
 ];
@@ -128,6 +128,8 @@ export default function Navbar({ colors = {} }) {
               <a
                 key={link.label}
                 href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
                 className="font-sans font-normal text-[14px] tracking-[2px] transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)]"
               >
                 {link.label}
@@ -174,6 +176,8 @@ export default function Navbar({ colors = {} }) {
                 <a
                   key={link.label}
                   href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
                   onClick={() => setOpen(false)}
                   className="font-sans text-[14px] font-normal tracking-[2px] transition-colors py-1 text-[color:var(--nav-mobile-link)] hover:text-[color:var(--nav-mobile-link-hover)]"
                 >
