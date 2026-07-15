@@ -67,13 +67,13 @@ export default function DevelopmentsGridSection() {
               delay: 5000,
               disableOnInteraction: false,
             }}
-            className="pb-16"
+            className="pb-12"
           >
           {developments.map((dev, index) => (
             <SwiperSlide key={dev.id || index}>
               <div className="bg-[#F7F4EC] border border-[rgba(33,29,23,0.10)] h-full">
                 {/* Card Visual */}
-                <div className="relative h-48 md:h-56 overflow-hidden border-b border-[rgba(33,29,23,0.10)]">
+                <div className="relative h-[300px] overflow-hidden border-b border-[rgba(33,29,23,0.10)]">
                   {dev.image && (
                     <Image
                       src={getImageUrl(dev.image)}
@@ -84,7 +84,7 @@ export default function DevelopmentsGridSection() {
                     />
                   )}
                   {(dev.badge || dev.status) && (
-                    <span className="absolute top-4 left-4 text-[10px] font-semibold tracking-widest uppercase px-3 py-1.5 bg-[#211D17] text-[#F7F4EC] z-2">
+                    <span className="absolute top-4 left-4 text-[10px] font-semibold tracking-widest uppercase px-3 py-1.5 bg-[#211D17] text-[#F7F4EC] z-20">
                       {dev.badge || dev.status}
                     </span>
                   )}
@@ -111,8 +111,8 @@ export default function DevelopmentsGridSection() {
         <div className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center cursor-pointer hover:bg-[#F7F4EC] transition-colors shadow-lg" />
         <div className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center cursor-pointer hover:bg-[#F7F4EC] transition-colors shadow-lg" />
 
-        {/* Pagination */}
-        <div className="swiper-pagination absolute bottom-4 left-1/2 -translate-x-1/2" />
+        {/* Pagination positioned at bottom of slider (bottom of images) */}
+        <div className="swiper-pagination absolute bottom-4 left-1/2 -translate-x-1/2 z-20" />
         </div>
       </div>
     </section>
