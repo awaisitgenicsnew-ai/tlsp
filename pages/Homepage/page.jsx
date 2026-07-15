@@ -100,7 +100,7 @@ export default function Homepage() {
           const otherProjects = publishedProjects.filter(p => p.badge !== 'High Demand');
 
           const dynamicSections = [...BASE_SECTIONS];
-          const insertIndex = 3; // After brand-pillars
+          const insertIndex = 2; // After intro
 
           // Add DevelopmentsSection if High Demand project exists
           if (highDemandProject) {

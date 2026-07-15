@@ -55,7 +55,7 @@ export default function Philosophy() {
         <h2 className="font-serif font-normal italic text-[46px] leading-[1.15] text-[#FFFFFF] m-0 mb-[26px]">
           More than places to live
         </h2>
-        <p className="text-[16px] leading-[1.75] text-[#FFFFFF] font-light m-0">
+        <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[#C9BFAD] font-light m-0">
           Creating timeless residences where Italian heritage, exceptional architecture, wellness, and hospitality come together to shape extraordinary lifestyles.
         </p>
       </div>
@@ -81,10 +81,10 @@ export default function Philosophy() {
           <h3 className="font-serif font-normal text-[36px] leading-[1.22] text-[#EDE6D8] m-0 mb-7">
             Designed to enrich everyday living
           </h3>
-          <p className="text-[15.5px] leading-[1.85] text-[#C9BFAD] font-light m-0 mb-5">
+          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[#C9BFAD] font-light m-0 mb-5">
             Every PLT residence begins with a simple belief: exceptional living starts with exceptional design.
           </p>
-          <p className="text-[15.5px] leading-[1.85] text-[#C9BFAD] font-light m-0">
+          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[#C9BFAD] font-light m-0">
             Inspired by Italian craftsmanship, every detail is thoughtfully considered to create homes that feel timeless, welcoming, and beautifully balanced. From elegant architecture to refined interiors, our spaces are designed to elevate everyday life while creating lasting value for generations.
           </p>
         </div>

@@ -30,11 +30,11 @@ export default function ExperienceSection() {
           <h2 className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#EDE6D8] mb-4.5">
             Luxury Measured <br /> by Experience
           </h2>
-          <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#C9BFAD] ">
+          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[#C9BFAD] font-light ">
             True luxury is defined not by what surrounds you, but by how a
             place makes you feel.
           </p>
-          <p className="text-[15px] md:text-[16px] lg:text-[17px] leading-[1.85] text-[#C9BFAD] ">
+          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[#C9BFAD] font-light ">
             It is found in quiet mornings filled with natural light,
             meaningful connections to nature, thoughtfully crafted spaces,
             and the comfort of genuine hospitality. At PLT Properties, every
