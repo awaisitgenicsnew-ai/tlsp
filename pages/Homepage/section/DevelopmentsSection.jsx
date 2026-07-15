@@ -38,7 +38,14 @@ export default function DevelopmentsSection() {
     );
 
     revealRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
+      if (ref) {
+        observer.observe(ref);
+        // Check if element is already in view
+        if (ref.getBoundingClientRect().top < window.innerHeight) {
+          ref.classList.add('in');
+          observer.unobserve(ref);
+        }
+      }
     });
 
     return () => observer.disconnect();
@@ -178,8 +185,8 @@ export default function DevelopmentsSection() {
 
       <style jsx>{`
         .reveal {
-          opacity: 0;
-          transform: translateY(24px);
+          opacity: 1;
+          transform: translateY(0);
           transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         .reveal.in {
