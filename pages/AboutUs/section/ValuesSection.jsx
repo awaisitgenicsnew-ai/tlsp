@@ -24,10 +24,10 @@ export default function ValuesSection() {
 
   return (
     <section className="w-full bg-[#141311] min-h-screen flex items-center justify-center px-6 mt-20">
-      <div className="w-full max-w-[1180px] h-[550px] bg-[#1b1a17] border border-[rgba(243,239,230,0.12)] rounded-[4px] grid grid-cols-1 md:grid-cols-[0.85fr_1.15fr]">
+      <div className="w-full max-w-[1180px] h-[550px]   grid grid-cols-1 md:grid-cols-[0.85fr_1.15fr]">
         
         {/* Left Panel */}
-        <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-[rgba(243,239,230,0.12)] flex flex-col justify-center">
+        <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-[rgba(243,239,230,0.12)] flex flex-col ">
           <p className="text-[11px] tracking-[0.24em] uppercase text-[#b08a5a] mb-4">
             Our Core Values
           </p>
