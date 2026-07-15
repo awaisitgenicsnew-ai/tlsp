@@ -8,7 +8,6 @@ import Footer from '@/components/Footer';
 
 // About Us sections
 import HeroSection from './section/HeroSection';
-import StorySection from './section/StorySection';
 import MissionSection from './section/MissionSection';
 import ValuesSection from './section/ValuesSection';
 import TeamSection from './section/TeamSection';
@@ -20,7 +19,6 @@ gsap.registerPlugin(ScrollTrigger);
 // theme: 'dark' = navbar text WHITE, 'light' = navbar text BLACK, 'dark-bg' = navbar with dark background, 'mission-bg' = navbar with bronze background
 const SECTIONS = [
   { id: 'hero', Component: HeroSection, theme: 'dark' },
-  { id: 'story', Component: StorySection, theme: 'dark-bg' },
   { id: 'mission', Component: MissionSection, theme: 'mission-bg' },
   { id: 'values', Component: ValuesSection, theme: 'mission-bg' },
   { id: 'team', Component: TeamSection, theme: 'light' },
@@ -52,19 +50,6 @@ const BLACK_SCHEME = {
   buttonText: '#000000',
   buttonHoverBg: '#000000',
   buttonHoverText: '#ffffff',
-};
-
-const STORY_BG_SCHEME = {
-  bg: '#181410',
-  border: 'rgba(255,255,255,0.1)',
-  text: '#ffffff',
-  subText: 'rgba(255,255,255,0.8)',
-  link: 'rgba(255,255,255,0.9)',
-  linkHover: '#ffffff',
-  buttonBorder: '#ffffff',
-  buttonText: '#ffffff',
-  buttonHoverBg: '#ffffff',
-  buttonHoverText: '#000000',
 };
 
 const MISSION_SCHEME = {
@@ -202,7 +187,7 @@ export default function AboutUs() {
     : isMissionBgSection
     ? { top: MISSION_SCHEME, scrolled: MISSION_SCHEME }
     : isDarkBgSection
-    ? { top: STORY_BG_SCHEME, scrolled: STORY_BG_SCHEME }
+    ? { top: BLACK_BG_SCHEME, scrolled: BLACK_BG_SCHEME }
     : isDarkSection
     ? { top: WHITE_SCHEME, scrolled: WHITE_SCHEME }
     : { top: BLACK_SCHEME, scrolled: BLACK_SCHEME };

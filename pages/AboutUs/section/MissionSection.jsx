@@ -45,10 +45,23 @@ export default function MissionSection() {
 
   return (
     <section className="w-full bg-[#1c1b19] min-h-screen relative overflow-hidden">
-      {/* Radial gradient background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(176,138,90,0.07),transparent_55%)] pointer-events-none" />
+      {/* Background Image with Gradients */}
+      <div className="absolute inset-0 z-0">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(100deg, rgba(20,17,14,0.94) 8%, rgba(20,17,14,0.72) 34%, rgba(20,17,14,0.30) 62%, rgba(20,17,14,0.55) 100%),
+              linear-gradient(to top, rgba(20,17,14,0.85) 0%, rgba(20,17,14,0.05) 38%),
+              url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2400&auto=format&fit=crop')
+            `,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+      </div>
       
-      <div className="max-w-[1160px] mx-auto px-6 md:px-12 lg:px-24 py-24 md:py-32 relative">
+      <div className="max-w-[1160px] mx-auto px-6 md:px-12 lg:px-24 py-24 md:py-32 relative z-10">
         {/* Header */}
         <div className="text-center mb-7 max-w-[760px] mx-auto">
           <div className="flex items-center justify-center gap-3 mb-6">
