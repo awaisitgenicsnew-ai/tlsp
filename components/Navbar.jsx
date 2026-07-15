@@ -7,6 +7,7 @@ import Link from "next/link";
 const LINKS = [
   { label: "HOME", href: "/" },
   { label: "PLT TOWER", href: "https://plttower.com", external: true },
+  { label: "BLOG", href: "/blog" },
   { label: "ABOUT", href: "/about-us" },
   { label: "CONTACT", href: "/contact-us" },
 ];

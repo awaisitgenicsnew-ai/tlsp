@@ -56,7 +56,7 @@ export default function IntroSection() {
 
           {/* Headline */}
           <h2 className="font-serif font-normal text-[52px] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[#EDE6D8]">
-            PLT Properties brings <em className=" font-medium text-[#D9B27C]">European craftsmanship</em> to the heart of Dubai
+            PLT Properties brings <span className=" font-medium text-[#D9B27C]">European craftsmanship</span> to the heart of Dubai
           </h2>
 
           {/* Description */}
