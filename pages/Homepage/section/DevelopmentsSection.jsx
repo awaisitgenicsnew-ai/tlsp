@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { projectApi, getImageUrl } from "@/lib/api";
@@ -8,6 +8,7 @@ import { projectApi, getImageUrl } from "@/lib/api";
 export default function DevelopmentsSection() {
   const router = useRouter();
   const [project, setProject] = useState(null);
+  const revealRefs = useRef([]);
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -23,6 +24,32 @@ export default function DevelopmentsSection() {
     fetchProject();
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    revealRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const addToRefs = (el) => {
+    if (el && !revealRefs.current.includes(el)) {
+      revealRefs.current.push(el);
+    }
+  };
+
   const handleButtonClick = (link) => {
     if (!link) return;
     if (link.startsWith("http")) {
@@ -37,93 +64,158 @@ export default function DevelopmentsSection() {
     if (!panel) return;
 
     if (window.matchMedia('(min-width: 768px)').matches) {
-      // Desktop: horizontal scroll is driven by GSAP ScrollTrigger (pinned).
-      // Scroll the window vertically to the pin position matching this panel,
-      // so ScrollTrigger stays in sync and the navbar theme updates correctly.
       window.scrollTo({ top: panel.offsetLeft, behavior: 'smooth' });
     } else {
       panel.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
   if (!project) {
     return null;
   }
 
   return (
-    <section className="w-full bg-[#d9d9d9] min-h-screen flex items-center justify-center px-6 md:px-20 py-24">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Left: Content */}
-        <div>
-          <div className="flex gap-2 mb-7">
-            {project.badge && (
-              <span className="text-[11px] font-semibold tracking-[0.14em] uppercase px-3.5 py-1.5 bg-[#211D17] text-[#F7F4EC] rounded-sm">
-                {project.badge}
-              </span>
-            )}
+    <section className="relative bg-[#1D1913] py-[clamp(56px,10vw,110px)] px-[clamp(20px,5vw,48px)] overflow-hidden">
+      {/* Grid Pattern Overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(237,230,216,0.18) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(237,230,216,0.18) 1px, transparent 1px)
+          `,
+          backgroundSize: '120px 120px',
+          opacity: '0.05'
+        }}
+      />
+
+      <div className="relative max-w-[1300px] mx-auto grid grid-cols-[minmax(0,0.82fr)_minmax(0,1fr)] gap-[clamp(36px,6vw,72px)] items-center">
+        {/* Copy */}
+        <div className="min-w-0 reveal" ref={addToRefs}>
+          {/* Badge */}
+          {project.badge && (
+            <span className="inline-flex items-center gap-2 font-mono text-[10.5px] tracking-[0.18em] uppercase text-[#D9B27C] border border-[#B98D4F] px-3.5 py-2 mb-[clamp(22px,4vw,32px)] whitespace-nowrap">
+              <span className="w-1.5 h-1.5 flex-shrink-0 bg-[#D9B27C] rounded-full" />
+              {project.badge}
+            </span>
+          )}
+
+          {/* Headline */}
+          <h1 className="font-serif font-medium text-[clamp(34px,5.5vw,56px)] tracking-[0.01em] leading-[1.05] text-[#EDE6D8] m-0 mb-5 uppercase word-break">
+            {project.title}
+          </h1>
+
+          {/* Location */}
+          <div className="flex items-center gap-3.5 font-mono text-[11.5px] tracking-[0.18em] uppercase text-[#D9B27C] mb-6.5 flex-wrap">
+            <span className="w-[26px] h-px bg-[#B98D4F] flex-shrink-0" />
+            {project.location}
           </div>
 
-          <h2  className="font-serif text-4xl md:text-5xl lg:text-[44px] leading-[0.98] tracking-[-0.01em] text-[#211D17] mb-4.5">
-            {project.title}
-          </h2>
-
-          <p className="text-[12px] font-semibold tracking-[0.18em] uppercase text-[#7C5A2C] mb-6 flex items-center gap-2.5">
-            <span className="w-[22px] h-px bg-[#7C5A2C]"></span>
-            {project.location}
-          </p>
-
-          <p className="text-[14px] leading-[1.7] text-[#4A443A] max-w-[760px] mb-1">
+          {/* Description */}
+          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[#C9BFAD] font-light max-w-[480px] m-0 mb-[clamp(28px,5vw,36px)]">
             {project.description}
           </p>
 
-          <div className="flex border-t border-[rgba(33,29,23,0.18)] pt-6.5 mb-9">
-            <div className="pr-10 mr-10 border-r border-[rgba(33,29,23,0.10)]">
-              <p className="text-[10.5px] tracking-[0.14em] uppercase text-[#8A8172] font-semibold mb-2">Type</p>
-              <p className="font-serif text-[22px] text-[#211D17]">{project.type}</p>
+          {/* Stats Strip */}
+          <div className="flex flex-wrap border-t border-b border-[rgba(237,230,216,0.18)] mb-[clamp(30px,5vw,40px)]">
+            <div className="flex-1 min-w-[110px] py-5 pr-[clamp(12px,2vw,24px)] border-r border-[rgba(237,230,216,0.18)]">
+              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2.5 whitespace-nowrap">Type</div>
+              <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#EDE6D8] whitespace-nowrap">{project.type}</div>
             </div>
-            <div className="pr-10 mr-10 border-r border-[rgba(33,29,23,0.10)]">
-              <p className="text-[10.5px] tracking-[0.14em] uppercase text-[#8A8172] font-semibold mb-2">Handover</p>
-              <p className="font-serif text-[22px] text-[#211D17]">{project.handover}</p>
+            <div className="flex-1 min-w-[110px] py-5 pr-[clamp(12px,2vw,24px)] border-r border-[rgba(237,230,216,0.18)]">
+              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2.5 whitespace-nowrap">Handover</div>
+              <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#EDE6D8] whitespace-nowrap">{project.handover}</div>
             </div>
-            <div>
-              <p className="text-[10.5px] tracking-[0.14em] uppercase text-[#8A8172] font-semibold mb-2">Payment</p>
-              <p className="font-serif text-[22px] text-[#211D17]">{project.payment}</p>
+            <div className="flex-1 min-w-[110px] py-5 pr-[clamp(12px,2vw,24px)] border-r-0">
+              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2.5 whitespace-nowrap">Payment</div>
+              <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#EDE6D8] whitespace-nowrap">{project.payment}</div>
             </div>
           </div>
 
-          <div className="flex items-center gap-7">
+          {/* Actions */}
+          <div className="flex flex-wrap gap-3.5">
             <button
               onClick={() => handleButtonClick(project.primaryButtonLink)}
-              className="text-[12.5px] font-semibold tracking-[0.1em] uppercase px-7.5 py-4 bg-[#211D17] text-[#F7F4EC] border-none cursor-pointer hover:bg-[#7C5A2C] transition-colors"
+              className="flex-1 text-center font-mono text-[12px] tracking-[0.14em] uppercase text-[#14110E] bg-[#D9B27C] px-6.5 py-4 border border-[#D9B27C] cursor-pointer transition-all duration-250 hover:bg-[#B98D4F] hover:border-[#B98D4F] whitespace-nowrap"
             >
-              {project.primaryButtonText || "View development"}
+              {project.primaryButtonText || "View Information"}
             </button>
             <button
               onClick={() => handleButtonClick(project.secondaryButtonLink)}
-              className="text-[12.5px] font-semibold tracking-[0.1em] uppercase px-7.5 py-4 bg-transparent text-[#211D17] border border-[rgba(33,29,23,0.18)] flex items-center gap-2.5 cursor-pointer hover:border-[#7C5A2C] hover:text-[#7C5A2C] transition-colors"
+              className="flex-1 font-mono text-[12px] tracking-[0.14em] uppercase text-[#EDE6D8] bg-transparent px-5.5 py-4 border border-[rgba(237,230,216,0.18)] cursor-pointer transition-all duration-250 hover:border-[#C9BFAD] hover:bg-[rgba(237,230,216,0.04)] inline-flex items-center gap-2.5 whitespace-nowrap"
             >
-              {project.secondaryButtonText || "Register interest"}
-              <span>&rarr;</span>
+              {project.secondaryButtonText || "Register"}
+              <svg className="w-3.5 h-3.5 transition-transform duration-250 flex-shrink-0 hover:translate-x-0.75" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
             </button>
           </div>
         </div>
 
-        {/* Right: Elevation/Visual */}
-        <div className="relative flex flex-col justify-center items-center h-full gap-6">
-          <div className="relative w-full  h-90 overflow-hidden rounded-lg">
+        {/* Media */}
+        <div className="min-w-0 reveal" ref={addToRefs}>
+          <div className="relative border border-[rgba(237,230,216,0.16)] leading-none">
             {project.image && (
               <Image
                 src={getImageUrl(project.image)}
                 alt={project.imageAlt || project.title}
-                fill
-                className="object-cover"
+                width={1600}
+                height={560}
+                className="w-full h-[clamp(240px,42vw,560px)] object-cover block"
+                style={{ filter: 'saturate(1.03) contrast(1.02)' }}
                 priority
                 unoptimized
               />
             )}
+            <div className="absolute top-4 left-4 font-mono text-[9.5px] tracking-[0.16em] uppercase text-[#EDE6D8] bg-[rgba(20,17,14,0.6)] backdrop-blur-[6px] px-2.75 py-1.75 border border-[rgba(237,230,216,0.16)] whitespace-nowrap">
+              {project.location} · Dusk
+            </div>
+            <div className="absolute w-[22px] h-[22px] -top-px -right-px border-t-1.5 border-r-1.5 border-[#D9B27C]" />
+            <div className="absolute w-[22px] h-[22px] -bottom-px -left-px border-b-1.5 border-l-1.5 border-[#D9B27C]" />
           </div>
-
         </div>
       </div>
+
+      <style jsx>{`
+        .reveal {
+          opacity: 0;
+          transform: translateY(24px);
+          transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal.in {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        @media (max-width: 940px) {
+          section > div {
+            grid-template-columns: 1fr;
+          }
+          .reveal:last-child {
+            order: -1;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .flex-wrap > div {
+            flex: 1 1 50%;
+          }
+          .flex-wrap > div:nth-child(2) {
+            border-right: none;
+          }
+          .flex-wrap > div:nth-child(3) {
+            border-top: 1px solid rgba(237,230,216,0.18);
+            padding-top: 16px;
+            margin-top: 2px;
+          }
+          .flex-wrap.gap-3\\.5 {
+            flex-direction: column;
+          }
+          .flex-wrap.gap-3\\.5 button {
+            width: 100%;
+          }
+        }
+      `}</style>
     </section>
   );
 }
