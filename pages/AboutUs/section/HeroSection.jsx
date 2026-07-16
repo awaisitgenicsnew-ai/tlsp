@@ -8,19 +8,19 @@ import "swiper/css/pagination";
 
 const SLIDES = [
   {
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920",
+    image: "/images/aboutimg1.jpeg",
     eyebrow: "ABOUT US · PLT PROPERTIES",
     heading: "Building Dubai's Future, Today",
     subheading: "Where Vision Meets Excellence"
   },
   {
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1920",
+    image: "/images/aboutimg2.jpeg",
     eyebrow: "ABOUT US · PLT PROPERTIES",
     heading: "European Standards, Arabian Hospitality",
     subheading: "A Legacy of Luxury"
   },
   {
-    image: "https://images.unsplash.com/photo-1577495508048-b635879837f1?w=1920",
+    image: "/images/aboutimg3.jpeg",
     eyebrow: "ABOUT US · PLT PROPERTIES",
     heading: "Redefining Luxury Living in Dubai",
     subheading: "Crafting Extraordinary Spaces"

@@ -53,7 +53,7 @@ export default function MissionSection() {
             backgroundImage: `
               linear-gradient(100deg, rgba(20,17,14,0.94) 8%, rgba(20,17,14,0.72) 34%, rgba(20,17,14,0.30) 62%, rgba(20,17,14,0.55) 100%),
               linear-gradient(to top, rgba(20,17,14,0.85) 0%, rgba(20,17,14,0.05) 38%),
-              url('/images/img2.jpg')
+              url('/images/about-img.jpg')
             `,
             backgroundSize: 'cover',
             backgroundPosition: 'center',

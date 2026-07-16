@@ -47,7 +47,7 @@ export default function ExperienceSection() {
         <div className="relative flex items-stretch justify-end order-first lg:order-last">
           <div className="relative aspect-[16/10] w-full overflow-hidden border border-[rgba(237,230,216,0.16)]">
             <Image
-              src="/images/img2.jpg"
+              src="/images/img-home-intro.jpeg"
               alt="Quiet morning light interior"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -66,13 +66,7 @@ export default function ExperienceSection() {
         <p className="font-serif text-[32px] leading-[1.4]  text-[#EDE6D8] mb-4.5">
           Not simply a place to live. A life to belong to.
         </p>
-        <div className="flex items-center justify-center mt-6">
-          <span className="h-px bg-[#B98D4F] w-16 mr-6 hidden sm:block"></span>
-          <p className="font-sans text-sm tracking-[0.25em] font-medium text-[#D9B27C] whitespace-nowrap uppercase">
-            PLT Properties
-          </p>
-          <span className="hidden sm:block h-px bg-[#B98D4F] w-16 ml-6"></span>
-        </div>
+        
       </div>
     </section>
   );
