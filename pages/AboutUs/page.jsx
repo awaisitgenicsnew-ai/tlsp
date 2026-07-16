@@ -66,7 +66,7 @@ const MISSION_SCHEME = {
 };
 
 const BLACK_BG_SCHEME = {
-  bg: '#000000',
+  bg: '#181410',
   border: 'rgba(255,255,255,0.1)',
   text: '#ffffff',
   subText: 'rgba(255,255,255,0.8)',

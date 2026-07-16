@@ -51,7 +51,7 @@ export default function TeamSection() {
   ];
 
   return (
-    <section className="w-full bg-[#181410] min-h-screen relative overflow-hidden">
+    <section className="w-full bg-[#181410] min-h-screen relative overflow-hidden border-r border-[rgba(255,255,255,0.1)]">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-20 md:py-32">
         {/* Header */}
         <div className="text-center mb-16">
