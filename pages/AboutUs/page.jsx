@@ -14,7 +14,7 @@ import TeamSection from './section/TeamSection';
 import AchievementsSection from './section/AchievementsSection';
 import ContactSection from './section/ContactSection';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);  
 
 // theme: 'dark' = navbar text WHITE, 'light' = navbar text BLACK, 'dark-bg' = navbar with dark background, 'mission-bg' = navbar with bronze background
 const SECTIONS = [
