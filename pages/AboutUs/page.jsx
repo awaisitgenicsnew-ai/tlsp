@@ -19,8 +19,9 @@ gsap.registerPlugin(ScrollTrigger);
 // theme: 'dark' = navbar text WHITE, 'light' = navbar text BLACK, 'dark-bg' = navbar with dark background, 'mission-bg' = navbar with bronze background
 const SECTIONS = [
   { id: 'hero', Component: HeroSection, theme: 'dark' },
+   { id: 'values', Component: ValuesSection, theme: 'mission-bg' },
   { id: 'mission', Component: MissionSection, theme: 'mission-bg' },
-  { id: 'values', Component: ValuesSection, theme: 'mission-bg' },
+ 
   { id: 'team', Component: TeamSection, theme: 'mission-bg' },
   { id: 'achievements', Component: AchievementsSection, theme: 'dark-bg' },
   { id: 'contact', Component: ContactSection, theme: 'dark' },
@@ -66,7 +67,7 @@ const MISSION_SCHEME = {
 };
 
 const BLACK_BG_SCHEME = {
-  bg: '#181410',
+  bg: 'transparent',
   border: 'rgba(255,255,255,0.1)',
   text: '#ffffff',
   subText: 'rgba(255,255,255,0.8)',
