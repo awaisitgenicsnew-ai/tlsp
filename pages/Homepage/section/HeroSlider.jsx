@@ -8,15 +8,15 @@ import "swiper/css/pagination";
 
 const SLIDES = [
   {
-    image: "/images/hero-1.jpg",
+    image: "/images/home-slider/imgslide1.jpg",
     heading: "A standard set in Europe, built in Dubai",
   },
   {
-    image: "/images/hero-2.jpg",
+    image: "/images/home-slider/imgslide2.jpg",
     heading: "Where Business Bay meets Riviera elegance",
   },
   {
-    image: "/images/hero-3.jpg",
+    image: "/images/home-slider/imgslide3.jpg",
     heading: "Interiors composed by European ateliers",
   },
 ];

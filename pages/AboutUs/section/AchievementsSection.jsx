@@ -57,202 +57,102 @@ export default function AchievementsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex flex-col overflow-hidden gap-4"
-      style={{
-        background: `
-          linear-gradient(0deg, rgba(10,7,5,0.97) 0%, rgba(10,7,5,0.72) 32%, rgba(20,15,10,0.28) 58%, rgba(20,15,10,0.15) 100%),
-          url('https://images.unsplash.com/photo-1768069794826-a31af289449f?fm=jpg&q=80&w=2600&auto=format&fit=crop&ixlib=rb-4.1.0')
-        `,
-        backgroundSize: 'cover, cover',
-        backgroundPosition: 'center, center 30%',
-        backgroundRepeat: 'no-repeat, no-repeat',
-      }}
+      className="w-full bg-[#181410] min-h-[640px] relative overflow-hidden py-[120px] border-r border-[rgba(255,255,255,0.1)]"
     >
-      {/* Lattice pattern */}
-      <div
-        className="absolute top-0 right-0 w-[340px] h-[340px] opacity-0.16 pointer-events-none"
-        style={{
-          backgroundImage: `
-            repeating-linear-gradient(45deg, var(--gold) 0 1.5px, transparent 1.5px 34px),
-            repeating-linear-gradient(-45deg, var(--gold) 0 1.5px, transparent 1.5px 34px)
-          `,
-          WebkitMaskImage: 'radial-gradient(circle at 100% 0%, black 0%, black 55%, transparent 75%)',
-          maskImage: 'radial-gradient(circle at 100% 0%, black 0%, black 55%, transparent 75%)',
-        }}
-      />
-
-      {/* Top content */}
-      <div className="relative z-2 max-w-[840px] px-[7vw] pt-[160px]">
-        <h2 className="font-serif text-[clamp(32px,4vw,48px)] leading-[1.15] tracking-[-0.01em] text-[#ffffff] mb-6">
-          A skyline of <span className="italic font-normal text-[#ffffff]">numbers</span>
-          <br />that speak for us.
-        </h2>
-        <p className="text-[16.5px] leading-[1.7] text-[rgba(237,230,216,0.7)] max-w-[44ch]">
-          Every marker on this horizon is a milestone — measured against Dubai's own skyline, and still rising.
-        </p>
-      </div>
-
-      {/* Skyline of stats */}
-      <div className="relative z-2 flex items-end justify-between gap-[clamp(10px,3vw,40px)] px-[7vw] pb-0 max-w-[1180px] mx-auto w-full">
-        {/* Tower 1 */}
-        <div className="flex-1 flex flex-col items-center text-center">
-          <span className="font-sans font-semibold text-[clamp(30px,3.2vw,42px)] text-[#ffffff] leading-none mb-[14px] tracking-[-0.01em]">
-            {counts.years}<span className="text-[#d9b27c]">+</span>
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[640px] relative z-10  mx-auto">
+        {/* Center vertical line */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-px bg-[#3A342C] z-0 hidden md:block" />
+        {/* Left Content */}
+        <div className="flex flex-col justify-center px-[90px] py-[70px] md:py-0 relative z-10">
+          <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#C7A46B] mb-[22px]">
+            Our Achievements
           </span>
-          <div className="w-px bg-[#181410] mb-[6px] relative" style={{ height: '20px' }}>
-            <span className="absolute top-[-4px] left-1/2 w-[6px] h-[6px] rounded-full bg-[#181410] -translate-x-1/2" style={{ boxShadow: '0 0 8px 2px rgba(24,20,16,0.7)', animation: 'blink 2.6s ease-in-out infinite' }} />
-          </div>
-          <div
-            className="w-full max-w-[150px] rounded-t-[3px] relative overflow-hidden origin-bottom"
-            style={{
-              height: '118px',
-              background: 'linear-gradient(180deg, rgba(24,20,16,0.32) 0%, rgba(24,20,16,0.14) 55%, rgba(24,20,16,0.05) 100%)',
-              border: '1px solid rgba(24,20,16,0.35)',
-              borderBottom: 'none',
-              animation: 'rise 1.1s cubic-bezier(0.2,0.8,0.2,1) forwards',
-              animationDelay: '0.05s',
-            }}
-          >
-            <div
-              className="absolute inset-0 opacity-0.6"
-              style={{
-                backgroundImage: `
-                  repeating-linear-gradient(0deg, transparent 0 9px, rgba(24,20,16,0.35) 9px 10px),
-                  repeating-linear-gradient(90deg, transparent 0 13px, rgba(24,20,16,0.35) 13px 14px)
-                `,
-              }}
-            />
-          </div>
-          <span className="mt-4 text-xs font-semibold tracking-[0.14em] uppercase text-[rgba(244,236,221,0.62)]">
-            Years of experience
-          </span>
+          <h1 className="font-serif font-normal text-[clamp(40px,4.6vw,60px)] leading-[1.08] text-[#F4F0E6] max-w-[560px] tracking-[-0.01em] mb-[26px]">
+            Numbers That Speak
+          </h1>
+          <p className="text-[15.5px] leading-[1.7] text-[#B7AFA2] max-w-[420px] mb-[36px]">
+            Our track record of success is a testament to our commitment to excellence and customer satisfaction — built one landmark at a time.
+          </p>
+          <a href="#" className="inline-flex items-center gap-[10px] text-[#C7A46B] text-[12.5px] font-semibold tracking-[0.14em] uppercase border-b border-transparent hover:border-[#C7A46B] hover:gap-[14px] transition-all w-fit">
+            Explore PLT Tower
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
         </div>
 
-        {/* Tower 2 */}
-        <div className="flex-1 flex flex-col items-center text-center">
-          <span className="font-sans font-semibold text-[clamp(30px,3.2vw,42px)] text-[#ffffff] leading-none mb-[14px] tracking-[-0.01em]">
-            {counts.projects}<span className="text-[#d9b27c]">+</span>
-          </span>
-          <div className="w-px bg-[#181410] mb-[6px] relative" style={{ height: '20px' }}>
-            <span className="absolute top-[-4px] left-1/2 w-[6px] h-[6px] rounded-full bg-[#181410] -translate-x-1/2" style={{ boxShadow: '0 0 8px 2px rgba(24,20,16,0.7)', animation: 'blink 2.6s ease-in-out infinite 0.5s' }} />
-          </div>
-          <div
-            className="w-full max-w-[150px] rounded-t-[3px] relative overflow-hidden origin-bottom"
-            style={{
-              height: '168px',
-              background: 'linear-gradient(180deg, rgba(24,20,16,0.32) 0%, rgba(24,20,16,0.14) 55%, rgba(24,20,16,0.05) 100%)',
-              border: '1px solid rgba(24,20,16,0.35)',
-              borderBottom: 'none',
-              animation: 'rise 1.1s cubic-bezier(0.2,0.8,0.2,1) forwards',
-              animationDelay: '0.18s',
-            }}
-          >
-            <div
-              className="absolute inset-0 opacity-0.6"
-              style={{
-                backgroundImage: `
-                  repeating-linear-gradient(0deg, transparent 0 9px, rgba(24,20,16,0.35) 9px 10px),
-                  repeating-linear-gradient(90deg, transparent 0 13px, rgba(24,20,16,0.35) 13px 14px)
-                `,
-              }}
-            />
-          </div>
-          <span className="mt-4 text-xs font-semibold tracking-[0.14em] uppercase text-[rgba(244,236,221,0.62)]">
-            Projects completed
-          </span>
-        </div>
+        {/* Right Stats Grid */}
+        <div className="flex items-center justify-center px-[60px] py-[70px] md:py-0  relative z-10">
+          <div className="w-full max-w-[640px] grid grid-cols-2 border border-[#3A342C] bg-[rgba(255,255,255,0.02)] backdrop-blur-[2px]">
+            {/* Stat 1 */}
+            <div className="p-[44px_40px] border-r border-b border-[#3A342C] hover:bg-[rgba(199,164,107,0.06)] transition-all">
+              <div className="w-[44px] h-[44px] border border-[#A9895A] rounded-full flex items-center justify-center text-[#C7A46B] mb-[26px]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[19px] h-[19px]">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M12 7v5l3 2"/>
+                </svg>
+              </div>
+              <div className="font-serif font-normal text-[38px] text-[#F4F0E6] flex items-baseline gap-[2px]">
+                {counts.years}<span className="text-[26px] text-[#C7A46B]">+</span>
+              </div>
+              <div className="mt-[10px] text-[11px] font-semibold tracking-[0.14em] uppercase text-[#B7AFA2]">
+                Years of Experience
+              </div>
+            </div>
 
-        {/* Tower 3 */}
-        <div className="flex-1 flex flex-col items-center text-center">
-          <span className="font-sans font-semibold text-[clamp(30px,3.2vw,42px)] text-[#ffffff] leading-none mb-[14px] tracking-[-0.01em]">
-            {counts.residents}<span className="text-[#d9b27c]">+</span>
-          </span>
-          <div className="w-px bg-[#181410] mb-[6px] relative" style={{ height: '20px' }}>
-            <span className="absolute top-[-4px] left-1/2 w-[6px] h-[6px] rounded-full bg-[#181410] -translate-x-1/2" style={{ boxShadow: '0 0 8px 2px rgba(24,20,16,0.7)', animation: 'blink 2.6s ease-in-out infinite 1s' }} />
-          </div>
-          <div
-            className="w-full max-w-[150px] rounded-t-[3px] relative overflow-hidden origin-bottom"
-            style={{
-              height: '224px',
-              background: 'linear-gradient(180deg, rgba(24,20,16,0.32) 0%, rgba(24,20,16,0.14) 55%, rgba(24,20,16,0.05) 100%)',
-              border: '1px solid rgba(24,20,16,0.35)',
-              borderBottom: 'none',
-              animation: 'rise 1.1s cubic-bezier(0.2,0.8,0.2,1) forwards',
-              animationDelay: '0.31s',
-            }}
-          >
-            <div
-              className="absolute inset-0 opacity-0.6"
-              style={{
-                backgroundImage: `
-                  repeating-linear-gradient(0deg, transparent 0 9px, rgba(24,20,16,0.35) 9px 10px),
-                  repeating-linear-gradient(90deg, transparent 0 13px, rgba(24,20,16,0.35) 13px 14px)
-                `,
-              }}
-            />
-          </div>
-          <span className="mt-4 text-xs font-semibold tracking-[0.14em] uppercase text-[rgba(244,236,221,0.62)]">
-            Happy residents
-          </span>
-        </div>
+            {/* Stat 2 */}
+            <div className="p-[44px_40px] border-b border-[#3A342C] hover:bg-[rgba(199,164,107,0.06)] transition-all">
+              <div className="w-[44px] h-[44px] border border-[#A9895A] rounded-full flex items-center justify-center text-[#C7A46B] mb-[26px]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[19px] h-[19px]">
+                  <path d="M4 21V8l8-5 8 5v13"/>
+                  <path d="M9 21v-6h6v6"/>
+                  <path d="M9 12h.01M15 12h.01M9 8h.01M15 8h.01"/>
+                </svg>
+              </div>
+              <div className="font-serif font-normal text-[38px] text-[#F4F0E6] flex items-baseline gap-[2px]">
+                {counts.projects}<span className="text-[26px] text-[#C7A46B]">+</span>
+              </div>
+              <div className="mt-[10px] text-[11px] font-semibold tracking-[0.14em] uppercase text-[#B7AFA2]">
+                Projects Completed
+              </div>
+            </div>
 
-        {/* Tower 4 */}
-        <div className="flex-1 flex flex-col items-center text-center">
-          <span className="font-sans font-semibold text-[clamp(30px,3.2vw,42px)] text-[#ffffff] leading-none mb-[14px] tracking-[-0.01em]">
-            {counts.awards}<span className="text-[#d9b27c]">+</span>
-          </span>
-          <div className="w-px bg-[#181410] mb-[6px] relative" style={{ height: '20px' }}>
-            <span className="absolute top-[-4px] left-1/2 w-[6px] h-[6px] rounded-full bg-[#181410] -translate-x-1/2" style={{ boxShadow: '0 0 8px 2px rgba(24,20,16,0.7)', animation: 'blink 2.6s ease-in-out infinite 1.5s' }} />
+            {/* Stat 3 */}
+            <div className="p-[44px_40px] border-r border-[#3A342C] hover:bg-[rgba(199,164,107,0.06)] transition-all">
+              <div className="w-[44px] h-[44px] border border-[#A9895A] rounded-full flex items-center justify-center text-[#C7A46B] mb-[26px]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[19px] h-[19px]">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/>
+                  <circle cx="10" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M17 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div className="font-serif font-normal text-[38px] text-[#F4F0E6] flex items-baseline gap-[2px]">
+                {counts.residents.toLocaleString()}<span className="text-[26px] text-[#C7A46B]">+</span>
+              </div>
+              <div className="mt-[10px] text-[11px] font-semibold tracking-[0.14em] uppercase text-[#B7AFA2]">
+                Happy Residents
+              </div>
+            </div>
+
+            {/* Stat 4 */}
+            <div className="p-[44px_40px] hover:bg-[rgba(199,164,107,0.06)] transition-all">
+              <div className="w-[44px] h-[44px] border border-[#A9895A] rounded-full flex items-center justify-center text-[#C7A46B] mb-[26px]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[19px] h-[19px]">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              </div>
+              <div className="font-serif font-normal text-[38px] text-[#F4F0E6] flex items-baseline gap-[2px]">
+                {counts.awards}<span className="text-[26px] text-[#C7A46B]">+</span>
+              </div>
+              <div className="mt-[10px] text-[11px] font-semibold tracking-[0.14em] uppercase text-[#B7AFA2]">
+                Industry Awards
+              </div>
+            </div>
           </div>
-          <div
-            className="w-full max-w-[150px] rounded-t-[3px] relative overflow-hidden origin-bottom"
-            style={{
-              height: '146px',
-              background: 'linear-gradient(180deg, rgba(24,20,16,0.32) 0%, rgba(24,20,16,0.14) 55%, rgba(24,20,16,0.05) 100%)',
-              border: '1px solid rgba(24,20,16,0.35)',
-              borderBottom: 'none',
-              animation: 'rise 1.1s cubic-bezier(0.2,0.8,0.2,1) forwards',
-              animationDelay: '0.44s',
-            }}
-          >
-            <div
-              className="absolute inset-0 opacity-0.6"
-              style={{
-                backgroundImage: `
-                  repeating-linear-gradient(0deg, transparent 0 9px, rgba(24,20,16,0.35) 9px 10px),
-                  repeating-linear-gradient(90deg, transparent 0 13px, rgba(24,20,16,0.35) 13px 14px)
-                `,
-              }}
-            />
-          </div>
-          <span className="mt-4 text-xs font-semibold tracking-[0.14em] uppercase text-[rgba(244,236,221,0.62)]">
-            Industry awards
-          </span>
         </div>
       </div>
-
-      {/* Ground line */}
-      <div className="relative z-2 h-px bg-gradient-to-r from-transparent via-[rgba(24,20,16,0.55)] to-transparent max-w-[1180px] mx-auto w-full" />
-
-     
-
-      <style jsx>{`
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.25; }
-        }
-        @keyframes rise {
-          from { transform: scaleY(0); opacity: 0; }
-          to { transform: scaleY(1); opacity: 1; }
-        }
-        @media (max-width: 760px) {
-          section {
-            padding: 70px 6vw 0;
-            min-height: auto;
-          }
-        }
-      `}</style>
     </section>
   );
 }
-

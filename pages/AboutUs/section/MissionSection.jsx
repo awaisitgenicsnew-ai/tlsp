@@ -60,7 +60,10 @@ export default function MissionSection() {
           }}
         />
       </div>
-      
+
+      {/* Overlay */}
+      <div className="absolute inset-0 z-0 bg-[rgba(20,17,14,0.4)] pointer-events-none" />
+
       <div className="max-w-[1160px] mx-auto px-6 md:px-12 lg:px-24 py-24 md:py-32 relative z-10">
         {/* Header */}
         <div className="text-center mb-7 max-w-[760px] mx-auto">

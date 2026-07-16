@@ -475,11 +475,16 @@ export default function Projects() {
                       multiple
                       onChange={(e) => {
                         const newImages = Array.from(e.target.files);
+                        const totalImages = formData.images.length + newImages.length;
+                        if (totalImages > 10) {
+                          alert('Maximum 10 images allowed for the slider');
+                          return;
+                        }
                         setFormData({ ...formData, images: [...formData.images, ...newImages] });
                       }}
                       className="w-full border border-black rounded-none p-2 font-sans text-sm text-[#2a2620] cursor-pointer file:mr-4 file:px-5 file:py-2.5 file:bg-[#2a2620] file:text-white file:border file:border-black file:rounded-none file:font-sans file:text-sm file:font-semibold file:cursor-pointer hover:file:bg-[#c9a876] file:transition-colors"
                     />
-                    <p className="font-sans text-xs text-black/60 mt-1">Select multiple images for the slider (max 3 recommended)</p>
+                    <p className="font-sans text-xs text-black/60 mt-1">Select multiple images for the slider (max 10 images)</p>
                   </div>
 
                   <div className="mb-5">

@@ -20,11 +20,11 @@ gsap.registerPlugin(ScrollTrigger);
 const SECTIONS = [
   { id: 'hero', Component: HeroSection, theme: 'dark' },
    { id: 'values', Component: ValuesSection, theme: 'mission-bg' },
-  { id: 'mission', Component: MissionSection, theme: 'mission-bg' },
- 
+  { id: 'mission', Component: MissionSection, theme: 'dark' },
+  { id: 'achievements', Component: AchievementsSection, theme: 'mission-bg' },
   { id: 'team', Component: TeamSection, theme: 'mission-bg' },
-  { id: 'achievements', Component: AchievementsSection, theme: 'dark-bg' },
-  { id: 'contact', Component: ContactSection, theme: 'dark' },
+ 
+  { id: 'contact', Component: ContactSection, theme: 'mission-bg' },
 ];
 
 const WHITE_SCHEME = {
@@ -184,7 +184,7 @@ export default function AboutUs() {
   const isMissionBgSection = SECTIONS[activeIndex]?.theme === 'mission-bg';
 
   const navbarColors = isNearLastSection
-    ? { top: BLACK_BG_SCHEME, scrolled: BLACK_BG_SCHEME }
+    ? { top: MISSION_SCHEME, scrolled: MISSION_SCHEME }
     : isMissionBgSection
     ? { top: MISSION_SCHEME, scrolled: MISSION_SCHEME }
     : isDarkBgSection
@@ -207,6 +207,9 @@ export default function AboutUs() {
 
       {/* Horizontal scroll wrapper */}
       <div ref={wrapperRef} className="relative overflow-hidden">
+        {/* Center vertical line */}
+        <div className="fixed top-0 left-1/2 -translate-x-1/2 h-full w-px bg-[#3A342C] z-0 hidden md:block pointer-events-none" />
+
         <main
           ref={trackRef}
           role="main"
