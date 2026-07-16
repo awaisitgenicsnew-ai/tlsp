@@ -27,8 +27,8 @@ export default function ExperienceSection() {
             </p>
             <span className="hidden sm:block h-px bg-[#B98D4F] w-10 ml-6"></span>
           </div>
-          <h2 className="font-serif text-[clamp(32px,5vw,44px)] leading-normal tracking-[-0.01em] text-[#EDE6D8] mb-4.5">
-            Luxury Measured <br /> by Experience
+          <h2 className="font-serif text-[clamp(32px,5vw,44px)] leading-[1.2] tracking-[-0.01em] text-[#EDE6D8] mb-4.5">
+            Luxury Measured  by Experience
           </h2>
           <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[#C9BFAD] font-light ">
             True luxury is defined not by what surrounds you, but by how a
@@ -63,7 +63,7 @@ export default function ExperienceSection() {
       {/* Quote */}
       <div className="relative max-w-xl mx-auto text-center px-4">
         <div className="w-px h-10 bg-[#B98D4F] mx-auto mb-4" />
-        <p className="font-serif text-[clamp(28px,5vw,44px)] leading-[0.98] tracking-[-0.01em] text-[#EDE6D8] mb-4.5">
+        <p className="font-serif text-[32px] leading-[1.4]  text-[#EDE6D8] mb-4.5">
           Not simply a place to live. A life to belong to.
         </p>
         <div className="flex items-center justify-center mt-6">
