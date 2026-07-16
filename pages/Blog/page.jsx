@@ -65,9 +65,7 @@ export default function BlogList() {
         {/* Hero Section */}
         <section className="relative bg-[#181410] py-24 md:py-32">
           <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}></div>
+           
           </div>
           <div className="relative max-w-6xl mx-auto px-5 md:px-20 text-center">
             <span className="inline-block px-4 py-2 mb-6 font-sans text-sm tracking-[0.2em] text-[#d4a574] uppercase border border-[#d4a574]/30 rounded-full">
@@ -110,6 +108,10 @@ export default function BlogList() {
                         )}
                       </div>
                       <p className="text-xs font-medium text-[#9c7a3c] tracking-wide mb-2">{blog.categories?.[0]?.name || 'Real Estate'}</p>
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <Calendar size={12} className="text-[#9c7a3c]" />
+                        <span className="text-xs text-[#9c7a3c]">{formatDate(blog.createdAt)}</span>
+                      </div>
                       <h3 className="font-display text-lg text-[#1c2b39] leading-snug group-hover:text-[#9c7a3c] transition-colors">
                         {blog.title}
                       </h3>
@@ -171,18 +173,7 @@ export default function BlogList() {
                 </section>
               )}
 
-              <div className="bg-gradient-to-br from-[#1a1a2e] to-[#16213e] p-12 rounded-2xl text-center">
-                <h2 className="font-display text-3xl font-bold text-white mb-3">Newsletter</h2>
-                <p className="font-sans text-base text-white/80 mb-8">Subscribe to our newsletter for the latest property insights and updates.</p>
-                <form className="flex gap-3 max-w-md mx-auto">
-                  <input 
-                    type="email" 
-                    placeholder="Enter your email" 
-                    className="flex-1 px-5 py-3.5 border-none rounded-lg font-sans text-base"
-                  />
-                  <button type="submit" className="px-7 py-3.5 bg-gradient-to-r from-[#d4a574] to-[#c9956c] text-white border-none rounded-lg font-sans text-base font-semibold cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">Subscribe</button>
-                </form>
-              </div>
+              
             </>
           )}
         </div>

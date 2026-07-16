@@ -116,10 +116,13 @@ export default function ContactFormSection() {
                 </div>
                 <div>
                   <p className="font-semibold text-white mb-1">Address</p>
-                  <p className="text-white/70 text-sm">57QC+C6C – Marasi Drive, Business Bay, Dubai, UAE</p>
+                  <p className="text-white/70 text-sm">Office 1312, Dubai Star, JLT Cluster L - Al Thanyah Fifth - Jumeirah Lakes Towers - Dubai - United Arab Emirates</p>
                 </div>
               </div>
             </div>
+
+            {/* Map */}
+         
           </div>
 
           {/* Right Column - Prominent Form */}
@@ -204,6 +207,18 @@ export default function ContactFormSection() {
               </button>
             </form>
           </div>
+        </div>
+        <div className="mt-8">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.1785119477577!2d55.2743!3d25.0772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b8c8f8f8f8f%3A0x1234567890abcdef!2sDubai%20Star%2C%20JLT%20Cluster%20L%20-%20Al%20Thanyah%20Fifth%20-%20Jumeirah%20Lakes%20Towers%20-%20Dubai!5e0!3m2!1sen!2sae!4v1234567890"
+            width="100%"
+            height="250"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="rounded-lg"
+          />
         </div>
       </div>
     </section>
