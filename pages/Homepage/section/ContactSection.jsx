@@ -95,7 +95,7 @@ export default function ContactSection() {
           opacity: '0.05'
         }}
       />
-      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 max-w-7xl mx-auto">
+      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 max-w-7.5xl mx-auto">
         {/* Left: intro + sales info */}
         <div className="lg:px-10 md:py-8"> 
           
