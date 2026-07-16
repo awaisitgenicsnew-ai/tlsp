@@ -79,27 +79,15 @@ export default function ContactSection() {
   };
 
   return (
-    <section
-      id="contact"
-      className="relative w-full bg-[#1D1913] py-10 lg:py-24 px-6 md:px-12 lg:px-20 min-h-screen flex flex-col justify-center overflow-hidden border-r border-rgba(255,255,255,0.1)]"
+   <section 
+      id="contact" 
+      className="w-full bg-[#1D1913] py-10 lg:py-24 px-6 md:px-12 lg:px-20 min-h-screen flex flex-col justify-center"
     >
-      {/* Grid Pattern Overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(237,230,216,0.18) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(237,230,216,0.18) 1px, transparent 1px)
-          `,
-          backgroundSize: '120px 120px',
-          opacity: '0.05'
-        }}
-      />
-      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 max-w-7.5xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-[156px] max-w-8xl mx-auto sm:mt-12">
         {/* Left: intro + sales info */}
-        <div className="lg:px-10 md:py-8"> 
+        <div className="px-2 lg:px-1 py-24 sm:py-8"> 
           
-          <h2 className="font-serif text-[clamp(28px,4vw,36px)] text-white leading-normal mb-5">
+          <h2 className="font-serif text-3xl md:text-4xl text-white leading-normal mb-5">
             Begin a conversation with our team
           </h2>
           <p className="text-sm leading-[28px] text-white/50 max-w-lg mb-10 paragraph">
@@ -137,8 +125,8 @@ export default function ContactSection() {
             </div>
           </div>
         </div>
-        <div className="mt-8 lg:mt-0 bg-[#241D18] px-6 md:px-10 py-8">
-          <h2 className="font-serif text-[clamp(28px,4vw,36px)] text-white leading-normal mb-8">
+        <div className="mt-8 lg:mt-0 bg-[#241D18] border-[1px] border-[rgba(255,255,255,0.1)] px-10 py-8">
+          <h2 className="font-serif text-3xl md:text-4xl text-white leading-normal mb-8">
          Register Interest
         </h2>
         <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 content-start">

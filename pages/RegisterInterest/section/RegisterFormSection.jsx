@@ -81,7 +81,7 @@ export default function ContactSection() {
   return (
    <section 
       id="contact" 
-      className="w-full bg-[#181410] py-10 lg:py-24 px-6 md:px-12 lg:px-20 min-h-screen flex flex-col justify-center"
+      className="w-full bg-[#1D1913] py-10 lg:py-24 px-6 md:px-12 lg:px-20 min-h-screen flex flex-col justify-center"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-[156px] max-w-8xl mx-auto sm:mt-12">
         {/* Left: intro + sales info */}
@@ -125,7 +125,7 @@ export default function ContactSection() {
             </div>
           </div>
         </div>
-        <div className="mt-8 lg:mt-0 bg-[#241D18] px-10 py-8">
+        <div className="mt-8 lg:mt-0 bg-[#241D18]  border-[1px] border-[rgba(255,255,255,0.1)]  px-10 py-8">
           <h2 className="font-serif text-3xl md:text-4xl text-white leading-normal mb-8">
          Register Interest
         </h2>

@@ -126,7 +126,7 @@ export default function ContactFormSection() {
           </div>
 
           {/* Right Column - Prominent Form */}
-          <div className="bg-[#241D18] p-8 md:p-10">
+          <div className="bg-[#241D18] border-[1px] border-[rgba(255,255,255,0.1)]  p-8 md:p-10">
             <h3 className="font-display text-2xl md:text-3xl text-white mb-6 text-center">Fill in Your Information</h3>
             {success && (
               <div className="mb-6 bg-green-500 text-white p-4 text-center text-sm">
