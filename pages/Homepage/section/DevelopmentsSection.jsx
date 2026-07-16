@@ -105,7 +105,7 @@ export default function DevelopmentsSection() {
         }}
       />
 
-      <div className="relative max-w-[1300px] mx-auto grid grid-cols-[minmax(0,0.82fr)_minmax(0,1fr)] gap-[clamp(36px,6vw,72px)] items-center">
+      <div className="relative max-w-[1300px] mx-auto grid grid-cols-[minmax(0,0.82fr)_minmax(0,1fr)] gap-[clamp(36px,6vw,72px)] items-center py-[clamp(40px,8vw,80px)] px-[clamp(20px,4vw,40px)]">
         {/* Copy */}
         <div className="min-w-0 reveal" ref={addToRefs}>
           {/* Badge */}
