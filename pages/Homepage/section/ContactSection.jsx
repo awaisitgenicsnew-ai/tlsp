@@ -137,7 +137,7 @@ export default function ContactSection() {
             </div>
           </div>
         </div>
-        <div className="mt-8 lg:mt-0 bg-black px-6 md:px-10 py-8">
+        <div className="mt-8 lg:mt-0 bg-[#241D18] px-6 md:px-10 py-8">
           <h2 className="font-serif text-[clamp(28px,4vw,36px)] text-white leading-normal mb-8">
          Register Interest
         </h2>
