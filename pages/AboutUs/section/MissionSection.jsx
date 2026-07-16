@@ -53,7 +53,7 @@ export default function MissionSection() {
             backgroundImage: `
               linear-gradient(100deg, rgba(20,17,14,0.94) 8%, rgba(20,17,14,0.72) 34%, rgba(20,17,14,0.30) 62%, rgba(20,17,14,0.55) 100%),
               linear-gradient(to top, rgba(20,17,14,0.85) 0%, rgba(20,17,14,0.05) 38%),
-              url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2400&auto=format&fit=crop')
+              url('/images/img2.jpg')
             `,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -64,17 +64,11 @@ export default function MissionSection() {
       <div className="max-w-[1160px] mx-auto px-6 md:px-12 lg:px-24 py-24 md:py-32 relative z-10">
         {/* Header */}
         <div className="text-center mb-7 max-w-[760px] mx-auto">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="w-6 h-px bg-[#7a6042]" />
-            <p className="text-[11.5px] tracking-[0.22em] uppercase text-[#b08a5a] font-medium">
-              Our Principles
-            </p>
-            <span className="w-6 h-px bg-[#7a6042]" />
-          </div>
-          <h2 className="font-serif text-4xl leading-[1.12] tracking-[-0.01em] text-[#f3efe6] mb-5">
+
+          <h2 className="font-serif font-normal text-[clamp(36px,5vw,52px)] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[#EDE6D8]">
             Spaces built on <em className="italic font-light text-[#b08a5a]">conviction</em>,<br />not compromise
           </h2>
-          <p className="text-[15.5px] leading-[1.7] text-[#9a948a] max-w-[480px] mx-auto">
+          <p className="text-[16.5px] leading-[1.75] text-[#C9BFAD] font-light max-w-[520px] mx-auto m-0 mb-9.5">
             Three commitments guide every project we take on — from the first sketch to the final walkthrough.
           </p>
         </div>
@@ -92,12 +86,12 @@ export default function MissionSection() {
               </div>
 
               {/* Stage label */}
-              <p className="text-[11px] tracking-[0.16em] text-[#7a6042] mb-[18px]">
+              <p className="text-[11px] tracking-[0.16em] text-[#ffffff] mb-[18px]">
                 {principle.stage}
               </p>
 
               {/* Icon */}
-              <div className="w-[38px] h-[38px] mb-[22px] text-[#b08a5a]">
+              <div className="w-[38px] h-[38px] mb-[22px] text-[#ffffff]">
                 {principle.icon}
               </div>
 
@@ -107,12 +101,12 @@ export default function MissionSection() {
               </h3>
 
               {/* Description */}
-              <p className="text-[14.5px] leading-[1.75] text-[#9a948a] mb-[18px] max-w-[290px]">
+              <p className="text-[14.5px] leading-[1.75] text-[#f3efe6] mb-[18px] max-w-[290px]">
                 {principle.description}
               </p>
 
               {/* Tag */}
-              <div className="text-[12px] tracking-[0.03em] text-[#7a6042] pt-[14px] border-t border-[rgba(243,239,230,0.16)] max-w-[290px]">
+              <div className="text-[12px] tracking-[0.03em] text-[#ffffff] pt-[14px] border-t border-[rgba(243,239,230,0.16)] max-w-[290px]">
                 {principle.tag}
               </div>
             </div>

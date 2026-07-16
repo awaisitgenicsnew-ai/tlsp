@@ -23,17 +23,11 @@ export default function ValuesSection() {
   ];
 
   return (
-    <section className="w-full bg-[#181410] min-h-screen flex items-center justify-center px-6 py-28">
+    <section className="w-full bg-[#181410] min-h-screen flex items-center justify-center px-6 py-28 border-r border-[rgba(255,255,255,0.1)]">
       <div className="w-full max-w-[1200px]">
         {/* Header */}
-        <div className="text-center mb-10 max-w-[700px] mx-auto">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="w-8 h-px bg-[#b08a5a]" />
-            <p className="text-[11.5px] tracking-[0.22em] uppercase text-[#b08a5a] font-medium">
-              Our Core Values
-            </p>
-            <span className="w-8 h-px bg-[#b08a5a]" />
-          </div>
+        <div className="text-center mb-10 sm:mt-14 max-w-[700px] mx-auto">
+         
           <h2 className="font-serif text-[clamp(32px,4vw,48px)] leading-[1.15] tracking-[-0.01em] text-[#f3efe6] mb-6">
             What We <em className="italic font-light text-[#b08a5a]">Stand</em> For
           </h2>
@@ -74,12 +68,7 @@ export default function ValuesSection() {
           ))}
         </div>
 
-        {/* Footer */}
-        <div className="text-center mt-16 pt-8 border-t border-[rgba(243,239,230,0.12)]">
-          <p className="text-[11px] tracking-[0.05em] text-[#b08a5a]">
-            PLT Properties — Est. Principles
-          </p>
-        </div>
+       
       </div>
     </section>
   );
