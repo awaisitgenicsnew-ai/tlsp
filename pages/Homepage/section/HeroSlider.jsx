@@ -9,15 +9,15 @@ import "swiper/css/pagination";
 const SLIDES = [
   {
     image: "/images/home-slider/imgslide1.jpg",
-    heading: "A standard set in Europe, built in Dubai",
+    heading: "Real Italian Estate",
   },
   {
     image: "/images/home-slider/imgslide2.jpg",
-    heading: "Where Business Bay meets Riviera elegance",
+    heading: "Italian elegance, made for life",
   },
   {
     image: "/images/home-slider/imgslide3.jpg",
-    heading: "Interiors composed by European ateliers",
+    heading: "Timeless design, inspired by nature",
   },
 ];
 
