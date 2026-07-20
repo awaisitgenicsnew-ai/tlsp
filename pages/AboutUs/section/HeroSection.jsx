@@ -29,7 +29,7 @@ const SLIDES = [
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-[#0a0a0a]">
+    <section className="relative h-screen w-full overflow-hidden bg-[var(--bg-hero)]">
       <Swiper
         modules={[Autoplay, Pagination, EffectFade]}
         effect="fade"
@@ -58,13 +58,13 @@ export default function HeroSection() {
 
               <div className="relative z-10 h-full w-full flex items-center px-6 md:px-12 ">
                 <div className="max-w-4xl">
-                  <p className="font-sans text-xs md:text-sm tracking-[0.3em] text-[#c8935a] mb-6 uppercase">
+                  <p className="font-sans text-xs md:text-sm tracking-[0.3em] text-[var(--accent-brown)] mb-6 uppercase">
                     {slide.eyebrow}
                   </p>
                   <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] text-white mb-6">
                     {slide.heading}
                   </h1>
-                  <div className="w-24 h-1 bg-[#c8935a] mb-8" />
+                  <div className="w-24 h-1 bg-[var(--accent-brown)] mb-8" />
                   <p className="font-sans text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">
                     {slide.subheading}
                   </p>
@@ -93,7 +93,7 @@ export default function HeroSection() {
           transition: all 0.3s ease;
         }
         .custom-bullet-active {
-          background: #c8935a;
+          background: var(--accent-brown);
           width: 36px;
           border-radius: 6px;
         }

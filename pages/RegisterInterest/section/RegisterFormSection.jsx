@@ -81,7 +81,7 @@ export default function ContactSection() {
   return (
    <section 
       id="contact" 
-      className="w-full bg-[#1D1913] py-10 lg:py-24 px-6 md:px-12 lg:px-20 min-h-screen flex flex-col justify-center"
+      className="w-full bg-[var(--bg-section)] py-10 lg:py-24 px-6 md:px-12 lg:px-20 min-h-screen flex flex-col justify-center"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-[156px] max-w-8xl mx-auto sm:mt-12">
         {/* Left: intro + sales info */}
@@ -125,7 +125,7 @@ export default function ContactSection() {
             </div>
           </div>
         </div>
-        <div className="mt-8 lg:mt-0 bg-[#241D18]  border-[1px] border-[rgba(255,255,255,0.1)]  px-10 py-8">
+        <div className="mt-8 lg:mt-0 bg-[var(--bg-card)]  border-[1px] border-[rgba(255,255,255,0.1)]  px-10 py-8">
           <h2 className="font-serif text-3xl md:text-4xl text-white leading-normal mb-8">
          Register Interest
         </h2>
@@ -193,7 +193,7 @@ export default function ContactSection() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="sm:col-span-2 mt-4 justify-self-start border border-white/70 text-white text-xs tracking-widest uppercase px-6 py-3 hover:bg-white hover:text-[#241D18] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="sm:col-span-2 mt-4 justify-self-start border border-white/70 text-white text-xs tracking-widest uppercase px-6 py-3 hover:bg-white hover:text-[var(--bg-card)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? 'Submitting...' : 'Submit Enquiry'}
           </button>
@@ -216,7 +216,7 @@ function Field({ label, placeholder, className = "", name, value, onChange }) {
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full bg-transparent border-b border-white/20 pb-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#B08D57] transition-colors"
+        className="w-full bg-transparent border-b border-white/20 pb-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[var(--bronze)] transition-colors"
       />
     </label>
   );

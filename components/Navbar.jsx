@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const LINKS = [
   { label: "HOME", href: "/" },
+  { label: "ABOUT", href: "/about-us" },
   { label: "PLT TOWER", href: "https://plttower.com", external: true },
   { label: "BLOG", href: "/blog" },
-  { label: "ABOUT", href: "/about-us" },
   { label: "CONTACT", href: "/contact-us" },
 ];
 
@@ -106,12 +107,14 @@ export default function Navbar({ colors = {} }) {
 
         {/* Brand Logo */}
         <Link href="/" className="leading-tight flex-shrink-0 z-10">
-          <span className="block font-logo text-lg sm:text-xl tracking-[0.15em] font-bold transition-colors duration-300 text-[color:var(--nav-mobile-text)] md:text-[color:var(--nav-text)]">
-            PLT
-          </span>
-          <span className="block font-logo text-xs sm:text-sm tracking-[0.25em] font-light -mt-0.5 transition-colors duration-300 text-[color:var(--nav-mobile-subtext)] md:text-[color:var(--nav-subtext)]">
-            PROPERTIES
-          </span>
+          <Image
+            src="/images/logo.png"
+            alt="PLT Properties"
+            width={160}
+            height={72}
+            priority
+            className="h-10 sm:h-12 w-auto"
+          />
         </Link>
 
         {/* Center: Desktop Navigation Links */}
@@ -121,7 +124,7 @@ export default function Navbar({ colors = {} }) {
               <Link
                 key={link.label}
                 href={link.href}
-                className="font-sans font-[400] text-[14px] tracking-[2px] uppercase transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)]"
+                className="font-sans font-[300] text-[14px] tracking-[2px] uppercase transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)]"
               >
                 {link.label}
               </Link>
@@ -131,7 +134,7 @@ export default function Navbar({ colors = {} }) {
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
-                className="font-sans font-normal text-[14px] tracking-[2px] transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)]"
+                className="font-sans font-[300] text-[14px] tracking-[2px] transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)]"
               >
                 {link.label}
               </a>
@@ -143,7 +146,7 @@ export default function Navbar({ colors = {} }) {
         <div className="flex items-center gap-4 flex-shrink-0 z-10">
           <Link
             href="/register-interest"
-            className="hidden lg:inline-flex items-center px-6 py-2.5 font-sans  font-[400] text-[14px] tracking-[2px] uppercase transition-all duration-300 border border-[color:var(--nav-btn-border)] text-[color:var(--nav-btn-text)] hover:bg-[var(--nav-btn-hover-bg)] hover:text-[color:var(--nav-btn-hover-text)]"
+            className="hidden lg:inline-flex items-center px-6 py-2.5 font-sans  font-[300] text-[14px] tracking-[2px] uppercase transition-all duration-300 border border-[color:var(--nav-btn-border)] text-[color:var(--nav-btn-text)] hover:bg-[var(--nav-btn-hover-bg)] hover:text-[color:var(--nav-btn-hover-text)]"
           >
             Register Interest
           </Link>
@@ -190,7 +193,7 @@ export default function Navbar({ colors = {} }) {
             <Link
               href="/register-interest"
               onClick={() => setOpen(false)}
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent font-sans font-[400] text-[14px] tracking-[2px] uppercase mt-4 transition-all duration-300 bg-[var(--nav-mobile-btn-bg)] text-[color:var(--nav-mobile-btn-text)] hover:opacity-90"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent font-sans font-[300] text-[14px] tracking-[2px] uppercase mt-4 transition-all duration-300 bg-[var(--nav-mobile-btn-bg)] text-[color:var(--nav-mobile-btn-text)] hover:opacity-90"
             >
               Register Interest
             </Link>

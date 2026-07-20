@@ -94,7 +94,7 @@ export default function AdminLogin() {
 
             <button
               type="submit"
-              className="bg-[var(--tan)] text-white p-4 border-none rounded-lg text-sm font-semibold cursor-pointer transition-all duration-300 uppercase tracking-widest font-sans hover:bg-[#7a341e] disabled:opacity-60 disabled:cursor-not-allowed"
+              className="bg-[var(--tan)] text-white p-4 border-none rounded-lg text-sm font-semibold cursor-pointer transition-all duration-300 uppercase tracking-widest font-sans hover:bg-[var(--rust)] disabled:opacity-60 disabled:cursor-not-allowed"
               disabled={loading}
             >
               {loading ? 'Logging in...' : 'Login'}

@@ -25,7 +25,7 @@ export default function HeroSlider() {
   return (
     <section 
       id="home" 
-      className="relative h-screen w-full overflow-hidden bg-[#0b0b0c]"
+      className="relative h-screen w-full overflow-hidden bg-[var(--bg-secondary)]"
     >
       <Swiper
         modules={[Autoplay, Pagination, EffectFade]}

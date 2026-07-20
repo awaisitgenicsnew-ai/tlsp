@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 function Instagram(props) {
   return (
@@ -72,8 +74,15 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         {/* Logo & About */}
         <div>
-          <p className="text-2xl font-logo font-bold tracking-wide">P L T</p>
-          <p className="block font-logo text-xs sm:text-sm tracking-[0.25em] font-light -mt-0.5 transition-colors duration-300 text-[#c9a876] ">PROPERTIES</p>
+          <Link href="/" className="inline-block">
+            <Image
+              src="/images/logo.png"
+              alt="PLT Properties"
+              width={160}
+              height={72}
+              className="h-12 w-auto"
+            />
+          </Link>
           <p className="text-sm text-[#5f584e] mt-5 leading-relaxed max-w-xs">
             European craftsmanship. Considered addresses. Built for longevity in Dubai's most connected districts.
           </p>

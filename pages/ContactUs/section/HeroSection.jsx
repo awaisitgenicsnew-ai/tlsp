@@ -26,7 +26,7 @@ const SLIDES = [
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-[#0b0b0c] ">
+    <section className="relative h-screen w-full overflow-hidden bg-[var(--bg-secondary)] ">
       <Swiper
         modules={[Autoplay, Pagination, EffectFade]}
         effect="fade"

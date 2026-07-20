@@ -187,8 +187,8 @@ export default function Projects() {
     setError('');
   };
 
-  const inputClass = "w-full px-3 py-3 border border-gray-300 rounded-none font-sans text-base box-border text-black focus:outline-none focus:border-[#c9a876] focus:shadow-[0_0_0_3px_rgba(210,180,140,0.1)]";
-  const labelClass = "block font-sans text-sm font-semibold text-[#2a2620] mb-2";
+  const inputClass = "w-full px-3 py-3 border border-gray-300 rounded-none font-sans text-base box-border text-black focus:outline-none focus:border-[var(--accent-bronze)] focus:shadow-[0_0_0_3px_rgba(210,180,140,0.1)]";
+  const labelClass = "block font-sans text-sm font-semibold text-[var(--ink)] mb-2";
 
   return (
     <div className="bg-gray-50">
@@ -202,7 +202,7 @@ export default function Projects() {
                 setFormData(EMPTY_FORM);
                 setShowModal(true);
               }}
-              className="flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-[#d4a574] to-[#c9956c] text-white border-none rounded-xl font-sans text-sm font-semibold cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg relative z-10"
+              className="flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-[var(--accent-blog)] to-[#c9956c] text-white border-none rounded-xl font-sans text-sm font-semibold cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg relative z-10"
             >
               <Plus size={20} />
               Add Project
@@ -216,12 +216,12 @@ export default function Projects() {
               <table className="w-full border-collapse">
                 <thead>
                   <tr>
-                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Title</th>
-                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Location</th>
-                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Tag</th>
-                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Status</th>
-                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Image</th>
-                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Actions</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[var(--ink)] border-b-2 border-[var(--accent-bronze)]">Title</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[var(--ink)] border-b-2 border-[var(--accent-bronze)]">Location</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[var(--ink)] border-b-2 border-[var(--accent-bronze)]">Tag</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[var(--ink)] border-b-2 border-[var(--accent-bronze)]">Status</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[var(--ink)] border-b-2 border-[var(--accent-bronze)]">Image</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[var(--ink)] border-b-2 border-[var(--accent-bronze)]">Actions</th>
                   </tr>
                 </thead>
                 <tbody>

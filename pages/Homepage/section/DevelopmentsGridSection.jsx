@@ -35,12 +35,12 @@ export default function DevelopmentsGridSection() {
   }
 
   return (
-    <section id="developments-grid" className="w-full bg-[#1d1913] min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-20 py-16 md:py-28">
+    <section id="developments-grid" className="w-full bg-[var(--bg-section)] min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-20 py-16 md:py-28">
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="font-serif text-[clamp(32px,4vw,40px)] text-[#211D17] mb-4">Our Developments</h2>
-          <p className="text-[14px] leading-[1.7] text-[#4A443A] max-w-2xl mx-auto">
+          <h2 className="font-serif text-[clamp(32px,4vw,40px)] text-[var(--text-dark)] mb-4">Our Developments</h2>
+          <p className="text-[14px] leading-[1.7] text-[var(--text-dark-muted)] max-w-2xl mx-auto">
             Discover our portfolio of thoughtfully designed residences across Dubai's most sought-after locations, each crafted with European precision and contemporary elegance.
           </p>
         </div>
@@ -71,7 +71,7 @@ export default function DevelopmentsGridSection() {
           >
           {developments.map((dev, index) => (
             <SwiperSlide key={dev.id || index}>
-              <div className="bg-[#F7F4EC] border border-[rgba(33,29,23,0.10)] h-full">
+              <div className="bg-[var(--bg-light)] border border-[rgba(33,29,23,0.10)] h-full">
                 {/* Card Visual */}
                 <div className="relative h-[300px] overflow-hidden border-b border-[rgba(33,29,23,0.10)]">
                   {dev.image && (
@@ -84,7 +84,7 @@ export default function DevelopmentsGridSection() {
                     />
                   )}
                   {(dev.badge || dev.status) && (
-                    <span className="absolute top-4 left-4 text-[10px] font-semibold tracking-widest uppercase px-3 py-1.5 bg-[#211D17] text-[#F7F4EC] z-20">
+                    <span className="absolute top-4 left-4 text-[10px] font-semibold tracking-widest uppercase px-3 py-1.5 bg-[var(--text-dark)] text-[var(--bg-light)] z-20">
                       {dev.badge || dev.status}
                     </span>
                   )}
@@ -92,11 +92,11 @@ export default function DevelopmentsGridSection() {
 
                 {/* Card Body */}
                 <div className="px-5 md:px-7 py-4 pb-4">
-                  <h3 className="font-serif text-[clamp(18px,2.5vw,22px)] text-[#211D17] mb-1.5">{dev.title}</h3>
-                  <p className="text-[11.5px] tracking-widest uppercase text-[#8A8172] mb-4.5">{dev.location}</p>
+                  <h3 className="font-serif text-[clamp(18px,2.5vw,22px)] text-[var(--text-dark)] mb-1.5">{dev.title}</h3>
+                  <p className="text-[11.5px] tracking-widest uppercase text-[var(--text-dark-light)] mb-4.5">{dev.location}</p>
                   <a
                     href={dev.primaryButtonLink || "#"}
-                    className="text-[12.5px] font-semibold tracking-widest text-[#7C5A2C] inline-flex items-center gap-1.5 hover:gap-2.5 transition-all"
+                    className="text-[12.5px] font-semibold tracking-widest text-[var(--text-brown)] inline-flex items-center gap-1.5 hover:gap-2.5 transition-all"
                   >
                     View details
                     <span>&rarr;</span>
@@ -108,7 +108,7 @@ export default function DevelopmentsGridSection() {
         </Swiper>
 
         {/* Navigation Buttons */}
-        <div className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center cursor-pointer hover:bg-[#F7F4EC] transition-colors shadow-lg" />
+        <div className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center cursor-pointer hover:bg-[var(--bg-light)] transition-colors shadow-lg" />
         <div className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center cursor-pointer hover:bg-[#F7F4EC] transition-colors shadow-lg" />
 
         {/* Pagination positioned at bottom of slider (bottom of images) */}

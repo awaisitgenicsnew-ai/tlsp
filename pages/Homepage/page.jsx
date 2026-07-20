@@ -126,7 +126,8 @@ export default function Homepage() {
           setSections(dynamicSections);
         }
       } catch (error) {
-        console.error('Failed to fetch projects:', error);
+        // Silently handle API errors - app will work without development sections
+        console.warn('Backend API unavailable - running without development sections:', error.message);
       }
     };
     fetchProjects();

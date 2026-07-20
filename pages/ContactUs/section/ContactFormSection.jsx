@@ -59,7 +59,7 @@ export default function ContactFormSection() {
 
   return (
     <section
-      className="w-full bg-[#181410] text-white flex items-center justify-center px-4 md:px-8 lg:px-16 py-10 lg:py-24"
+      className="w-full bg-[var(--bg-section)] text-white flex items-center justify-center px-4 md:px-8 lg:px-16 py-10 lg:py-24"
     >
       <div className="max-w-6xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 py-5">
@@ -126,7 +126,7 @@ export default function ContactFormSection() {
           </div>
 
           {/* Right Column - Prominent Form */}
-          <div className="bg-[#241D18] border-[1px] border-[rgba(255,255,255,0.1)]  p-8 md:p-10">
+          <div className="bg-[var(--bg-card)] border-[1px] border-[rgba(255,255,255,0.1)]  p-8 md:p-10">
             <h3 className="font-display text-2xl md:text-3xl text-white mb-6 text-center">Fill in Your Information</h3>
             {success && (
               <div className="mb-6 bg-green-500 text-white p-4 text-center text-sm">
@@ -200,7 +200,7 @@ export default function ContactFormSection() {
 
               <button
                 type="submit"
-                className="w-full bg-[var(--tan)] text-white py-3.5 px-5 font-semibold text-sm uppercase tracking-widest transition-all hover:bg-[#7a341e] disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full bg-[var(--tan)] text-white py-3.5 px-5 font-semibold text-sm uppercase tracking-widest transition-all hover:bg-[var(--rust)] disabled:opacity-60 disabled:cursor-not-allowed"
                 disabled={loading}
               >
                 {loading ? 'Sending...' : 'Send Message'}

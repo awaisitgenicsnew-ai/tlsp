@@ -54,7 +54,7 @@ const BLACK_SCHEME = {
 };
 
 const MISSION_SCHEME = {
-  bg: '#181410',
+  bg: 'var(--bg-section)',
   border: 'rgba(255,255,255,0.15)',
   text: '#ffffff',
   subText: 'rgba(255,255,255,0.85)',
@@ -208,7 +208,7 @@ export default function AboutUs() {
       {/* Horizontal scroll wrapper */}
       <div ref={wrapperRef} className="relative overflow-hidden">
         {/* Center vertical line */}
-        <div className="fixed top-0 left-1/2 -translate-x-1/2 h-full w-px bg-[#3A342C] z-0 hidden md:block pointer-events-none" />
+        <div className="fixed top-0 left-1/2 -translate-x-1/2 h-full w-px bg-[var(--decorative-divider)] z-0 hidden md:block pointer-events-none" />
 
         <main
           ref={trackRef}

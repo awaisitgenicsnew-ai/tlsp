@@ -3,7 +3,7 @@
 export default function ContactInfoSection() {
   return (
     <section
-      className="w-full bg-[#241D18] text-white min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-20 py-10 lg:py-24"
+      className="w-full bg-[var(--bg-card)] text-white min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-20 py-10 lg:py-24"
     >
       <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-16">
@@ -14,7 +14,7 @@ export default function ContactInfoSection() {
             </p>
             <span className="hidden sm:block h-px bg-[var(--tan)] w-16 ml-6"></span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 text-[#2a2620]">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto mb-8 text-[var(--ink)]">
             Get in Touch
           </h2>
           <p className="font-sans text-sm text-white/80 max-w-2xl mx-auto">

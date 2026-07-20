@@ -119,7 +119,7 @@ export default function AdminContacts() {
       <main className="p-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
-            <h1 className="font-display text-4xl font-bold text-[#2a2620]">Contacts</h1>
+            <h1 className="font-display text-4xl font-bold text-[var(--ink)]">Contacts</h1>
           </div>
 
           {error && (
@@ -134,7 +134,7 @@ export default function AdminContacts() {
             <div className="bg-white shadow-sm overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="bg-[#17130f] text-white">
+                  <tr className="bg-[var(--dark)] text-white">
                     <th className="px-4 py-4 text-left font-sans text-sm font-semibold uppercase tracking-wider">Name</th>
                     <th className="px-4 py-4 text-left font-sans text-sm font-semibold uppercase tracking-wider">Email</th>
                     <th className="px-4 py-4 text-left font-sans text-sm font-semibold uppercase tracking-wider">Phone</th>
@@ -152,10 +152,10 @@ export default function AdminContacts() {
                   ) : (
                     contacts.map((contact) => (
                       <tr key={contact.id} className="hover:bg-gray-50">
-                        <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{contact.name}</td>
-                        <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{contact.email}</td>
-                        <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{contact.phone || '-'}</td>
-                        <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{contact.subject}</td>
+                        <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[var(--ink)]">{contact.name}</td>
+                        <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[var(--ink)]">{contact.email}</td>
+                        <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[var(--ink)]">{contact.phone || '-'}</td>
+                        <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[var(--ink)]">{contact.subject}</td>
                         <td className="px-4 py-4 border-b border-gray-200">
                           <select
                             value={contact.status}

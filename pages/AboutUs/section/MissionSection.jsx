@@ -44,7 +44,7 @@ export default function MissionSection() {
   ];
 
   return (
-    <section className="w-full bg-[#1c1b19] min-h-screen relative overflow-hidden">
+    <section className="w-full bg-[var(--bg-mission)] min-h-screen relative overflow-hidden">
       {/* Background Image with Gradients */}
       <div className="absolute inset-0 z-0">
         <div
@@ -68,10 +68,10 @@ export default function MissionSection() {
         {/* Header */}
         <div className="text-center mb-7 max-w-[760px] mx-auto">
 
-          <h2 className="font-serif font-normal text-[clamp(36px,5vw,52px)] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[#EDE6D8]">
-            Spaces built on <em className="italic font-light text-[#b08a5a]">conviction</em>,<br />not compromise
+          <h2 className="font-serif font-normal text-[clamp(36px,5vw,52px)] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[var(--text-primary)]">
+            Spaces built on <em className="italic font-light text-[var(--accent-brown-light)]">conviction</em>,<br />not compromise
           </h2>
-          <p className="text-[16.5px] leading-[1.75] text-[#C9BFAD] font-light max-w-[520px] mx-auto m-0 mb-9.5">
+          <p className="text-[16.5px] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[520px] mx-auto m-0 mb-9.5">
             Three commitments guide every project we take on — from the first sketch to the final walkthrough.
           </p>
         </div>
@@ -84,8 +84,8 @@ export default function MissionSection() {
           {principles.map((principle, index) => (
             <div key={index} className="relative pt-14 text-left">
               {/* Node */}
-              <div className="absolute top-0 left-0 w-[23px] h-[23px] rounded-full bg-[#1c1b19] border-[1.5px] border-[#b08a5a] flex items-center justify-center">
-                <span className="w-[7px] h-[7px] rounded-full bg-[#b08a5a]" />
+              <div className="absolute top-0 left-0 w-[23px] h-[23px] rounded-full bg-[var(--bg-mission)] border-[1.5px] border-[var(--accent-brown-light)] flex items-center justify-center">
+                <span className="w-[7px] h-[7px] rounded-full bg-[var(--accent-brown-light)]" />
               </div>
 
               {/* Stage label */}
@@ -99,12 +99,12 @@ export default function MissionSection() {
               </div>
 
               {/* Title */}
-              <h3 className="font-serif text-[22px] font-medium tracking-[-0.01em] text-[#f3efe6] mb-3">
+              <h3 className="font-serif text-[22px] font-medium tracking-[-0.01em] text-[var(--accent-cream)] mb-3">
                 {principle.title}
               </h3>
 
               {/* Description */}
-              <p className="text-[14.5px] leading-[1.75] text-[#f3efe6] mb-[18px] max-w-[290px]">
+              <p className="text-[14.5px] leading-[1.75] text-[var(--accent-cream)] mb-[18px] max-w-[290px]">
                 {principle.description}
               </p>
 

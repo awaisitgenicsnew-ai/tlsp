@@ -18,6 +18,55 @@
   --brown-soft: #523a27;
   --surface: #d9d9d9;
   --muted: #7a7468;
+  
+  /* ============ SECTION BACKGROUND COLORS ============ */
+  --bg-primary: #181410;
+  --bg-secondary: #29225C;
+  --bg-tertiary: #C1A243;
+
+  --bg-card: #241D18;
+  --bg-section: #181410;
+  --bg-dark-card: #1a1610;
+  --bg-dark-overlay: #1f1a14;
+  --bg-light: #F7F4EC;
+  --bg-mission: #1c1b19;
+  --bg-hero: #0a0a0a;
+  --bg-surface: #d9d9d9;
+  
+  /* ============ ACCENT COLORS ============ */
+  --accent-gold: #D9B27C;
+  --accent-gold-dark: #B98D4F;
+  --accent-bronze: #c9a876;
+  --accent-blog: #d4a574;
+  --accent-cream: #f3efe6;
+  --accent-cream-dark: #f2ede4;
+  --accent-cream-light: #F4F0E6;
+  --accent-gold-light: #C7A46B;
+  --accent-gold-medium: #A9895A;
+  --accent-brown: #c8935a;
+  --accent-brown-light: #b08a5a;
+  
+  /* ============ TEXT COLORS ============ */
+  --text-primary: #EDE6D8;
+  --text-secondary: #C9BFAD;
+  --text-muted: #9a948a;
+  --text-dark: #211D17;
+  --text-dark-muted: #4A443A;
+  --text-dark-light: #8A8172;
+  --text-brown: #7C5A2C;
+  --text-cream: #d4c9a3;
+  --text-blue: #1c2b39;
+  --text-gray: #374151;
+  --text-linkedin: #0077b5;
+  --text-twitter: #1da1f2;
+  --text-dark-brown: #1c1a17;
+  --text-brown-muted: #84796a;
+  --text-cream-muted: #B7AFA2;
+  
+  /* ============ DECORATIVE COLORS ============ */
+  --decorative-line: #2b2823;
+  --decorative-blue: #4a7dab;
+  --decorative-divider: #3A342C;
 }
 /* app/globals.css */
 @layer utilities {

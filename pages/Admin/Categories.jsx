@@ -115,16 +115,16 @@ export default function Categories() {
               <table className="w-full border-collapse">
                 <thead>
                   <tr>
-                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Name</th>
-                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Slug</th>
-                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[#2a2620] border-b-2 border-[#c9a876]">Actions</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[var(--ink)] border-b-2 border-[var(--accent-bronze)]">Name</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[var(--ink)] border-b-2 border-[var(--accent-bronze)]">Slug</th>
+                    <th className="bg-gray-50 px-4 py-4 text-left font-sans text-sm font-semibold text-[var(--ink)] border-b-2 border-[var(--accent-bronze)]">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {categories.map((category) => (
                     <tr key={category.id}>
-                      <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{category.name}</td>
-                      <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[#2a2620]">{category.slug}</td>
+                      <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[var(--ink)]">{category.name}</td>
+                      <td className="px-4 py-4 border-b border-gray-200 font-sans text-base text-[var(--ink)]">{category.slug}</td>
                       <td className="px-4 py-4 border-b border-gray-200">
                         <button 
                           onClick={() => handleEdit(category)}
@@ -150,7 +150,7 @@ export default function Categories() {
             <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
               <div className="bg-white w-full max-w-md rounded-none shadow-xl">
                 <div className="flex justify-between items-center p-6 border-b border-gray-200">
-                  <h2 className="font-display text-2xl font-bold text-[#2a2620]">
+                  <h2 className="font-display text-2xl font-bold text-[var(--ink)]">
                     {editingCategory ? 'Edit Category' : 'Add Category'}
                   </h2>
                   <button 

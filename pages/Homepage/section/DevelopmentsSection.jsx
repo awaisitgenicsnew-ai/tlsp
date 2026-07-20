@@ -91,7 +91,7 @@ export default function DevelopmentsSection() {
     : project.image ? [project.image] : [];
 
   return (
-    <section className="relative bg-[#1D1913] py-[clamp(56px,10vw,110px)] px-[clamp(20px,5vw,48px)] overflow-hidden">
+    <section className="relative bg-[var(--bg-section)] py-[clamp(56px,10vw,110px)] px-[clamp(20px,5vw,48px)] overflow-hidden">
       {/* Grid Pattern Overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -110,33 +110,33 @@ export default function DevelopmentsSection() {
         <div className="min-w-0 reveal" ref={addToRefs}>
           {/* Badge */}
           {project.badge && (
-            <span className="inline-flex items-center gap-2 font-mono text-[10.5px] tracking-[0.18em] uppercase text-[#D9B27C] border border-[#B98D4F] px-3.5 py-2 mb-[clamp(22px,4vw,32px)] whitespace-nowrap">
-              <span className="w-1.5 h-1.5 flex-shrink-0 bg-[#D9B27C] rounded-full" />
+            <span className="inline-flex items-center gap-2 font-mono text-[10.5px] tracking-[0.18em] uppercase text-[var(--accent-gold)] border border-[var(--accent-gold-dark)] px-3.5 py-2 mb-[clamp(22px,4vw,32px)] whitespace-nowrap">
+              <span className="w-1.5 h-1.5 flex-shrink-0 bg-[var(--accent-gold)] rounded-full" />
               {project.badge}
             </span>
           )}
 
           {/* Headline */}
-          <h1 className="font-serif font-medium text-[clamp(34px,5.5vw,56px)] tracking-[0.01em] leading-[1.05] text-[#EDE6D8] m-0 mb-5 uppercase word-break">
+          <h1 className="font-serif font-medium text-[clamp(34px,5.5vw,56px)] tracking-[0.01em] leading-[1.05] text-[var(--text-primary)] m-0 mb-5 uppercase word-break">
             {project.title}
           </h1>
 
           {/* Location */}
-          <div className="flex items-center gap-3.5 font-mono text-[11.5px] tracking-[0.18em] uppercase text-[#D9B27C] mb-6.5 flex-wrap">
-            <span className="w-[26px] h-px bg-[#B98D4F] flex-shrink-0" />
+          <div className="flex items-center gap-3.5 font-mono text-[11.5px] tracking-[0.18em] uppercase text-[var(--accent-gold)] mb-6.5 flex-wrap">
+            <span className="w-[26px] h-px bg-[var(--accent-gold-dark)] flex-shrink-0" />
             {project.location}
           </div>
 
           {/* Description */}
-          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[#C9BFAD] font-light max-w-[480px] m-0 mb-[clamp(28px,5vw,36px)]">
+          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[480px] m-0 mb-[clamp(28px,5vw,36px)]">
             {project.description}
           </p>
 
           {/* Stats Strip */}
           <div className="flex flex-wrap border-t border-b border-[rgba(237,230,216,0.18)] mb-[clamp(30px,5vw,40px)]">
             <div className="flex-1 min-w-[110px] py-5 pl-[clamp(12px,2vw,24px)] pr-[clamp(12px,2vw,24px)] border-r border-[rgba(237,230,216,0.18)]">
-              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2.5 whitespace-nowrap">Type</div>
-              <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#EDE6D8] whitespace-nowrap">{project.type}</div>
+              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[var(--text-secondary)] mb-2.5 whitespace-nowrap">Type</div>
+              <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[var(--text-primary)] whitespace-nowrap">{project.type}</div>
             </div>
             <div className="flex-1 min-w-[110px] py-5 pl-[clamp(12px,2vw,24px)] pr-[clamp(12px,2vw,24px)] border-r border-[rgba(237,230,216,0.18)]">
               <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2.5 whitespace-nowrap">Handover</div>
@@ -152,13 +152,13 @@ export default function DevelopmentsSection() {
           <div className="flex flex-wrap gap-3.5">
             <button
               onClick={() => handleButtonClick(project.primaryButtonLink)}
-              className="flex-1 text-center font-mono text-[12px] tracking-[0.14em] uppercase text-[#14110E] bg-[#D9B27C] px-6.5 py-4 border border-[#D9B27C] cursor-pointer transition-all duration-250 hover:bg-[#B98D4F] hover:border-[#B98D4F] whitespace-nowrap"
+              className="flex-1 text-center font-mono text-[12px] tracking-[0.14em] uppercase text-[var(--bg-tertiary)] bg-[var(--accent-gold)] px-6.5 py-4 border border-[var(--accent-gold)] cursor-pointer transition-all duration-250 hover:bg-[var(--accent-gold-dark)] hover:border-[var(--accent-gold-dark)] whitespace-nowrap"
             >
               {project.primaryButtonText || "View Information"}
             </button>
             <button
               onClick={() => handleButtonClick(project.secondaryButtonLink)}
-              className="flex-1 font-mono text-[12px] tracking-[0.14em] uppercase text-[#EDE6D8] bg-transparent px-5.5 py-4 border border-[rgba(237,230,216,0.18)] cursor-pointer transition-all duration-250 hover:border-[#C9BFAD] hover:bg-[rgba(237,230,216,0.04)] inline-flex items-center gap-2.5 whitespace-nowrap"
+              className="flex-1 font-mono text-[12px] tracking-[0.14em] uppercase text-[var(--text-primary)] bg-transparent px-5.5 py-4 border border-[rgba(237,230,216,0.18)] cursor-pointer transition-all duration-250 hover:border-[var(--accent-gold)] hover:bg-[rgba(237,230,216,0.04)] inline-flex items-center gap-2.5 whitespace-nowrap"
             >
               {project.secondaryButtonText || "Register"}
               <svg className="w-3.5 h-3.5 transition-transform duration-250 flex-shrink-0 hover:translate-x-0.75" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -217,17 +217,17 @@ export default function DevelopmentsSection() {
                 )
               )}
             
-              <div className="absolute w-[22px] h-[22px] -top-px -right-px border-t-1.5 border-r-1.5 border-[#D9B27C]" />
-              <div className="absolute w-[22px] h-[22px] -bottom-px -left-px border-b-1.5 border-l-1.5 border-[#D9B27C]" />
+              <div className="absolute w-[22px] h-[22px] -top-px -right-px border-t-1.5 border-r-1.5 border-[var(--accent-gold)]" />
+              <div className="absolute w-[22px] h-[22px] -bottom-px -left-px border-b-1.5 border-l-1.5 border-[var(--accent-gold)]" />
             </div>
             {slides.length > 1 && (
               <>
-                <button className="custom-dev-prev absolute bottom-4 right-16 z-30 w-10 h-10 bg-[#1D1913] border border-[rgba(237,230,216,0.3)] text-[#EDE6D8] flex items-center justify-center cursor-pointer hover:bg-[#D9B27C] hover:border-[#D9B27C] transition-colors">
+                <button className="custom-dev-prev absolute bottom-4 right-16 z-30 w-10 h-10 bg-[var(--bg-section)] border border-[rgba(237,230,216,0.3)] text-[var(--text-primary)] flex items-center justify-center cursor-pointer hover:bg-[var(--accent-gold)] hover:border-[var(--accent-gold)] transition-colors">
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M15 18l-6-6 6-6" />
                   </svg>
                 </button>
-                <button className="custom-dev-next absolute bottom-4 right-4 z-30 w-10 h-10 bg-[#1D1913] border border-[rgba(237,230,216,0.3)] text-[#EDE6D8] flex items-center justify-center cursor-pointer hover:bg-[#D9B27C] hover:border-[#D9B27C] transition-colors">
+                <button className="custom-dev-next absolute bottom-4 right-4 z-30 w-10 h-10 bg-[var(--bg-section)] border border-[rgba(237,230,216,0.3)] text-[var(--text-primary)] flex items-center justify-center cursor-pointer hover:bg-[var(--accent-gold)] hover:border-[var(--accent-gold)] transition-colors">
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M9 18l6-6-6-6" />
                   </svg>

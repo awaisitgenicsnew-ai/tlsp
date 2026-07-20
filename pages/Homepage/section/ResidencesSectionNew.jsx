@@ -211,17 +211,17 @@ const dnaCards = [
 
 export default function BrandDNA() {
   return (
-    <section className="w-full bg-[#d9d9d9] py-10 lg:py-24 px-6 md:px-10">
+    <section className="w-full bg-[var(--bg-surface)] py-10 lg:py-24 px-6 md:px-10">
       {/* Heading */}
       <div className="mb-10">
-        <h2 className="font-serif text-4xl md:text-5xl text-[#2b2823] tracking-tight">
+        <h2 className="font-serif text-4xl md:text-5xl text-[var(--decorative-line)] tracking-tight">
           Brand DNA
         </h2>
         <div className="mt-3 flex gap-1.5">
-          <span className="h-[3px] w-6 bg-[#2b2823]/30" />
-          <span className="h-[3px] w-6 bg-[#2b2823]/30" />
-          <span className="h-[3px] w-6 bg-[#2b2823]/20" />
-          <span className="h-[3px] w-6 bg-[#2b2823]/10" />
+          <span className="h-[3px] w-6 bg-[var(--decorative-line)]/30" />
+          <span className="h-[3px] w-6 bg-[var(--decorative-line)]/30" />
+          <span className="h-[3px] w-6 bg-[var(--decorative-line)]/20" />
+          <span className="h-[3px] w-6 bg-[var(--decorative-line)]/10" />
         </div>
       </div>
 
@@ -230,7 +230,7 @@ export default function BrandDNA() {
         {dnaCards.map((card) => (
           <div
             key={card.title}
-            className="group relative h-[480px]  overflow-hidden bg-[#1a1610]"
+            className="group relative h-[480px]  overflow-hidden bg-[var(--bg-dark-card)]"
           >
             {card.image ? (
               <>
@@ -247,9 +247,9 @@ export default function BrandDNA() {
               </>
             ) : (
               // Placeholder state (e.g. image pending / broken)
-              <div className="absolute inset-0 flex items-center justify-center bg-[#1f1a14]">
+              <div className="absolute inset-0 flex items-center justify-center bg-[var(--bg-dark-overlay)]">
                 <svg
-                  className="h-6 w-6 text-[#4a7dab]"
+                  className="h-6 w-6 text-[var(--decorative-blue)]"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"

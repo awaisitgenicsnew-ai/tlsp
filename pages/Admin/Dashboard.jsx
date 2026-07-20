@@ -93,7 +93,7 @@ export default function AdminDashboard() {
   };
 
   const statCards = [
-    { label: 'Total Leads', value: stats.total, icon: Users, color: 'from-[#d4a574] to-[#c9956c]' },
+    { label: 'Total Leads', value: stats.total, icon: Users, color: 'from-[var(--accent-blog)] to-[#c9956c]' },
     { label: 'New', value: stats.new, icon: Clock, color: 'from-blue-500 to-blue-600' },
     { label: 'Contacted', value: stats.contacted, icon: Phone, color: 'from-amber-500 to-amber-600' },
     { label: 'Qualified', value: stats.qualified, icon: Award, color: 'from-purple-500 to-purple-600' },
@@ -102,7 +102,7 @@ export default function AdminDashboard() {
 
   const quickActions = [
     { label: 'Manage Contacts', path: '/admin/contacts', icon: Users, desc: 'View and update leads', color: 'bg-blue-500' },
-    { label: 'Manage Blogs', path: '/admin/blogs', icon: FileText, desc: 'Create and edit articles', color: 'bg-[#d4a574]' },
+    { label: 'Manage Blogs', path: '/admin/blogs', icon: FileText, desc: 'Create and edit articles', color: 'bg-[var(--accent-blog)]' },
     { label: 'Authors', path: '/admin/authors', icon: Mail, desc: 'Manage blog authors', color: 'bg-purple-500' },
     { label: 'Categories', path: '/admin/categories', icon: Award, desc: 'Organize blog topics', color: 'bg-emerald-500' },
   ];
@@ -129,7 +129,7 @@ export default function AdminDashboard() {
                       </div>
                       <div>
                         <p className="font-sans text-sm text-gray-500 mb-0.5">{stat.label}</p>
-                        <p className="font-display text-2xl font-bold text-[#1c2b39]">{stat.value}</p>
+                        <p className="font-display text-2xl font-bold text-[var(--text-blue)]">{stat.value}</p>
                       </div>
                     </div>
                   );
@@ -140,11 +140,11 @@ export default function AdminDashboard() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
                 {/* Welcome / Summary */}
                 <div className="lg:col-span-2 bg-gradient-to-br from-[#1a1a2e] to-[#16213e] rounded-2xl p-8 text-white relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#d4a574]/20 to-transparent rounded-full -translate-y-1/2 translate-x-1/3" />
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[var(--accent-blog)]/20 to-transparent rounded-full -translate-y-1/2 translate-x-1/3" />
                   <div className="relative z-10">
                     <div className="flex items-center gap-2 mb-3">
-                      <TrendingUp size={20} className="text-[#d4a574]" />
-                      <span className="text-sm font-semibold text-[#d4a574] uppercase tracking-wider">Overview</span>
+                      <TrendingUp size={20} className="text-[var(--accent-blog)]" />
+                      <span className="text-sm font-semibold text-[var(--accent-blog)] uppercase tracking-wider">Overview</span>
                     </div>
                     <h2 className="font-display text-3xl font-bold mb-3">Lead Performance</h2>
                     <p className="text-white/70 mb-6 max-w-lg">
@@ -153,7 +153,7 @@ export default function AdminDashboard() {
                     </p>
                     <button 
                       onClick={() => router.push('/admin/contacts')}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#d4a574] to-[#c9956c] text-white rounded-xl font-sans text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[var(--accent-blog)] to-[#c9956c] text-white rounded-xl font-sans text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
                     >
                       View All Leads <ArrowRight size={16} />
                     </button>
@@ -162,7 +162,7 @@ export default function AdminDashboard() {
 
                 {/* Conversion Funnel */}
                 <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                  <h3 className="font-display text-xl font-bold text-[#1c2b39] mb-5">Conversion Funnel</h3>
+                  <h3 className="font-display text-xl font-bold text-[var(--text-blue)] mb-5">Conversion Funnel</h3>
                   <div className="space-y-4">
                     {[
                       { label: 'New', value: stats.new, total: stats.total, color: 'bg-blue-500' },
@@ -175,7 +175,7 @@ export default function AdminDashboard() {
                         <div key={item.label}>
                           <div className="flex justify-between text-sm mb-1.5">
                             <span className="text-gray-600">{item.label}</span>
-                            <span className="font-semibold text-[#1c2b39]">{item.value} ({percent}%)</span>
+                            <span className="font-semibold text-[var(--text-blue)]">{item.value} ({percent}%)</span>
                           </div>
                           <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                             <div className={`h-full ${item.color} rounded-full transition-all duration-500`} style={{ width: `${percent}%` }} />
@@ -189,7 +189,7 @@ export default function AdminDashboard() {
 
               {/* Quick Actions */}
               <div>
-                <h2 className="font-display text-xl font-bold text-[#1c2b39] mb-5">Quick Actions</h2>
+                <h2 className="font-display text-xl font-bold text-[var(--text-blue)] mb-5">Quick Actions</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                   {quickActions.map((action) => {
                     const Icon = action.icon;
@@ -202,7 +202,7 @@ export default function AdminDashboard() {
                         <div className={`w-12 h-12 ${action.color} text-white rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110`}>
                           <Icon size={22} />
                         </div>
-                        <h3 className="font-sans font-semibold text-[#1c2b39] mb-1">{action.label}</h3>
+                        <h3 className="font-sans font-semibold text-[var(--text-blue)] mb-1">{action.label}</h3>
                         <p className="font-sans text-sm text-gray-500">{action.desc}</p>
                       </button>
                     );

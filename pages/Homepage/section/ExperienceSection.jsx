@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="relative bg-[#1D1913] py-[clamp(60px,8vw,120px)] px-6 md:px-12 overflow-hidden border-r border-[rgba(255,255,255,0.1)]">
+    <section id="experience" className="relative bg-[var(--bg-section)] py-[clamp(60px,8vw,120px)] px-6 md:px-12 overflow-hidden border-r border-[rgba(255,255,255,0.1)]">
       {/* Grid Pattern Overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -21,20 +21,20 @@ export default function ExperienceSection() {
       <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto mb-8 lg:mb-12 mt-4 md:mt-8">
         <div>
           <div className="flex items-center justify-start mb-2">
-            <span className="hidden sm:block  h-px bg-[#B98D4F] w-10 mr-6"></span>
-            <p className="font-sans text-sm tracking-[0.25em] font-medium text-[#D9B27C] whitespace-nowrap uppercase">
+            <span className="hidden sm:block  h-px bg-[var(--accent-gold-dark)] w-10 mr-6"></span>
+            <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--accent-gold)] whitespace-nowrap uppercase">
               On How It Feels
             </p>
             <span className="hidden sm:block h-px bg-[#B98D4F] w-10 ml-6"></span>
           </div>
-          <h2 className="font-serif text-[clamp(32px,5vw,44px)] leading-[1.2] tracking-[-0.01em] text-[#EDE6D8] mb-4.5">
+          <h2 className="font-serif text-[clamp(32px,5vw,44px)] leading-[1.2] tracking-[-0.01em] text-[var(--text-primary)] mb-4.5">
             Luxury Measured  by Experience
           </h2>
-          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[#C9BFAD] font-light ">
+          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[var(--text-secondary)] font-light ">
             True luxury is defined not by what surrounds you, but by how a
             place makes you feel.
           </p>
-          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[#C9BFAD] font-light ">
+          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[var(--text-secondary)] font-light ">
             It is found in quiet mornings filled with natural light,
             meaningful connections to nature, thoughtfully crafted spaces,
             and the comfort of genuine hospitality. At PLT Properties, every
@@ -62,8 +62,8 @@ export default function ExperienceSection() {
 
       {/* Quote */}
       <div className="relative max-w-xl mx-auto text-center px-4">
-        <div className="w-px h-10 bg-[#B98D4F] mx-auto mb-4" />
-        <p className="font-serif text-[32px] leading-[1.4]  text-[#EDE6D8] mb-4.5">
+        <div className="w-px h-10 bg-[var(--accent-gold-dark)] mx-auto mb-4" />
+        <p className="font-serif text-[32px] leading-[1.4]  text-[var(--text-primary)] mb-4.5">
           Not simply a place to live. A life to belong to.
         </p>
         

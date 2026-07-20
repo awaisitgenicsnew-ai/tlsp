@@ -63,16 +63,16 @@ export default function BlogList() {
       
       <main>
         {/* Hero Section */}
-        <section className="relative bg-[#181410] py-24 md:py-32">
+        <section className="relative bg-[var(--bg-section)] py-24 md:py-32">
           <div className="absolute inset-0 opacity-10">
            
           </div>
           <div className="relative max-w-6xl mx-auto px-5 md:px-20 text-center">
-            <span className="inline-block px-4 py-2 mb-6 font-sans text-sm tracking-[0.2em] text-[#d4a574] uppercase border border-[#d4a574]/30 rounded-full">
+            <span className="inline-block px-4 py-2 mb-6 font-sans text-sm tracking-[0.2em] text-[var(--accent-blog)] uppercase border border-[var(--accent-blog)]/30 rounded-full">
               Insights & Updates
             </span>
             <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Our <span className="text-[#d4a574]">Blog</span>
+              Our <span className="text-[var(--accent-blog)]">Blog</span>
             </h1>
             <p className="font-sans text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
               Stay informed with the latest Dubai property market insights, investment tips, and exclusive updates from PLT Properties.
@@ -107,12 +107,12 @@ export default function BlogList() {
                           />
                         )}
                       </div>
-                      <p className="text-xs font-medium text-[#9c7a3c] tracking-wide mb-2">{blog.categories?.[0]?.name || 'Real Estate'}</p>
+                      <p className="text-xs font-medium text-[var(--gold)] tracking-wide mb-2">{blog.categories?.[0]?.name || 'Real Estate'}</p>
                       <div className="flex items-center gap-1.5 mb-2">
-                        <Calendar size={12} className="text-[#9c7a3c]" />
-                        <span className="text-xs text-[#9c7a3c]">{formatDate(blog.createdAt)}</span>
+                        <Calendar size={12} className="text-[var(--gold)]" />
+                        <span className="text-xs text-[var(--gold)]">{formatDate(blog.createdAt)}</span>
                       </div>
-                      <h3 className="font-display text-lg text-[#1c2b39] leading-snug group-hover:text-[#9c7a3c] transition-colors">
+                      <h3 className="font-display text-lg text-[var(--text-blue)] leading-snug group-hover:text-[var(--gold)] transition-colors">
                         {blog.title}
                       </h3>
                     </Link>
@@ -124,10 +124,10 @@ export default function BlogList() {
               {blogs.length > 3 && (
                 <section className="mb-20">
                   <div className="text-center mb-12">
-                    <span className="inline-block px-4 py-2 mb-4 font-sans text-sm tracking-[0.2em] text-[#d4a574] uppercase">
+                    <span className="inline-block px-4 py-2 mb-4 font-sans text-sm tracking-[0.2em] text-[var(--accent-blog)] uppercase">
                       Archive
                     </span>
-                    <h2 className="font-display text-3xl md:text-4xl font-bold text-[#2a2620] mb-4">More Articles</h2>
+                    <h2 className="font-display text-3xl md:text-4xl font-bold text-[var(--ink)] mb-4">More Articles</h2>
                     <p className="font-sans text-base text-black/60 max-w-2xl mx-auto">
                       Browse through our complete collection of property insights and market analysis.
                     </p>
@@ -150,18 +150,18 @@ export default function BlogList() {
                         )}
                         <div className="flex-1 flex flex-col justify-center">
                           <div className="flex items-center gap-2 mb-3">
-                            <span className="flex items-center gap-1.5 font-sans text-xs text-[#d4a574] font-medium uppercase tracking-wider">
+                            <span className="flex items-center gap-1.5 font-sans text-xs text-[var(--accent-blog)] font-medium uppercase tracking-wider">
                               <Calendar size={12} />
                               {formatDate(blog.createdAt)}
                             </span>
                           </div>
-                          <h3 className="font-display text-xl font-bold text-[#2a2620] mb-2 leading-snug group-hover:text-[#d4a574] transition-colors duration-300">{blog.title}</h3>
+                          <h3 className="font-display text-xl font-bold text-[var(--ink)] mb-2 leading-snug group-hover:text-[var(--accent-blog)] transition-colors duration-300">{blog.title}</h3>
                           {blog.shortDescription && (
                             <p className="font-sans text-sm text-black/60 leading-relaxed line-clamp-2">{blog.shortDescription}</p>
                           )}
                         </div>
                         <div className="flex items-center justify-center md:justify-end">
-                          <div className="w-12 h-12 rounded-full bg-[#d4a574]/10 flex items-center justify-center text-[#d4a574] group-hover:bg-[#d4a574] group-hover:text-white transition-all duration-300">
+                          <div className="w-12 h-12 rounded-full bg-[var(--accent-blog)]/10 flex items-center justify-center text-[var(--accent-blog)] group-hover:bg-[var(--accent-blog)] group-hover:text-white transition-all duration-300">
                             <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
