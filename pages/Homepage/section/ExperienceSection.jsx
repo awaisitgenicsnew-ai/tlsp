@@ -21,11 +21,11 @@ export default function ExperienceSection() {
       <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto mb-8 lg:mb-12 mt-4 md:mt-8">
         <div>
           <div className="flex items-center justify-start mb-2">
-            <span className="hidden sm:block  h-px bg-[var(--accent-gold-dark)] w-10 mr-6"></span>
-            <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--accent-gold)] whitespace-nowrap uppercase">
+            <span className="hidden sm:block  h-px bg-[var(--bg-tertiary)] w-10 mr-6"></span>
+            <p className="font-sans text-sm tracking-[0.25em] font-medium text-[var(--bg-tertiary)] whitespace-nowrap uppercase">
               On How It Feels
             </p>
-            <span className="hidden sm:block h-px bg-[#B98D4F] w-10 ml-6"></span>
+            <span className="hidden sm:block h-px bg-[var(--bg-tertiary)] w-10 ml-6"></span>
           </div>
           <h2 className="font-serif text-[clamp(32px,5vw,44px)] leading-[1.2] tracking-[-0.01em] text-[var(--text-primary)] mb-4.5">
             Luxury Measured  by Experience
@@ -62,7 +62,7 @@ export default function ExperienceSection() {
 
       {/* Quote */}
       <div className="relative max-w-xl mx-auto text-center px-4">
-        <div className="w-px h-10 bg-[var(--accent-gold-dark)] mx-auto mb-4" />
+        <div className="w-px h-10 bg-[var(--bg-tertiary)] mx-auto mb-4" />
         <p className="font-serif text-[32px] leading-[1.4]  text-[var(--text-primary)] mb-4.5">
           Not simply a place to live. A life to belong to.
         </p>

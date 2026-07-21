@@ -14,7 +14,7 @@ const SLIDES = [
     image: "/images/homepage/intro-image.jpg",
     headline: (
       <>
-        New vision. <span className="font-medium text-[var(--accent-gold)]">Established strength.</span>
+        New vision. <span className="font-medium text-[var(--bg-tertiary)]">Established strength.</span>
       </>
     ),
     paragraphs: [
@@ -34,7 +34,7 @@ const SLIDES = [
     image: "/images/home-slider/imgslide2.jpg",
     headline: (
       <>
-        A new generation of <span className="font-medium text-[var(--accent-gold)]">real estate</span>
+        A new generation of <span className="font-medium text-[var(--bg-tertiary)]">real estate</span>
       </>
     ),
     paragraphs: [
@@ -53,7 +53,7 @@ const SLIDES = [
     image: "/images/home-slider/imgslide3.jpg",
     headline: (
       <>
-        A beautiful place is only <span className="font-medium text-[var(--accent-gold)]">the beginning</span>
+        A beautiful place is only <span className="font-medium text-[var(--bg-tertiary)]">the beginning</span>
       </>
     ),
     paragraphs: [
@@ -98,14 +98,14 @@ function PillarBoxes({ pillars }) {
           <button
             type="button"
             onClick={() => setOpenIndex(openIndex === index ? null : index)}
-            className="flex flex-col items-center justify-center gap-2 px-3 py-5 bg-[rgba(237,230,216,0.06)] border border-[rgba(237,230,216,0.16)] backdrop-blur-[14px] text-center transition-colors duration-300 hover:bg-[rgba(237,230,216,0.12)] cursor-pointer"
+            className="flex flex-col items-center justify-center gap-2 px-3 py-5 bg-[var(--bg-secondary)]/10 border border-[rgba(237,230,216,0.16)] backdrop-blur-[14px] text-center transition-colors duration-300 hover:bg-[rgba(237,230,216,0.12)] active:bg-[rgba(237,230,216,0.12)] cursor-pointer"
           >
             <span className="font-sans text-[11px] md:text-[12px] tracking-[0.16em] uppercase text-[var(--text-primary)] leading-snug">
               {pillar.label}
             </span>
             <ChevronDown
               size={14}
-              className={`text-[var(--accent-gold)] transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""}`}
+              className={`text-[var(--bg-tertiary)] transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""}`}
             />
           </button>
           <div
@@ -166,8 +166,8 @@ export default function IntroSection() {
               </div>
 
               {/* Hero Content */}
-              <div className="relative z-10 flex-1 flex items-center px-6 md:px-12 py-0">
-                <div className="max-w-[620px] py-4 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both]">
+              <div className="relative z-10 flex-1 flex items-center justify-center px-6 md:px-12 py-0">
+                <div className="max-w-[800px] w-full py-4 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both] text-center">
                   {/* Headline */}
                   <h2 className="font-serif font-normal text-[clamp(36px,5vw,52px)] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[var(--text-primary)]">
                     {slide.headline}
@@ -177,7 +177,7 @@ export default function IntroSection() {
                   {slide.paragraphs.map((para, pIndex) => (
                     <p
                       key={pIndex}
-                      className="text-[16.5px] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[520px] m-0 mb-5 last:mb-9.5"
+                      className="text-[16.5px] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[680px] mx-auto m-0 mb-5 last:mb-9.5"
                     >
                       {para}
                     </p>
@@ -187,7 +187,7 @@ export default function IntroSection() {
                   {slide.cta && (
                     <a
                       href={slide.cta.href}
-                      className="inline-flex items-center mt-4 px-6 py-2.5 font-sans font-[300] text-[14px] tracking-[2px] uppercase transition-all duration-300 border border-[var(--accent-gold)] text-[var(--accent-gold)] hover:bg-[var(--accent-gold)] hover:text-[#14110e]"
+                      className="inline-flex items-center justify-center mt-4 px-6 py-2.5 font-sans font-[300] text-[14px] tracking-[2px] uppercase transition-all duration-300 border border-[var(--accent-gold)] text-[var(--bg-tertiary)] hover:bg-[var(--accent-gold)] hover:text-[#14110e]"
                     >
                       {slide.cta.label}
                     </a>
@@ -200,13 +200,13 @@ export default function IntroSection() {
                 {slide.pillars ? (
                   <PillarBoxes pillars={slide.pillars} />
                 ) : (
-                  <div className="grid grid-cols-2 md:grid-cols-4 bg-[rgba(237,230,216,0.06)] border border-[rgba(237,230,216,0.16)] backdrop-blur-[14px] animate-[riseIn_1.1s_cubic-bezier(0.2,0.8,0.2,1)_0.15s_both]">
+                  <div className="grid grid-cols-2 md:grid-cols-4 bg-[var(--bg-secondary)]/10 border border-[rgba(237,230,216,0.16)] backdrop-blur-[14px] animate-[riseIn_1.1s_cubic-bezier(0.2,0.8,0.2,1)_0.15s_both]">
                     {slide.credentials.map((cred, index) => (
                       <div
                         key={index}
                         className={`p-4 md:p-6.5 border-r border-b md:border-b-0 border-[rgba(237,230,216,0.16)] flex gap-3 md:gap-4 items-start transition-background duration-300 hover:bg-[rgba(237,230,216,0.045)] ${(index % 2 === 1 || index === 3) ? 'border-r-0' : ''} ${index >= 2 ? 'border-b-0 md:border-b' : ''}`}
                       >
-                        <span className="font-serif italic text-[16px] md:text-[20px] text-[var(--accent-gold-dark)] leading-none pt-0.5">{cred.numeral}</span>
+                        <span className="font-serif italic text-[16px] md:text-[20px] text-[var(--bg-tertiary)] leading-none pt-0.5">{cred.numeral}</span>
                         <div>
                           <div className="font-mono text-[9px] md:text-[10px] tracking-[0.16em] uppercase text-[var(--text-secondary)] mb-2">{cred.label}</div>
                           <div className="font-serif text-[18px] md:text-[23px] font-medium text-[var(--text-primary)]">{cred.value}</div>
@@ -226,14 +226,14 @@ export default function IntroSection() {
         <button
           type="button"
           aria-label="Previous slide"
-          className="intro-nav-prev flex w-10 h-10 items-center justify-center border border-[rgba(237,230,216,0.3)] bg-[rgba(20,17,14,0.35)] backdrop-blur-[6px] text-[var(--text-primary)] transition-all duration-300 hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] cursor-pointer"
+          className="intro-nav-prev flex w-10 h-10 items-center justify-center border border-[rgba(237,230,216,0.3)] bg-[rgba(20,17,14,0.35)] backdrop-blur-[6px] text-[var(--text-primary)] transition-all duration-300 hover:border-[var(--accent-gold)] hover:text-[var(--bg-tertiary)] cursor-pointer"
         >
           <ChevronLeft size={18} />
         </button>
         <button
           type="button"
           aria-label="Next slide"
-          className="intro-nav-next flex w-10 h-10 items-center justify-center border border-[rgba(237,230,216,0.3)] bg-[rgba(20,17,14,0.35)] backdrop-blur-[6px] text-[var(--text-primary)] transition-all duration-300 hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] cursor-pointer"
+          className="intro-nav-next flex w-10 h-10 items-center justify-center border border-[rgba(237,230,216,0.3)] bg-[rgba(20,17,14,0.35)] backdrop-blur-[6px] text-[var(--text-primary)] transition-all duration-300 hover:border-[var(--accent-gold)] hover:text-[var(--bg-tertiary)] cursor-pointer"
         >
           <ChevronRight size={18} />
         </button>

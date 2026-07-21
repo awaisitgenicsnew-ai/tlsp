@@ -22,7 +22,7 @@ const DEFAULT_COLORS = {
     subText: "rgba(255,255,255,0.8)",
     link: "rgba(255,255,255,0.9)",
     linkHover: "#ffffff",
-    buttonBorder: "#ffffff",
+    buttonBorder: "var(--bg-primary)",
     buttonText: "#ffffff",
     buttonHoverBg: "#ffffff",
     buttonHoverText: "#000000",
@@ -34,13 +34,13 @@ const DEFAULT_COLORS = {
     subText: "rgba(0,0,0,0.6)",
     link: "rgba(0,0,0,0.8)",
     linkHover: "#000000",
-    buttonBorder: "#000000",
+    buttonBorder: "var(--bg-primary)",
     buttonText: "#000000",
     buttonHoverBg: "#000000",
     buttonHoverText: "#ffffff",
   },
   mobile: {
-    bg: "#000000",
+    bg: "#1D2128",
     border: "rgba(255,255,255,0.1)",
     text: "#ffffff",
     link: "rgba(255,255,255,0.9)",
@@ -146,7 +146,7 @@ export default function Navbar({ colors = {} }) {
         <div className="flex items-center gap-4 flex-shrink-0 z-10">
           <Link
             href="/register-interest"
-            className="hidden lg:inline-flex items-center px-6 py-2.5 font-sans  font-[300] text-[14px] tracking-[2px] uppercase transition-all duration-300 border border-[color:var(--nav-btn-border)] text-[color:var(--nav-btn-text)] hover:bg-[var(--nav-btn-hover-bg)] hover:text-[color:var(--nav-btn-hover-text)]"
+            className="hidden lg:inline-flex items-center px-6 py-2.5 font-sans  font-[300] text-[14px] tracking-[2px] uppercase transition-all duration-300 border border-[var(--bg-secondary)] text-[color:var(--nav-btn-text)] bg-[var(--bg-secondary)] hover:bg-[var(--bg-tertiary)] hover:border-[var(--bg-tertiary)] hover:text-[color:var(--nav-btn-hover-text)]"
           >
             Register Interest
           </Link>
@@ -193,7 +193,7 @@ export default function Navbar({ colors = {} }) {
             <Link
               href="/register-interest"
               onClick={() => setOpen(false)}
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent font-sans font-[300] text-[14px] tracking-[2px] uppercase mt-4 transition-all duration-300 bg-[var(--nav-mobile-btn-bg)] text-[color:var(--nav-mobile-btn-text)] hover:opacity-90"
+              className="inline-flex items-center justify-center px-6 py-3 border border-[var(--bg-secondary)] font-sans font-[300] text-[14px] tracking-[2px] uppercase mt-4 transition-all duration-300 bg-[var(--bg-secondary)] text-white hover:bg-[var(--bg-tertiary)] hover:border-[var(--bg-tertiary)]"
             >
               Register Interest
             </Link>

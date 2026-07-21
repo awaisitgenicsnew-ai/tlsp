@@ -110,7 +110,7 @@ export default function DevelopmentsSection() {
         <div className="min-w-0 reveal" ref={addToRefs}>
           {/* Badge */}
           {project.badge && (
-            <span className="inline-flex items-center gap-2 font-mono text-[10.5px] tracking-[0.18em] uppercase text-[var(--accent-gold)] border border-[var(--accent-gold-dark)] px-3.5 py-2 mb-[clamp(22px,4vw,32px)] whitespace-nowrap">
+            <span className="inline-flex items-center gap-2 font-mono text-[10.5px] tracking-[0.18em] uppercase text-[var(--bg-tertiary)] border border-[var(--bg-tertiary)] px-3.5 py-2 mb-[clamp(22px,4vw,32px)] whitespace-nowrap">
               <span className="w-1.5 h-1.5 flex-shrink-0 bg-[var(--accent-gold)] rounded-full" />
               {project.badge}
             </span>
@@ -122,8 +122,8 @@ export default function DevelopmentsSection() {
           </h1>
 
           {/* Location */}
-          <div className="flex items-center gap-3.5 font-mono text-[11.5px] tracking-[0.18em] uppercase text-[var(--accent-gold)] mb-6.5 flex-wrap">
-            <span className="w-[26px] h-px bg-[var(--accent-gold-dark)] flex-shrink-0" />
+          <div className="flex items-center gap-3.5 font-mono text-[11.5px] tracking-[0.18em] uppercase text-[var(--bg-tertiary)] mb-6.5 flex-wrap">
+            <span className="w-[26px] h-px bg-[var(--bg-tertiary)] flex-shrink-0" />
             {project.location}
           </div>
 
@@ -152,7 +152,7 @@ export default function DevelopmentsSection() {
           <div className="flex flex-wrap gap-3.5">
             <button
               onClick={() => handleButtonClick(project.primaryButtonLink)}
-              className="flex-1 text-center font-mono text-[12px] tracking-[0.14em] uppercase text-[var(--bg-tertiary)] bg-[var(--accent-gold)] px-6.5 py-4 border border-[var(--accent-gold)] cursor-pointer transition-all duration-250 hover:bg-[var(--accent-gold-dark)] hover:border-[var(--accent-gold-dark)] whitespace-nowrap"
+              className="flex-1 text-center font-mono text-[12px] tracking-[0.14em] uppercase text-[var(--bg-tertiary)] bg-[var(--accent-gold)] px-6.5 py-4 border border-[var(--accent-gold)] cursor-pointer transition-all duration-250 hover:bg-[var(--bg-tertiary)] hover:border-[var(--bg-tertiary)] whitespace-nowrap"
             >
               {project.primaryButtonText || "View Information"}
             </button>

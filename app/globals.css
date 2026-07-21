@@ -20,18 +20,22 @@
   --muted: #7a7468;
   
   /* ============ SECTION BACKGROUND COLORS ============ */
-  --bg-primary: #181410;
+  --bg-primary: #CCC3BB;
   --bg-secondary: #29225C;
   --bg-tertiary: #C1A243;
 
   --bg-card: #241D18;
-  --bg-section: #181410;
+  --bg-section: #1D2128;
   --bg-dark-card: #1a1610;
   --bg-dark-overlay: #1f1a14;
   --bg-light: #F7F4EC;
   --bg-mission: #1c1b19;
   --bg-hero: #0a0a0a;
   --bg-surface: #d9d9d9;
+  --nav-bg: #1D2128;
+  --nav-bg-top: transparent;
+  --nav-bg-scrolled: transparent;
+  --nav-bg-mobile: #000000;
   
   /* ============ ACCENT COLORS ============ */
   --accent-gold: #D9B27C;

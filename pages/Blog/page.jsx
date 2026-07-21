@@ -53,7 +53,7 @@ export default function BlogList() {
             subText: "rgba(255,255,255,0.8)",
             link: "rgba(255,255,255,0.9)",
             linkHover: "#ffffff",
-            buttonBorder: "#ffffff",
+            buttonBorder: "var(--bg-primary)",
             buttonText: "#ffffff",
             buttonHoverBg: "#ffffff",
             buttonHoverText: "#000000",
