@@ -70,7 +70,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="bg-[#181410] text-white px-6 md:px-16 py-16 border-t border-[rgba(255,255,255,0.1)]">
+    <footer ref={footerRef} className="bg-[var(--bg-section)] text-white px-6 md:px-16 py-16 border-t border-[rgba(255,255,255,0.1)]">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         {/* Logo & About */}
         <div>
@@ -83,26 +83,26 @@ export default function Footer() {
               className="h-12 w-auto"
             />
           </Link>
-          <p className="text-sm text-[#5f584e] mt-5 leading-relaxed max-w-xs">
+          <p className="text-sm text-white/80 mt-5 font-normal leading-relaxed max-w-xs">
             European craftsmanship. Considered addresses. Built for longevity in Dubai's most connected districts.
           </p>
           <div className="flex gap-3 mt-6">
-            <a href="#" className="w-9 h-9 flex items-center justify-center border border-gray-600 p-2  hover:border-[#c9a876] transition">
-              <Instagram size={16} className="text-[#87827c]" />
+            <a href="#" className="w-9 h-9 flex items-center justify-center border border-white p-2  hover:border-[var(--bg-secondary)]  hover:bg-[var(--bg-secondary)] transition">
+              <Instagram size={16} className="text-[#fff]" />
             </a>
-            <a href="#" className="w-9 h-9 flex items-center justify-center border border-gray-600 p-2  hover:border-[#c9a876] transition">
-              <Linkedin size={16} className="text-[#87827c]" />
+            <a href="#" className="w-9 h-9 flex items-center justify-center border border-white p-2  hover:border-[var(--bg-secondary)] hover:bg-[var(--bg-secondary)] transition">
+              <Linkedin size={16} className="text-[#fff]" />
             </a>
-            <a href="#" className="w-9 h-9 flex items-center justify-center border border-gray-600 p-2  hover:border-[#c9a876] transition">
-              <Youtube size={16} className="text-[#87827c]" />
+            <a href="#" className="w-9 h-9 flex items-center justify-center border border-white p-2  hover:border-[var(--bg-secondary)] hover:bg-[var(--bg-secondary)] transition">
+              <Youtube size={16} className="text-[#fff]" />
             </a>
           </div>
         </div>
 
         {/* Developments */}
         <div>
-          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-medium font-sans mb-5 ">DEVELOPMENTS</p>
-          <ul className="space-y-4 text-sm text-[#87827c]">
+          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-normal font-sans mb-5 ">DEVELOPMENTS</p>
+          <ul className="space-y-4 text-sm text-white/80">
             {DEVELOPMENTS.map((item) => (
               <li key={item.label}>
                 <a 
@@ -120,8 +120,8 @@ export default function Footer() {
 
         {/* Company */}
         <div>
-          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-medium font-sans mb-5 ">COMPANY</p>
-          <ul className="space-y-4 text-sm text-[#87827c]">
+          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-normal font-sans mb-5 ">COMPANY</p>
+          <ul className="space-y-4 text-sm text-white/80">
             {COMPANY.map((item) => (
               <li key={item.label}>
                 <a href={item.href} className="hover:text-[#c9a876] transition">
@@ -134,15 +134,15 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-medium font-sans mb-5 ">CONTACT</p>
+          <p className="text-xs tracking-[0.2em] text-[#c9a876] font-normal font-sans mb-5 ">CONTACT</p>
 
-          <p className="text-[10px] tracking-[0.15em] text-gray-500 mb-1">SALES GALLERY</p>
+          <p className="text-[10px] tracking-[0.15em] text-white/80 mb-1">SALES GALLERY</p>
           <p className="text-sm text-gray-200 mb-5">Business Bay, Dubai</p>
 
-          <p className="text-[10px] tracking-[0.15em] text-gray-500 mb-1">PHONE</p>
+          <p className="text-[10px] tracking-[0.15em] text-white/80 mb-1">PHONE</p>
           <p className="text-sm text-gray-200 mb-5">+971 4 XXX XXXX</p>
 
-          <p className="text-[10px] tracking-[0.15em] text-gray-500 mb-1">WHATSAPP</p>
+          <p className="text-[10px] tracking-[0.15em] text-white/80 mb-1">WHATSAPP</p>
           <p className="text-sm text-gray-200 mb-7">+971 50 XXX XXXX</p>
 
           <p className="text-xs tracking-[0.2em] text-[#c9a876] font-semibold mb-3">NEWSLETTER</p>
@@ -150,11 +150,11 @@ export default function Footer() {
             <input
               type="email"
               placeholder="Your email"
-              className="bg-[#2a211c] text-sm text-gray-200 placeholder-gray-500 px-4 py-2.5 w-full border border-gray-700 focus:outline-none focus:border-[#c9a876]"
+              className="bg-[#fff] text-sm text-gray-200 placeholder-gray-500 px-4 py-2.5 w-full border border-gray-700 focus:outline-none focus:border-[#c9a876]"
             />
             <button
               type="submit"
-              className="bg-[#c9a876] text-[#1a1310] text-xs font-semibold tracking-wide px-5 whitespace-nowrap hover:bg-[#d9b98a] transition"
+              className="bg-[var(--bg-secondary)] text-[#ffffff] text-xs font-semibold tracking-wide px-5 whitespace-nowrap hover:bg-[#d9b98a] transition"
             >
               SUBSCRIBE
             </button>

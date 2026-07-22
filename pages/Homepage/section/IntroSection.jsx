@@ -22,7 +22,7 @@ const SLIDES = [
       "Across renewable energy, finance, artificial intelligence, hospitality and strategic investments, PLT Holding has built its reputation on long-term thinking, disciplined execution and responsible growth.",
       "PLT Properties brings this same foundation to real estate — combining the energy of a new lifestyle developer with the strength and capabilities of an established group.",
     ],
-    cta: { label: "Discover PLT Holding", href: "#" },
+    cta: { label: "Discover PLT Holding", href: "https://www.plttower.com/" },
     credentials: [
       { numeral: "I", label: "Years of Craft", value: "15+" },
       { numeral: "II", label: "DLD Escrow-Backed", value: "100%" },
@@ -98,7 +98,7 @@ function PillarBoxes({ pillars }) {
           <button
             type="button"
             onClick={() => setOpenIndex(openIndex === index ? null : index)}
-            className="flex flex-col items-center justify-center gap-2 px-3 py-5 bg-[var(--bg-secondary)]/10 border border-[rgba(237,230,216,0.16)] backdrop-blur-[14px] text-center transition-colors duration-300 hover:bg-[rgba(237,230,216,0.12)] active:bg-[rgba(237,230,216,0.12)] cursor-pointer"
+            className="flex flex-col items-center justify-start gap-2 px-3 py-5 bg-[var(--bg-secondary)]/10 border border-[rgba(237,230,216,0.16)] backdrop-blur-[14px]  transition-colors duration-300 hover:bg-[rgba(237,230,216,0.12)] active:bg-[rgba(237,230,216,0.12)] cursor-pointer"
           >
             <span className="font-sans text-[11px] md:text-[12px] tracking-[0.16em] uppercase text-[var(--text-primary)] leading-snug">
               {pillar.label}
@@ -111,7 +111,7 @@ function PillarBoxes({ pillars }) {
           <div
             className={`overflow-hidden transition-all duration-300 ${openIndex === index ? "max-h-40 mt-2" : "max-h-0"}`}
           >
-            <p className="m-0 p-3 bg-[rgba(237,230,216,0.08)] border border-[rgba(237,230,216,0.16)] backdrop-blur-[14px] text-[12px] leading-relaxed text-[var(--text-secondary)] text-center">
+            <p className="m-0 p-3 bg-[rgba(237,230,216,0.08)] border border-[rgba(237,230,216,0.16)] backdrop-blur-[14px] text-[12px] leading-relaxed text-[var(--text-secondary)] ">
               {pillar.text}
             </p>
           </div>
@@ -123,7 +123,7 @@ function PillarBoxes({ pillars }) {
 
 export default function IntroSection() {
   return (
-    <section id="building" className="w-full min-h-screen relative overflow-hidden bg-[var(--bg-tertiary)]">
+    <section id="building" className="w-full min-h-screen relative overflow-hidden ">
       <Swiper
         modules={[Autoplay, Pagination, Navigation, EffectFade]}
         effect="fade"
@@ -166,8 +166,8 @@ export default function IntroSection() {
               </div>
 
               {/* Hero Content */}
-              <div className="relative z-10 flex-1 flex items-center justify-center px-6 md:px-12 py-0">
-                <div className="max-w-[800px] w-full py-4 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both] text-center">
+              <div className="relative z-10 flex-1 flex items-center justify-start px-6 md:px-12 py-0">
+                <div className="max-w-[800px] w-full py-4 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both] ">
                   {/* Headline */}
                   <h2 className="font-serif font-normal text-[clamp(36px,5vw,52px)] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[var(--text-primary)]">
                     {slide.headline}
@@ -177,7 +177,7 @@ export default function IntroSection() {
                   {slide.paragraphs.map((para, pIndex) => (
                     <p
                       key={pIndex}
-                      className="text-[16.5px] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[680px] mx-auto m-0 mb-5 last:mb-9.5"
+                      className="text-[16.5px] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[680px]  m-0 mb-5 last:mb-9.5"
                     >
                       {para}
                     </p>
@@ -187,7 +187,9 @@ export default function IntroSection() {
                   {slide.cta && (
                     <a
                       href={slide.cta.href}
-                      className="inline-flex items-center justify-center mt-4 px-6 py-2.5 font-sans font-[300] text-[14px] tracking-[2px] uppercase transition-all duration-300 border border-[var(--accent-gold)] text-[var(--bg-tertiary)] hover:bg-[var(--accent-gold)] hover:text-[#14110e]"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-start mt-4 px-6 py-2.5 font-sans font-[300] text-[14px] tracking-[2px] uppercase transition-all duration-300 border border-[#fff]  text-[#fff] hover:bg-[var(--accent-gold)] hover:text-[#14110e]"
                     >
                       {slide.cta.label}
                     </a>
@@ -222,7 +224,7 @@ export default function IntroSection() {
       </Swiper>
 
       {/* Navigation Arrows */}
-      <div className="absolute bottom-3 right-4 md:right-8 z-30 flex items-center gap-2">
+      {/* <div className="absolute bottom-3 right-4 md:right-8 z-30 flex items-center gap-2">
         <button
           type="button"
           aria-label="Previous slide"
@@ -237,10 +239,10 @@ export default function IntroSection() {
         >
           <ChevronRight size={18} />
         </button>
-      </div>
+      </div> */}
 
       {/* Pagination */}
-      <div className="custom-intro-pagination absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center gap-3 w-auto h-5" />
+      <div className="custom-intro-pagination absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex items-center justify-start gap-3 w-auto h-5" />
 
       <style jsx>{`
         @keyframes riseIn {

@@ -164,24 +164,13 @@ export function BrandPillarsSlider() {
         </AnimatePresence>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/10 z-40">
-        <motion.div
-          className="h-full"
-          style={{
-            width: `${progress}%`,
-            backgroundColor: 'var(--gold)',
-          }}
-          transition={{ duration: 0.1, ease: 'linear' }}
-        />
-      </div>
-
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 md:hidden flex gap-1.5 z-30">
         {pillars.map((_, idx) => (
           <div
             key={idx}
             className="w-1 h-1 transition-all duration-300"
             style={{
-              backgroundColor: currentIndex === idx ? 'var(--gold)' : 'rgba(255, 255, 255, 0.3)',
+              backgroundColor: currentIndex === idx ? 'var(--bg-secondary)' : 'rgba(255, 255, 255, 0.3)',
               width: currentIndex === idx ? '16px' : '4px',
             }}
           />

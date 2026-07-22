@@ -63,7 +63,7 @@ const BLACK_SCHEME = {
 };
 
 const BLACK_BG_SCHEME = {
-  bg: 'var(--nav-bg)',
+  bg: 'var(--bg-section)',
   border: 'rgba(255,255,255,0.1)',
   text: '#ffffff',
   subText: 'rgba(255,255,255,0.8)',
@@ -247,7 +247,7 @@ export default function Homepage() {
       {/* Scroll Progress Bar */}
       <div className="fixed bottom-0 left-0 right-0 h-[3px] z-[1100] bg-transparent">
         <div
-          className="h-full bg-[var(--gold)] transition-[width] duration-100 ease-linear"
+          className="h-full bg-[var(--bg-secondary)] transition-[width] duration-100 ease-linear"
           style={{ width: `${progress * 100}%` }}
         />
       </div>
