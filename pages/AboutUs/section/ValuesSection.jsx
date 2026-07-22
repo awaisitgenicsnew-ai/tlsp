@@ -29,7 +29,7 @@ export default function ValuesSection() {
         <div className="text-center mb-10 sm:mt-14 max-w-[700px] mx-auto">
          
           <h2 className="font-serif text-[clamp(32px,4vw,48px)] leading-[1.15] tracking-[-0.01em] text-[var(--accent-cream)] mb-6">
-            What We <em className="italic font-light text-[var(--accent-brown-light)]">Stand</em> For
+            What We <span className=" font-light text-[var(--accent-brown-light)]">Stand</span> For
           </h2>
           <p className="text-[15px] leading-[1.75] text-[var(--text-muted)]">
             The principles that shape every decision we make, from the first blueprint to the final handover.
@@ -44,7 +44,7 @@ export default function ValuesSection() {
               className="group relative p-4 border border-[rgba(243,239,230,0.12)] hover:border-[var(--accent-brown-light)]/40 transition-all duration-500"
             >
               {/* Roman Numeral */}
-              <span className="font-serif italic font-light text-[48px] text-[var(--accent-brown-light)]/20 group-hover:text-[var(--accent-brown-light)]/30 transition-colors mb-4 block">
+              <span className="font-serif italic font-light text-[48px] text-[var(--bg-secondary)] group-hover:text-[var(--bg-secondary)] transition-colors mb-4 block">
                 {value.roman}
               </span>
               

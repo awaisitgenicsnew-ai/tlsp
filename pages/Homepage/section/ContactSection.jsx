@@ -6,11 +6,13 @@ import { useRouter } from "next/navigation";
 export default function ContactSection() {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     phone: '',
     email: '',
-    development: '',
-    interest: ''
+    country: '',
+    enquiryType: '',
+    message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
@@ -29,13 +31,14 @@ export default function ContactSection() {
 
     try {
       const payload = {
-        name: formData.name,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
         phone: formData.phone,
         email: formData.email,
-        developmentOfInterest: formData.development,
-        interest: formData.interest,
-        subject: `${formData.development} - ${formData.interest}`,
-        message: 'New enquiry from website - please contact me regarding my interest in the property development.'
+        country: formData.country,
+        enquiryType: formData.enquiryType,
+        message: formData.message,
+        subject: `${formData.enquiryType} - ${formData.firstName} ${formData.lastName}`
       };
       
       console.log('Submitting payload:', payload);
@@ -55,11 +58,12 @@ export default function ContactSection() {
       if (response.ok) {
         // Redirect to thank you page with form data
         const params = new URLSearchParams({
-          name: formData.name,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
           email: formData.email,
           phone: formData.phone || '',
-          development: formData.development || '',
-          interest: formData.interest || ''
+          country: formData.country || '',
+          enquiryType: formData.enquiryType || ''
         });
         router.push(`/thank-you?${params.toString()}`);
       } else {
@@ -88,12 +92,10 @@ export default function ContactSection() {
         <div className="px-2 lg:px-1 py-24 sm:py-8"> 
           
           <h2 className="font-serif text-3xl md:text-4xl text-white leading-normal mb-5">
-            Begin a conversation with our team
+            Project and Corporate Enquiries
           </h2>
           <p className="text-sm leading-[28px] text-white/50 max-w-lg mb-10 paragraph">
-            Our sales team is available in person at the PLT Tower Sales
-            Gallery, Business Bay, seven days a week — or reach us by phone
-            and WhatsApp.
+           Whether you would like to learn more about PLT Properties, discover PLT Tower or explore a potential partnership, our team would be pleased to hear from you.
           </p>
 
           <div className="space-y-6">
@@ -126,62 +128,81 @@ export default function ContactSection() {
           </div>
         </div>
         <div className="mt-8 lg:mt-0 bg-[var(--bg-card)] border-[1px] border-[rgba(255,255,255,0.1)] px-10 py-8">
-          <h2 className="font-serif text-3xl md:text-4xl text-white leading-normal mb-8">
+           <h2 className="font-serif text-3xl md:text-4xl text-white leading-normal mb-8">
          Register Interest
         </h2>
         <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 content-start">
         
           <Field 
-            label="Full Name" 
-            placeholder="Your name" 
-            name="name"
-            value={formData.name}
+            label="First name" 
+            placeholder="Your first name" 
+            name="firstName"
+            value={formData.firstName}
             onChange={handleChange}
           />
           <Field 
-            label="Mobile" 
+            label="Last name" 
+            placeholder="Your last name" 
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+          <Field
+            label="Email address"
+            placeholder="you@email.com"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <Field 
+            label="Telephone number" 
             placeholder="+971 XX XXX XXXX" 
             name="phone"
             value={formData.phone}
             onChange={handleChange}
           />
-          <Field
-            label="Email Address"
-            placeholder="you@email.com"
-            className="sm:col-span-2"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
           <Select
-            label="Development of Interest"
-            placeholder="Select development"
-            className="sm:col-span-2"
-            name="development"
-            value={formData.development}
+            label="Country of residence"
+            placeholder="Select country"
+          
+            name="country"
+            value={formData.country}
             onChange={handleChange}
             options={[
-              { value: 'plt-tower', label: 'PLT Tower' },
-              { value: 'plt-residences', label: 'PLT Residences' },
-              { value: 'plt-villas', label: 'PLT Villas' },
-              { value: 'plt-commercial', label: 'PLT Commercial' },
+              { value: 'uae', label: 'United Arab Emirates' },
+              { value: 'uk', label: 'United Kingdom' },
+              { value: 'usa', label: 'United States' },
+              { value: 'india', label: 'India' },
+              { value: 'pakistan', label: 'Pakistan' },
+              { value: 'saudi', label: 'Saudi Arabia' },
+              { value: 'qatar', label: 'Qatar' },
+              { value: 'kuwait', label: 'Kuwait' },
               { value: 'other', label: 'Other' }
             ]}
           />
           <Select
-            label="I am interested in"
-            placeholder="Select interest"
-            className="sm:col-span-2"
-            name="interest"
-            value={formData.interest}
+            label="Enquiry type"
+            placeholder="Select enquiry type"
+            
+            name="enquiryType"
+            value={formData.enquiryType}
             onChange={handleChange}
             options={[
-              { value: 'buying', label: 'Buying Property' },
-              { value: 'renting', label: 'Renting Property' },
-              { value: 'investment', label: 'Investment Opportunity' },
-              { value: 'information', label: 'General Information' },
-              { value: 'partnership', label: 'Partnership Inquiry' }
+              { value: 'sales', label: 'Sales Enquiry' },
+              { value: 'partnership', label: 'Partnership Inquiry' },
+              { value: 'media', label: 'Media & Press' },
+              { value: 'investor', label: 'Investor Relations' },
+              { value: 'general', label: 'General Enquiry' }
             ]}
+          />
+          <Field
+            label="Message"
+            placeholder="Your message"
+            className="sm:col-span-2"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            type="textarea"
           />
 
           {submitMessage && (
@@ -193,7 +214,7 @@ export default function ContactSection() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="sm:col-span-2 mt-4 justify-self-start border border-white/70 text-white text-xs tracking-widest uppercase px-6 py-3 hover:bg-white hover:text-[var(--bg-card)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="sm:col-span-2 w-full mt-4 justify-self-start border border-white/70 text-white text-xs tracking-widest uppercase px-6 py-3 hover:bg-white hover:text-[var(--bg-card)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? 'Submitting...' : 'Submit Enquiry'}
           </button>
@@ -204,20 +225,31 @@ export default function ContactSection() {
   );
 }
 
-function Field({ label, placeholder, className = "", name, value, onChange }) {
+function Field({ label, placeholder, className = "", name, value, onChange, type = "text" }) {
   return (
     <label className={`block ${className}`}>
       <span className="block text-[14px] tracking-widest uppercase text-white/40 mb-2">
         {label}
       </span>
-      <input
-        type="text"
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        className="w-full bg-transparent border-b border-white/20 pb-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[var(--bronze)] transition-colors"
-      />
+      {type === "textarea" ? (
+        <textarea
+          name={name}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          rows={2}
+          className="w-full bg-transparent border-b border-white/20 pb-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[var(--bronze)] transition-colors resize-none"
+        />
+      ) : (
+        <input
+          type={type}
+          name={name}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          className="w-full bg-transparent border-b border-white/20 pb-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[var(--bronze)] transition-colors"
+        />
+      )}
     </label>
   );
 }
