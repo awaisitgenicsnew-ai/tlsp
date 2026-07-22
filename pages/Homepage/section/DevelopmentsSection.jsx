@@ -152,7 +152,7 @@ export default function DevelopmentsSection() {
           <div className="flex flex-wrap gap-3.5">
             <button
               onClick={() => handleButtonClick(project.primaryButtonLink)}
-              className="flex-1 text-center font-mono text-[12px] tracking-[0.14em] uppercase text-[var(--bg-tertiary)] bg-[var(--accent-gold)] px-6.5 py-4 border border-[var(--accent-gold)] cursor-pointer transition-all duration-250 hover:bg-[var(--bg-tertiary)] hover:border-[var(--bg-tertiary)] whitespace-nowrap"
+              className="flex-1 text-center font-mono text-[12px] tracking-[0.14em] uppercase text-[#fff] bg-[var(--bg-secondary)] px-6.5 py-4 border border-[var(--bg-secondary)] cursor-pointer transition-all duration-250 hover:bg-[var(--bg-tertiary)] hover:border-[var(--bg-tertiary)] whitespace-nowrap"
             >
               {project.primaryButtonText || "View Information"}
             </button>
