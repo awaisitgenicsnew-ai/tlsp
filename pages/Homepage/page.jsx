@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Sections
 import HeroSlider from './section/HeroSlider';
-import IntroSection from './section/IntroSection';
+import IntroSection1 from './section/IntroSection1';
 import { BrandPillarsSlider } from './section/ResidencesSectionNew';
 import DevelopmentsGridSection from './section/DevelopmentsGridSection';
 import Developments from './section/DevelopmentsSection';
@@ -28,7 +28,7 @@ import ContactSection from './section/ContactSection';
 // ============================================================
 const BASE_SECTIONS = [
   { id: 'hero', Component: HeroSlider, theme: 'dark', animate: false },
-  { id: 'intro', Component: IntroSection, theme: 'dark', animate: true },
+  { id: 'intro-1', Component: IntroSection1, theme: 'dark', animate: true },
   { id: 'brand-pillars', Component: BrandPillarsSlider, theme: 'dark', animate: false },
   { id: 'philosophy', Component: Philosophy, theme: 'light', animate: true },
   { id: 'experience', Component: ExperienceSection, theme: 'light', animate: true },
@@ -242,7 +242,7 @@ export default function Homepage() {
   return (
     <div className="relative w-full">
       {/* Fixed Navbar — theme active section ke hisaab se auto-switch hota hai */}
-      <Navbar colors={navbarColors} />
+      <Navbar colors={navbarColors} activeSection={sections[activeIndex]?.id} />
 
       {/* Scroll Progress Bar */}
       <div className="fixed bottom-0 left-0 right-0 h-[3px] z-[1100] bg-transparent">

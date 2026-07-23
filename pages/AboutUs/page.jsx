@@ -8,10 +8,10 @@ import Footer from '@/components/Footer';
 
 // About Us sections
 import HeroSection from './section/HeroSection';
+import IntroSection2 from './section/IntroSection2';
+import IntroSection3 from './section/IntroSection3';
 import MissionSection from './section/MissionSection';
 import ValuesSection from './section/ValuesSection';
-import TeamSection from './section/TeamSection';
-import AchievementsSection from './section/AchievementsSection';
 import ContactSection from './section/ContactSection';
 
 gsap.registerPlugin(ScrollTrigger);  
@@ -19,11 +19,11 @@ gsap.registerPlugin(ScrollTrigger);
 // theme: 'dark' = navbar text WHITE, 'light' = navbar text BLACK, 'dark-bg' = navbar with dark background, 'mission-bg' = navbar with bronze background
 const SECTIONS = [
   { id: 'hero', Component: HeroSection, theme: 'dark' },
+  { id: 'intro-2', Component: IntroSection2, theme: 'dark' },
+  { id: 'intro-3', Component: IntroSection3, theme: 'dark' },
    { id: 'values', Component: ValuesSection, theme: 'mission-bg' },
   { id: 'mission', Component: MissionSection, theme: 'dark' },
-  { id: 'achievements', Component: AchievementsSection, theme: 'mission-bg' },
-  { id: 'team', Component: TeamSection, theme: 'mission-bg' },
- 
+
   { id: 'contact', Component: ContactSection, theme: 'mission-bg' },
 ];
 

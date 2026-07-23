@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -50,7 +51,8 @@ const DEFAULT_COLORS = {
   },
 };
 
-export default function Navbar({ colors = {} }) {
+export default function Navbar({ colors = {}, activeSection }) {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -124,7 +126,7 @@ export default function Navbar({ colors = {} }) {
               <Link
                 key={link.label}
                 href={link.href}
-                className="font-sans font-[300] text-[14px] tracking-[2px] uppercase transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)]"
+                className={`font-sans text-[14px] tracking-[2px] uppercase transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)] ${pathname === link.href ? 'font-bold' : 'font-[300]'}`}
               >
                 {link.label}
               </Link>
@@ -134,7 +136,7 @@ export default function Navbar({ colors = {} }) {
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
-                className="font-sans font-[300] text-[14px] tracking-[2px] transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)]"
+                className={`font-sans text-[14px] tracking-[2px] transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)] ${activeSection === 'developments' ? 'font-bold' : 'font-[300]'}`}
               >
                 {link.label}
               </a>
@@ -146,7 +148,7 @@ export default function Navbar({ colors = {} }) {
         <div className="flex items-center gap-4 flex-shrink-0 z-10">
           <Link
             href="/register-interest"
-            className="hidden lg:inline-flex items-center px-6 py-2.5 font-sans  font-[300] text-[14px] tracking-[2px] uppercase transition-all duration-300 border border-[var(--bg-secondary)] text-[color:var(--nav-btn-text)] bg-[var(--bg-secondary)] hover:bg-[var(--bg-tertiary)] hover:border-[var(--bg-tertiary)] hover:text-[color:var(--nav-btn-hover-text)]"
+            className="hidden lg:inline-flex items-center px-6 py-2.5 font-sans font-[300] text-[14px] tracking-[2px] uppercase transition-all duration-300 border border-[var(--bg-secondary)] text-[color:var(--nav-btn-text)] bg-[var(--bg-secondary)] hover:bg-[var(--bg-tertiary)] hover:border-[var(--bg-tertiary)] hover:text-[color:var(--nav-btn-hover-text)]"
           >
             Register Interest
           </Link>
@@ -172,7 +174,7 @@ export default function Navbar({ colors = {} }) {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="font-sans text-[14px] font-normal tracking-[2px] transition-colors py-1 text-[color:var(--nav-mobile-link)] hover:text-[color:var(--nav-mobile-link-hover)]"
+                  className={`font-sans text-[14px] tracking-[2px] transition-colors py-1 text-[color:var(--nav-mobile-link)] hover:text-[color:var(--nav-mobile-link-hover)] ${pathname === link.href ? 'font-bold' : 'font-normal'}`}
                 >
                   {link.label}
                 </Link>
@@ -183,7 +185,7 @@ export default function Navbar({ colors = {} }) {
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
                   onClick={() => setOpen(false)}
-                  className="font-sans text-[14px] font-normal tracking-[2px] transition-colors py-1 text-[color:var(--nav-mobile-link)] hover:text-[color:var(--nav-mobile-link-hover)]"
+                  className={`font-sans text-[14px] tracking-[2px] transition-colors py-1 text-[color:var(--nav-mobile-link)] hover:text-[color:var(--nav-mobile-link-hover)] ${activeSection === 'developments' ? 'font-bold' : 'font-normal'}`}
                 >
                   {link.label}
                 </a>
