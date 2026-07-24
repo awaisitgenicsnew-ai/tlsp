@@ -49,7 +49,7 @@ export default function IntroSection1() {
           >
             Discover PLT Holding
           </a>
-            <div className="relative z-10  mt-16 ">
+            <div className="relative z-10 mt-16 ">
         <div className="grid grid-cols-2 md:grid-cols-4 bg-[var(--bg-secondary)]/10 border border-[rgba(237,230,216,0.16)] backdrop-blur-[14px] animate-[riseIn_1.1s_cubic-bezier(0.2,0.8,0.2,1)_0.15s_both]">
           <div className="p-4 md:p-6.5 border-r border-b md:border-b-0 border-[rgba(237,230,216,0.16)] flex gap-3 md:gap-4 items-start transition-background duration-300 hover:bg-[rgba(237,230,216,0.045)]">
             <span className="font-serif italic text-[16px] md:text-[20px] text-[var(--bg-tertiary)] leading-none pt-0.5">I</span>
