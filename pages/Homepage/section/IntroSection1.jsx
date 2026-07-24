@@ -22,8 +22,8 @@ export default function IntroSection1() {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex-1 flex items-center justify-start px-6 md:px-12 py-22">
-        <div className="max-w-[800px] w-full py-4 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both]">
+      <div className="relative z-10 flex-1 flex  items-center justify-start px-6 md:px-12 py-22">
+        <div className="  w-full py-4 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both]">
           {/* Headline */}
           <h2 className="font-serif font-normal text-[clamp(36px,5vw,52px)] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[var(--text-primary)]">
             New vision. <span className="font-medium text-[var(--bg-tertiary)]">Established strength.</span>
@@ -49,11 +49,7 @@ export default function IntroSection1() {
           >
             Discover PLT Holding
           </a>
-        </div>
-      </div>
-
-      {/* Credentials */}
-      <div className="relative z-10 px-6 md:px-12 pb-11">
+            <div className="relative z-10  mt-16 ">
         <div className="grid grid-cols-2 md:grid-cols-4 bg-[var(--bg-secondary)]/10 border border-[rgba(237,230,216,0.16)] backdrop-blur-[14px] animate-[riseIn_1.1s_cubic-bezier(0.2,0.8,0.2,1)_0.15s_both]">
           <div className="p-4 md:p-6.5 border-r border-b md:border-b-0 border-[rgba(237,230,216,0.16)] flex gap-3 md:gap-4 items-start transition-background duration-300 hover:bg-[rgba(237,230,216,0.045)]">
             <span className="font-serif italic text-[16px] md:text-[20px] text-[var(--bg-tertiary)] leading-none pt-0.5">I</span>
@@ -85,6 +81,12 @@ export default function IntroSection1() {
           </div>
         </div>
       </div>
+        </div>
+          {/* Credentials */}
+    
+      </div>
+
+    
 
       <style jsx>{`
         @keyframes riseIn {
