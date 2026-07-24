@@ -164,7 +164,7 @@ export default function DevelopmentsSection() {
             </Link>
             <button
               onClick={() => handleButtonClick(project.secondaryButtonLink)}
-              className="flex-1 font-mono text-[12px] tracking-[0.14em] uppercase text-[var(--text-primary)] bg-transparent px-5.5 py-4 border border-[rgba(237,230,216,0.18)] cursor-pointer transition-all duration-250 hover:border-[var(--accent-gold)] hover:bg-[rgba(237,230,216,0.04)] inline-flex items-center gap-2.5 whitespace-nowrap"
+              className="flex-1 font-mono text-[12px] tracking-[0.14em] uppercase text-[var(--text-primary)] bg-transparent px-5.5 py-4 border border-[rgba(237,230,216,0.18)] cursor-pointer transition-all duration-250 hover:border-[var(--accent-gold)] hover:bg-[rgba(237,230,216,0.04)]  flex justify-center items-center whitespace-nowrap"
             >
               {project.secondaryButtonText}
               <svg className="w-3.5 h-3.5 transition-transform duration-250 flex-shrink-0 hover:translate-x-0.75" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
