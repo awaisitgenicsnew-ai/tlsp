@@ -14,13 +14,13 @@ const SLIDES = [
     subheading: "Where Vision Meets Excellence"
   },
   {
-    image: "/images/aboutimg2.jpeg",
+    image: "/images/aboutimg1.jpeg",
     eyebrow: "ABOUT US · PLT PROPERTIES",
     heading: "European Standards, Arabian Hospitality",
     subheading: "A Legacy of Luxury"
   },
   {
-    image: "/images/aboutimg3.jpeg",
+    image: "/images/aboutimg1.jpeg",
     eyebrow: "ABOUT US · PLT PROPERTIES",
     heading: "Redefining Luxury Living in Dubai",
     subheading: "Crafting Extraordinary Spaces"

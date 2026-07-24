@@ -6,7 +6,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '@/components/Navbar';
 import FloatingActionBar from '@/components/FloatingActionBar';
 import Footer from '@/components/Footer';
-import { projectApi } from '@/lib/api';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +13,6 @@ gsap.registerPlugin(ScrollTrigger);
 import HeroSlider from './section/HeroSlider';
 import IntroSection1 from './section/IntroSection1';
 import { BrandPillarsSlider } from './section/ResidencesSectionNew';
-import DevelopmentsGridSection from './section/DevelopmentsGridSection';
 import Developments from './section/DevelopmentsSection';
 import Philosophy from './section/PhilosophySection';
 import ExperienceSection from './section/ExperienceSection';
@@ -29,6 +27,7 @@ import ContactSection from './section/ContactSection';
 const BASE_SECTIONS = [
   { id: 'hero', Component: HeroSlider, theme: 'dark', animate: false },
   { id: 'intro-1', Component: IntroSection1, theme: 'dark', animate: true },
+  { id: 'developments', Component: Developments, theme: 'dark', animate: true },
   { id: 'brand-pillars', Component: BrandPillarsSlider, theme: 'dark', animate: false },
   { id: 'philosophy', Component: Philosophy, theme: 'light', animate: true },
   { id: 'experience', Component: ExperienceSection, theme: 'light', animate: true },
@@ -85,53 +84,8 @@ export default function Homepage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isNearLastSection, setIsNearLastSection] = useState(false);
-  const [sections, setSections] = useState(BASE_SECTIONS);
   const wrapperRef = useRef(null);
   const trackRef = useRef(null);
-
-  // Fetch published projects and conditionally add development sections
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await projectApi.getAll({ publication_status: 'published' });
-        if (response?.data?.length > 0) {
-          const publishedProjects = response.data;
-          const highDemandProject = publishedProjects.find(p => p.badge === 'High Demand');
-          const otherProjects = publishedProjects.filter(p => p.badge !== 'High Demand');
-
-          const dynamicSections = [...BASE_SECTIONS];
-          const insertIndex = 2; // After intro
-
-          // Add DevelopmentsSection if High Demand project exists
-          if (highDemandProject) {
-            dynamicSections.splice(insertIndex, 0, {
-              id: 'developments',
-              Component: Developments,
-              theme: 'dark',
-              animate: true
-            });
-          }
-
-          // Add DevelopmentsGridSection if other projects exist
-          if (otherProjects.length > 0) {
-            const gridIndex = highDemandProject ? insertIndex + 1 : insertIndex;
-            dynamicSections.splice(gridIndex, 0, {
-              id: 'developments-grid',
-              Component: DevelopmentsGridSection,
-              theme: 'light',
-              animate: true
-            });
-          }
-
-          setSections(dynamicSections);
-        }
-      } catch (error) {
-        // Silently handle API errors - app will work without development sections
-        console.warn('Backend API unavailable - running without development sections:', error.message);
-      }
-    };
-    fetchProjects();
-  }, []);
 
   useEffect(() => {
     // Kill all existing ScrollTriggers to prevent cached scroll positions
@@ -169,7 +123,7 @@ export default function Homepage() {
           anticipatePin: 1,
           // Snap: jis section ki taraf aadhe se zyada scroll hoga, wahi properly snap ho jayega
           snap: {
-            snapTo: 1 / (sections.length - 1),
+            snapTo: 1 / (BASE_SECTIONS.length - 1),
             duration: { min: 0.3, max: 0.5 },
             ease: 'power2.inOut',
             delay: 0,
@@ -180,12 +134,12 @@ export default function Homepage() {
           onUpdate: (self) => {
             setProgress(self.progress);
             const idx = Math.min(
-              sections.length - 1,
-              Math.round(self.progress * (sections.length - 1))
+              BASE_SECTIONS.length - 1,
+              Math.round(self.progress * (BASE_SECTIONS.length - 1))
             );
             setActiveIndex(idx);
             // Detect when the last section (contact) is active
-            setIsNearLastSection(idx === sections.length - 1);
+            setIsNearLastSection(idx === BASE_SECTIONS.length - 1);
           },
         },
       });
@@ -207,7 +161,7 @@ export default function Homepage() {
           onToggle: (self) => {
             if (self.isActive) {
               setActiveIndex(i);
-              setIsNearLastSection(i === sections.length - 1);
+              setIsNearLastSection(i === BASE_SECTIONS.length - 1);
             }
           },
         })
@@ -229,9 +183,9 @@ export default function Homepage() {
     });
 
     return () => mm.revert();
-  }, [sections]);
+  }, []);
 
-  const isDarkSection = sections[activeIndex]?.theme === 'dark';
+  const isDarkSection = BASE_SECTIONS[activeIndex]?.theme === 'dark';
 
   const navbarColors = isNearLastSection
     ? { top: BLACK_BG_SCHEME, scrolled: BLACK_BG_SCHEME }
@@ -242,7 +196,7 @@ export default function Homepage() {
   return (
     <div className="relative w-full">
       {/* Fixed Navbar — theme active section ke hisaab se auto-switch hota hai */}
-      <Navbar colors={navbarColors} activeSection={sections[activeIndex]?.id} />
+      <Navbar colors={navbarColors} activeSection={BASE_SECTIONS[activeIndex]?.id} />
 
       {/* Scroll Progress Bar */}
       <div className="fixed bottom-0 left-0 right-0 h-[3px] z-[1100] bg-transparent">
@@ -260,7 +214,7 @@ export default function Homepage() {
           aria-label="Homepage sections"
           className="flex flex-col md:flex-row md:h-screen md:w-max will-change-transform"
         >
-          {sections.map(({ id, Component, theme }) => (
+          {BASE_SECTIONS.map(({ id, Component, theme }) => (
             <section
               key={id}
               id={`section-${id}`}

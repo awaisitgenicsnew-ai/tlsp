@@ -7,7 +7,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 // About Us sections
-import HeroSection from './section/HeroSection';
 import IntroSection2 from './section/IntroSection2';
 import IntroSection3 from './section/IntroSection3';
 import MissionSection from './section/MissionSection';
@@ -18,7 +17,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 // theme: 'dark' = navbar text WHITE, 'light' = navbar text BLACK, 'dark-bg' = navbar with dark background, 'mission-bg' = navbar with bronze background
 const SECTIONS = [
-  { id: 'hero', Component: HeroSection, theme: 'dark' },
   { id: 'intro-2', Component: IntroSection2, theme: 'dark' },
   { id: 'intro-3', Component: IntroSection3, theme: 'dark' },
    { id: 'values', Component: ValuesSection, theme: 'mission-bg' },

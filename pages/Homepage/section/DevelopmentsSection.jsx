@@ -1,32 +1,17 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { projectApi, getImageUrl } from "@/lib/api";
+import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Navigation } from "swiper/modules";
+import { Building, Home, Ruler, MapPin, Eye, Train } from "lucide-react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
 export default function DevelopmentsSection() {
   const router = useRouter();
-  const [project, setProject] = useState(null);
   const revealRefs = useRef([]);
-
-  useEffect(() => {
-    const fetchProject = async () => {
-      try {
-        const response = await projectApi.getAll({ badge: "High Demand", publication_status: "published" });
-        if (response?.data?.length > 0) {
-          setProject(response.data[0]);
-        }
-      } catch (error) {
-        console.error("Failed to fetch featured project:", error);
-      }
-    };
-    fetchProject();
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,7 +29,6 @@ export default function DevelopmentsSection() {
     revealRefs.current.forEach((ref) => {
       if (ref) {
         observer.observe(ref);
-        // Check if element is already in view
         if (ref.getBoundingClientRect().top < window.innerHeight) {
           ref.classList.add('in');
           observer.unobserve(ref);
@@ -81,17 +65,40 @@ export default function DevelopmentsSection() {
     }
   };
 
-  if (!project) {
-    return null;
-  }
+  // Static project data
+  const project = {
+    badge: "Welcome back",
+    title: "PLT Tower",
+    location: "Business Bay, Dubai",
+    description: "PLT Tower is the first expression of the PLT Properties vision. Rising in Dubai's Business Bay, the 39-storey residential development brings Italian design culture and a more personal understanding of luxury to one of the city's most dynamic destinations. Its architecture, residences and experiences are conceived around a single belief: the greatest luxury is how your home makes you feel.",
+    type: "Residential",
+    handover: "Q4 2026",
+    payment: "60/40",
+    primaryButtonText: "Discover PLT Tower",
+    primaryButtonLink: "https://www.plttower.com/",
+    secondaryButtonText: "Register Interest",
+    secondaryButtonLink: "/register-interest"
+  };
 
-  // Get images array or fall back to single image
-  const slides = project.images && project.images.length > 0 
-    ? project.images 
-    : project.image ? [project.image] : [];
+  // Project highlights
+  const highlights = [
+    { icon: <Building size={20} />, text: "39-storey residential tower" },
+    { icon: <Home size={20} />, text: "384 residences" },
+    { icon: <Ruler size={20} />, text: "Approximately 43,000 sqm of gross floor area" },
+    { icon: <MapPin size={20} />, text: "Located on Marasi Drive in Business Bay" },
+    { icon: <Eye size={20} />, text: "Unmatched Views toward Burj Khalifa and Dubai Canal" },
+    { icon: <Train size={20} />, text: "Close to Downtown Dubai and DIFC" }
+  ];
+
+  // Static images from public folder
+  const slides = [
+    "/images/plt-tower.jpg",
+    "/images/business-bay.jpg",
+    "/images/home-slider/imgslide1.jpg"
+  ];
 
   return (
-    <section className="relative bg-[var(--bg-section)] py-[clamp(56px,10vw,110px)] px-[clamp(20px,5vw,48px)] overflow-hidden">
+    <section className="relative bg-[var(--bg-section)] py-[clamp(56px,10vw,110px)] px-[clamp(20px,5vw,18px)] overflow-hidden">
       {/* Grid Pattern Overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -105,16 +112,14 @@ export default function DevelopmentsSection() {
         }}
       />
 
-      <div className="relative max-w-[1300px] mx-auto grid grid-cols-[minmax(0,0.82fr)_minmax(0,1fr)] gap-[clamp(36px,6vw,72px)] items-center py-[clamp(40px,8vw,80px)] px-[clamp(20px,4vw,40px)]">
+      <div className="relative max-w-[1300px] mx-auto grid grid-cols-[minmax(0,0.6fr)_minmax(0,0.4fr)] gap-[clamp(36px,6vw,72px)] items-center px-[20px]">
         {/* Copy */}
         <div className="min-w-0 reveal" ref={addToRefs}>
           {/* Badge */}
-          {project.badge && (
-            <span className="inline-flex items-center gap-2 font-mono text-[10.5px] tracking-[0.18em] uppercase text-[var(--bg-tertiary)] border border-[var(--bg-tertiary)] px-3.5 py-2 mb-[clamp(22px,4vw,32px)] whitespace-nowrap">
-              <span className="w-1.5 h-1.5 flex-shrink-0 bg-[var(--accent-gold)] rounded-full" />
-              {project.badge}
-            </span>
-          )}
+          <span className="inline-flex items-center gap-2 font-mono text-[10.5px] tracking-[0.18em] uppercase text-[var(--bg-tertiary)] border border-[var(--bg-tertiary)] px-3.5 py-2 mb-2 whitespace-nowrap">
+            <span className="w-1.5 h-1.5 flex-shrink-0 bg-[var(--accent-gold)] rounded-full" />
+            {project.badge}
+          </span>
 
           {/* Headline */}
           <h1 className="font-serif font-medium text-[clamp(34px,5.5vw,56px)] tracking-[0.01em] leading-[1.05] text-[var(--text-primary)] m-0 mb-5 uppercase word-break">
@@ -122,45 +127,45 @@ export default function DevelopmentsSection() {
           </h1>
 
           {/* Location */}
-          <div className="flex items-center gap-3.5 font-mono text-[11.5px] tracking-[0.18em] uppercase text-[var(--bg-tertiary)] mb-6.5 flex-wrap">
+          <div className="flex items-center gap-3.5 font-mono text-[11.5px] tracking-[0.18em] uppercase text-[var(--bg-tertiary)] mb-4 flex-wrap">
             <span className="w-[26px] h-px bg-[var(--bg-tertiary)] flex-shrink-0" />
             {project.location}
           </div>
 
           {/* Description */}
-          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[480px] m-0 mb-[clamp(28px,5vw,36px)]">
+          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[var(--text-secondary)] font-light  m-0 mb-[clamp(28px,5vw,36px)]">
             {project.description}
           </p>
 
-          {/* Stats Strip */}
-          <div className="flex flex-wrap border-t border-b border-[rgba(237,230,216,0.18)] mb-[clamp(30px,5vw,40px)]">
-            <div className="flex-1 min-w-[110px] py-5 pl-[clamp(12px,2vw,24px)] pr-[clamp(12px,2vw,24px)] border-r border-[rgba(237,230,216,0.18)]">
-              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[var(--text-secondary)] mb-2.5 whitespace-nowrap">Type</div>
-              <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[var(--text-primary)] whitespace-nowrap">{project.type}</div>
-            </div>
-            <div className="flex-1 min-w-[110px] py-5 pl-[clamp(12px,2vw,24px)] pr-[clamp(12px,2vw,24px)] border-r border-[rgba(237,230,216,0.18)]">
-              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2.5 whitespace-nowrap">Handover</div>
-              <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#EDE6D8] whitespace-nowrap">{project.handover}</div>
-            </div>
-            <div className="flex-1 min-w-[110px] py-5 pl-[clamp(12px,2vw,24px)] pr-[clamp(12px,2vw,24px)] border-r-0">
-              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#C9BFAD] mb-2.5 whitespace-nowrap">Payment</div>
-              <div className="font-serif text-[clamp(18px,2.2vw,24px)] font-medium text-[#EDE6D8] whitespace-nowrap">{project.payment}</div>
-            </div>
+          {/* Project Highlights */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-[clamp(28px,5vw,36px)]">
+            {highlights.map((highlight, index) => (
+              <div key={index} className="flex items-center gap-3 p-3 h-[72px] bg-[rgba(237,230,216,0.05)] border border-[rgba(237,230,216,0.12)] backdrop-blur-sm transition-all duration-300 hover:bg-[rgba(237,230,216,0.08)] hover:border-[rgba(237,230,216,0.2)]">
+                <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-[rgba(237,230,216,0.1)] rounded-lg text-[var(--bg-tertiary)]">
+                  {highlight.icon}
+                </div>
+                <p className="text-[13px] leading-[1.4] text-[var(--text-primary)] font-light m-0 line-clamp-2">
+                  {highlight.text}
+                </p>
+              </div>
+            ))}
           </div>
 
           {/* Actions */}
           <div className="flex flex-wrap gap-3.5">
-            <button
-              onClick={() => handleButtonClick(project.primaryButtonLink)}
+            <Link
+              href={project.primaryButtonLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex-1 text-center font-mono text-[12px] tracking-[0.14em] uppercase text-[#fff] bg-[var(--bg-secondary)] px-6.5 py-4 border border-[var(--bg-secondary)] cursor-pointer transition-all duration-250 hover:bg-[var(--bg-tertiary)] hover:border-[var(--bg-tertiary)] whitespace-nowrap"
             >
-              {project.primaryButtonText || "View Information"}
-            </button>
+              {project.primaryButtonText}
+            </Link>
             <button
               onClick={() => handleButtonClick(project.secondaryButtonLink)}
               className="flex-1 font-mono text-[12px] tracking-[0.14em] uppercase text-[var(--text-primary)] bg-transparent px-5.5 py-4 border border-[rgba(237,230,216,0.18)] cursor-pointer transition-all duration-250 hover:border-[var(--accent-gold)] hover:bg-[rgba(237,230,216,0.04)] inline-flex items-center gap-2.5 whitespace-nowrap"
             >
-              {project.secondaryButtonText || "Register"}
+              {project.secondaryButtonText}
               <svg className="w-3.5 h-3.5 transition-transform duration-250 flex-shrink-0 hover:translate-x-0.75" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M13 6l6 6-6 6"/>
               </svg>
@@ -168,55 +173,36 @@ export default function DevelopmentsSection() {
           </div>
         </div>
 
-        {/* Media */}
+        {/* Media - Static Swiper */}
         <div className="min-w-0 reveal" ref={addToRefs}>
           <div className="relative">
             <div className="relative border border-[rgba(237,230,216,0.16)] leading-none">
-              {slides.length > 0 ? (
-                <Swiper
-                  modules={[Autoplay, EffectFade, Navigation]}
-                  effect="fade"
-                  fadeEffect={{ crossFade: true }}
-                  speed={1000}
-                  autoplay={{ delay: 4000, disableOnInteraction: false }}
-                  loop={slides.length > 1}
-                  navigation={{
-                    nextEl: '.custom-dev-next',
-                    prevEl: '.custom-dev-prev',
-                  }}
-                  className="w-full h-[350px]"
-                >
-                  {slides.map((img, i) => (
-                    <SwiperSlide key={i}>
-                      <div className="relative w-full h-[350px]">
-                        <Image
-                          src={getImageUrl(img)}
-                          alt={`${project.imageAlt || project.title} - ${i + 1}`}
-                          fill
-                          className="object-cover"
-                          style={{ filter: 'saturate(1.03) contrast(1.02)' }}
-                          priority
-                          unoptimized
-                        />
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              ) : (
-                project.image && (
-                  <Image
-                    src={getImageUrl(project.image)}
-                    alt={project.imageAlt || project.title}
-                    width={1600}
-                    height={560}
-                    className="w-full h-[350px] object-cover block"
-                    style={{ filter: 'saturate(1.03) contrast(1.02)' }}
-                    priority
-                    unoptimized
-                  />
-                )
-              )}
-            
+              <Swiper
+                modules={[Autoplay, EffectFade, Navigation]}
+                effect="fade"
+                fadeEffect={{ crossFade: true }}
+                speed={1000}
+                autoplay={{ delay: 4000, disableOnInteraction: false }}
+                loop={slides.length > 1}
+                navigation={{
+                  nextEl: '.custom-dev-next',
+                  prevEl: '.custom-dev-prev',
+                }}
+                className="w-full h-[350px]"
+              >
+                {slides.map((img, i) => (
+                  <SwiperSlide key={i}>
+                    <div className="relative w-full h-[350px]">
+                      <img
+                        src={img}
+                        alt={`${project.title} - ${i + 1}`}
+                        className="w-full h-full object-cover"
+                        style={{ filter: 'saturate(1.03) contrast(1.02)' }}
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
               <div className="absolute w-[22px] h-[22px] -top-px -right-px border-t-1.5 border-r-1.5 border-[var(--accent-gold)]" />
               <div className="absolute w-[22px] h-[22px] -bottom-px -left-px border-b-1.5 border-l-1.5 border-[var(--accent-gold)]" />
             </div>
