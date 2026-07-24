@@ -31,6 +31,7 @@ export default function ContactSection() {
 
     try {
       const payload = {
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
         firstName: formData.firstName,
         lastName: formData.lastName,
         phone: formData.phone,
@@ -56,16 +57,8 @@ export default function ContactSection() {
       console.log('Validation errors:', data.errors);
 
       if (response.ok) {
-        // Redirect to thank you page with form data
-        const params = new URLSearchParams({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          phone: formData.phone || '',
-          country: formData.country || '',
-          enquiryType: formData.enquiryType || ''
-        });
-        router.push(`/thank-you?${params.toString()}`);
+        // Redirect to thank you page
+        router.push('/thank-you');
       } else {
         if (data.errors && data.errors.length > 0) {
           const errorMessages = data.errors.map(err => `${err.field}: ${err.message}`).join(', ');

@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { leadApi } from '../../../lib/api';
 
 function FormInput({ label, type = "text", name, value, onChange, placeholder, className = "" }) {
   return (
@@ -61,22 +60,33 @@ export default function ContactFormSection() {
     setSuccess(false);
 
     try {
-      console.log('Submitting form data:', formData);
-      const response = await leadApi.createLead(formData);
-      console.log('API response:', response);
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        developmentOfInterest: formData.developmentOfInterest,
+        interest: formData.interest,
+        message: formData.message
+      };
 
-      if (response.success) {
-        // Redirect to thank you page with form data
-        const params = new URLSearchParams({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone || '',
-          development: formData.developmentOfInterest || '',
-          interest: formData.interest || ''
-        });
-        router.push(`/thank-you?${params.toString()}`);
+      console.log('Submitting payload:', payload);
+
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/leads`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+      console.log('API Response:', data);
+
+      if (response.ok) {
+        // Redirect to thank you page
+        router.push('/thank-you');
       } else {
-        setError(response.message || 'Failed to submit form');
+        setError(data.message || 'Failed to submit form');
       }
     } catch (err) {
       console.error('Form submission error:', err);
