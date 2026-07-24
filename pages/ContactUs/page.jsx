@@ -21,7 +21,7 @@ const WHITE_SCHEME = {
 };
 
 const SCROLLED_SCHEME = {
-  bg: '#181410',
+  bg: '#1D2128',
   border: 'rgba(255,255,255,0.1)',
   text: '#ffffff',
   subText: 'rgba(255,255,255,0.8)',

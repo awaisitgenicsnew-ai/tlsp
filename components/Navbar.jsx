@@ -29,7 +29,7 @@ const DEFAULT_COLORS = {
     buttonHoverText: "#000000",
   },
   scrolled: {
-    bg: "transparent",
+    bg: "#1D2128",
     border: "rgba(0,0,0,0.1)",
     text: "#000000",
     subText: "rgba(0,0,0,0.6)",
