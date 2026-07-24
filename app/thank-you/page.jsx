@@ -4,21 +4,52 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { useEffect } from 'react';
 
 export default function ThankYouPage() {
   const router = useRouter();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const WHITE_SCHEME = {
+    bg: 'transparent',
+    border: 'rgba(255,255,255,0.1)',
+    text: '#ffffff',
+    subText: 'rgba(255,255,255,0.8)',
+    link: 'rgba(255,255,255,0.9)',
+    linkHover: '#ffffff',
+    buttonBorder: 'var(--bg-primary)',
+    buttonText: '#ffffff',
+    buttonHoverBg: '#ffffff',
+    buttonHoverText: '#000000',
+  };
+
+  const SCROLLED_SCHEME = {
+    bg: '#1D2128',
+    border: 'rgba(255,255,255,0.1)',
+    text: '#ffffff',
+    subText: 'rgba(255,255,255,0.8)',
+    link: 'rgba(255,255,255,0.9)',
+    linkHover: '#ffffff',
+    buttonBorder: 'var(--bg-primary)',
+    buttonText: '#ffffff',
+    buttonHoverBg: '#ffffff',
+    buttonHoverText: '#000000',
+  };
+
   return (
     <div className="min-h-screen bg-[var(--bg-section)] flex flex-col">
-      <Navbar />
+      <Navbar colors={{ top: WHITE_SCHEME, scrolled: SCROLLED_SCHEME }} />
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-20">
       <div className="max-w-[880px] w-full text-center">
-   
-        <svg className="w-[118px] h-[150px] mx-auto mb-10" viewBox="0 0 118 150" xmlns="http://www.w3.org/2000/svg">
+      <svg className="w-[118px] h-[150px] mx-auto mb-10" viewBox="0 0 118 150" xmlns="http://www.w3.org/2000/svg">
           <path d="M40 148 L40 40 L59 18 L78 40 L78 148" fill="none" stroke="#b08d57" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="520" strokeDashoffset="520" style={{ animation: 'draw 1.7s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.15s' }}></path>
           <path d="M46 148 L46 60 M52 148 L52 55 M66 148 L66 55 M72 148 L72 60" strokeWidth="0.8" opacity="0.7" fill="none" stroke="#b08d57" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="520" strokeDashoffset="520" style={{ animation: 'draw 1.7s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.15s' }}></path>
           <path className="base" d="M24 148 L94 148" fill="none" stroke="#f5f1e8" opacity="0.35" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="200" strokeDashoffset="200" style={{ animation: 'draw 1s ease-out forwards 1.2s' }}></path>
         </svg>
+    
 
         <h1 className="font-serif font-medium text-[clamp(30px,4vw,44px)] leading-[1.2] m-0 mb-[22px] text-[#f5f1e8]">
           Thank you for <em className="text-[#b08d57] not-italic">reaching out.</em>
