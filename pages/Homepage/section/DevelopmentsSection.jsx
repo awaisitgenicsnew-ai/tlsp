@@ -98,7 +98,7 @@ export default function DevelopmentsSection() {
   ];
 
   return (
-    <section className="relative bg-[var(--bg-section)] py-[clamp(56px,10vw,110px)] px-[clamp(20px,5vw,18px)] overflow-hidden">
+    <section className="relative bg-[var(--bg-section)] py-[clamp(56px,10vw,110px)] px-[clamp(20px,5vw,18px)] overflow-hidden flex items-center justify-center">
       {/* Grid Pattern Overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -140,7 +140,7 @@ export default function DevelopmentsSection() {
           {/* Project Highlights */}
           <div className="grid grid-cols-2 gap-px bg-[rgba(237,232,222,0.12)] border border-[rgba(237,232,222,0.12)] mb-10">
             {highlights.map((highlight, index) => (
-              <div key={index} className="bg-[#12151f] p-4 flex gap-2.5 items-start">
+              <div key={index} className="bg-[#1d2128] p-4 flex gap-2.5 items-start">
                 <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center text-[#c9a876] mt-0.5">
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">{highlight.icon.props.children}</svg>
                 </div>

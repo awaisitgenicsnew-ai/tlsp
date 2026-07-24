@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 export default function Philosophy() {
   const revealRefs = useRef([]);
@@ -34,7 +35,7 @@ export default function Philosophy() {
   return (
     <section
       id="philosophy"
-      className="relative bg-[var(--bg-section)] py-[120px] px-12 md:px-12 lg:px-12 overflow-hidden border-r border-[rgba(255,255,255,0.1)]"
+      className="relative bg-[var(--bg-section)] py-[120px] px-12 md:px-12 lg:px-12 overflow-hidden border-r border-[rgba(255,255,255,0.1)] flex items-center justify-center"
     >
       {/* Grid Pattern Overlay */}
       <div
@@ -50,15 +51,7 @@ export default function Philosophy() {
       />
 
       {/* Header */}
-      <div className="phil-head relative max-w-[760px] mx-auto mb-[62px] text-center reveal" ref={addToRefs}>
-    
-        <h2 className="font-serif font-normal italic text-[clamp(32px,5vw,46px)] leading-[1.15] text-[#FFFFFF] m-0 mb-[26px]">
-          More than places to live
-        </h2>
-        <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[var(--text-secondary)] font-light m-0">
-          Creating timeless residences where Italian heritage, exceptional architecture, wellness, and hospitality come together to shape extraordinary lifestyles.
-        </p>
-      </div>
+     
 
       {/* Body */}
       <div className="phil-body relative max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-[0.85fr_1fr] gap-12 md:gap-16 items-center">
@@ -79,14 +72,17 @@ export default function Philosophy() {
         {/* Copy */}
         <div className="phil-copy reveal" ref={addToRefs}>
           <h3 className="font-serif font-normal text-[clamp(28px,4vw,36px)] leading-[1.22] text-[var(--text-primary)] m-0 mb-7">
-            Designed to enrich everyday living
+            Design, place and a better living
           </h3>
-          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[#C9BFAD] font-light m-0 mb-5">
-            Every PLT residence begins with a simple belief: exceptional living starts with exceptional design.
+          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[var(--text-secondary)] font-light m-0 mb-8">
+            Explore stories about architecture, Italian design, wellness, nature and the destinations shaping the future of real estate.
           </p>
-          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[var(--text-secondary)] font-light m-0">
-            Inspired by Italian craftsmanship, every detail is thoughtfully considered to create homes that feel timeless, welcoming, and beautifully balanced. From elegant architecture to refined interiors, our spaces are designed to elevate everyday life while creating lasting value for generations.
-          </p>
+          <Link
+            href="/blog"
+            className="inline-block text-[12px] tracking-[0.2em] uppercase text-[var(--text-primary)] border border-[rgba(237,230,216,0.3)] px-8 py-3 hover:bg-[rgba(237,230,216,0.1)] transition-colors"
+          >
+            Learn More
+          </Link>
         </div>
       </div>
 

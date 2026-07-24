@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="relative bg-[var(--bg-section)] py-[clamp(60px,8vw,120px)] px-6 md:px-12 overflow-hidden border-r border-[rgba(255,255,255,0.1)]">
+    <section id="experience" className="relative bg-[var(--bg-section)] py-[clamp(60px,8vw,120px)] px-6 md:px-12 overflow-hidden border-r border-[rgba(255,255,255,0.1)] flex items-center flex-col justify-center">
       {/* Grid Pattern Overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
