@@ -70,7 +70,7 @@ export default function DevelopmentsSection() {
     badge: "Welcome back",
     title: "PLT Tower",
     location: "Business Bay, Dubai",
-    description: "PLT Tower is the first expression of the PLT Properties vision. Rising in Dubai's Business Bay, the 39-storey residential development brings Italian design culture and a more personal understanding of luxury to one of the city's most dynamic destinations. Its architecture, residences and experiences are conceived around a single belief: the greatest luxury is how your home makes you feel.",
+    description: "PLT Tower is the first expression of the PLT Properties vision — a 39-storey residence in Dubai's Business Bay, shaped by Italian design culture and a more personal understanding of luxury.",
     type: "Residential",
     handover: "Q4 2026",
     payment: "60/40",
@@ -82,12 +82,12 @@ export default function DevelopmentsSection() {
 
   // Project highlights
   const highlights = [
-    { icon: <Building size={20} />, text: "39-storey residential tower" },
-    { icon: <Home size={20} />, text: "384 residences" },
-    { icon: <Ruler size={20} />, text: "Approximately 43,000 sqm of gross floor area" },
-    { icon: <MapPin size={20} />, text: "Located on Marasi Drive in Business Bay" },
-    { icon: <Eye size={20} />, text: "Unmatched Views toward Burj Khalifa and Dubai Canal" },
-    { icon: <Train size={20} />, text: "Close to Downtown Dubai and DIFC" }
+    { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M5 21V7l7-4 7 4v14"></path><path d="M9 21v-6h6v6"></path><path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01"></path></svg>, num: "39 storeys", lbl: "Residential tower" },
+    { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="6" y="3" width="12" height="18" rx="1"></rect><path d="M14 12h.01"></path></svg>, num: "384 residences", lbl: "Studio to 3-bed homes" },
+    { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="9" width="18" height="6" rx="1"></rect><path d="M7 9v2M11 9v3M15 9v2M19 9v3"></path></svg>, num: "~43,000 sqm", lbl: "Gross floor area" },
+    { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>, num: "Marasi Drive", lbl: "Business Bay address" },
+    { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>, num: "Unmatched views", lbl: "Burj Khalifa and Dubai Canal" },
+    { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 20l-6-2V6l6-2 6 2 6-2v14l-6 2-6-2z"></path><path d="M9 4v14M15 6v14"></path></svg>, num: "Prime proximity", lbl: "Close to Downtown and DIFC" }
   ];
 
   // Static images from public folder
@@ -112,7 +112,7 @@ export default function DevelopmentsSection() {
         }}
       />
 
-      <div className="relative max-w-[1300px] mx-auto grid grid-cols-[minmax(0,0.6fr)_minmax(0,0.4fr)] gap-[clamp(36px,6vw,72px)] items-center px-[20px]">
+      <div className="relative max-w-[1300px] mx-auto grid grid-cols-2 gap-[clamp(36px,6vw,72px)] items-center px-[20px]">
         {/* Copy */}
         <div className="min-w-0 reveal" ref={addToRefs}>
           {/* Badge */}
@@ -138,15 +138,16 @@ export default function DevelopmentsSection() {
           </p>
 
           {/* Project Highlights */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-[clamp(28px,5vw,36px)]">
+          <div className="grid grid-cols-2 gap-px bg-[rgba(237,232,222,0.12)] border border-[rgba(237,232,222,0.12)] mb-10">
             {highlights.map((highlight, index) => (
-              <div key={index} className="flex items-center gap-3 p-3 h-[72px] bg-[rgba(237,230,216,0.05)] border border-[rgba(237,230,216,0.12)] backdrop-blur-sm transition-all duration-300 hover:bg-[rgba(237,230,216,0.08)] hover:border-[rgba(237,230,216,0.2)]">
-                <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-[rgba(237,230,216,0.1)] rounded-lg text-[var(--bg-tertiary)]">
-                  {highlight.icon}
+              <div key={index} className="bg-[#12151f] p-4 flex gap-2.5 items-start">
+                <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center text-[#c9a876] mt-0.5">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">{highlight.icon.props.children}</svg>
                 </div>
-                <p className="text-[13px] leading-[1.4] text-[var(--text-primary)] font-light m-0 line-clamp-2">
-                  {highlight.text}
-                </p>
+                <div>
+                  <div className="font-serif text-[15px] leading-[1.3] text-[#ede8de]">{highlight.num}</div>
+                  <div className="text-[11px] text-[#a9a9a0] tracking-[0.3px] mt-0.5">{highlight.lbl}</div>
+                </div>
               </div>
             ))}
           </div>

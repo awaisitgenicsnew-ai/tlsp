@@ -31,6 +31,7 @@ export default function ContactSection() {
 
     try {
       const payload = {
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
         firstName: formData.firstName,
         lastName: formData.lastName,
         phone: formData.phone,
