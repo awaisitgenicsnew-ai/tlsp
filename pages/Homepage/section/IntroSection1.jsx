@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export default function IntroSection1() {
   return (
     <section id="intro-1" className="w-full min-h-screen flex flex-col relative overflow-hidden">
@@ -41,14 +43,14 @@ export default function IntroSection1() {
           </p>
 
           {/* CTA */}
-          <a
-            href="https://www.plttower.com/"
+          <Link
+            href="https://www.pltholding.it/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-start mt-4 px-6 py-2.5 font-sans font-[300] text-[14px] tracking-[2px] uppercase transition-all duration-300 border border-[#fff] text-[#fff] hover:bg-[var(--accent-gold)] hover:text-[#14110e]"
           >
             Discover PLT Holding
-          </a>
+          </Link>
             <div className="relative z-10 mt-16 ">
         <div className="grid grid-cols-2 md:grid-cols-4 bg-[var(--bg-secondary)]/10 border border-[rgba(237,230,216,0.16)] backdrop-blur-[14px] animate-[riseIn_1.1s_cubic-bezier(0.2,0.8,0.2,1)_0.15s_both]">
           <div className="p-4 md:p-6.5 border-r border-b md:border-b-0 border-[rgba(237,230,216,0.16)] flex gap-3 md:gap-4 items-start transition-background duration-300 hover:bg-[rgba(237,230,216,0.045)]">

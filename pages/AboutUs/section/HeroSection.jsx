@@ -21,13 +21,13 @@ export default function HeroSection() {
             </h1>
             <div className="w-24 h-1 bg-[var(--accent-brown)] mb-4" />
             <div className="space-y-6 text-white/80 max-w-2xl leading-relaxed">
-              <p className="font-sans text-[18px] ">
+              <p className="text-[16.5px] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[680px] m-0 mb-4 ">
                 PLT Properties creates more than beautiful projects. We create places designed to make everyday life feel better.
               </p>
-              <p className="font-sans text-[18px] ">
+              <p className="text-[16.5px] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[680px] m-0 mb-4 ">
                 Inspired by the Italian way of living, our developments bring together timeless architecture, natural beauty, considered craftsmanship and genuine hospitality.
               </p>
-              <p className="font-sans text-[18px] ">
+              <p className="text-[16.5px] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[680px] m-0 mb-4 ">
                 Every project begins with a simple question: how can this place improve the way people live? The answer can be found in every detail — from the flow of a home and the quality of its light to the landscapes, experiences and connections that surround it.
               </p>
             </div>

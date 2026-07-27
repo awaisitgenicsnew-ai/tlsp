@@ -35,7 +35,7 @@ export default function Philosophy() {
   return (
     <section
       id="philosophy"
-      className="relative bg-[var(--bg-section)] py-[120px] px-12 md:px-12 lg:px-12 overflow-hidden border-r border-[rgba(255,255,255,0.1)] flex items-center justify-center"
+      className="relative bg-[var(--bg-section)] py-[120px] px-12 md:px-12 lg:px-12 flex-col flex overflow-hidden border-r border-[rgba(255,255,255,0.1)] flex items-center justify-center"
     >
       {/* Grid Pattern Overlay */}
       <div
@@ -51,7 +51,15 @@ export default function Philosophy() {
       />
 
       {/* Header */}
-     
+     <div className="phil-head relative max-w-[760px] mx-auto mb-[62px] text-center reveal" ref={addToRefs}>
+    
+        <h2 className="font-serif font-normal italic text-[clamp(32px,5vw,46px)] leading-[1.15] text-[#FFFFFF] m-0 mb-[26px]">
+          More than places to live
+        </h2>
+        <p className="text-[clamp(14.5px,1.6vw,18px)] leading-[1.75] text-[var(--text-secondary)] font-light m-0">
+          Creating timeless residences where Italian heritage, exceptional architecture, wellness, and hospitality come together to shape extraordinary lifestyles.
+        </p>
+      </div>
 
       {/* Body */}
       <div className="phil-body relative w-full mx-auto grid grid-cols-1 md:grid-cols-[0.85fr_1fr] gap-12 md:gap-16 items-center">
