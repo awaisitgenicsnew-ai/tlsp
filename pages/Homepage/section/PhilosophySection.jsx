@@ -71,12 +71,12 @@ export default function Philosophy() {
 
         {/* Copy */}
         <div className="phil-copy reveal" ref={addToRefs}>
-          <h3 className="font-serif font-normal text-[clamp(28px,4vw,36px)] leading-[1.22] text-[var(--text-primary)] m-0 mb-7">
+          <h3 className="font-serif font-normal text-[clamp(28px,4vw,42px)] leading-[1.22] text-[var(--text-primary)] m-0 mb-7">
             Design, place and a better living
           </h3>
-          <p className="text-[clamp(14.5px,1.6vw,16px)] leading-[1.75] text-[var(--text-secondary)] font-light m-0 mb-8">
-            Explore stories about architecture, Italian design, wellness, nature and the destinations shaping the future of real estate.
-          </p>
+          <p className="text-[20px] leading-[2.2] text-[var(--text-secondary)] font-light m-0 mb-8 ">
+            Explore stories about architecture, Italian design, wellness, nature   <br/> and the destinations shaping the future of real estate.
+          </p> 
           <Link
             href="/blog"
             className="inline-block text-[12px] tracking-[0.2em] uppercase text-[var(--text-primary)] border border-[rgba(237,230,216,0.3)] px-8 py-3 hover:bg-[rgba(237,230,216,0.1)] transition-colors"
