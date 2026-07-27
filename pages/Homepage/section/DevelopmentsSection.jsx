@@ -92,9 +92,12 @@ export default function DevelopmentsSection() {
 
   // Static images from public folder
   const slides = [
-    "/images/plt-tower.jpg",
-    "/images/business-bay.jpg",
-    "/images/home-slider/imgslide1.jpg"
+    "/images/plt-tower/image2.webp",
+    "/images/plt-tower/imge4.webp",
+    "/images/plt-tower/image5.jpeg",
+    "/images/plt-tower/image3.webp",
+    "/images/plt-tower/imgeq.webp",
+    "/images/plt-tower/image6.jpeg"
   ];
 
   return (
