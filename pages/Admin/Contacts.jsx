@@ -117,7 +117,7 @@ export default function AdminContacts() {
   return (
     <div className="bg-gray-50">
       <main className="p-6">
-        <div className="max-w-7xl mx-auto">
+        <div className=" mx-auto">
           <div className="mb-8">
             <h1 className="font-display text-4xl font-bold text-[var(--ink)]">Contacts</h1>
           </div>

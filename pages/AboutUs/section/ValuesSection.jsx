@@ -23,8 +23,8 @@ export default function ValuesSection() {
   ];
 
   return (
-    <section className="w-full bg-[var(--bg-section)] min-h-screen flex items-center justify-center px-6 py-28 border-r border-[rgba(255,255,255,0.1)]">
-      <div className="w-full max-w-[1200px]">
+    <section className="w-full bg-[var(--bg-section)] min-h-screen flex items-center justify-center px-12 py-28 border-r border-[rgba(255,255,255,0.1)]">
+      <div className="w-full  mx-auto">
         {/* Header */}
         <div className="text-center mb-10 sm:mt-14 max-w-[700px] mx-auto">
          

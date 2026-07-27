@@ -54,7 +54,7 @@ export default function Philosophy() {
      
 
       {/* Body */}
-      <div className="phil-body relative max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-[0.85fr_1fr] gap-12 md:gap-16 items-center">
+      <div className="phil-body relative w-full mx-auto grid grid-cols-1 md:grid-cols-[0.85fr_1fr] gap-12 md:gap-16 items-center">
         {/* Media */}
         <div className="phil-media relative  md:pl-0 reveal" ref={addToRefs}>
 

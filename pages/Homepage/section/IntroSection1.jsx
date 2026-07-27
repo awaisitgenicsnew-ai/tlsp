@@ -22,8 +22,8 @@ export default function IntroSection1() {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex-1 flex  items-center justify-start px-6 md:px-12 py-22">
-        <div className="  w-full py-4 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both]">
+      <div className="relative z-10 flex-1 flex  items-center justify-start px-6 md:px-12 py-22 w-full">
+        <div className="  w-full py-4 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both]  mx-auto">
           {/* Headline */}
           <h2 className="font-serif font-normal text-[clamp(36px,5vw,52px)] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[var(--text-primary)]">
             New vision. <span className="font-medium text-[var(--bg-tertiary)]">Established strength.</span>

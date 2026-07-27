@@ -170,7 +170,7 @@ export default function IntroSection3() {
 
       <div className="relative z-10 flex-1 flex items-start flex-col justify-center px-6 md:px-12 py-28">
 
-        <div className="max-w-[800px] w-full py-4 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both]">
+        <div className="w-full py-4 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both]  mx-auto">
 
           {/* Headline */}
 

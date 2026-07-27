@@ -15,7 +15,7 @@ export default function IntroSection2() {
 
       {/* Hero Content */}
       <div className="relative z-10 h-full flex items-center justify-center px-6 md:px-12 py-24">
-        <div className="max-w-[800px] w-full animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both]">
+        <div className="w-full animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both]  mx-auto">
           {/* Headline */}
           <h2 className="font-serif font-normal text-[clamp(36px,5vw,52px)] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[var(--text-primary)]">
             A new generation of <span className="font-medium text-[var(--bg-tertiary)]">real estate</span>

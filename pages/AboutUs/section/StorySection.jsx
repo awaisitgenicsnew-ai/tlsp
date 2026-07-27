@@ -9,7 +9,7 @@ export default function StorySection() {
         <div className="pointer-events-none absolute -top-24 right-0 w-96 h-96 rounded-full border border-white/5"></div>
         <div className="pointer-events-none absolute bottom-0 left-1/3 w-72 h-72 rounded-full border border-white/5"></div>
 
-        <div className="relative max-w-lg">
+        <div className="relative w-full max-w-lg">
           <p className="text-[#c8935a] text-xs font-semibold tracking-[0.2em] mb-6">WHO WE ARE</p>
 
           <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl leading-tight text-[#f2ede4] mb-8">

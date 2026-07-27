@@ -100,7 +100,7 @@ export default function ContactFormSection() {
     <section
       className="w-full bg-[var(--bg-section)] text-white flex items-center justify-center px-4 md:px-8 lg:px-16 py-10 lg:py-24"
     >
-      <div className="max-w-6xl mx-auto w-full">
+      <div className=" mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 py-5">
           {/* Left Column - Heading, Paragraph, Contact Info */}
           <div className="space-y-8 flex flex-col justify-center">

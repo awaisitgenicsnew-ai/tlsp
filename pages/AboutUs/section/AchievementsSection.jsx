@@ -59,7 +59,7 @@ export default function AchievementsSection() {
       ref={sectionRef}
       className="w-full bg-[var(--bg-section)] min-h-[640px] relative overflow-hidden py-[120px] border-r border-[rgba(255,255,255,0.1)]"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[640px] relative z-10  mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[640px] relative z-10 w-full ">
         {/* Center vertical line */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-px bg-[var(--decorative-divider)] z-0 hidden md:block" />
         {/* Left Content */}

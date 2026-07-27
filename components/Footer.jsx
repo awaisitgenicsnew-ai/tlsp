@@ -71,7 +71,7 @@ export default function Footer() {
 
   return (
     <footer ref={footerRef} className="bg-[var(--bg-section)] text-white px-6 md:px-16 py-16 border-t border-[rgba(255,255,255,0.1)]">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div className=" mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         {/* Logo & About */}
         <div>
           <Link href="/" className="inline-block">

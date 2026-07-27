@@ -200,7 +200,7 @@ const dnaCards = [
 
 export default function BrandDNA() {
   return (
-    <section className="w-full bg-[var(--bg-surface)] py-10 lg:py-24 px-6 md:px-10">
+    <section className="w-full bg-[var(--bg-surface)] py-10 lg:py-24 px-6 md:px-10  mx-auto">
       {/* Heading */}
       <div className="mb-10">
         <h2 className="font-serif text-4xl md:text-5xl text-[var(--decorative-line)] tracking-tight">

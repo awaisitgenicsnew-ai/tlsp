@@ -3,7 +3,7 @@
 export default function ContactSection() {
   return (
     <section className="w-full bg-[var(--bg-section)] min-h-screen relative overflow-hidden flex items-center justify-center">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-20 md:py-32 w-full">
+      <div className="w-full mx-auto px-6 md:px-12 lg:px-24 py-20 md:py-32 ">
         {/* Header */}
         <div className="text-center mb-16">
           <p className="font-sans text-xs md:text-sm tracking-[0.3em] text-[var(--accent-gold-light)] mb-6 uppercase">
@@ -17,7 +17,7 @@ export default function ContactSection() {
         </div>
 
         {/* Contact Cards */}
-        <div className="w-full max-w-[1040px] grid grid-cols-1 md:grid-cols-3 border border-[var(--decorative-divider)] bg-[rgba(255,255,255,0.02)] backdrop-blur-[2px] mx-auto">
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 border border-[var(--decorative-divider)] bg-[rgba(255,255,255,0.02)] backdrop-blur-[2px] mx-auto">
           {/* Office */}
           <div className="p-[44px_40px] border-r border-b border-[var(--decorative-divider)] hover:bg-[rgba(199,164,107,0.06)] transition-all text-center">
             <div className="w-[44px] h-[44px] border border-[var(--accent-gold-medium)] rounded-full flex items-center justify-center text-[var(--accent-gold-light)] mb-[26px] mx-auto">

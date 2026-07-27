@@ -78,9 +78,9 @@ export default function ContactSection() {
   return (
    <section 
       id="contact" 
-      className="w-full bg-[var(--bg-section)] py-10 lg:py-24 px-6 md:px-12 lg:px-20 min-h-screen flex flex-col justify-center"
+      className="w-full bg-[var(--bg-section)] py-10 lg:py-24 px-6 md:px-11 min-h-screen flex flex-col justify-center"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-[156px] max-w-8xl mx-auto sm:mt-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-[156px] w-full mx-auto sm:mt-12">
         {/* Left: intro + sales info */}
         <div className="px-2 lg:px-1 py-24 sm:py-8"> 
           

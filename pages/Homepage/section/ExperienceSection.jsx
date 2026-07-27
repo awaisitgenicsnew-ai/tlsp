@@ -18,7 +18,7 @@ export default function ExperienceSection() {
         }}
       />
       {/* Feature block: text left, image right */}
-      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto mb-8 lg:mb-12 mt-4 md:mt-8">
+      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full mx-auto mb-8 lg:mb-12 mt-4 md:mt-8">
         <div>
           <div className="flex items-center justify-start mb-2">
             <span className="hidden sm:block  h-px bg-[var(--bg-tertiary)] w-10 mr-6"></span>
@@ -61,7 +61,7 @@ export default function ExperienceSection() {
       </div>
 
       {/* Quote */}
-      <div className="relative max-w-xl mx-auto text-center px-4">
+      <div className="relative w-full mx-auto text-center px-4">
         <div className="w-px h-10 bg-[var(--bg-tertiary)] mx-auto mb-4" />
         <p className="font-serif text-[32px] leading-[1.4]  text-[var(--text-primary)] mb-4.5">
           Not simply a place to live. A life to belong to.

@@ -52,7 +52,7 @@ export default function TeamSection() {
 
   return (
     <section className="w-full bg-[var(--bg-section)] min-h-screen relative overflow-hidden border-r border-[rgba(255,255,255,0.1)]">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-20 md:py-32">
+      <div className="w-full mx-auto px-6 md:px-12 lg:px-24 py-20 md:py-32 ">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-[var(--accent-cream)] mb-8">
@@ -63,7 +63,7 @@ export default function TeamSection() {
         </div>
 
         {/* Team Swiper */}
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full mx-auto">
           <Swiper
             modules={[Autoplay, Pagination]}
             spaceBetween={30}
