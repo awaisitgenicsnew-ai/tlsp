@@ -17,7 +17,7 @@ const SLIDES = [
   },
   {
     image: "/images/home-slider/imgslide3.jpg",
-    heading: "Timeless design, inspired by nature",
+    heading: <>Timeless design, <br /> inspired by nature</>,
   },
 ];
 

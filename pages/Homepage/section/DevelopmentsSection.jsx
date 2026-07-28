@@ -105,7 +105,9 @@ export default function DevelopmentsSection() {
     "/images/plt-tower/image5.jpeg",
     "/images/plt-tower/image3.webp",
     "/images/plt-tower/imgeq.webp",
-    "/images/plt-tower/image6.jpeg"
+    "/images/plt-tower/image6.jpeg",
+    "/images/plt-tower/2 BR APARTMENT TYPE C - TIER 03 - CAMERA 07.webp",
+    "/images/plt-tower/DUPLEX - KITCHEN - CAMERA 19 (1).webp"
   ];
 
   return (
@@ -250,9 +252,6 @@ export default function DevelopmentsSection() {
         @media (max-width: 940px) {
           section > div {
             grid-template-columns: 1fr;
-          }
-          .reveal:last-child {
-            order: -1;
           }
         }
 

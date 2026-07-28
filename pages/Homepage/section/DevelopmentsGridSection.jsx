@@ -108,11 +108,11 @@ export default function DevelopmentsGridSection() {
         </Swiper>
 
         {/* Navigation Buttons */}
-        <div className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center cursor-pointer hover:bg-[var(--bg-light)] transition-colors shadow-lg" />
-        <div className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center cursor-pointer hover:bg-[#F7F4EC] transition-colors shadow-lg" />
+        <div className="swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white border border-gray-200 rounded-full hidden md:flex items-center justify-center cursor-pointer hover:bg-[var(--bg-light)] transition-colors shadow-lg" />
+        <div className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white border border-gray-200 rounded-full hidden md:flex items-center justify-center cursor-pointer hover:bg-[#F7F4EC] transition-colors shadow-lg" />
 
         {/* Pagination positioned at bottom of slider (bottom of images) */}
-        <div className="swiper-pagination absolute bottom-4 left-1/2 -translate-x-1/2 z-20" />
+        <div className="swiper-pagination absolute bottom-0 md:bottom-4 left-1/2 -translate-x-1/2 z-20" />
         </div>
       </div>
     </section>
