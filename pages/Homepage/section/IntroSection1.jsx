@@ -2,13 +2,20 @@
 
 import Link from "next/link";
 
+const MILESTONES = [
+  { title: "Founded", label: "Milestone 01" },
+  { title: "First acquisition", label: "Milestone 02" },
+  { title: "Portfolio expansion", label: "Milestone 03" },
+  { title: "Today", label: "Established strength", highlight: true },
+];
+
 export default function IntroSection1() {
   return (
-    <section id="intro-1" className={clsx('w-full', 'min-h-screen', 'flex', 'flex-col', 'relative', 'overflow-hidden')}>
+    <section id="intro-1" className="w-full min-h-screen flex flex-col relative overflow-hidden">
       {/* Background Image with Gradients */}
-      <div className={clsx('absolute', 'inset-0', 'z-0')}>
+      <div className="absolute inset-0 z-0">
         <div
-          className={clsx('absolute', 'inset-0')}
+          className="absolute inset-0"
           style={{
             backgroundImage: `
               linear-gradient(100deg, rgba(20,17,14,0.94) 8%, rgba(20,17,14,0.72) 34%, rgba(20,17,14,0.30) 62%, rgba(20,17,14,0.55) 100%),
@@ -20,25 +27,25 @@ export default function IntroSection1() {
           }}
         />
         {/* Vignette */}
-        <div className={clsx('absolute', 'inset-0', 'shadow-[inset_0_0_160px_rgba(0,0,0,0.55)]')} />
+        <div className="absolute inset-0 shadow-[inset_0_0_160px_rgba(0,0,0,0.55)]" />
       </div>
 
       {/* Hero Content */}
-      <div className={clsx('relative', 'z-10', 'flex-1', 'flex', 'items-center', 'justify-start', 'px-6', 'md:px-12', 'py-22', 'w-full')}>
-        <div className={clsx('w-full', 'py-4', 'animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both]', 'mx-auto')}>
+      <div className="relative z-10 flex-1 flex items-center justify-start px-6 md:px-12 py-22 w-full">
+        <div className="w-full py-4 animate-[riseIn_1s_cubic-bezier(0.2,0.8,0.2,1)_both] mx-auto">
           {/* Headline */}
-          <h2 className={clsx('font-serif', 'font-normal', 'text-[clamp(36px,5vw,52px)]', 'leading-[1.12]', 'tracking-[-0.01em]', 'm-0', 'mb-6.5', 'text-[var(--text-primary)]')}>
-            New vision. <span className={clsx('font-medium', 'text-[var(--bg-tertiary)]')}>Established strength.</span>
+          <h2 className="font-serif font-normal text-[clamp(36px,5vw,52px)] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[var(--text-primary)]">
+            New vision. <span className="font-medium text-[var(--bg-tertiary)]">Established strength.</span>
           </h2>
 
           {/* Description */}
-          <p className={clsx('text-[16.5px]', 'leading-[1.75]', 'text-[var(--text-secondary)]', 'font-light', 'max-w-[680px]', 'm-0', 'mb-5')}>
+          <p className="text-[16.5px] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[680px] m-0 mb-5">
             PLT Properties is backed by PLT Holding, a diversified international group founded through the entrepreneurial vision of the Tortora Family.
           </p>
-          <p className={clsx('text-[16.5px]', 'leading-[1.75]', 'text-[var(--text-secondary)]', 'font-light', 'max-w-[680px]', 'm-0', 'mb-5')}>
+          <p className="text-[16.5px] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[680px] m-0 mb-5">
             Across renewable energy, finance, artificial intelligence, hospitality and strategic investments, PLT Holding has built its reputation on long-term thinking, disciplined execution and responsible growth.
           </p>
-          <p className={clsx('text-[16.5px]', 'leading-[1.75]', 'text-[var(--text-secondary)]', 'font-light', 'max-w-[680px]', 'm-0', 'mb-9.5')}>
+          <p className="text-[16.5px] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[680px] m-0 mb-9.5">
             PLT Properties brings this same foundation to real estate — combining the energy of a new lifestyle developer with the strength and capabilities of an established group.
           </p>
 
@@ -47,48 +54,71 @@ export default function IntroSection1() {
             href="https://www.pltholding.it/"
             target="_blank"
             rel="noopener noreferrer"
-            className={clsx('inline-flex', 'items-center', 'justify-start', 'mt-4', 'px-6', 'py-2.5', 'font-sans', 'font-[300]', 'text-[14px]', 'tracking-[2px]', 'uppercase', 'transition-all', 'duration-300', 'border', 'border-[#fff]', 'text-[#fff]', 'hover:bg-[var(--accent-gold)]', 'hover:text-[#14110e]')}
+            className="inline-flex items-center justify-start mt-4 px-6 py-2.5 font-sans font-[300] text-[14px] tracking-[2px] uppercase transition-all duration-300 border border-[#fff] text-[#fff] hover:bg-[var(--accent-gold)] hover:text-[#14110e]"
           >
             Discover PLT Holding
           </Link>
-            <div className={clsx('relative', 'z-10', 'mt-16')}>
-        <div className={clsx('grid', 'grid-cols-2', 'md:grid-cols-4', 'bg-[var(--bg-secondary)]/10', 'border', 'border-[rgba(237,230,216,0.16)]', 'backdrop-blur-[14px]', 'animate-[riseIn_1.1s_cubic-bezier(0.2,0.8,0.2,1)_0.15s_both]')}>
-          <div className={clsx('p-4', 'md:p-6.5', 'border-r', 'border-b', 'md:border-b-0', 'border-[rgba(237,230,216,0.16)]', 'flex', 'gap-3', 'md:gap-4', 'items-start', 'transition-background', 'duration-300', 'hover:bg-[rgba(237,230,216,0.045)]')}>
-            <span className={clsx('font-serif', 'italic', 'text-[16px]', 'md:text-[20px]', 'text-[var(--bg-tertiary)]', 'leading-none', 'pt-0.5')}>I</span>
-            <div>
-              <div className={clsx('font-mono', 'text-[9px]', 'md:text-[10px]', 'tracking-[0.16em]', 'uppercase', 'text-[var(--text-secondary)]', 'mb-2')}>Years of Craft</div>
-              <div className={clsx('font-serif', 'text-[18px]', 'md:text-[23px]', 'font-medium', 'text-[var(--text-primary)]')}>15+</div>
-            </div>
-          </div>
-          <div className={clsx('p-4', 'md:p-6.5', 'border-r-0', 'border-b', 'md:border-b-0', 'border-[rgba(237,230,216,0.16)]', 'flex', 'gap-3', 'md:gap-4', 'items-start', 'transition-background', 'duration-300', 'hover:bg-[rgba(237,230,216,0.045)]')}>
-            <span className={clsx('font-serif', 'italic', 'text-[16px]', 'md:text-[20px]', 'text-[var(--bg-tertiary)]', 'leading-none', 'pt-0.5')}>II</span>
-            <div>
-              <div className={clsx('font-mono', 'text-[9px]', 'md:text-[10px]', 'tracking-[0.16em]', 'uppercase', 'text-[var(--text-secondary)]', 'mb-2')}>DLD Escrow-Backed</div>
-              <div className={clsx('font-serif', 'text-[18px]', 'md:text-[23px]', 'font-medium', 'text-[var(--text-primary)]')}>100%</div>
-            </div>
-          </div>
-          <div className={clsx('p-4', 'md:p-6.5', 'border-r', 'border-b-0', 'md:border-b', 'border-[rgba(237,230,216,0.16)]', 'flex', 'gap-3', 'md:gap-4', 'items-start', 'transition-background', 'duration-300', 'hover:bg-[rgba(237,230,216,0.045)]')}>
-            <span className={clsx('font-serif', 'italic', 'text-[16px]', 'md:text-[20px]', 'text-[var(--bg-tertiary)]', 'leading-none', 'pt-0.5')}>III</span>
-            <div>
-              <div className={clsx('font-mono', 'text-[9px]', 'md:text-[10px]', 'tracking-[0.16em]', 'uppercase', 'text-[var(--text-secondary)]', 'mb-2')}>Flagship Location</div>
-              <div className={clsx('font-serif', 'text-[18px]', 'md:text-[23px]', 'font-medium', 'text-[var(--text-primary)]')}>Business Bay</div>
-            </div>
-          </div>
-          <div className={clsx('p-4', 'md:p-6.5', 'border-r-0', 'border-b-0', 'md:border-b', 'border-[rgba(237,230,216,0.16)]', 'flex', 'gap-3', 'md:gap-4', 'items-start', 'transition-background', 'duration-300', 'hover:bg-[rgba(237,230,216,0.045)]')}>
-            <span className={clsx('font-serif', 'italic', 'text-[16px]', 'md:text-[20px]', 'text-[var(--bg-tertiary)]', 'leading-none', 'pt-0.5')}>IV</span>
-            <div>
-              <div className={clsx('font-mono', 'text-[9px]', 'md:text-[10px]', 'tracking-[0.16em]', 'uppercase', 'text-[var(--text-secondary)]', 'mb-2')}>Design Heritage</div>
-              <div className={clsx('font-serif', 'text-[18px]', 'md:text-[23px]', 'font-medium', 'text-[var(--text-primary)]')}>European</div>
-            </div>
-          </div>
-        </div>
-      </div>
-        </div>
-          {/* Credentials */}
-    
-      </div>
 
-    
+          {/* Milestones Timeline */}
+          <div className="relative z-10 mt-6 animate-[riseIn_1.1s_cubic-bezier(0.2,0.8,0.2,1)_0.15s_both]">
+            {/* Desktop: horizontal timeline */}
+            <div className="hidden md:block relative pt-16 pb-16">
+              {/* Line */}
+              <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-[rgba(237,230,216,0.08)] via-[rgba(198,167,107,0.55)] to-[var(--bg-tertiary)]" />
+
+              <div className="relative grid grid-cols-4">
+                {MILESTONES.map((m, i) => (
+                  <div key={m.title} className="relative flex flex-col items-center group">
+                    {/* Label above (even) */}
+                    <div className={`absolute bottom-full mb-5 text-center transition-transform duration-300 group-hover:-translate-y-1 ${i % 2 !== 0 ? 'invisible' : ''}`}>
+                      <div className={`font-sans text-[14px] md:text-[15px] font-medium mb-1 whitespace-nowrap ${m.highlight ? 'text-[var(--bg-tertiary)]' : 'text-[var(--text-primary)]'}`}>{m.title}</div>
+                      <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[var(--text-secondary)] whitespace-nowrap">{m.label}</div>
+                    </div>
+
+                    {/* Diamond marker */}
+                    <span
+                      className={`block w-3 h-3 rotate-45 transition-all duration-300 group-hover:scale-125 ${
+                        m.highlight
+                          ? 'bg-[var(--bg-tertiary)] shadow-[0_0_18px_rgba(198,167,107,0.65)]'
+                          : 'border border-[var(--bg-tertiary)] bg-transparent group-hover:bg-[var(--bg-tertiary)]'
+                      }`}
+                    />
+
+                    {/* Label below (odd) */}
+                    <div className={`absolute top-full mt-5 text-center transition-transform duration-300 group-hover:translate-y-1 ${i % 2 === 0 ? 'invisible' : ''}`}>
+                      <div className={`font-sans text-[14px] md:text-[15px] font-medium mb-1 whitespace-nowrap ${m.highlight ? 'text-[var(--bg-tertiary)]' : 'text-[var(--text-primary)]'}`}>{m.title}</div>
+                      <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[var(--text-secondary)] whitespace-nowrap">{m.label}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile: vertical timeline */}
+            <div className="md:hidden relative pl-6">
+              {/* Line */}
+              <div className="absolute left-[5px] top-1 bottom-1 w-px bg-gradient-to-b from-[rgba(237,230,216,0.08)] via-[rgba(198,167,107,0.55)] to-[var(--bg-tertiary)]" />
+
+              <div className="flex flex-col gap-8">
+                {MILESTONES.map((m) => (
+                  <div key={m.title} className="relative">
+                    {/* Diamond marker */}
+                    <span
+                      className={`absolute -left-6 top-1.5 block w-2.5 h-2.5 rotate-45 ${
+                        m.highlight
+                          ? 'bg-[var(--bg-tertiary)] shadow-[0_0_14px_rgba(198,167,107,0.65)]'
+                          : 'border border-[var(--bg-tertiary)] bg-transparent'
+                      }`}
+                    />
+                    <div className={`font-sans text-[14px] font-medium mb-0.5 ${m.highlight ? 'text-[var(--bg-tertiary)]' : 'text-[var(--text-primary)]'}`}>{m.title}</div>
+                    <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[var(--text-secondary)]">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <style jsx>{`
         @keyframes riseIn {
