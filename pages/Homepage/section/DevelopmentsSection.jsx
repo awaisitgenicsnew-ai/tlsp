@@ -49,6 +49,14 @@ export default function DevelopmentsSection() {
     if (!link) return;
     if (link.startsWith("http")) {
       window.open(link, "_blank");
+    } else if (link.startsWith("#")) {
+      const panel = document.getElementById(link.slice(1));
+      if (!panel) return;
+      if (window.matchMedia('(min-width: 768px)').matches) {
+        window.scrollTo({ top: panel.offsetLeft, behavior: 'smooth' });
+      } else {
+        panel.scrollIntoView({ behavior: 'smooth' });
+      }
     } else {
       router.push(link);
     }
@@ -77,7 +85,7 @@ export default function DevelopmentsSection() {
     primaryButtonText: "Discover PLT Tower",
     primaryButtonLink: "https://www.plttower.com/",
     secondaryButtonText: "Register Interest",
-    secondaryButtonLink: "/register-interest"
+    secondaryButtonLink: "#section-contact"
   };
 
   // Project highlights

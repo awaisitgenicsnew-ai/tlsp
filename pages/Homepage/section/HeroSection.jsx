@@ -15,12 +15,10 @@ export default function HeroSection() {
 
         <div className={clsx('relative', 'z-10', 'h-full', 'w-full', 'flex', 'items-center', 'px-6', 'md:px-12')}>
           <div className="w-full">
-            <p className={clsx('font-sans', 'text-xs', 'md:text-sm', 'tracking-[0.3em]', 'text-[var(--accent-brown)]', 'mb-2', 'uppercase')}>
-              ABOUT US · PLT PROPERTIES
-            </p>
-            <h1 className={clsx('font-display', 'text-4xl', 'sm:text-5xl', 'md:text-6xl', 'lg:text-7xl', 'font-light', 'leading-[1.1]', 'text-white', 'mb-4')}>
-              A New Generation Of Real Estate
-            </h1>
+           
+           <h2 className="font-serif font-normal text-[clamp(36px,5vw,52px)] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[var(--text-primary)]">
+           A New Generation Of Real Estate
+            </h2>
            <div className={clsx('space-y-6', 'text-white/80', 'max-w-2xl', 'leading-relaxed')}>
               <p className={clsx('text-[16.5px]', 'leading-[1.75]', 'text-[var(--text-secondary)]', 'font-light', 'max-w-[680px]', 'm-0', 'mb-4')}>
                 PLT Properties creates more than beautiful projects. We create places designed to make everyday life feel better.
