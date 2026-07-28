@@ -7,8 +7,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 // About Us sections
-import HeroSection from './section/HeroSection'
-import IntroSection3 from './section/IntroSection3';
+import HeroSection from '../Homepage/section/HeroSection'
+import IntroSection3 from '../Homepage/section/IntroSection3';
 import MissionSection from './section/MissionSection';
 import ValuesSection from './section/ValuesSection';
 import ContactSection from './section/ContactSection';

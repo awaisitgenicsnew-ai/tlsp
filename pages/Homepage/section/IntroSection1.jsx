@@ -57,7 +57,7 @@ export default function IntroSection1() {
             <span className="font-serif italic text-[16px] md:text-[20px] text-[var(--bg-tertiary)] leading-none pt-0.5">I</span>
             <div>
               <div className="font-mono text-[9px] md:text-[10px] tracking-[0.16em] uppercase text-[var(--text-secondary)] mb-2">Years of Craft</div>
-              <div className="font-serif text-[18px] md:text-[23px] font-medium text-[var(--text-primary)]">15+</div>
+              <div className="font-serif text-[18px] md:text-[23px] font-medium text-[var(--text-primary)]">20+</div>
             </div>
           </div>
           <div className="p-4 md:p-6.5 border-r-0 border-b md:border-b-0 border-[rgba(237,230,216,0.16)] flex gap-3 md:gap-4 items-start transition-background duration-300 hover:bg-[rgba(237,230,216,0.045)]">

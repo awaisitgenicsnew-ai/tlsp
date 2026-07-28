@@ -7,11 +7,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 const LINKS = [
-  { label: "HOME", href: "/" },
-  { label: "ABOUT", href: "/about-us" },
-  { label: "PLT TOWER", href: "https://plttower.com", external: true },
-  { label: "BLOG", href: "/blog" },
-  { label: "CONTACT", href: "/contact-us" },
+  { label: "HOME", href: "/", sectionId: "hero", activeSections: ['hero'] },
+  { label: "ABOUT", href: "/", sectionId: "intro-1", activeSections: ['intro-1', 'hero-section', 'intro-3'] },
+  { label: "PLT TOWER", href: "/", sectionId: "developments", activeSections: ['developments'] },
+  { label: "BLOG", href: "/", sectionId: "blog", activeSections: ['blog'] },
+  { label: "CONTACT", href: "/", sectionId: "contact", activeSections: ['contact'] },
 ];
 
 
@@ -77,6 +77,22 @@ export default function Navbar({ colors = {}, activeSection }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Homepage sections par smooth-scroll navigation (internal redirect)
+  const handleNavClick = (e, link) => {
+    if (!link.sectionId) return;
+    if (pathname !== "/") return; // dusre pages se normal navigation hoga
+    const el = document.getElementById(`section-${link.sectionId}`);
+    if (!el) return;
+    e.preventDefault();
+    setOpen(false);
+    if (window.innerWidth >= 768) {
+      // Horizontal scroll: track ke andar offsetLeft = required vertical scroll
+      window.scrollTo({ top: el.offsetLeft, behavior: "smooth" });
+    } else {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   // CSS variables — inhi se saare colors control hote hain
   const cssVars = {
     "--nav-bg": c.bg,
@@ -121,27 +137,19 @@ export default function Navbar({ colors = {}, activeSection }) {
 
         {/* Center: Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          {LINKS.map((link) => (
-            link.href.startsWith('/') ? (
+          {LINKS.map((link) => {
+            const isActive = link.activeSections?.includes(activeSection);
+            return (
               <Link
                 key={link.label}
                 href={link.href}
-                className={`font-sans text-[14px] tracking-[2px] uppercase transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)] ${pathname === link.href ? 'font-bold' : 'font-[300]'}`}
+                onClick={(e) => handleNavClick(e, link)}
+                className={`font-sans text-[14px] tracking-[2px] uppercase transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)] ${isActive ? 'font-bold' : 'font-[300]'}`}
               >
                 {link.label}
               </Link>
-            ) : (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
-                className={`font-sans text-[14px] tracking-[2px] transition-colors duration-300 whitespace-nowrap text-[color:var(--nav-link)] hover:text-[color:var(--nav-link-hover)] ${activeSection === 'developments' ? 'font-bold' : 'font-[300]'}`}
-              >
-                {link.label}
-              </a>
-            )
-          ))}
+            );
+          })}
         </nav>
 
         {/* Right Side: Action Button + Mobile Burger Menu */}
@@ -168,29 +176,19 @@ export default function Navbar({ colors = {}, activeSection }) {
       {open && (
         <div className="lg:hidden px-6 pb-8 pt-2 animate-fadeIn bg-[var(--nav-mobile-bg)] border-t border-[color:var(--nav-mobile-border)]">
           <nav className="flex flex-col gap-5">
-            {LINKS.map((link) => (
-              link.href.startsWith('/') ? (
+            {LINKS.map((link) => {
+              const isActive = link.activeSections?.includes(activeSection);
+              return (
                 <Link
                   key={link.label}
                   href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={`font-sans text-[14px] tracking-[2px] transition-colors py-1 text-[color:var(--nav-mobile-link)] hover:text-[color:var(--nav-mobile-link-hover)] ${pathname === link.href ? 'font-bold' : 'font-normal'}`}
+                  onClick={(e) => { handleNavClick(e, link); setOpen(false); }}
+                  className={`font-sans text-[14px] tracking-[2px] transition-colors py-1 text-[color:var(--nav-mobile-link)] hover:text-[color:var(--nav-mobile-link-hover)] ${isActive ? 'font-bold' : 'font-normal'}`}
                 >
                   {link.label}
                 </Link>
-              ) : (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noopener noreferrer" : undefined}
-                  onClick={() => setOpen(false)}
-                  className={`font-sans text-[14px] tracking-[2px] transition-colors py-1 text-[color:var(--nav-mobile-link)] hover:text-[color:var(--nav-mobile-link-hover)] ${activeSection === 'developments' ? 'font-bold' : 'font-normal'}`}
-                >
-                  {link.label}
-                </a>
-              )
-            ))}
+              );
+            })}
 
             <Link
               href="/register-interest"

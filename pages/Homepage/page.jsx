@@ -12,10 +12,10 @@ gsap.registerPlugin(ScrollTrigger);
 // Sections
 import HeroSlider from './section/HeroSlider';
 import IntroSection1 from './section/IntroSection1';
-import { BrandPillarsSlider } from './section/ResidencesSectionNew';
+import HeroSection from './section/HeroSection';
+import IntroSection3 from './section/IntroSection3';
 import Developments from './section/DevelopmentsSection';
-import Philosophy from './section/PhilosophySection';
-import ExperienceSection from './section/ExperienceSection';
+import BlogSection from './section/BlogSection';
 import ContactSection from './section/ContactSection';
 
 // ============================================================
@@ -27,10 +27,10 @@ import ContactSection from './section/ContactSection';
 const BASE_SECTIONS = [
   { id: 'hero', Component: HeroSlider, theme: 'dark', animate: false },
   { id: 'intro-1', Component: IntroSection1, theme: 'dark', animate: true },
+  { id: 'hero-section', Component: HeroSection, theme: 'dark', animate: true },
+  { id: 'intro-3', Component: IntroSection3, theme: 'dark', animate: true },
   { id: 'developments', Component: Developments, theme: 'dark', animate: true },
-  { id: 'brand-pillars', Component: BrandPillarsSlider, theme: 'dark', animate: false },
-  { id: 'philosophy', Component: Philosophy, theme: 'light', animate: true },
-  { id: 'experience', Component: ExperienceSection, theme: 'light', animate: true },
+  { id: 'blog', Component: BlogSection, theme: 'dark', animate: true },
   { id: 'contact', Component: ContactSection, theme: 'light', animate: true },
 ];
 
