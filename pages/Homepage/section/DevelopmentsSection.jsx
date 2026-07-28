@@ -150,7 +150,7 @@ export default function DevelopmentsSection() {
           </p>
 
           {/* Project Highlights */}
-          <div className="grid grid-cols-3 gap-px bg-[rgba(237,232,222,0.12)] border border-[rgba(237,232,222,0.12)] mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-[rgba(237,232,222,0.12)] border border-[rgba(237,232,222,0.12)] mb-10">
             {highlights.map((highlight, index) => (
               <div key={index} className="bg-[#1d2128] p-4 flex gap-2.5 items-start">
                 <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center text-[#c9a876] mt-0.5">

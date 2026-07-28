@@ -4,8 +4,8 @@ import clsx from "clsx";
 
 export default function HeroSection() {
   return (
-    <section className={clsx('relative', 'h-screen', 'w-full', 'overflow-hidden', 'bg-[var(--bg-hero)]')}>
-      <div className={clsx('relative', 'h-screen', 'w-full')}>
+    <section className={clsx('relative', 'min-h-screen', 'md:h-screen', 'w-full', 'overflow-hidden', 'bg-[var(--bg-hero)]')}>
+      <div className={clsx('relative', 'min-h-screen', 'md:h-screen', 'w-full')}>
         <div
           className={clsx('absolute', 'inset-0', 'bg-cover', 'bg-center')}
           style={{ backgroundImage: `url(/images/aboutimg1.jpeg)` }}
@@ -13,7 +13,7 @@ export default function HeroSection() {
         <div className={clsx('absolute', 'inset-0', 'bg-gradient-to-r', 'from-black/90', 'via-black/60', 'to-black/40')} />
         <div className={clsx('absolute', 'inset-0', 'bg-gradient-to-t', 'from-black/80', 'via-transparent', 'to-black/30')} />
 
-        <div className={clsx('relative', 'z-10', 'h-full', 'w-full', 'flex', 'items-center', 'px-6', 'md:px-12')}>
+        <div className={clsx('relative', 'z-10', 'h-full', 'w-full', 'flex', 'items-center', 'px-6', 'md:px-12', 'py-20')}>
           <div className="w-full">
            
            <h2 className="font-serif font-normal text-[clamp(36px,5vw,52px)] leading-[1.12] tracking-[-0.01em] m-0 mb-6.5 text-[var(--text-primary)]">
