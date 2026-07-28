@@ -124,7 +124,21 @@ export default function Navbar({ colors = {}, activeSection }) {
       <div className="relative flex items-center justify-between px-6 sm:px-10 py-5">
 
         {/* Brand Logo */}
-        <Link href="/" className="leading-tight flex-shrink-0 z-10">
+        <Link
+          href="/"
+          onClick={(e) => {
+            if (pathname !== "/") return;
+            e.preventDefault();
+            const panel = document.getElementById('section-hero');
+            if (!panel) return;
+            if (window.innerWidth >= 768) {
+              window.scrollTo({ top: panel.offsetLeft, behavior: 'smooth' });
+            } else {
+              panel.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          className="leading-tight flex-shrink-0 z-10"
+        >
           <Image
             src="/images/logo.png"
             alt="PLT Properties"
@@ -154,12 +168,20 @@ export default function Navbar({ colors = {}, activeSection }) {
 
         {/* Right Side: Action Button + Mobile Burger Menu */}
         <div className="flex items-center gap-4 flex-shrink-0 z-10">
-          <Link
-            href="/register-interest"
-            className="hidden lg:inline-flex items-center px-6 py-2.5 font-sans font-[300] text-[14px] tracking-[2px] uppercase transition-all duration-300 border border-[var(--bg-secondary)] text-[color:var(--nav-btn-text)] bg-[var(--bg-secondary)] hover:bg-[var(--bg-tertiary)] hover:border-[var(--bg-tertiary)] hover:text-[color:var(--nav-btn-hover-text)]"
+          <button
+            onClick={() => {
+              const panel = document.getElementById('section-contact');
+              if (!panel) return;
+              if (window.innerWidth >= 768) {
+                window.scrollTo({ top: panel.offsetLeft, behavior: 'smooth' });
+              } else {
+                panel.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="hidden lg:inline-flex items-center px-6 py-2.5 font-sans font-[300] text-[14px] tracking-[2px] uppercase transition-all duration-300 border border-[var(--bg-secondary)] text-[color:var(--nav-btn-text)] bg-[var(--bg-secondary)] hover:bg-[var(--bg-tertiary)] hover:border-[var(--bg-tertiary)] hover:text-[color:var(--nav-btn-hover-text)] cursor-pointer"
           >
             Register Interest
-          </Link>
+          </button>
 
           <button
             aria-label="Toggle menu"
@@ -191,8 +213,18 @@ export default function Navbar({ colors = {}, activeSection }) {
             })}
 
             <Link
-              href="/register-interest"
-              onClick={() => setOpen(false)}
+              href="#section-contact"
+              onClick={(e) => {
+                e.preventDefault();
+                setOpen(false);
+                const panel = document.getElementById('section-contact');
+                if (!panel) return;
+                if (window.innerWidth >= 768) {
+                  window.scrollTo({ top: panel.offsetLeft, behavior: 'smooth' });
+                } else {
+                  panel.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               className="inline-flex items-center justify-center px-6 py-3 border border-[var(--bg-secondary)] font-sans font-[300] text-[14px] tracking-[2px] uppercase mt-4 transition-all duration-300 bg-[var(--bg-secondary)] text-white hover:bg-[var(--bg-tertiary)] hover:border-[var(--bg-tertiary)]"
             >
               Register Interest
