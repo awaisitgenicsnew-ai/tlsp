@@ -41,7 +41,7 @@ export default function StorySection() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <p className="font-serif text-3xl text-[#1c1a17] mb-2">15+</p>
+            <p className="font-serif text-3xl text-[#1c1a17] mb-2">20+</p>
             <p className="text-[11px] tracking-[0.15em] font-semibold text-[#84796a]">YEARS OF CRAFT</p>
           </div>
 
