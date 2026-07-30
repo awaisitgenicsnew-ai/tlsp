@@ -82,7 +82,7 @@ export default function ContactSection() {
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-[156px] w-full mx-auto mt-12 items-center">
         {/* Left: intro + sales info */}
-        <div className="px-2 lg:px-1 py-24 sm:py-8"> 
+        <div className="px-0 sm:px-2 lg:px-1 py-24 sm:py-8"> 
           
           <h2 className="font-serif text-3xl md:text-4xl text-white leading-normal mb-5">
             Project and Corporate Enquiries
