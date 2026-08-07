@@ -3,10 +3,16 @@
 import Link from "next/link";
 
 const MILESTONES = [
-  { title: "Founded", label: "Milestone 01" },
-  { title: "First acquisition", label: "Milestone 02" },
-  { title: "Portfolio expansion", label: "Milestone 03" },
-  { title: "Today", label: "Established strength", highlight: true },
+  { title: "2001", label: "The Beginning" },
+  { title: "2006", label: "Renewable Energy" },
+  { title: "2008–2013", label: "First Industrial Plan" },
+  { title: "2014", label: "Public Listing" },
+  { title: "2014–2019", label: "Second Industrial Plan" },
+  { title: "2022", label: "A New Chapter" },
+  { title: "2023", label: "Diversification" },
+  { title: "2024–2030", label: "A New Industrial Plan" },
+  { title: "2024", label: "PLT Properties" },
+  { title: "2027", label: "Flagship Launch", highlight: true },
 ];
 
 export default function IntroSection1() {
@@ -62,11 +68,11 @@ export default function IntroSection1() {
           {/* Milestones Timeline */}
           <div className="relative z-10 mt-6 animate-[riseIn_1.1s_cubic-bezier(0.2,0.8,0.2,1)_0.15s_both]">
             {/* Desktop: horizontal timeline */}
-            <div className="hidden md:block relative pt-16 pb-16">
+            <div className="hidden md:block relative pt-20 pb-20 overflow-x-auto overflow-y-visible scrollbar-hide">
               {/* Line */}
-              <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-[rgba(237,230,216,0.08)] via-[rgba(198,167,107,0.55)] to-[var(--bg-tertiary)]" />
+              <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-[rgba(237,230,216,0.08)] via-[rgba(198,167,107,0.55)] to-[var(--bg-tertiary)] min-w-full" />
 
-              <div className="relative grid grid-cols-4">
+              <div className="relative flex justify-between min-w-[1400px] px-12">
                 {MILESTONES.map((m, i) => (
                   <div key={m.title} className="relative flex flex-col items-center group">
                     {/* Label above (even) */}
