@@ -49,7 +49,7 @@ export default function IntroSection1() {
             PLT Properties is backed by PLT Holding, a diversified international group founded through the entrepreneurial vision of the Tortora Family.
           </p>
           <p className="text-[16.5px] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[680px] m-0 mb-5">
-            Across renewable energy, finance, artificial intelligence, hospitality and strategic investments, PLT Holding has built its reputation on long-term thinking, disciplined execution and responsible growth.
+            Across renewable energy, finance, real estate, hospitality and strategic investments, PLT Holding has built its reputation on long-term thinking, disciplined execution and responsible growth.
           </p>
           <p className="text-[16.5px] leading-[1.75] text-[var(--text-secondary)] font-light max-w-[680px] m-0 mb-9.5">
             PLT Properties brings this same foundation to real estate — combining the energy of a new lifestyle developer with the strength and capabilities of an established group.

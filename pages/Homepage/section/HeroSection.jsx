@@ -59,7 +59,7 @@ export default function HeroSection() {
                   <span className={clsx('font-serif', 'italic', 'text-[16px]', 'md:text-[20px]', 'text-[var(--bg-tertiary)]', 'leading-none', 'pt-0.5')}>IV</span>
                   <div>
                     <div className={clsx('font-mono', 'text-[9px]', 'md:text-[10px]', 'tracking-[0.16em]', 'uppercase', 'text-[var(--text-secondary)]', 'mb-2')}>Design Heritage</div>
-                    <div className={clsx('font-serif', 'text-[18px]', 'md:text-[23px]', 'font-medium', 'text-[var(--text-primary)]')}>European</div>
+                    <div className={clsx('font-serif', 'text-[18px]', 'md:text-[23px]', 'font-medium', 'text-[var(--text-primary)]')}>Italian</div>
                   </div>
                 </div>
               </div>
