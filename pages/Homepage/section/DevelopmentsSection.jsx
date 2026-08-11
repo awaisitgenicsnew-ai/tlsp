@@ -95,7 +95,7 @@ export default function DevelopmentsSection() {
     { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="9" width="18" height="6" rx="1"></rect><path d="M7 9v2M11 9v3M15 9v2M19 9v3"></path></svg>, num: "~43,000 sqm", lbl: "Gross floor area" },
     { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>, num: "Marasi Drive", lbl: "Business Bay address" },
     { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>, num: "Unmatched views", lbl: "Burj Khalifa and Dubai Canal" },
-    { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 20l-6-2V6l6-2 6 2 6-2v14l-6 2-6-2z"></path><path d="M9 4v14M15 6v14"></path></svg>, num: "Prime proximity", lbl: "Close to Downtown and DIFC" }
+    { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 20l-6-2V6l6-2 6 2 6-2v14l-6 2-6-2z"></path><path d="M9 4v14M15 6v14"></path></svg>, num: "Killa Design", lbl: "As an architect" }
   ];
 
   // Static images from public folder
