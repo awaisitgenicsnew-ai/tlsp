@@ -100,24 +100,23 @@ export default function IntroSection1() {
               </div>
             </div>
 
-            {/* Mobile: vertical timeline */}
-            <div className="md:hidden relative pl-6">
-              {/* Line */}
-              <div className="absolute left-[5px] top-1 bottom-1 w-px bg-gradient-to-b from-[rgba(237,230,216,0.08)] via-[rgba(198,167,107,0.55)] to-[var(--bg-tertiary)]" />
-
-              <div className="flex flex-col gap-8">
+            {/* Mobile: grid timeline */}
+            <div className="md:hidden relative">
+              <div className="grid grid-cols-2 gap-4">
                 {MILESTONES.map((m) => (
-                  <div key={m.title} className="relative">
+                  <div key={m.title} className="relative flex items-start gap-2">
                     {/* Diamond marker */}
                     <span
-                      className={`absolute -left-6 top-1.5 block w-2.5 h-2.5 rotate-45 ${
+                      className={`flex-shrink-0 mt-1 block w-2 h-2 rotate-45 ${
                         m.highlight
                           ? 'bg-[var(--bg-tertiary)] shadow-[0_0_14px_rgba(198,167,107,0.65)]'
                           : 'border border-[var(--bg-tertiary)] bg-transparent'
                       }`}
                     />
-                    <div className={`font-sans text-[14px] font-medium mb-0.5 ${m.highlight ? 'text-[var(--bg-tertiary)]' : 'text-[var(--text-primary)]'}`}>{m.title}</div>
-                    <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[var(--text-secondary)]">{m.label}</div>
+                    <div>
+                      <div className={`font-sans text-[13px] font-medium mb-0.5 ${m.highlight ? 'text-[var(--bg-tertiary)]' : 'text-[var(--text-primary)]'}`}>{m.title}</div>
+                      <div className="font-mono text-[9px] tracking-[0.14em] uppercase text-[var(--text-secondary)] leading-[1.3]">{m.label}</div>
+                    </div>
                   </div>
                 ))}
               </div>
