@@ -95,7 +95,7 @@ export default function DevelopmentsSection() {
     { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="9" width="18" height="6" rx="1"></rect><path d="M7 9v2M11 9v3M15 9v2M19 9v3"></path></svg>, num: "~43,000 sqm", lbl: "Gross floor area" },
     { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>, num: "Marasi Drive", lbl: "Business Bay address" },
     { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>, num: "Unmatched views", lbl: "Burj Khalifa and Dubai Canal" },
-    { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 21h18M8 21v-4h8v4M5 21V7l8-4 8 4v14M12 3v18M6 10h.01M18 10h.01M6 14h.01M18 14h.01"></path></svg>, num: "Architect", lbl: "Killa Design" }
+    { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8v8M3 13l3-3M4 12l2.5 4"></path><path d="M9.5 8.5h.01M9.5 12v4"></path><path d="M12.5 2v14M15.5 2v14"></path><circle cx="20" cy="13.75" r="2.25"></circle><path d="M22.25 11.5V16"></path><text x="12" y="22.5" textAnchor="middle" fill="currentColor" stroke="none" fontSize="5" letterSpacing="1" fontFamily="sans-serif">design</text></svg>, num: "Architect", lbl: "Killa Design" }
   ];
 
   // Static images from public folder
@@ -153,8 +153,8 @@ export default function DevelopmentsSection() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-[rgba(237,232,222,0.12)] border border-[rgba(237,232,222,0.12)] mb-10">
             {highlights.map((highlight, index) => (
               <div key={index} className="bg-[#1d2128] p-4 flex gap-2.5 items-start">
-                <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center text-[#c9a876] mt-0.5">
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">{highlight.icon.props.children}</svg>
+                <div className="w-7 h-7 flex-shrink-0 flex items-center justify-center text-[#c9a876] mt-0.5">
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">{highlight.icon.props.children}</svg>
                 </div>
                 <div>
                   <div className="font-serif text-[15px] leading-[1.3] text-[#ede8de]">{highlight.num}</div>
