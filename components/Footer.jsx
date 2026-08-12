@@ -84,7 +84,7 @@ export default function Footer() {
             />
           </Link>
           <p className="text-sm text-white/80 mt-5 font-normal leading-relaxed max-w-xs">
-            European craftsmanship. Considered addresses. Built for longevity in Dubai's most connected districts.
+            Italian craftsmanship. Considered addresses. Built for longevity in Dubai's most connected districts.
           </p>
           <div className="flex gap-3 mt-6">
             <a href="#" className="w-9 h-9 flex items-center justify-center border border-white p-2  hover:border-[var(--bg-secondary)]  hover:bg-[var(--bg-secondary)] transition">
