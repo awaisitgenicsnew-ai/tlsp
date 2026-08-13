@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 const MILESTONES = [
@@ -16,6 +17,49 @@ const MILESTONES = [
 ];
 
 export default function IntroSection1() {
+  const timelineRef = useRef(null);
+  const [activeIdx, setActiveIdx] = useState(null);
+
+  // Scroll-spy: milestone closest to viewport center lights up
+  useEffect(() => {
+    const updateActive = () => {
+      const el = timelineRef.current;
+      if (!el) return;
+      const rows = el.querySelectorAll("[data-milestone-row]");
+      const center = window.innerHeight / 2;
+      let closest = null;
+      let closestDist = Infinity;
+      rows.forEach((row, i) => {
+        const rect = row.getBoundingClientRect();
+        const dist = Math.abs(rect.top + rect.height / 2 - center);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closest = i;
+        }
+      });
+      setActiveIdx(closest);
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActive();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", updateActive);
+    updateActive();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", updateActive);
+    };
+  }, []);
+
   return (
     <section id="intro-1" className="w-full min-h-screen flex flex-col relative overflow-hidden">
       {/* Background Image with Gradients */}
@@ -100,25 +144,52 @@ export default function IntroSection1() {
               </div>
             </div>
 
-            {/* Mobile: grid timeline */}
-            <div className="md:hidden relative">
-              <div className="grid grid-cols-2 gap-4">
-                {MILESTONES.map((m) => (
-                  <div key={m.title} className="relative flex items-start gap-2">
-                    {/* Diamond marker */}
-                    <span
-                      className={`flex-shrink-0 mt-1 block w-2 h-2 rotate-45 ${
-                        m.highlight
-                          ? 'bg-[var(--bg-tertiary)] shadow-[0_0_14px_rgba(198,167,107,0.65)]'
-                          : 'border border-[var(--bg-tertiary)] bg-transparent'
-                      }`}
-                    />
-                    <div>
-                      <div className={`font-sans text-[13px] font-medium mb-0.5 ${m.highlight ? 'text-[var(--bg-tertiary)]' : 'text-[var(--text-primary)]'}`}>{m.title}</div>
-                      <div className="font-mono text-[9px] tracking-[0.14em] uppercase text-[var(--text-secondary)] leading-[1.3]">{m.label}</div>
+            {/* Mobile: vertical centered timeline */}
+            <div ref={timelineRef} className="md:hidden relative">
+              {/* Vertical spine */}
+              <div className="absolute left-1/2 top-1.5 bottom-1.5 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[rgba(198,167,107,0.35)] to-transparent" />
+
+              {MILESTONES.map((m, i) => {
+                const active = i === activeIdx || m.highlight;
+                const isLeft = i % 2 === 0;
+                return (
+                  <div key={m.title} data-milestone-row className="relative grid grid-cols-[1fr_40px_1fr] min-h-[90px] items-stretch">
+                    {/* Diamond node */}
+                    <div className="relative z-10 flex justify-center items-center col-start-2 row-start-1">
+                      <span
+                        className={`block w-[13px] h-[13px] rotate-45 border-[1.5px] transition-all duration-[350ms] ${
+                          active
+                            ? 'bg-[var(--bg-tertiary)] border-[var(--bg-tertiary)] shadow-[0_0_0_6px_rgba(198,167,107,0.16),0_0_20px_rgba(198,167,107,0.5)] scale-125'
+                            : 'border-[#8a7238] bg-[#14110e]'
+                        }`}
+                      />
+                    </div>
+
+                    {/* Connecting stub */}
+                    <span className={`absolute top-1/2 w-[16px] h-px bg-[rgba(198,167,107,0.3)] ${isLeft ? 'right-[calc(50%+6px)]' : 'left-[calc(50%+6px)]'}`} />
+
+                    {/* Card */}
+                    <div
+                      className={`pb-7 row-start-1 transition-all duration-[400ms] ${
+                        isLeft
+                          ? 'col-start-1 text-right pr-5'
+                          : 'col-start-3 pl-5'
+                      } ${active ? 'opacity-100 translate-y-0' : 'opacity-55 translate-y-1'}`}
+                    >
+                      <div className="font-mono text-[11px] tracking-[0.06em] mb-[7px] text-[var(--bg-tertiary)]">{m.title}</div>
+                      <div className={`font-serif font-medium text-[15px] leading-[1.28] tracking-[-0.005em] ${active ? 'text-white' : 'text-[var(--text-primary)]'}`}>{m.label}</div>
                     </div>
                   </div>
-                ))}
+                );
+              })}
+
+              {/* Footer */}
+              <div className="mt-10 pt-6 border-t border-[rgba(237,232,222,0.12)] flex justify-between items-center font-mono text-[10px] tracking-[0.08em] uppercase text-[var(--text-secondary)]">
+                <div className="flex items-center gap-2">
+                  <span className="block w-2 h-2 rotate-45 bg-[var(--bg-tertiary)]" />
+                  Milestones Overview
+                </div>
+                <div>2001 — 2030</div>
               </div>
             </div>
           </div>
