@@ -187,6 +187,11 @@ export default function IntroSection1() {
                     >
                       <div className="font-mono text-[11px] tracking-[0.06em] mb-[7px] text-[var(--bg-tertiary)]">{m.title}</div>
                       <div className={`font-serif font-medium text-[15px] leading-[1.28] tracking-[-0.005em] ${active ? 'text-white' : 'text-[var(--text-primary)]'}`}>{m.label}</div>
+                      {active && (
+                        <p className="mt-2 text-[12px] leading-[1.8] text-[var(--text-secondary)] font-medium">
+                          {m.desc}
+                        </p>
+                      )}
                     </div>
                   </div>
                 );
