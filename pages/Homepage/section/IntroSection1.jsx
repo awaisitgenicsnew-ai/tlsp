@@ -112,13 +112,13 @@ export default function IntroSection1() {
           {/* Milestones Timeline */}
           <div className="relative z-10 mt-6 animate-[riseIn_1.1s_cubic-bezier(0.2,0.8,0.2,1)_0.15s_both]">
             {/* Desktop: horizontal timeline */}
-            <div className="hidden md:block relative px-8 pt-40 pb-20">
+            <div className="hidden md:block relative px-8 pt-20 pb-20">
               {/* Line */}
               <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-[rgba(237,230,216,0.08)] via-[rgba(198,167,107,0.55)] to-[var(--bg-tertiary)] min-w-full" />
 
               <div className="relative flex gap-[30px] md:gap-[40px] lg:gap-[50px] min-[1320px]:gap-0 justify-between px-2">
                 {MILESTONES.map((m, i) => (
-                  <div key={m.title} className="relative flex flex-col items-center group cursor-pointer">
+                  <div key={m.title} className="relative flex flex-col items-center group">
                     {/* Label above (even) */}
                     <div className={`absolute bottom-full mb-5 text-center transition-transform duration-300 group-hover:-translate-y-1 ${i % 2 !== 0 ? 'invisible' : ''}`}>
                       <div className={`font-sans text-[12px] md:text-[13px] font-medium mb-1 whitespace-nowrap ${m.highlight ? 'text-[var(--bg-tertiary)]' : 'text-[var(--text-primary)]'}`}>{m.title}</div>
@@ -134,28 +134,13 @@ export default function IntroSection1() {
                       }`}
                     />
 
-                    {/* Tooltip (hover) — label ke opposite side */}
+                    {/* Description tooltip */}
                     <div
-                      className={`absolute z-30 w-[210px] pointer-events-none opacity-0 transition-all duration-300 group-hover:opacity-100 ${
-                        i === 0
-                          ? 'left-0'
-                          : i === MILESTONES.length - 1
-                            ? 'right-0'
-                            : 'left-1/2 -translate-x-1/2'
-                      } bottom-full mb-16 -translate-y-1 group-hover:translate-y-0`}
+                      className={`absolute bottom-full mb-14 w-max max-w-[220px] px-3 py-2 rounded bg-[rgba(20,17,14,0.92)] border border-[rgba(198,167,107,0.25)] text-[var(--text-secondary)] text-[11px] leading-[1.5] text-center opacity-0 translate-y-2 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 z-20 ${
+                        i === 0 ? 'left-0' : i === MILESTONES.length - 1 ? 'right-0' : 'left-1/2 -translate-x-1/2'
+                      }`}
                     >
-                      <div className="relative bg-[#1c1915]/95 border border-[rgba(198,167,107,0.35)] px-3.5 py-2.5 shadow-[0_10px_30px_rgba(0,0,0,0.45)]">
-                        <div className="font-mono text-[8px] tracking-[0.14em] uppercase text-[var(--bg-tertiary)] mb-1">{m.title} — {m.label}</div>
-                        <div className="font-sans text-[11px] leading-[1.55] text-[var(--text-secondary)] font-light normal-case tracking-normal text-left">{m.desc}</div>
-                        {/* Arrow */}
-                        <span className={`absolute w-2 h-2 rotate-45 bg-[#1c1915] border-[rgba(198,167,107,0.35)] ${
-                          i === 0
-                            ? 'left-[6px]'
-                            : i === MILESTONES.length - 1
-                              ? 'right-[6px]'
-                              : 'left-1/2 -translate-x-1/2'
-                        } -bottom-[5px] border-b border-r`} />
-                      </div>
+                      {m.desc}
                     </div>
 
                     {/* Label below (odd) */}
@@ -202,7 +187,6 @@ export default function IntroSection1() {
                     >
                       <div className="font-mono text-[11px] tracking-[0.06em] mb-[7px] text-[var(--bg-tertiary)]">{m.title}</div>
                       <div className={`font-serif font-medium text-[15px] leading-[1.28] tracking-[-0.005em] ${active ? 'text-white' : 'text-[var(--text-primary)]'}`}>{m.label}</div>
-                      <div className={`font-sans text-[11px] leading-[1.55] text-[var(--text-secondary)] font-light overflow-hidden transition-all duration-[400ms] ${active ? 'max-h-28 opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>{m.desc}</div>
                     </div>
                   </div>
                 );
