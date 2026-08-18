@@ -4,16 +4,16 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 const MILESTONES = [
-  { title: "2001", label: "The Beginning" },
-  { title: "2006", label: "Renewable Energy" },
-  { title: "2008–2013", label: "First Industrial Plan" },
-  { title: "2014", label: "Public Listing" },
-  { title: "2014–2019", label: "Second Industrial Plan" },
-  { title: "2022", label: "A New Chapter" },
-  { title: "2023", label: "Diversification" },
-  { title: "2024–2030", label: "A New Industrial Plan" },
-  { title: "2024", label: "PLT Properties" },
-  { title: "2027", label: "Flagship Launch", highlight: true },
+  { title: "2001", label: "The Beginning", desc: "The entrepreneurial journey begins." },
+  { title: "2006", label: "Renewable Energy", desc: "The Group enters the renewable energy sector with its first wind farm." },
+  { title: "2008–2013", label: "First Industrial Plan", desc: "The first industrial plan accelerates the expansion of the renewable energy business." },
+  { title: "2014", label: "Public Listing", desc: "The Group is listed on the Italian Stock Exchange, supporting its next phase of growth." },
+  { title: "2014–2019", label: "Second Industrial Plan", desc: "A second industrial plan further strengthens the Group's leadership in renewable energy." },
+  { title: "2022", label: "A New Chapter", desc: "The transaction with Eni Plenitude marks the successful completion of a major growth cycle." },
+  { title: "2023", label: "Diversification", desc: "PLT Holding is established as a diversified Family Office, investing across finance, renewable energy, real estate, and hospitality." },
+  { title: "2024–2030", label: "A New Industrial Plan", desc: "The Group embarks on its first industrial plan as a diversified investment platform." },
+  { title: "2024", label: "PLT Properties", desc: "PLT Holding launches its real estate operations in Dubai through PLT Properties." },
+  { title: "2027", label: "Flagship Launch", desc: "Flagship project pre-launch.", highlight: true },
 ];
 
 export default function IntroSection1() {
@@ -118,7 +118,7 @@ export default function IntroSection1() {
 
               <div className="relative flex gap-[30px] md:gap-[40px] lg:gap-[50px] min-[1320px]:gap-0 justify-between px-2">
                 {MILESTONES.map((m, i) => (
-                  <div key={m.title} className="relative flex flex-col items-center group">
+                  <div key={m.title} className="relative flex flex-col items-center group cursor-pointer">
                     {/* Label above (even) */}
                     <div className={`absolute bottom-full mb-5 text-center transition-transform duration-300 group-hover:-translate-y-1 ${i % 2 !== 0 ? 'invisible' : ''}`}>
                       <div className={`font-sans text-[12px] md:text-[13px] font-medium mb-1 whitespace-nowrap ${m.highlight ? 'text-[var(--bg-tertiary)]' : 'text-[var(--text-primary)]'}`}>{m.title}</div>
@@ -133,6 +133,34 @@ export default function IntroSection1() {
                           : 'border border-[var(--bg-tertiary)] bg-transparent group-hover:bg-[var(--bg-tertiary)]'
                       }`}
                     />
+
+                    {/* Tooltip (hover) — label ke opposite side */}
+                    <div
+                      className={`absolute z-30 w-[210px] pointer-events-none opacity-0 transition-all duration-300 group-hover:opacity-100 ${
+                        i === 0
+                          ? 'left-0'
+                          : i === MILESTONES.length - 1
+                            ? 'right-0'
+                            : 'left-1/2 -translate-x-1/2'
+                      } ${
+                        i % 2 === 0 ? 'top-full mt-9 translate-y-1 group-hover:translate-y-0' : 'bottom-full mb-9 -translate-y-1 group-hover:translate-y-0'
+                      }`}
+                    >
+                      <div className="relative bg-[#1c1915]/95 border border-[rgba(198,167,107,0.35)] px-3.5 py-2.5 shadow-[0_10px_30px_rgba(0,0,0,0.45)]">
+                        <div className="font-mono text-[8px] tracking-[0.14em] uppercase text-[var(--bg-tertiary)] mb-1">{m.title} — {m.label}</div>
+                        <div className="font-sans text-[11px] leading-[1.55] text-[var(--text-secondary)] font-light normal-case tracking-normal text-left">{m.desc}</div>
+                        {/* Arrow */}
+                        <span className={`absolute w-2 h-2 rotate-45 bg-[#1c1915] border-[rgba(198,167,107,0.35)] ${
+                          i === 0
+                            ? 'left-[6px]'
+                            : i === MILESTONES.length - 1
+                              ? 'right-[6px]'
+                              : 'left-1/2 -translate-x-1/2'
+                        } ${
+                          i % 2 === 0 ? '-top-[5px] border-t border-l' : '-bottom-[5px] border-b border-r'
+                        }`} />
+                      </div>
+                    </div>
 
                     {/* Label below (odd) */}
                     <div className={`absolute top-full mt-5 text-center transition-transform duration-300 group-hover:translate-y-1 ${i % 2 === 0 ? 'invisible' : ''}`}>
@@ -178,6 +206,7 @@ export default function IntroSection1() {
                     >
                       <div className="font-mono text-[11px] tracking-[0.06em] mb-[7px] text-[var(--bg-tertiary)]">{m.title}</div>
                       <div className={`font-serif font-medium text-[15px] leading-[1.28] tracking-[-0.005em] ${active ? 'text-white' : 'text-[var(--text-primary)]'}`}>{m.label}</div>
+                      <div className={`font-sans text-[11px] leading-[1.55] text-[var(--text-secondary)] font-light overflow-hidden transition-all duration-[400ms] ${active ? 'max-h-28 opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>{m.desc}</div>
                     </div>
                   </div>
                 );
