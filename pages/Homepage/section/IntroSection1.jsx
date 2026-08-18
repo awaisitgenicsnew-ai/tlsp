@@ -112,7 +112,7 @@ export default function IntroSection1() {
           {/* Milestones Timeline */}
           <div className="relative z-10 mt-6 animate-[riseIn_1.1s_cubic-bezier(0.2,0.8,0.2,1)_0.15s_both]">
             {/* Desktop: horizontal timeline */}
-            <div className="hidden md:block relative px-8 pt-20 pb-20">
+            <div className="hidden md:block relative px-8 pt-40 pb-20">
               {/* Line */}
               <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-[rgba(237,230,216,0.08)] via-[rgba(198,167,107,0.55)] to-[var(--bg-tertiary)] min-w-full" />
 
@@ -142,9 +142,7 @@ export default function IntroSection1() {
                           : i === MILESTONES.length - 1
                             ? 'right-0'
                             : 'left-1/2 -translate-x-1/2'
-                      } ${
-                        i % 2 === 0 ? 'top-full mt-9 translate-y-1 group-hover:translate-y-0' : 'bottom-full mb-9 -translate-y-1 group-hover:translate-y-0'
-                      }`}
+                      } bottom-full mb-16 -translate-y-1 group-hover:translate-y-0`}
                     >
                       <div className="relative bg-[#1c1915]/95 border border-[rgba(198,167,107,0.35)] px-3.5 py-2.5 shadow-[0_10px_30px_rgba(0,0,0,0.45)]">
                         <div className="font-mono text-[8px] tracking-[0.14em] uppercase text-[var(--bg-tertiary)] mb-1">{m.title} — {m.label}</div>
@@ -156,9 +154,7 @@ export default function IntroSection1() {
                             : i === MILESTONES.length - 1
                               ? 'right-[6px]'
                               : 'left-1/2 -translate-x-1/2'
-                        } ${
-                          i % 2 === 0 ? '-top-[5px] border-t border-l' : '-bottom-[5px] border-b border-r'
-                        }`} />
+                        } -bottom-[5px] border-b border-r`} />
                       </div>
                     </div>
 
