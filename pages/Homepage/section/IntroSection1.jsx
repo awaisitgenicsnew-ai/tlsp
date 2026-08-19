@@ -13,7 +13,7 @@ const MILESTONES = [
   { title: "2023", label: "Diversification", desc: "PLT Holding is established as a diversified Family Office, investing across finance, renewable energy, real estate, and hospitality." },
   { title: "2024–2030", label: "A New Industrial Plan", desc: "The Group embarks on its first industrial plan as a diversified investment platform." },
   { title: "2024", label: "PLT Properties", desc: "PLT Holding launches its real estate operations in Dubai through PLT Properties." },
-  { title: "2027", label: "Flagship Launch", desc: "Flagship project pre-launch.", highlight: true },
+  { title: "2027", label: "PLT TOWER", desc: "The flagship project is officially pre-launched in Dubai.", highlight: true },
 ];
 
 export default function IntroSection1() {
